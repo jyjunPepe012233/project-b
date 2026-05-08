@@ -53,7 +53,7 @@ namespace ProjectB.UI.Screens.ShopScreen
 				var pageView = Object.Instantiate(_shopPageViewPrefab, _shopPageParent);
 				
 				pageView.SetPageName(pageData.ShopPageName);
-				pageView.InitializeAllItems(pageData.ShopItems.ToArray()); // 메서드가 IReadOnlyList를 요구하므로 배열로 변환하여 전달
+				pageView.InitializeAllItems(pageData.ShopItems);
 				
 				_shopPageInstances.Add((pageView, pageData));
 			}

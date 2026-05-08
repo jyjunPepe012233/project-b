@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using ProjectB.Data.Static.ShopItem;
-using ProjectB.UI.Components;
+using ProjectB.UI.Lists.ShopItemButtonList;
 using TMPro;
 using UnityEngine;
 
@@ -10,16 +10,16 @@ namespace ProjectB.UI.Screens.ShopScreen
 	public class ShopPageView : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI _pageNameText;
-		[SerializeField] private ShopItemButtonList _shopItemButtonList;
+		[SerializeField] private ShopItemButtonListComponent _shopItemButtonList;
 		
 		public void SetPageName(string pageName)
 		{
 			_pageNameText.text = pageName;
 		}
 		
-		public void InitializeAllItems(IReadOnlyList<IShopItem> shopItems)
+		public void InitializeAllItems(IEnumerable<IShopItem> shopItems)
 		{
-			_shopItemButtonList.InitializeAllItems(shopItems);
+			_shopItemButtonList.UpdateShopItemData(shopItems);
 		}
 	}
 
