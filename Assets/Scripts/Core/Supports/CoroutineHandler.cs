@@ -11,7 +11,7 @@ namespace ProjectB.Core.Supports
 	
 		private readonly List<Coroutine> _coroutines = new List<Coroutine>(8);
 
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void InitializeSingleton()
 		{
 			if (_runner == null)
