@@ -12,12 +12,12 @@ using UnityEngine;
 namespace ProjectB.Gameplay
 {
 
-	public class PlayerInventoryService : IPlayerInventoryServicePort
+	public class InternalInventoryService : IInternalInventoryServicePort
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly ILoadRewardGainPopupPort _loadRewardGainPopupPort;
 
-		public PlayerInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, ILoadRewardGainPopupPort loadRewardGainPopupPort)
+		public InternalInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, ILoadRewardGainPopupPort loadRewardGainPopupPort)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
 			_loadRewardGainPopupPort = loadRewardGainPopupPort;
