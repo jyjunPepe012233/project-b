@@ -31,6 +31,9 @@ namespace ProjectB.Dependency.Scopes
 			base.Awake();
 			
 			Container.Resolve<PlayerSessionInitializer>();
+			Container.Resolve<GlobalErrorHandler>();
+
+			Container.Resolve<FirebaseInitializer>();
 		}
 		
 		protected override void AddInboundAdapters()
@@ -48,7 +51,13 @@ namespace ProjectB.Dependency.Scopes
 			// 이 사례처럼 클래스에 대한 분리 기준이 항상 명확하게 작용하지 않고 있으므로 StructureLifetimeScope를 리팩토링하여
 			// 클래스 구분을 최대한 유연하게 만들거나 없애는 방안을 고려해볼 수 있음.
 			// 지금은 임시로 Inbound Adapter를 등록하는 메서드에서 등록함
+			// + 추가로, 이 클래스는 게임 실행 시 바로 생성되어야 하는 Entry Point이므로 Awake에서 Resolve함
 			Builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
+			
+			// GlobalErrorHandler도 PlayerSessionInitializer와 같은 `Entry Point` 성격의 클래스임
+			// 이것도 마찬가지로 임시로 Inbound Adapter 등록 메서드에서 등록
+			Builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
+			
 			
 			// 사도 정보는 대부분의 화면에서 열릴 수 있기 때문에 Core에 등록
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
@@ -73,6 +82,13 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<IInitializePlayerSessionPort, InitializePlayerSessionService>();
 			RegisterPortAdapter<ILoadSoldierDetailScreenPort, LoadSoldierDetailScreenService>();
 			RegisterPortAdapter<ILoadRewardGainPopupPort, LoadRewardGainPopupPort>();
+			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
+			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
+			
+			// 사실 Outbound Port 보다는 Infrastructure 내부의 특정 기술 사용을 위한 독립적 클래스임
+			// 지금은 임시로 Outbound Adapter 등록 메서드에서 등록
+			// + Awake에서 Resolve함 (게임 시작 시 바로 생성되어야 하므로)
+			Builder.Register<FirebaseInitializer>(Lifetime.Singleton);
 		}
 
 		protected override void AddData()
