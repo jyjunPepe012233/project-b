@@ -1,6 +1,6 @@
-# 플러그인은 EDM4U나 PackageManager로 다운로드 받으면 됨
-# Firebase 쪽에 용량이 큰 플러그인이 많아서 git에는 올리지 않기로 함
-**/Plugins/
+# Firebase 플러그인은 EDM4U나 PackageManager로 다운로드 받으면 됨
+# Firebase 쪽에 용량이 큰 플러그인이 많아서 git에는 올리지 않음
+**/Firebase/Plugins/
 
 **/ExternalAssets/
 
@@ -26,10 +26,6 @@ gitignore_*
 **/[Aa]ssets/GlobalEntitiesDependencies*
 **/[Aa]ssets/SceneDependencyCache*
 **/[Aa]ssets/TypeDependencyCache*
-
-# Ignoring asset store tools plugin
-**/[Aa]ssets/AssetStoreTools*
-**/[Aa]ssets/Plugins*
 
 # Visual Studio cache directory
 .vs/
