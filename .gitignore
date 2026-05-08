@@ -1,6 +1,8 @@
 # Firebase 플러그인은 EDM4U나 PackageManager로 다운로드 받으면 됨
-# Firebase 쪽에 용량이 큰 플러그인이 많아서 git에는 올리지 않음
-**/Firebase/Plugins/
+# 용량이 크고, 로컬에서 수정되는 경우가 많아 git에 올리지 않음
+**/[Aa]ssets/Firebase/Plugins/
+**/[Aa]ssets/Plugins/Android/*.androidlib
+**/[Aa]ssets/Plugins/Android/*.androidlib.meta
 
 **/ExternalAssets/
 
@@ -65,9 +67,6 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
-
-# Crashlytics generated file
-crashlytics-build.properties
 
 # Packed Addressables
 **/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
