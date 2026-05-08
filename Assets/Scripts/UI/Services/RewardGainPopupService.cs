@@ -9,7 +9,7 @@ namespace ProjectB.UI.Services
 
 	public class RewardGainPopupService : MonoBehaviour
 	{
-		[SerializeField] private RewardGainPopupPresenter _rewardGainPopupPresenter;
+		[SerializeField] private RewardGainPopupComponent _rewardGainPopupComponent;
 
 		public bool Opening
 		{
@@ -22,7 +22,7 @@ namespace ProjectB.UI.Services
 
 		public void OpenPopup(IEnumerable<ItemGain> itemGains)
 		{
-			_rewardGainPopupPresenter.OpenPopup(itemGains);
+			_rewardGainPopupComponent.OpenPopup(itemGains);
 		}
 	}
 

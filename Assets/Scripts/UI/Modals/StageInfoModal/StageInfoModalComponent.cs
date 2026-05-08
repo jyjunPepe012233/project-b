@@ -4,10 +4,8 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Modals.StageInfoModal
 {
 
-	public class StageInfoModalPresenter : UIPresenter<StageInfoModalView>
+	public class StageInfoModalComponent : UIComponent<StageInfoModalView>
 	{
-		public bool IsOpen { get; private set; }
-
 		protected override void SetupSubscriptions()
 		{
 			base.SetupSubscriptions();
@@ -20,22 +18,9 @@ namespace ProjectB.UI.Modals.StageInfoModal
 			view.CloseButtonClicked -= OnCloseButtonClicked;
 		}
 
-		public override void Show()
+		void OnCloseButtonClicked()
 		{
-			base.Show();
-			IsOpen = true;
-		}
-
-		public override void Hide()
-		{
-			base.Hide();
-			IsOpen = false;
-		}
-
-		private void OnCloseButtonClicked()
-		{
-			Hide();
-			IsOpen = false;
+			view.Hide();
 		}
 
 		public void InitializeStageInfo(IStageData stage)

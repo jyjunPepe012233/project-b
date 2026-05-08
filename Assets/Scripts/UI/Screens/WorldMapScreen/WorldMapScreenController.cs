@@ -13,8 +13,8 @@ namespace ProjectB.UI.Screens.WorldMapScreen
 		[SerializeField] private string _chapterNameFormat = "침략 ({0})";
 		[SerializeField] private TextMeshProUGUI _chapterNameText;
 	
-		[SerializeField] private StageInfoModalPresenter _stageInfoModalRight;
-		[SerializeField] private StageInfoModalPresenter _stageInfoModalLeft;
+		[SerializeField] private StageInfoModalComponent _stageInfoModalRight;
+		[SerializeField] private StageInfoModalComponent _stageInfoModalLeft;
 
 		private IStageData _lastStageData;
 	
@@ -33,7 +33,7 @@ namespace ProjectB.UI.Screens.WorldMapScreen
 
 		private void OnStageInfoButtonClicked(IStageData stage, bool isRightSide) // isRightSide: 버튼이 오른쪽에 있는지 여부
 		{
-			if (_stageInfoModalRight.IsOpen || _stageInfoModalLeft.IsOpen)
+			if (_stageInfoModalRight.IsShowing || _stageInfoModalLeft.IsShowing)
 			{
 				_stageInfoModalRight.Hide();
 				_stageInfoModalLeft.Hide();

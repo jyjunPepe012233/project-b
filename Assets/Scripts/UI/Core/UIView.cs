@@ -9,6 +9,8 @@ namespace ProjectB.UI.Core
 	{
 		[SerializeField] private GameObject _topElement;
 
+		public bool IsShowing => _topElement.activeSelf;
+
 		public virtual void RegisterUICallbacks()
 		{
 		

@@ -10,9 +10,9 @@ namespace ProjectB.UI.Components
 	public class ShopItemButtonList : MonoBehaviour
 	{
 		[SerializeField] private Transform _contentRoot;
-		[SerializeField] private ShopItemButtonPresenter _buttonPrefab;
+		[SerializeField] private ShopItemButtonComponent _buttonPrefab;
 
-		private readonly List<ShopItemButtonPresenter> _buttonInstances = new();
+		private readonly List<ShopItemButtonComponent> _buttonInstances = new();
 
 
 		public void InitializeAllItems(IReadOnlyList<IShopItem> shopItems)

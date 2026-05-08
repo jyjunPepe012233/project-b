@@ -3,13 +3,20 @@ using UnityEngine;
 namespace ProjectB.UI.Core
 {
 
+	// UI Presenter는 연결된 UI View를 관리하는 MonoBehaviour임
+	// 수동적 클래스인 UIView를 통일된 생명주기 상에서 관리하며, defaultDisable과 같은 여러 옵션을 제공함
+	// 또, 이 클래스는 가능한 독립적, 자주적으로 작동해야 하며 다른 클래스에게 제어되지 않아야 함.
+	// (다른 클래스에게 제어받아야 하는 UI는 UIPresenter를 상속한 UIComponet를 사용하면 됨)
 	public abstract class UIPresenter<TView> : MonoBehaviour where TView : UIView
 	{
+		[SerializeField] protected TView view;
+
+		[Header("Settings")]
 		[SerializeField] protected bool defaultDisable = false;
 		[SerializeField] protected bool dontDestroyOnLoad = false;
-		[SerializeField] protected bool initializeOnShow = true;
 		[SerializeField] protected bool initializeOnEnable = true;
-		[SerializeField] protected TView view;
+		
+		public bool IsShowing => view.IsShowing;
 
 		public void Awake()
 		{
@@ -28,8 +35,8 @@ namespace ProjectB.UI.Core
 			InitializeView();
 
 			if (defaultDisable)
-			{
-				Hide();
+			{ 
+				view.Hide();
 			}
 		}
 	
@@ -65,21 +72,6 @@ namespace ProjectB.UI.Core
 		protected virtual void InitializeView()
 		{
 		
-		}
-
-		public virtual void Show()
-		{
-			if (initializeOnShow)
-			{
-				InitializeView();
-			}
-			
-			view?.Show();
-		}
-
-		public virtual void Hide()
-		{
-			view?.Hide();
 		}
 	}
 
