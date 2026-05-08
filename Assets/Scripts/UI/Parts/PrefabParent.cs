@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ProjectB.UI.Components
 {
 
-	public class PrefabIconParent : MonoBehaviour
+	public class PrefabParent : MonoBehaviour
 	{
 		[SerializeField] private Transform _parent;
 

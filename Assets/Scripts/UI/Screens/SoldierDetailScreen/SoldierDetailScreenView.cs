@@ -16,10 +16,10 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 	{
 		// 페이지는 외부에서 사용할 수 있게 함
 
-		[SerializeField] private PrefabIconParent _spiritIconParent;
-		[SerializeField] private PrefabIconParent _soldierRoleIconParent;
-		[SerializeField] private PrefabIconParent _attackTypeIconParent;
-		[SerializeField] private PrefabIconParent _positionIconParent;
+		[SerializeField] private PrefabParent _spiritIconParent;
+		[SerializeField] private PrefabParent _soldierRoleIconParent;
+		[SerializeField] private PrefabParent _attackTypeIconParent;
+		[SerializeField] private PrefabParent _positionIconParent;
 		
 		[Header("Pages")]
 		

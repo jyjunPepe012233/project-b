@@ -10,8 +10,8 @@ namespace ProjectB.UI.Components
 	{
 		[SerializeField] private TextMeshProUGUI _soldierNameText;
 		[SerializeField] private Transform _soldierDisplayParent;
-		[SerializeField] private SimpleIconView _roleIcon;
-		[SerializeField] private SimpleIconView _styleIcon;
+		[SerializeField] private SimpleIcon _roleIcon;
+		[SerializeField] private SimpleIcon _styleIcon;
 
 		[SerializeField] private UnityEvent<ISoldierData> _soldierDataAppliedEvent; 
 

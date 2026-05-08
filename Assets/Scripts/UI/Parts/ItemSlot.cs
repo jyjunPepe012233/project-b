@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace ProjectB.UI.Components
 {
 
-	public class ItemView : MonoBehaviour
+	public class ItemSlot : MonoBehaviour
 	{
 		[Header("Optionals")]
 		[SerializeField] private TextMeshProUGUI _itemNameText;

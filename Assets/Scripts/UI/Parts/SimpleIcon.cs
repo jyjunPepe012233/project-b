@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace ProjectB.UI.Components
 {
 
-	public class SimpleIconView : MonoBehaviour
+	public class SimpleIcon : MonoBehaviour
 	{
 		[SerializeField] private Image _iconImage;
 		[SerializeField] private Image _iconBackground;

@@ -18,9 +18,9 @@ namespace ProjectB.UI.Popups.RewardGainPopup
 		[SerializeField] private PlayableDirector _openAnimDirector;
 		[SerializeField] private Button _backgroundClickArea;
 		[SerializeField] private Transform _itemCardsContent;
-		[SerializeField] private ItemView _itemCardPrefab;
+		[SerializeField] private ItemSlot _itemCardPrefab;
 
-		private readonly List<ItemView> _itemCardInstances = new();
+		private readonly List<ItemSlot> _itemCardInstances = new();
 		
 		public event Action BackgroundClickAreaClicked;
 
