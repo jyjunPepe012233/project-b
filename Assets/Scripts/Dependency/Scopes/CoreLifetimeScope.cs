@@ -61,6 +61,9 @@ namespace ProjectB.Dependency.Scopes
 			
 			// 사도 정보는 대부분의 화면에서 열릴 수 있기 때문에 Core에 등록
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
+			
+			// 플레이어가 보유한 아이템들의 정보는 인벤토리 화면 뿐만 아니라 다양한 화면에서 필요할 수 있기 때문에 Core에 등록 
+			RegisterPortAdapter<IInventoryService, InventoryService>();
 		}
 
 		protected override void AddInternalAdapters()
