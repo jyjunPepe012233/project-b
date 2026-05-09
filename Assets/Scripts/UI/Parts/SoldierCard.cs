@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace ProjectB.UI.Components
 {
 
-	public class SimpleSoldierCard : MonoBehaviour
+	public class SoldierCard : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI _soldierNameText;
 		[SerializeField] private Transform _soldierDisplayParent;

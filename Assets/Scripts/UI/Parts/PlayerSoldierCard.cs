@@ -5,12 +5,12 @@ using UnityEngine;
 namespace ProjectB.UI.Components
 {
 
-	public class SimplePlayerSoldierCard : SimpleSoldierCard
+	public class PlayerSoldierCard : SoldierCard
 	{
 		[Header("Player Soldier Card")]
 		[SerializeField] private TextMeshProUGUI _levelText;
 		
-		public void ApplyPlayerSoldierData(IPlayerSoldier data)
+		public void ApplyPlayerSoldierData(IReadOnlyPlayerSoldier data)
 		{
 			if (_levelText)
 			{

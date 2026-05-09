@@ -5,6 +5,7 @@ using ProjectB.Data.Static.Soldier;
 using ProjectB.UI.Components;
 using ProjectB.UI.Core;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ProjectB.UI.Lists.PlayerSoldierList
 {
@@ -12,12 +13,24 @@ namespace ProjectB.UI.Lists.PlayerSoldierList
 	[Serializable]
 	public class PlayerSoldierListView : UIView
 	{
-		[SerializeField] private SimplePlayerSoldierCardList _cardList;
+		[SerializeField] private Transform _contentParent;
+		[SerializeField] private PlayerSoldierCard _cardPrefab;
 
-		public void UpdateAllPlayerSoldiers(IReadOnlyList<(IPlayerSoldier playerSoldier,
-			ISoldierData soldierData)> data) // 카운팅, 인덱스 접근 등이 필요하므로 리스트(읽기 전용)로 받음
+		private readonly List<PlayerSoldierCard> _cardInstances = new();
+		
+		public void UpdatePlayerSoldiers(IEnumerable<(IReadOnlyPlayerSoldier playerSoldier, ISoldierData soldierData)> data)
 		{
-			_cardList.UpdateAllSoldiers(data);
+			foreach (var card in _cardInstances)
+				Object.Destroy(card);
+			_cardInstances.Clear(); 
+
+			foreach (var i in data)
+			{
+				var card = Object.Instantiate(_cardPrefab);
+				card.ApplyPlayerSoldierData(i.playerSoldier);
+				card.ApplySoldierData(i.soldierData);
+				_cardInstances.Add(card);
+			}
 		}
 	}
 

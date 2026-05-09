@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.UI.Components;
 using ProjectB.UI.Core;
+using ProjectB.UI.Lists.SoldierList;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace ProjectB.UI.Screens.SummonResultScreen
 	[Serializable]
 	public class SummonResultScreenView : UIView
 	{
-		[SerializeField] private SimpleSoldierCardList _soldierCardList;
+		[SerializeField] private SoldierListComponent _soldierList;
 		[SerializeField] private Button _closeButton;
 		[SerializeField] private Button _summonAgainButton;
 		
@@ -46,7 +47,7 @@ namespace ProjectB.UI.Screens.SummonResultScreen
 
 		public void UpdateSummonedSoldiers(IReadOnlyList<ISoldierData> summonedSoldiers)
 		{
-			_soldierCardList.UpdateAllSoldiers(summonedSoldiers);
+			_soldierList.UpdateSoldiers(summonedSoldiers);
 		}
 	}
 
