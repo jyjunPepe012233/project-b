@@ -1,6 +1,7 @@
 using System;
 using ProjectB.Data.Types;
 using ProjectB.UI.Components;
+using ProjectB.UI.Lists.SoldierStatusList;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 		[SerializeField] private TextMeshProUGUI _combatPowerText;
 
 		[Header("Status")]
-		[SerializeField] private SimpleSoldierStatusList _statusList;
+		[SerializeField] private SoldierStatusListComponent _statusList;
 		
 		public void SetLevel(short level)
 		{
@@ -39,7 +40,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 
 		public void SetStatus(SoldierStatus status)
 		{
-			_statusList.SetStatus(status);
+			_statusList.UpdateStatus(status);
 		}
 		
 		// info page 만들기

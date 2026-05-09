@@ -1,6 +1,6 @@
 using System;
 using ProjectB.Data.Types;
-using ProjectB.UI.Components;
+using ProjectB.UI.Lists.SoldierStatusUpgradeList;
 using ProjectB.UI.Core;
 using TMPro;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 	public class LevelUpPageView : SoldierDetailPageView
 	{
 		[Header("Status")]
-		[SerializeField] private SimpleSoldierStatusUpgradeList _statusUpgradeList;
+		[SerializeField] private SoldierStatusUpgradeListComponent _statusUpgradeList;
 		
 		[Header("Combat Power")]
 		[SerializeField] private TextMeshProUGUI _currentCombatPowerText;
@@ -63,7 +63,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 		
 		public void SetStatus(SoldierStatus currentStatus, SoldierStatus nextStatus)
 		{
-			_statusUpgradeList.SetStatus(currentStatus, nextStatus);
+			_statusUpgradeList.UpdateStatus(currentStatus, nextStatus);
 		}
 
 		public void SetCurrentLevel(int level)

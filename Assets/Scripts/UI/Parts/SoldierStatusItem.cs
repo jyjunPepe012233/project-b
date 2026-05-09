@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ProjectB.UI.Components
 {
 
-	public class SimpleSoldierStatusItem : MonoBehaviour
+	public class SoldierStatusItem : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI _valueText;
 

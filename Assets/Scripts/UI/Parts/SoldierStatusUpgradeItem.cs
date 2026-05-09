@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ProjectB.UI.Components
 {
 
-	public class SimpleSoldierStatusUpgradeItem : SimpleSoldierStatusItem
+	public class SoldierStatusUpgradeItem : SoldierStatusItem
 	{
 		[Header("Upgrade Item")]
 		[SerializeField] private TextMeshProUGUI _upgradeValueText;
