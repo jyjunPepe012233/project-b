@@ -1306,8 +1306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb9dde95ff747338f328350a80a871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
     _topElement: {fileID: 4582923392925340195}
     _spiritIconParent: {fileID: 4420763167874686144}
@@ -1320,11 +1318,11 @@ MonoBehaviour:
       _levelText: {fileID: 3711188217074251513}
       _rankStarProgress: {fileID: 488812891418139356}
       _combatPowerText: {fileID: 4782222327135720839}
-      _statusList: {fileID: 5104071249403952578}
+      _statusList: {fileID: 5399901035014808498}
     _levelUpPageView:
       _topElement: {fileID: 3240184506406990482}
       _pageId: LevelUp
-      _statusUpgradeList: {fileID: 4825666411280577943}
+      _statusUpgradeList: {fileID: 1835037900475519592}
       _currentCombatPowerText: {fileID: 5120459721901763213}
       _nextLevelCombatPowerText: {fileID: 6432390937519490807}
       _currentLevelText: {fileID: 7529677214504736937}
@@ -1334,6 +1332,9 @@ MonoBehaviour:
       _targetExperienceText: {fileID: 3250369007225191486}
       _consumeFoodButton: {fileID: 1923368038000543958}
       _consumeFoodAmountText: {fileID: 8187464708103816220}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
   _soldierDatabaseInstaller: {fileID: 0}
   _soldierDetailServicePortInstaller: {fileID: 0}
   _soldierLevelUpServicePortInstaller: {fileID: 0}
@@ -3002,15 +3003,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5104071249403952578 stripped
+--- !u!114 &5399901035014808498 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6317700175358174975, guid: 3827f3ab6fee947f89cf099bfbcc763d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6596078513352505487, guid: 3827f3ab6fee947f89cf099bfbcc763d, type: 3}
   m_PrefabInstance: {fileID: 1259238869445122877}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f01c59fc61e6e4ee7a80a0e9115d5658, type: 3}
+  m_Script: {fileID: 11500000, guid: 2afb4cd4b99524b209d54437f9e3951a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2200468852325090937
@@ -4064,6 +4065,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 171685627272c4282acbf47c7a61647c, type: 3}
+--- !u!114 &1835037900475519592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3182801641267579026, guid: 171685627272c4282acbf47c7a61647c, type: 3}
+  m_PrefabInstance: {fileID: 3845168108846193402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a6fabd7f9a04b3093b366f97deec31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1923368038000543958 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3453668346013995564, guid: 171685627272c4282acbf47c7a61647c, type: 3}
@@ -4094,17 +4106,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4825666411280577943 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8621294919112830829, guid: 171685627272c4282acbf47c7a61647c, type: 3}
-  m_PrefabInstance: {fileID: 3845168108846193402}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b236977959445e19d55b111077db4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5120459721901763213 stripped

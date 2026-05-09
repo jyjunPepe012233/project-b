@@ -21,12 +21,12 @@ namespace ProjectB.UI.Lists.PlayerSoldierList
 		public void UpdatePlayerSoldiers(IEnumerable<(IReadOnlyPlayerSoldier playerSoldier, ISoldierData soldierData)> data)
 		{
 			foreach (var card in _cardInstances)
-				Object.Destroy(card);
+				Object.Destroy(card.gameObject);
 			_cardInstances.Clear(); 
 
 			foreach (var i in data)
 			{
-				var card = Object.Instantiate(_cardPrefab);
+				var card = Object.Instantiate(_cardPrefab, _contentParent);
 				card.ApplyPlayerSoldierData(i.playerSoldier);
 				card.ApplySoldierData(i.soldierData);
 				_cardInstances.Add(card);

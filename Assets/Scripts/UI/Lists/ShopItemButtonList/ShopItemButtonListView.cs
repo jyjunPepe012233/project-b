@@ -20,12 +20,12 @@ namespace ProjectB.UI.Lists.ShopItemButtonList
 		public void UpdateShopItemButton(IEnumerable<IShopItem> shopItems)
 		{
 			foreach (var button in _buttonInstances)
-				Object.Destroy(button);
+				Object.Destroy(button.gameObject);
 			_buttonInstances.Clear();
 
 			foreach (var shopItem in shopItems)
 			{
-				var button = Object.Instantiate(_buttonPrefab);
+				var button = Object.Instantiate(_buttonPrefab, _contentParent);
 				button.InitializeShopItemData(shopItem);
 				_buttonInstances.Add(button);
 			}

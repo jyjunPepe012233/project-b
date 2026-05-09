@@ -47,7 +47,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2006795333611803943}
-  - component: {fileID: 6648670935689799110}
+  - component: {fileID: 4214115116105745889}
   m_Layer: 5
   m_Name: SoldierCardList
   m_TagString: Untagged
@@ -75,7 +75,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6648670935689799110
+--- !u!114 &4214115116105745889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,11 +84,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 37539433708056969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da57d32846341b88e259d671a32e38c, type: 3}
+  m_Script: {fileID: 11500000, guid: d301456cf2ab435685e0ad3a75ce8035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contentRoot: {fileID: 2745209130736899688}
-  _soldierCardPrefab: {fileID: 274046110436500872, guid: 9f19dd9f96f014739900d1a6992639e4, type: 3}
+  view:
+    _topElement: {fileID: 6728142146148383197}
+    _contentParent: {fileID: 2745209130736899688}
+    _cardPrefab: {fileID: 274046110436500872, guid: 9f19dd9f96f014739900d1a6992639e4, type: 3}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
+  initializeOnShow: 1
 --- !u!1 &119236520083751820
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +147,9 @@ MonoBehaviour:
   view:
     _topElement: {fileID: 5449471472200704617}
     _button: {fileID: 3972181858888420477}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
 --- !u!1 &152719654567120798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1395,9 @@ MonoBehaviour:
   view:
     _topElement: {fileID: 2975761248148602872}
     _button: {fileID: 9164162511375368098}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
 --- !u!1 &6525988270533148939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,9 +1587,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   view:
     _topElement: {fileID: 4907231659741732798}
-    _soldierCardList: {fileID: 6648670935689799110}
+    _soldierList: {fileID: 4214115116105745889}
     _closeButton: {fileID: 9164162511375368098}
     _summonAgainButton: {fileID: 3972181858888420477}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
   _summonServicePortInstaller: {fileID: 0}
 --- !u!223 &4954669166617598307
 Canvas:

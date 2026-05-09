@@ -442,7 +442,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4427173249001066247}
   - component: {fileID: 5783709162631564967}
-  - component: {fileID: 7382855803333495713}
   m_Layer: 5
   m_Name: SoldierList
   m_TagString: Untagged
@@ -482,27 +481,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c16217e56cb430b9d5a19dbcd2e2316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
     _topElement: {fileID: 3904828695557066364}
-    _cardList: {fileID: 7382855803333495713}
+    _contentParent: {fileID: 3887847955980346000}
+    _cardPrefab: {fileID: 4189540498079293433, guid: 1a9e9803f30ae4b8d9e2c2818f496cbe, type: 3}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnEnable: 1
   _soldierDatabaseInstaller: {fileID: 0}
   _playerDataServicePortInstaller: {fileID: 0}
---- !u!114 &7382855803333495713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7128815013394278062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72bba1c9dd1a40b59e11cacb497a3e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _contentRoot: {fileID: 3887847955980346000}
-  _cardPrefab: {fileID: 4189540498079293433, guid: 1a9e9803f30ae4b8d9e2c2818f496cbe, type: 3}
 --- !u!1 &7164075767698974189
 GameObject:
   m_ObjectHideFlags: 0
