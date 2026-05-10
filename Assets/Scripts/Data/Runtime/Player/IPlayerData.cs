@@ -13,6 +13,10 @@ namespace ProjectB.Data.Runtime.Player
 		void AddGems(int amount);
 
 		bool TryConsumeGems(int amount);
+		
+		bool AddMorale(int amount);
+		
+		bool TryConsumeMorale(int amount);
 
 		void AddFoods(int amount);
 

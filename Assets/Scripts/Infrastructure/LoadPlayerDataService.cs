@@ -9,7 +9,7 @@ namespace ProjectB.Infrastructure
 	{
 		public IPlayerData LoadPlayerData()
 		{
-			return new PlayerData(coins: 9999, gems: 9999, foods: 99999); // TODO: 서버에서 받아오거나 로컬에 저장된거 역직렬화
+			return new PlayerData(coins: 9999, gems: 9999, morale: 999, foods: 99999); // TODO: 서버에서 받아오거나 로컬에 저장된거 역직렬화
 		}
 	}
 

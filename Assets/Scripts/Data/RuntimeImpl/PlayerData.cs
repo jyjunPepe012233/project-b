@@ -16,6 +16,9 @@ namespace ProjectB.Data.RuntimeImpl
 		[SerializeField] private int _gems;
 		public int Gems => _gems;
 
+		[SerializeField] private int _morale;
+		public int Morale => _morale;
+
 		[SerializeField] private int _foods;
 		public int Foods => _foods;
 
@@ -27,16 +30,18 @@ namespace ProjectB.Data.RuntimeImpl
 		
 		public event Action CoinsChanged;
 		public event Action GemsChanged;
+		public event Action MoraleChanged;
 		public event Action FoodsChanged;
 
 		public PlayerData()
 		{
 		}
-		
-		public PlayerData(int coins, int gems, int foods)
+
+		public PlayerData(int coins, int gems, int morale, int foods)
 		{
 			_coins = coins;
 			_gems = gems;
+			_morale = morale;
 			_foods = foods;
 		}
 
@@ -92,6 +97,34 @@ namespace ProjectB.Data.RuntimeImpl
 
 			_gems -= amount;
 			GemsChanged?.Invoke();
+			return true;
+		}
+
+		public bool AddMorale(int amount)
+		{
+			if (Int32.MaxValue - _morale < amount)
+			{
+				// 기능 작동에는 문제가 없도록 LogError 출력만 함
+				Debug.LogError("사기가 최대 수치를 넘어섰습니다!");
+				_morale = Int32.MaxValue;
+				MoraleChanged?.Invoke();
+				return false;
+			}
+
+			_morale += amount;
+			MoraleChanged?.Invoke();
+			return true;
+		}
+
+		public bool TryConsumeMorale(int amount)
+		{
+			if (_morale < amount)
+			{
+				return false;
+			}
+
+			_morale -= amount;
+			MoraleChanged?.Invoke();
 			return true;
 		}
 

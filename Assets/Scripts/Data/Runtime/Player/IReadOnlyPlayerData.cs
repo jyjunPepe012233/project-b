@@ -10,6 +10,8 @@ namespace ProjectB.Data.Runtime.Player
 		
 		int Gems { get; }
 		
+		int Morale { get; }
+		
 		int Foods { get; }
 		
 		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
@@ -19,6 +21,8 @@ namespace ProjectB.Data.Runtime.Player
 		event Action CoinsChanged;
 
 		event Action GemsChanged;
+
+		event Action MoraleChanged;
 
 		event Action FoodsChanged;
 	}
