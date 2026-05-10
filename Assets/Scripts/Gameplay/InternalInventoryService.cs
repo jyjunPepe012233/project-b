@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using ProjectB.Core.Supports;
 using ProjectB.Data.Runtime.Player;
@@ -52,6 +53,50 @@ namespace ProjectB.Gameplay
 					break;
 			}
 			
+		}
+
+		public void GiveItems(IEnumerable<ItemGain> itemGains, ItemGainAction gainAction)
+		{
+			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+
+			// ItemGains의 중복되는 아이템 항목을 없애는 처리
+			Dictionary<IItemData, int> distinctItemGain = new();
+			foreach (var itemGain in itemGains)
+			{
+				// 딕셔너리에 아이템이 없으면 추가, 있으면 개수 누적
+				if (!distinctItemGain.TryAdd(itemGain.item, itemGain.quantity))
+				{
+					distinctItemGain[itemGain.item] += itemGain.quantity;
+				}
+			}
+
+			foreach (var itemGain in distinctItemGain)
+			{
+				// 찾지 못하면 null이 할당됨
+				var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemGain.Key);
+
+				if (existingItem != null)
+				{
+					existingItem.AddQuantity(itemGain.Value);
+				}
+				else
+				{
+					IPlayerItem newItem = new PlayerItem(itemGain.Key, itemGain.Value);
+					playerData.AddItem(newItem);
+				}
+			}
+
+			switch (gainAction)
+			{
+				case ItemGainAction.NoAction:
+					Debug.Log("NoAction 아이템 획득! (벌크 획득 함수 사용)");
+					break;
+				
+				case ItemGainAction.Reward:
+					var itemGainArr = distinctItemGain.Select(kvp => new ItemGain(kvp.Key, kvp.Value));
+					CoroutineHandler.StartAndAdd(_loadRewardGainPopupPort.Load(itemGainArr));
+					break;
+			}
 		}
 	}
 
