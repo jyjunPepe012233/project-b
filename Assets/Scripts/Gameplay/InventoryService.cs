@@ -7,7 +7,7 @@ using ProjectB.Gameplay.Ports.Outbound;
 namespace ProjectB.Gameplay
 {
 	
-	public class InventoryService : IInventoryService
+	public class InventoryService : IInventoryServicePort
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 
