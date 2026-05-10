@@ -1,9 +1,11 @@
+using ProjectB.Data.Static.Item;
+
 namespace ProjectB.Data.Runtime.Player
 {
 
 	public interface IReadOnlyPlayerItem
 	{
-		string ItemId { get; }
+		IItemData ItemData { get; }
 		
 		int Quantity { get; }
 	}

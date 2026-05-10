@@ -1,5 +1,6 @@
 using System;
 using ProjectB.Data.Runtime.Player;
+using ProjectB.Data.Static.Item;
 using UnityEngine;
 
 namespace ProjectB.Data.RuntimeImpl
@@ -8,15 +9,15 @@ namespace ProjectB.Data.RuntimeImpl
 	[Serializable]
 	public class PlayerItem : IPlayerItem
 	{
-		[SerializeField] private string _itemId;
-		public string ItemId => _itemId;
+		[SerializeField] private IItemData _itemData;
+		public IItemData ItemData => _itemData;
 		
 		[SerializeField] private int _quantity;
 		public int Quantity => _quantity;
 
-		public PlayerItem(string itemId, int quantity)
+		public PlayerItem(IItemData itemData, int quantity)
 		{
-			_itemId = itemId;
+			_itemData = itemData;
 			_quantity = quantity;
 		}
 

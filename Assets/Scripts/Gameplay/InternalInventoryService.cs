@@ -28,7 +28,7 @@ namespace ProjectB.Gameplay
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
 			// 찾지 못하면 null이 할당됨
-			var existingItem = playerData.Items.FirstOrDefault(x => x.ItemId == itemData.ItemId);
+			var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemData);
 
 			if (existingItem != null)
 			{
@@ -36,7 +36,7 @@ namespace ProjectB.Gameplay
 			}
 			else
 			{
-				IPlayerItem newItem = new PlayerItem(itemData.ItemId, quantity);
+				IPlayerItem newItem = new PlayerItem(itemData, quantity);
 				playerData.AddItem(newItem);
 			}
 
