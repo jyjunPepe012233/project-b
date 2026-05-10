@@ -63,7 +63,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
 			
 			// 플레이어가 보유한 아이템들의 정보는 인벤토리 화면 뿐만 아니라 다양한 화면에서 필요할 수 있기 때문에 Core에 등록 
-			RegisterPortAdapter<IInventoryService, InventoryService>();
+			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
 			
 			// 메뉴는 게임 내 거의 모든 화면에서 열릴 수 있기 때문에 Core에 등록
 			// 사실 Home 화면에서만 열리긴 하는데, 이후 변경 가능성이 있으니까 Core에 등록
