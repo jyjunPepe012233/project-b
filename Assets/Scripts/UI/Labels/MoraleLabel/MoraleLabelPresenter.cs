@@ -1,14 +1,14 @@
 using ProjectB.Dependency.Installers;
 using ProjectB.UI.Core;
-using ProjectB.UI.Labels.Common;
 using UnityEngine;
 
 namespace ProjectB.UI.Labels.MoraleLabel
 {
 
-	public class MoraleLabelPresenter : UIPresenter<JustTextLabelView>
+	public class MoraleLabelPresenter : UIPresenter<MoraleLabelView>
 	{
 		[SerializeField] private PlayerDataServicePortInstaller _playerDataServicePortInstaller;
+		[SerializeField] private MoraleSettingInstaller _moraleSettingInstaller;
 
 		protected override void SetupSubscriptions()
 		{
@@ -35,7 +35,11 @@ namespace ProjectB.UI.Labels.MoraleLabel
 
 		void UpdateMorale()
 		{
-			view.SetText(_playerDataServicePortInstaller.Port.GetPlayerData().Morale.ToString());
+			var morale = _playerDataServicePortInstaller.Port.GetPlayerData().Morale;
+			var maxMorale = _moraleSettingInstaller.Port.MaxMorale;
+			
+			view.SetMoraleText(morale.ToString());
+			view.SetMaxMoraleText(maxMorale.ToString());
 		}
 	}
 

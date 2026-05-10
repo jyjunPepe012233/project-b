@@ -1,10 +1,12 @@
 using ProjectB.Authoring.ScriptableObject.Invasion;
 using ProjectB.Authoring.ScriptableObject.Item;
+using ProjectB.Authoring.ScriptableObject.Morale;
 using ProjectB.Authoring.ScriptableObject.Soldier;
 using ProjectB.Authoring.ScriptableObject.Summon;
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
+using ProjectB.Data.Static.Morale;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Gameplay;
@@ -25,6 +27,7 @@ namespace ProjectB.Dependency.Scopes
 		[SerializeField] private ItemDatabaseSO _itemDatabaseSO;
 		[SerializeField] private InvasionSettingSO _invasionSettingSO;
 		[SerializeField] private SummonCostSettingSO _summonCostSettingSo;
+		[SerializeField] private MoraleSettingSO _moraleSettingSO;
 
 		protected override void Awake()
 		{
@@ -68,6 +71,8 @@ namespace ProjectB.Dependency.Scopes
 			// 메뉴는 게임 내 거의 모든 화면에서 열릴 수 있기 때문에 Core에 등록
 			// 사실 Home 화면에서만 열리긴 하는데, 이후 변경 가능성이 있으니까 Core에 등록
 			RegisterPortAdapter<IMenuServicePort, MenuService>();
+
+			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
 		}
 
 		protected override void AddInternalAdapters()
@@ -106,6 +111,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<ISoldierDatabase, SoldierDatabaseSO>(_soldierDatabaseSO);
 			RegisterPortInstance<IItemDatabase, ItemDatabaseSO>(_itemDatabaseSO);
 			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
+			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 		}
 	}
 
