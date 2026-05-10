@@ -14,7 +14,7 @@ namespace ProjectB.Data.Runtime.Player
 
 		bool TryConsumeGems(int amount);
 		
-		bool AddMorale(int amount);
+		void AddMorale(int amount);
 		
 		bool TryConsumeMorale(int amount);
 

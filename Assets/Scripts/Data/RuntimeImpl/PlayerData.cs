@@ -18,6 +18,9 @@ namespace ProjectB.Data.RuntimeImpl
 
 		[SerializeField] private int _morale;
 		public int Morale => _morale;
+		
+		[SerializeField] private int _dailyMoraleRechargeCount;
+		public int DailyMoraleRechargeCount => _dailyMoraleRechargeCount;
 
 		[SerializeField] private int _foods;
 		public int Foods => _foods;
@@ -31,6 +34,7 @@ namespace ProjectB.Data.RuntimeImpl
 		public event Action CoinsChanged;
 		public event Action GemsChanged;
 		public event Action MoraleChanged;
+		public event Action DailyMoraleRechargeCountChanged;
 		public event Action FoodsChanged;
 
 		public PlayerData()
@@ -55,6 +59,8 @@ namespace ProjectB.Data.RuntimeImpl
 				// 기능 작동에는 문제가 없도록 LogError 출력만 함
 				Debug.LogError("코인이 최대 수치를 넘어섰습니다!");
 				_coins = Int32.MaxValue;
+				CoinsChanged?.Invoke();
+				return;
 			}
 
 			_coins += amount;
@@ -82,6 +88,8 @@ namespace ProjectB.Data.RuntimeImpl
 				// 기능 작동에는 문제가 없도록 LogError 출력만 함
 				Debug.LogError("보석이 최대 수치를 넘어섰습니다!");
 				_gems = Int32.MaxValue;
+				GemsChanged?.Invoke();
+				return;
 			}
 
 			_gems += amount;
@@ -100,7 +108,7 @@ namespace ProjectB.Data.RuntimeImpl
 			return true;
 		}
 
-		public bool AddMorale(int amount)
+		public void AddMorale(int amount)
 		{
 			if (Int32.MaxValue - _morale < amount)
 			{
@@ -108,12 +116,11 @@ namespace ProjectB.Data.RuntimeImpl
 				Debug.LogError("사기가 최대 수치를 넘어섰습니다!");
 				_morale = Int32.MaxValue;
 				MoraleChanged?.Invoke();
-				return false;
+				return;
 			}
 
 			_morale += amount;
 			MoraleChanged?.Invoke();
-			return true;
 		}
 
 		public bool TryConsumeMorale(int amount)
@@ -134,6 +141,8 @@ namespace ProjectB.Data.RuntimeImpl
 			{
 				Debug.LogError("식량이 최대 수치를 넘어섰습니다!");
 				_foods = Int32.MaxValue;
+				FoodsChanged?.Invoke();
+				return;
 			}
 
 			_foods += amount;
