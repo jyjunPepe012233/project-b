@@ -17,6 +17,10 @@ namespace ProjectB.Data.Runtime.Player
 		void AddMorale(int amount);
 		
 		bool TryConsumeMorale(int amount);
+		
+		void AddDailyMoraleRechargeCount(int amount);
+		
+		void ClearDailyMoraleRechargeCount();
 
 		void AddFoods(int amount);
 

@@ -11,6 +11,8 @@ namespace ProjectB.Data.Runtime.Player
 		int Gems { get; }
 		
 		int Morale { get; }
+
+		int DailyMoraleRechargeCount { get; }
 		
 		int Foods { get; }
 		
@@ -23,6 +25,8 @@ namespace ProjectB.Data.Runtime.Player
 		event Action GemsChanged;
 
 		event Action MoraleChanged;
+		
+		event Action DailyMoraleRechargeCountChanged;
 
 		event Action FoodsChanged;
 	}

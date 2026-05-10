@@ -135,6 +135,28 @@ namespace ProjectB.Data.RuntimeImpl
 			return true;
 		}
 
+		public void AddDailyMoraleRechargeCount(int amount)
+		{
+			// 일일 사기 충전 횟수가 Int 최대 수치를 넘어서는 일은
+			// 솔직히 없을 것 같긴 하지만, 그래도 오류 나면 안되니까 예외처리.
+			if (Int32.MaxValue - _dailyMoraleRechargeCount < amount)
+			{
+				Debug.LogError("일일 사기 충전 횟수가 최대 수치를 넘어섰습니다!");
+				_dailyMoraleRechargeCount = Int32.MaxValue;
+				DailyMoraleRechargeCountChanged?.Invoke();
+				return;
+			}
+
+			_dailyMoraleRechargeCount += amount;
+			DailyMoraleRechargeCountChanged?.Invoke();
+		}
+
+		public void ClearDailyMoraleRechargeCount()
+		{
+			_dailyMoraleRechargeCount = 0;
+			DailyMoraleRechargeCountChanged?.Invoke();
+		}
+
 		public void AddFoods(int amount)
 		{
 			if (Int32.MaxValue - _foods < amount)
