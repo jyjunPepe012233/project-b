@@ -3,12 +3,14 @@ using ProjectB.Authoring.ScriptableObject.Item;
 using ProjectB.Authoring.ScriptableObject.Morale;
 using ProjectB.Authoring.ScriptableObject.Soldier;
 using ProjectB.Authoring.ScriptableObject.Summon;
+using ProjectB.Authoring.ScriptableObject.Sweep;
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Static.Morale;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
+using ProjectB.Data.Static.Sweep;
 using ProjectB.Gameplay;
 using ProjectB.Gameplay.Ports;
 using ProjectB.Gameplay.Ports.Inbound;
@@ -28,6 +30,7 @@ namespace ProjectB.Dependency.Scopes
 		[SerializeField] private InvasionSettingSO _invasionSettingSO;
 		[SerializeField] private SummonCostSettingSO _summonCostSettingSo;
 		[SerializeField] private MoraleSettingSO _moraleSettingSO;
+		[SerializeField] private SweepSettingSO _sweepSettingSO;
 
 		protected override void Awake()
 		{
@@ -73,6 +76,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<IMenuServicePort, MenuService>();
 
 			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
+			RegisterPortAdapter<ISweepService, SweepService>();
 		}
 
 		protected override void AddInternalAdapters()
@@ -112,6 +116,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<IItemDatabase, ItemDatabaseSO>(_itemDatabaseSO);
 			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
+			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
 		}
 	}
 
