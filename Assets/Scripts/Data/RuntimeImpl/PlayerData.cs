@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Runtime.Summon;
+using ProjectB.Data.Static.Item;
+using ProjectB.Data.Types;
 using UnityEngine;
 
 namespace ProjectB.Data.RuntimeImpl
@@ -25,6 +27,9 @@ namespace ProjectB.Data.RuntimeImpl
 		[SerializeField] private int _foods;
 		public int Foods => _foods;
 
+		[SerializeField] private SoldierEquipments _equipments;
+		public SoldierEquipments Equipments => _equipments;
+
 		[SerializeField] private List<IPlayerSoldier> _soldiers = new List<IPlayerSoldier>();
 		public IReadOnlyCollection<IPlayerSoldier> Soldiers => _soldiers;
 		
@@ -36,6 +41,7 @@ namespace ProjectB.Data.RuntimeImpl
 		public event Action MoraleChanged;
 		public event Action DailyMoraleRechargeCountChanged;
 		public event Action FoodsChanged;
+		public event Action EquipmentsChanged;
 
 		public PlayerData()
 		{
@@ -183,6 +189,34 @@ namespace ProjectB.Data.RuntimeImpl
 			return true;
 		}
 
+		public void SetEquipment(SoldierEquipmentSlot slot, IEquipmentItem equipment)
+		{
+			switch (slot)
+			{
+				case SoldierEquipmentSlot.Slot1: _equipments.slot1 = equipment; break;
+				case SoldierEquipmentSlot.Slot2: _equipments.slot2 = equipment; break;
+				case SoldierEquipmentSlot.Slot3: _equipments.slot3 = equipment; break;
+				case SoldierEquipmentSlot.Slot4: _equipments.slot4 = equipment; break;
+				case SoldierEquipmentSlot.Slot5: _equipments.slot5 = equipment; break;
+				case SoldierEquipmentSlot.Slot6: _equipments.slot6 = equipment; break;
+			}
+			EquipmentsChanged?.Invoke();
+		}
+
+		public void ClearEquipment(SoldierEquipmentSlot slot)
+		{
+			switch (slot)
+			{
+				case SoldierEquipmentSlot.Slot1: _equipments.slot1 = null; break;
+				case SoldierEquipmentSlot.Slot2: _equipments.slot2 = null; break;
+				case SoldierEquipmentSlot.Slot3: _equipments.slot3 = null; break;
+				case SoldierEquipmentSlot.Slot4: _equipments.slot4 = null; break;
+				case SoldierEquipmentSlot.Slot5: _equipments.slot5 = null; break;
+				case SoldierEquipmentSlot.Slot6: _equipments.slot6 = null; break;
+			}
+			EquipmentsChanged?.Invoke();
+		}
+
 		public void AddSoldier(IPlayerSoldier soldier)
 		{
 			_soldiers.Add(soldier);
@@ -197,7 +231,12 @@ namespace ProjectB.Data.RuntimeImpl
 		{
 			_items.Add(item);
 		}
-		
+
+		public void RemoveItem(IPlayerItem item)
+		{
+			_items.Remove(item);
+		}
+
 		public void AddItems(IEnumerable<IPlayerItem> items)
 		{
 			_items.AddRange(items);

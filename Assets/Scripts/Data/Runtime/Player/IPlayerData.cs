@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using ProjectB.Data.Runtime.Summon;
+using ProjectB.Data.Static.Item;
+using ProjectB.Data.Types;
 
 namespace ProjectB.Data.Runtime.Player
 {
@@ -26,11 +28,17 @@ namespace ProjectB.Data.Runtime.Player
 
 		bool TryConsumeFoods(int amount);
 		
+		void SetEquipment(SoldierEquipmentSlot slot, IEquipmentItem equipment);
+		
+		void ClearEquipment(SoldierEquipmentSlot slot);
+		
 		void AddSoldier(IPlayerSoldier soldier);
 		
 		void AddSoldiers(IEnumerable<IPlayerSoldier> soldiers);
 		
 		void AddItem(IPlayerItem item);
+		
+		void RemoveItem(IPlayerItem item);
 		
 		void AddItems(IEnumerable<IPlayerItem> items);
 	}

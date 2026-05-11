@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ProjectB.Data.Types;
 
 namespace ProjectB.Data.Runtime.Player
 {
@@ -16,6 +17,8 @@ namespace ProjectB.Data.Runtime.Player
 		
 		int Foods { get; }
 		
+		SoldierEquipments Equipments { get; }
+		
 		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
 		
 		IReadOnlyCollection<IPlayerItem> Items { get; }
@@ -29,6 +32,8 @@ namespace ProjectB.Data.Runtime.Player
 		event Action DailyMoraleRechargeCountChanged;
 
 		event Action FoodsChanged;
+
+		event Action EquipmentsChanged;
 	}
 
 }
