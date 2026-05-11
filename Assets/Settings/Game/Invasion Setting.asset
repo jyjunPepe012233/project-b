@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93d8df0deed4239a0c46c2def4ea561, type: 3}
   m_Name: Invasion Setting
   m_EditorClassIdentifier: 
+  _experienceReward: 100
   _chapters:
     targets:
     - {fileID: 11400000, guid: b6ef644cc49f94acb990a41e2935e1cb, type: 2}

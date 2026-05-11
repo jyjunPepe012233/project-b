@@ -15,20 +15,39 @@ namespace ProjectB.Gameplay
 	public class SweepService : ISweepService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IInvasionSetting _invasionSetting;
 		private readonly ISweepSetting _sweepSetting;
+		private readonly IInternalPlayerLevelUpServicePort _internalPlayerLevelUpService;
 		private readonly IInternalInventoryServicePort _internalInventoryService;
 
 		public SweepService(IPlayerSessionHolderPort playerSessionHolderPort,
+			IInvasionSetting invasionSetting,
 			ISweepSetting sweepSetting,
+			IInternalPlayerLevelUpServicePort internalPlayerLevelUpService,
 			IInternalInventoryServicePort internalInventoryService)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
+			_invasionSetting = invasionSetting;
 			_sweepSetting = sweepSetting;
+			_internalPlayerLevelUpService = internalPlayerLevelUpService;
 			_internalInventoryService = internalInventoryService;
 		}
 
 		public void Sweep(IStageData targetStage, int count)
 		{
+			if (targetStage == null)
+			{
+				Debug.LogError("면제할 스테이지 데이터가 null임.");
+				return;
+			}
+			
+			if (count <= 0)
+			{
+				Debug.LogError("면제 횟수는 1 이상이어야 함. 전달된 값: " + count);
+				return;
+			}
+			
+			
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
 			// 면제 횟수에 따라 소모할 사기를 계산하고, 사기가 부족하면 면제 중단
@@ -37,6 +56,9 @@ namespace ProjectB.Gameplay
 			{
 				return;
 			}
+
+			// 경험치 보상
+			int totalExperience = _invasionSetting.ExperienceReward * count;
 
 			
 			// 최종 획득 코인 개수가 저장됨.
@@ -77,6 +99,10 @@ namespace ProjectB.Gameplay
 				}
 			}
 
+			// 경험치 보상 반영
+			_internalPlayerLevelUpService.GiveExperience(totalExperience);
+			
+			// 코인 보상 반영
 			playerData.AddCoins(totalCoins);
 
 			// itemGains 딕셔너리에 모아둔 보상들을 GiveItems를 통해 한번에 반영시킴

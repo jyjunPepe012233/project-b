@@ -12,6 +12,11 @@ namespace ProjectB.Authoring.ScriptableObject.Invasion
 	{
 		private static readonly Dictionary<IStageData, (int chapterLevel, int stageLevel)> _stageLevelsCache = new();
 		
+		
+		[SerializeField] private int _experienceReward;
+		public int ExperienceReward => _experienceReward;
+		
+		
 		[SerializeField] private InterfaceRefs<IChapterData> _chapters;
 		public IReadOnlyCollection<IChapterData> Chapters => _chapters.Value;
 		
