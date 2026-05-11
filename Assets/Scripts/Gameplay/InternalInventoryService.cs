@@ -103,7 +103,7 @@ namespace ProjectB.Gameplay
 			}
 		}
 
-		public void ConsumeItem(IItemData itemData, int quantity)
+		public bool TryConsumeItem(IItemData itemData, int quantity)
 		{
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
@@ -113,13 +113,13 @@ namespace ProjectB.Gameplay
 			if (existingItem == null)
 			{
 				Debug.LogError($"존재하지 않은 아이템({itemData.ItemId})을 소모하려고 시도했음!");
-				return;
+				return false;
 			}
 
 			if (!existingItem.TryRemoveQuantity(quantity))
 			{
 				Debug.LogError($"아이템({itemData.ItemId})을 소모할 수 없습니다!");
-				return;
+				return false;
 			}
 			
 			// 아이템 개수가 0이면 인벤토리에서 제거
@@ -129,6 +129,8 @@ namespace ProjectB.Gameplay
 			}
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
+			
+			return true;
 		}
 	}
 

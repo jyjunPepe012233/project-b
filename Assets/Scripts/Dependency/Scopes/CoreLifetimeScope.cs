@@ -77,6 +77,7 @@ namespace ProjectB.Dependency.Scopes
 
 			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
 			RegisterPortAdapter<ISweepService, SweepService>();
+			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 		}
 
 		protected override void AddInternalAdapters()
