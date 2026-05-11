@@ -9,6 +9,8 @@ namespace ProjectB.Data.Runtime.Player
 	{
 		int Level { get; }
 		
+		int Experience { get; }
+		
 		int Coins { get; }
 
 		int Gems { get; }
@@ -22,6 +24,8 @@ namespace ProjectB.Data.Runtime.Player
 		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
 
 		IReadOnlyCollection<IPlayerItem> Items { get; }
+		
+		event Action ExperienceChanged;
 		
 		event Action LevelChanged;
 

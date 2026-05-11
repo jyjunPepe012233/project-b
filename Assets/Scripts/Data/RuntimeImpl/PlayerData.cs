@@ -14,6 +14,9 @@ namespace ProjectB.Data.RuntimeImpl
 		[SerializeField] private int _level;
 		public int Level => _level;
 		
+		[SerializeField] private int _experience;
+		public int Experience => _experience;
+
 		[SerializeField] private int _coins;
 		public int Coins => _coins;
 
@@ -34,6 +37,7 @@ namespace ProjectB.Data.RuntimeImpl
 		
 		[SerializeField] private List<IPlayerItem> _items = new List<IPlayerItem>();
 		public IReadOnlyCollection<IPlayerItem> Items => _items;
+		public event Action ExperienceChanged;
 		public event Action LevelChanged;
 		public event Action CoinsChanged;
 		public event Action GemsChanged;
@@ -45,8 +49,10 @@ namespace ProjectB.Data.RuntimeImpl
 		{
 		}
 
-		public PlayerData(int coins, int gems, int morale, int foods)
+		public PlayerData(int level, int experience, int coins, int gems, int morale, int foods)
 		{
+			_level = level;
+			_experience = experience;
 			_coins = coins;
 			_gems = gems;
 			_morale = morale;
@@ -85,6 +91,11 @@ namespace ProjectB.Data.RuntimeImpl
 		public void AddLevel(int amount)
 		{
 			AddIntValueInternal(ref _level, amount, LevelChanged);
+		}
+
+		public void AddExperience(int amount)
+		{
+			AddIntValueInternal(ref _experience, amount, ExperienceChanged);
 		}
 
 		public void AddCoins(int amount)

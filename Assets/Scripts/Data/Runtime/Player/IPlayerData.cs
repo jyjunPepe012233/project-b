@@ -8,6 +8,8 @@ namespace ProjectB.Data.Runtime.Player
 	{
 		void AddLevel(int amount);
 		
+		void AddExperience(int amount);
+		
 		void AddCoins(int amount);
 
 		bool TryConsumeCoins(int amount);
