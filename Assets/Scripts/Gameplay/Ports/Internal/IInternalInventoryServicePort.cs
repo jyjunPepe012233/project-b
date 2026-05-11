@@ -10,6 +10,8 @@ namespace ProjectB.Gameplay.Ports.Internal
 		void GiveItem(IItemData itemData, int quantity, ItemGainAction gainAction);
 		
 		void GiveItems(IEnumerable<ItemGain> itemGains, ItemGainAction gainAction);
+
+		void ConsumeItem(IItemData itemData, int quantity);
 	}
 
 }

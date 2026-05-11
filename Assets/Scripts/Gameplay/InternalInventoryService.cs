@@ -40,6 +40,8 @@ namespace ProjectB.Gameplay
 				IPlayerItem newItem = new PlayerItem(itemData, quantity);
 				playerData.AddItem(newItem);
 			}
+			
+			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 
 			switch (gainAction)
 			{
@@ -85,6 +87,8 @@ namespace ProjectB.Gameplay
 					playerData.AddItem(newItem);
 				}
 			}
+			
+			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 
 			switch (gainAction)
 			{
@@ -97,6 +101,34 @@ namespace ProjectB.Gameplay
 					CoroutineHandler.StartAndAdd(_loadRewardGainPopupPort.Load(itemGainArr));
 					break;
 			}
+		}
+
+		public void ConsumeItem(IItemData itemData, int quantity)
+		{
+			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+
+			// 찾지 못하면 null이 할당됨
+			var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemData);
+
+			if (existingItem == null)
+			{
+				Debug.LogError($"존재하지 않은 아이템({itemData.ItemId})을 소모하려고 시도했음!");
+				return;
+			}
+
+			if (!existingItem.TryRemoveQuantity(quantity))
+			{
+				Debug.LogError($"아이템({itemData.ItemId})을 소모할 수 없습니다!");
+				return;
+			}
+			
+			// 아이템 개수가 0이면 인벤토리에서 제거
+			if (existingItem.Quantity == 0)
+			{
+				playerData.RemoveItem(existingItem);
+			}
+			
+			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 		}
 	}
 
