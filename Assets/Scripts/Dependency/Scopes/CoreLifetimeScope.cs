@@ -79,6 +79,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
+			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
 		}
 
 		protected override void AddInternalAdapters()
