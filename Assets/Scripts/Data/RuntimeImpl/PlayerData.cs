@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace ProjectB.Data.RuntimeImpl
 {
+	// TODO: SerializeField 없이 자동 프로퍼티로만 구성하는 방법 고민해보기
 
 	[Serializable]
 	public class PlayerData : IPlayerData
