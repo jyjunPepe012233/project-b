@@ -13,6 +13,7 @@ namespace ProjectB.Gameplay
 	public class SoldierLevelUpService : ISoldierLevelUpServicePort
 	{
 		// ConsumeFoods 한번에 소모할 식량의 양 비율. 기준은 사도의 레벨업에 필요한 식량의 양
+		// TODO: SO 기반 Setting으로 분리하기
 		private const float FOODS_CONSUME_RATIO = 0.3f;
 		
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
