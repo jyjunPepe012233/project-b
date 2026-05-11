@@ -1,3 +1,4 @@
+using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 
 namespace ProjectB.Data.Runtime.Player
@@ -15,6 +16,10 @@ namespace ProjectB.Data.Runtime.Player
 		void SetLevel(short level);
 
 		void SetStatus(SoldierStatus status);
+		
+		void SetEquipment(SoldierEquipmentSlot slot, IEquipmentItem equipment);
+
+		void ClearEquipment(SoldierEquipmentSlot slot);
 		
 		void SetCombatPower(int combatPower);
 	}

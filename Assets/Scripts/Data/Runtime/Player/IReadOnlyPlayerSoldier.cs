@@ -16,6 +16,8 @@ namespace ProjectB.Data.Runtime.Player
 		
 		SoldierStatus Status { get; }
 		
+		SoldierEquipments Equipments { get; }
+		
 		int CombatPower { get; }
 		
 		event Action RankChanged;
@@ -25,6 +27,8 @@ namespace ProjectB.Data.Runtime.Player
 		event Action LevelChanged;
 
 		event Action StatusChanged;
+		
+		event Action EquipmentsChanged;
 		
 		event Action CombatPowerChanged;
 	}

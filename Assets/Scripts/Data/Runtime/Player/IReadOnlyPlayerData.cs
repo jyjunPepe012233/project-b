@@ -8,19 +8,17 @@ namespace ProjectB.Data.Runtime.Player
 	public interface IReadOnlyPlayerData
 	{
 		int Coins { get; }
-		
+
 		int Gems { get; }
-		
+
 		int Morale { get; }
 
 		int DailyMoraleRechargeCount { get; }
-		
+
 		int Foods { get; }
-		
-		SoldierEquipments Equipments { get; }
-		
+
 		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
-		
+
 		IReadOnlyCollection<IPlayerItem> Items { get; }
 
 		event Action CoinsChanged;
@@ -28,12 +26,10 @@ namespace ProjectB.Data.Runtime.Player
 		event Action GemsChanged;
 
 		event Action MoraleChanged;
-		
+
 		event Action DailyMoraleRechargeCountChanged;
 
 		event Action FoodsChanged;
-
-		event Action EquipmentsChanged;
 	}
 
 }
