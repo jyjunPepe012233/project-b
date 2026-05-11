@@ -11,6 +11,9 @@ namespace ProjectB.Data.RuntimeImpl
 	[Serializable]
 	public class PlayerData : IPlayerData
 	{
+		[SerializeField] private int _level;
+		public int Level => _level;
+		
 		[SerializeField] private int _coins;
 		public int Coins => _coins;
 
@@ -31,7 +34,7 @@ namespace ProjectB.Data.RuntimeImpl
 		
 		[SerializeField] private List<IPlayerItem> _items = new List<IPlayerItem>();
 		public IReadOnlyCollection<IPlayerItem> Items => _items;
-		
+		public event Action LevelChanged;
 		public event Action CoinsChanged;
 		public event Action GemsChanged;
 		public event Action MoraleChanged;
@@ -51,105 +54,73 @@ namespace ProjectB.Data.RuntimeImpl
 		}
 
 
-		public void AddCoins(int amount)
+		void AddIntValueInternal(ref int field, int amount, Action changedEvent)
 		{
-			// 코인이 최대 수치(21억..)를 넘어서는 문제는
-			// 대부분의 로직에서 고려되지 않으므로 PlayerData 내부에서 예외처리함.
-			if (Int32.MaxValue - _coins < amount)
+			// 값이 최대 수치를 넘어서는 문제는 대부분의 로직에서 고려되지 않는 문제이므로
+			// 예외적으로 데이터 구현체 내부에서 예외처리하여 에러를 방지함
+			if (Int32.MaxValue - field < amount)
 			{
-				// 기능 작동에는 문제가 없도록 LogError 출력만 함
-				Debug.LogError("코인이 최대 수치를 넘어섰습니다!");
-				_coins = Int32.MaxValue;
-				CoinsChanged?.Invoke();
+				Debug.LogError("값이 최대 수치를 넘어섰습니다!");
+				field = Int32.MaxValue;
+				changedEvent?.Invoke();
 				return;
 			}
+			
+			field += amount;
+			changedEvent?.Invoke();
+		}
+		
+		bool TryConsumeIntValueInternal(ref int field, int amount, Action changedEvent)
+		{
+			if (field < amount)
+			{
+				return false;
+			}
 
-			_coins += amount;
-			CoinsChanged?.Invoke();
+			field -= amount;
+			changedEvent?.Invoke();
+			return true;
+		}
+
+		public void AddLevel(int amount)
+		{
+			AddIntValueInternal(ref _level, amount, LevelChanged);
+		}
+
+		public void AddCoins(int amount)
+		{
+			AddIntValueInternal(ref _coins, amount, CoinsChanged);
 		}
 
 		public bool TryConsumeCoins(int amount)
 		{
-			if (_coins < amount)
-			{
-				return false;
-			}
-
-			_coins -= amount;
-			CoinsChanged?.Invoke();
-			return true;
+			return TryConsumeIntValueInternal(ref _coins, amount, CoinsChanged);
 		}
 
 		public void AddGems(int amount)
 		{
-			// 보석이 최대 수치(21억..)를 넘어서는 문제는
-			// 대부분의 로직에서 고려되지 않으므로 PlayerData 내부에서 예외처리함.
-			if (Int32.MaxValue - _gems < amount)
-			{
-				// 기능 작동에는 문제가 없도록 LogError 출력만 함
-				Debug.LogError("보석이 최대 수치를 넘어섰습니다!");
-				_gems = Int32.MaxValue;
-				GemsChanged?.Invoke();
-				return;
-			}
-
-			_gems += amount;
-			GemsChanged?.Invoke();
+			AddIntValueInternal(ref _gems, amount, GemsChanged);
 		}
 
 		public bool TryConsumeGems(int amount)
 		{
-			if (_gems < amount)
-			{
-				return false;
-			}
-
-			_gems -= amount;
-			GemsChanged?.Invoke();
-			return true;
+			return TryConsumeIntValueInternal(ref _gems, amount, GemsChanged);
 		}
 
 		public void AddMorale(int amount)
 		{
-			if (Int32.MaxValue - _morale < amount)
-			{
-				// 기능 작동에는 문제가 없도록 LogError 출력만 함
-				Debug.LogError("사기가 최대 수치를 넘어섰습니다!");
-				_morale = Int32.MaxValue;
-				MoraleChanged?.Invoke();
-				return;
-			}
-
-			_morale += amount;
-			MoraleChanged?.Invoke();
+			AddIntValueInternal(ref _morale, amount, MoraleChanged);
 		}
 
 		public bool TryConsumeMorale(int amount)
 		{
-			if (_morale < amount)
-			{
-				return false;
-			}
-
-			_morale -= amount;
-			MoraleChanged?.Invoke();
-			return true;
+			return TryConsumeIntValueInternal(ref _morale, amount, MoraleChanged);
 		}
 
 		public void AddDailyMoraleRechargeCount(int amount)
 		{
-			// 일일 사기 충전 횟수가 Int 최대 수치를 넘어서는 일은
-			// 솔직히 없을 것 같긴 하지만, 그래도 오류 나면 안되니까 예외처리.
-			if (Int32.MaxValue - _dailyMoraleRechargeCount < amount)
-			{
-				Debug.LogError("일일 사기 충전 횟수가 최대 수치를 넘어섰습니다!");
-				_dailyMoraleRechargeCount = Int32.MaxValue;
-				DailyMoraleRechargeCountChanged?.Invoke();
-				return;
-			}
-
-			_dailyMoraleRechargeCount += amount;
-			DailyMoraleRechargeCountChanged?.Invoke();
+			// 솔직히 일일 사기 충전 횟수가 Int32.MaxValue를 넘어설 일은 없을 것 같지만 일단은 예외처리 해놓는 걸로
+			AddIntValueInternal(ref _dailyMoraleRechargeCount, amount, DailyMoraleRechargeCountChanged);
 		}
 
 		public void ClearDailyMoraleRechargeCount()
@@ -160,28 +131,12 @@ namespace ProjectB.Data.RuntimeImpl
 
 		public void AddFoods(int amount)
 		{
-			if (Int32.MaxValue - _foods < amount)
-			{
-				Debug.LogError("식량이 최대 수치를 넘어섰습니다!");
-				_foods = Int32.MaxValue;
-				FoodsChanged?.Invoke();
-				return;
-			}
-
-			_foods += amount;
-			FoodsChanged?.Invoke();
+			AddIntValueInternal(ref _foods, amount, FoodsChanged);
 		}
 
 		public bool TryConsumeFoods(int amount)
 		{
-			if (_foods < amount)
-			{
-				return false;
-			}
-
-			_foods -= amount;
-			FoodsChanged?.Invoke();
-			return true;
+			return TryConsumeIntValueInternal(ref _foods, amount, FoodsChanged);
 		}
 
 		public void AddSoldier(IPlayerSoldier soldier)

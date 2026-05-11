@@ -7,6 +7,8 @@ namespace ProjectB.Data.Runtime.Player
 
 	public interface IReadOnlyPlayerData
 	{
+		int Level { get; }
+		
 		int Coins { get; }
 
 		int Gems { get; }
@@ -20,6 +22,8 @@ namespace ProjectB.Data.Runtime.Player
 		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
 
 		IReadOnlyCollection<IPlayerItem> Items { get; }
+		
+		event Action LevelChanged;
 
 		event Action CoinsChanged;
 

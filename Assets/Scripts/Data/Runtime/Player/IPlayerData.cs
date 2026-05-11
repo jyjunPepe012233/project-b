@@ -6,6 +6,8 @@ namespace ProjectB.Data.Runtime.Player
 
 	public interface IPlayerData : IReadOnlyPlayerData
 	{
+		void AddLevel(int amount);
+		
 		void AddCoins(int amount);
 
 		bool TryConsumeCoins(int amount);
