@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
@@ -72,6 +73,16 @@ namespace ProjectB.Gameplay
 				// 다음 레벨의 target exp보다 현재 remainExp가 더 많이 남았을 때
 				while ((nextTargetExp = soldier.LevelUpExpSetting.GetLevelUpExpOfLevel(playerSoldier.Level)) <= remainExp)
 				{ 
+					if (playerSoldier.Level >= playerData.Level) // 레벨업 반복 도중에 플레이어 레벨보다 병사 레벨이 높아지는 것을 방지
+					{
+						// 이 반복문에서 탈출하면 아래 SetExp에서 '남아있는 변환할 경험치'(remainExp)를 그대로 부여함
+						// TODO:
+						//   이 부분에서, 한번에 너무 많은 Food를 소비하여 남아있는 변환할 경험치가 레벨업에 필요한 경험치보다 많아지면
+						//   병사의 레벨업 경험치 바 상태가 2000/1000 이런식으로 이상하게 보일 수도 있음.
+						//   왠만하면 FOODS_CONSUME_RATIO를 1보다 낮게 잡기 때문에 이런 상황이 발생하지는 않을 것 같긴 한데, 일단 비슷한 문제가 생기면 여기를 의심해봐야 함.
+						break;
+					}
+
 					// 레벨업 반복
 					remainExp -= nextTargetExp;
 					playerSoldier.SetLevel((short)(playerSoldier.Level + 1));
