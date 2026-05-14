@@ -11,7 +11,10 @@ namespace ProjectB.Authoring.ScriptableObject.Morale
 		public int MaxMorale => _maxMorale;
 		
 		[SerializeField] private int _moralePerRecharge = 100;
-		public int MoralePerRecharge { get; }
+		public int MoralePerRecharge => _moralePerRecharge;
+		
+		[SerializeField] private int _rechargePrice = 30;
+		public int RechargePrice => _rechargePrice;
 
 		[SerializeField] private int _maxDailyRechargeCount = 10;
 		public int MaxDailyRechargeCount => _maxDailyRechargeCount;

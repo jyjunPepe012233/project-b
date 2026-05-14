@@ -3,7 +3,13 @@ namespace ProjectB.Gameplay.Ports.Inbound
 
 	public interface IRechargeMoraleServicePort
 	{
-		public bool VerifyRechargeCount(int count);
+		int GetRemainingRechargeCount();
+
+		int GetExpectedMoraleAfterRecharge(int count);
+
+		int GetRechargeCost(int count);
+		
+		bool VerifyRechargeCount(int count);
 		
 		void Recharge(int count);
 	}

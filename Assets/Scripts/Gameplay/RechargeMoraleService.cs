@@ -17,6 +17,23 @@ namespace ProjectB.Gameplay
 			_moraleSetting = moraleSetting;
 		}
 
+		public int GetRemainingRechargeCount()
+		{
+			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			return _moraleSetting.MaxDailyRechargeCount - playerData.DailyMoraleRechargeCount;
+		}
+		
+		public int GetExpectedMoraleAfterRecharge(int count)
+		{
+			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			return Math.Min(playerData.Morale + count * _moraleSetting.MoralePerRecharge, _moraleSetting.MaxMorale);
+		}
+		
+		public int GetRechargeCost(int count)
+		{
+			return _moraleSetting.RechargePrice * count;
+		}
+
 		public bool VerifyRechargeCount(int count)
 		{
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
@@ -42,6 +59,11 @@ namespace ProjectB.Gameplay
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
 			if (!VerifyRechargeCount(count))
+			{
+				return;
+			}
+
+			if (!playerData.TryConsumeGems(_moraleSetting.RechargePrice * count))
 			{
 				return;
 			}
