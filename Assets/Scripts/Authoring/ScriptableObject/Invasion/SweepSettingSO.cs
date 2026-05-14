@@ -1,7 +1,7 @@
-using ProjectB.Data.Static.Sweep;
+using ProjectB.Data.Static.Invasion;
 using UnityEngine;
 
-namespace ProjectB.Authoring.ScriptableObject.Sweep
+namespace ProjectB.Authoring.ScriptableObject.Invasion
 {
 
 	[CreateAssetMenu(menuName = "Project B/Sweep/Sweep Setting")]

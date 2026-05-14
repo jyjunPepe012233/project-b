@@ -1,7 +1,7 @@
-using ProjectB.Data.Static.SoldierPosition;
+using ProjectB.Data.Static.Soldier;
 using UnityEngine;
 
-namespace ProjectB.Authoring.ScriptableObject.SoldierPosition
+namespace ProjectB.Authoring.ScriptableObject.Soldier
 {
 
 	[CreateAssetMenu(menuName = "Project B/Soldier/Position")]

@@ -1,4 +1,4 @@
-namespace ProjectB.Data.Static.Sweep
+namespace ProjectB.Data.Static.Invasion
 {
 
 	public interface ISweepSetting

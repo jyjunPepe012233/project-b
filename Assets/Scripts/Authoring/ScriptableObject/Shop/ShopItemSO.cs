@@ -1,10 +1,10 @@
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Item;
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 using ProjectB.Data.Types;
 using UnityEngine;
 
-namespace ProjectB.Authoring.ScriptableObject.ShopItem
+namespace ProjectB.Authoring.ScriptableObject.Shop
 {
 
 	[CreateAssetMenu(fileName = "Shop Item", menuName = "Project B/Shop/Shop Item")]

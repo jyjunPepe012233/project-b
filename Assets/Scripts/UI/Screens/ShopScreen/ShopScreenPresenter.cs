@@ -1,8 +1,6 @@
 using System.Linq;
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Shop;
-using ProjectB.Data.Static.ShopItem;
-using ProjectB.Data.Static.ShopPage;
 using ProjectB.Dependency.Installers;
 using ProjectB.UI.Buttons.ShopItemButton;
 using ProjectB.UI.Buttons.ShopPageNavigateButton;

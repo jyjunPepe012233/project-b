@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using ProjectB.Data.Static.Item;
-using ProjectB.UI.Components;
 using ProjectB.UI.Core;
+using ProjectB.UI.Parts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

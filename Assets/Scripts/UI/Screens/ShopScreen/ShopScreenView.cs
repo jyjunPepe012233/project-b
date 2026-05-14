@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProjectB.Data.Static.ShopPage;
+using ProjectB.Data.Static.Shop;
 using ProjectB.UI.Buttons.ShopPageNavigateButton;
 using ProjectB.UI.Core;
 using UnityEngine;

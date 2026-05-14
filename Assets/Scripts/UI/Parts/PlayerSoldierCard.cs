@@ -2,7 +2,7 @@ using ProjectB.Data.Runtime.Player;
 using TMPro;
 using UnityEngine;
 
-namespace ProjectB.UI.Components
+namespace ProjectB.UI.Parts
 {
 
 	public class PlayerSoldierCard : SoldierCard

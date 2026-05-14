@@ -1,4 +1,3 @@
-using ProjectB.Data.Static.ItemTier;
 using ProjectB.Data.Types;
 using UnityEngine;
 

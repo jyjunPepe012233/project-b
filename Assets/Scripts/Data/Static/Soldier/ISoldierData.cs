@@ -1,6 +1,3 @@
-using ProjectB.Data.Static.SoldierAttackType;
-using ProjectB.Data.Static.SoldierPosition;
-using ProjectB.Data.Static.SoldierRole;
 using ProjectB.Data.Static.Spirit;
 using ProjectB.Data.Types;
 

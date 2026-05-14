@@ -1,8 +1,7 @@
-using ProjectB.Core.Types;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 
-namespace ProjectB.Data.Static.ShopItem
+namespace ProjectB.Data.Static.Shop
 {
 
 	public interface IShopItem

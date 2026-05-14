@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace ProjectB.UI.Components
+namespace ProjectB.UI.Parts
 {
 
 	public class SoldierStatusItem : MonoBehaviour

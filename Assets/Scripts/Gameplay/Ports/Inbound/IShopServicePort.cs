@@ -1,4 +1,4 @@
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 
 namespace ProjectB.Gameplay.Ports.Inbound
 {

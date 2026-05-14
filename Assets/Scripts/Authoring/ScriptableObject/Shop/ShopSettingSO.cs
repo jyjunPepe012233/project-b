@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Shop;
-using ProjectB.Data.Static.ShopPage;
 using UnityEngine;
 
 namespace ProjectB.Authoring.ScriptableObject.Shop

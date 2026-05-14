@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ProjectB
+namespace ProjectB.DevUtils
 {
 
 	public class Crasher : MonoBehaviour

@@ -1,5 +1,5 @@
 using System;
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 
 namespace ProjectB.UI.Buttons.ShopItemButton
 {

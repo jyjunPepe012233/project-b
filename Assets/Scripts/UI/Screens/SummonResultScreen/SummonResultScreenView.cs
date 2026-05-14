@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using ProjectB.Data.Static.Soldier;
-using ProjectB.UI.Components;
 using ProjectB.UI.Core;
 using ProjectB.UI.Lists.SoldierList;
 using UnityEngine;

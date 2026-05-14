@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 using ProjectB.UI.Lists.ShopItemButtonList;
 using TMPro;
 using UnityEngine;

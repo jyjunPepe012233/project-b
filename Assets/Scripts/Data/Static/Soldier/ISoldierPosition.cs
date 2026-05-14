@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectB.Data.Static.SoldierPosition
+namespace ProjectB.Data.Static.Soldier
 {
 
 	public interface ISoldierPosition

@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProjectB.Data.Static.Soldier;
-using ProjectB.UI.Components;
 using ProjectB.UI.Core;
+using ProjectB.UI.Parts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

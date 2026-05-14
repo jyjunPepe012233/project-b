@@ -1,7 +1,7 @@
 using System;
 using ProjectB.Data.Types;
-using ProjectB.UI.Components;
 using ProjectB.UI.Core;
+using ProjectB.UI.Parts;
 using UnityEngine;
 
 namespace ProjectB.UI.Lists.SoldierStatusList

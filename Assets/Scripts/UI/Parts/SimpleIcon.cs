@@ -1,8 +1,7 @@
-using ProjectB.UI.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.Components
+namespace ProjectB.UI.Parts
 {
 
 	public class SimpleIcon : MonoBehaviour

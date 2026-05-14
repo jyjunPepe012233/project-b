@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using ProjectB.Data.Static.ShopItem;
 
-namespace ProjectB.Data.Static.ShopPage
+namespace ProjectB.Data.Static.Shop
 {
 
 	public interface IShopPage

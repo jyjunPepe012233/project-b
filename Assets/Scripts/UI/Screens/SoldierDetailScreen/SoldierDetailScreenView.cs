@@ -1,10 +1,8 @@
 using System;
-using ProjectB.Data.Static.SoldierAttackType;
-using ProjectB.Data.Static.SoldierPosition;
-using ProjectB.Data.Static.SoldierRole;
+using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Spirit;
-using ProjectB.UI.Components;
 using ProjectB.UI.Core;
+using ProjectB.UI.Parts;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,8 +1,7 @@
-using ProjectB.Data.Static.ItemTier;
+using ProjectB.Data.Static.Item;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace ProjectB.Authoring.ScriptableObject.ItemTier
+namespace ProjectB.Authoring.ScriptableObject.Item
 {
 
 	[CreateAssetMenu(fileName = "Item Tier", menuName = "Project B/Item/Tier")]

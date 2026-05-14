@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 using ProjectB.UI.Buttons.ShopItemButton;
 using ProjectB.UI.Core;
 using UnityEngine;

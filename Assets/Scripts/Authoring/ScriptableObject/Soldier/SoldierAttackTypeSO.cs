@@ -1,7 +1,7 @@
-using ProjectB.Data.Static.SoldierAttackType;
+using ProjectB.Data.Static.Soldier;
 using UnityEngine;
 
-namespace ProjectB.Authoring.ScriptableObject.SoldierAttackType
+namespace ProjectB.Authoring.ScriptableObject.Soldier
 {
 
 	[CreateAssetMenu(menuName = "Project B/Soldier/Attack Type")]

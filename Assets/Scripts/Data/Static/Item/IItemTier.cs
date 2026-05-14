@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectB.Data.Static.ItemTier
+namespace ProjectB.Data.Static.Item
 {
 
 	public interface IItemTierData

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.Components
+namespace ProjectB.UI.Parts
 {
 
 	public class ItemSlot : MonoBehaviour

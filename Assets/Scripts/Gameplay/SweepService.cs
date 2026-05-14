@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
-using ProjectB.Data.Static.Sweep;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Internal;

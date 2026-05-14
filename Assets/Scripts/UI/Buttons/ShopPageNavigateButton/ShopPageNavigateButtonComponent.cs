@@ -1,4 +1,4 @@
-using ProjectB.Data.Static.ShopPage;
+using ProjectB.Data.Static.Shop;
 using ProjectB.UI.Buttons.Common;
 using ProjectB.UI.Core;
 

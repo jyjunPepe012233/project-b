@@ -1,4 +1,4 @@
-using ProjectB.Data.Static.ShopItem;
+using ProjectB.Data.Static.Shop;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Internal;
