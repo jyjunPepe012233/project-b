@@ -11,6 +11,9 @@ namespace ProjectB.Data.RuntimeImpl
 	[Serializable]
 	public class PlayerData : IPlayerData
 	{
+		[SerializeField] private string _playerName;
+		public string PlayerName => _playerName;
+		
 		[SerializeField] private int _level;
 		public int Level => _level;
 		
@@ -49,8 +52,9 @@ namespace ProjectB.Data.RuntimeImpl
 		{
 		}
 
-		public PlayerData(int level, int experience, int coins, int gems, int morale, int foods)
+		public PlayerData(string playerName, int level, int experience, int coins, int gems, int morale, int foods)
 		{
+			_playerName = playerName;
 			_level = level;
 			_experience = experience;
 			_coins = coins;

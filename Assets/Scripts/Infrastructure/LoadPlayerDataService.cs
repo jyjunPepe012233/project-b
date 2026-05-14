@@ -10,6 +10,7 @@ namespace ProjectB.Infrastructure
 		public IPlayerData LoadPlayerData()
 		{
 			return new PlayerData( // TODO: 서버에서 받아오거나 로컬에 저장된거 역직렬화
+				playerName: "진예준",
 				level: 1,
 				experience: 0,
 				coins: 9999,

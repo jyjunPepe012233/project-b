@@ -7,6 +7,8 @@ namespace ProjectB.Data.Runtime.Player
 
 	public interface IReadOnlyPlayerData
 	{
+		string PlayerName { get; }
+		
 		int Level { get; }
 		
 		int Experience { get; }
