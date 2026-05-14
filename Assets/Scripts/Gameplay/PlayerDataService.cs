@@ -19,6 +19,17 @@ namespace ProjectB.Gameplay
 			// IPlayerData가 IReadOnlyPlayerData로 캐스팅
 			return _playerSessionHolderPort.GetPlayerSession().PlayerData;
 		}
+
+		public int GetTotalCombatPower()
+		{
+			int totalCombatPower = 0;
+			foreach (var soldier in _playerSessionHolderPort.GetPlayerSession().PlayerData.Soldiers)
+			{
+				totalCombatPower += soldier.CombatPower;
+			}
+
+			return totalCombatPower;
+		}
 	}
 
 }
