@@ -89,6 +89,16 @@ namespace ProjectB.UI.Parts
 			if (_value > _maxValue)
 				SetValue(_maxValue);
 		}
+		
+		public void SetIncrementButtonInteractable(bool interactable)
+		{
+			_incrementButton.interactable = interactable;
+		}
+		
+		public void SetDecrementButtonInteractable(bool interactable)
+		{
+			_decrementButton.interactable = interactable;
+		}
 	}
 
 }
