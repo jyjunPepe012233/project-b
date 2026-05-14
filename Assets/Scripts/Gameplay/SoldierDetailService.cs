@@ -33,7 +33,7 @@ namespace ProjectB.Gameplay
 		{
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
-			IReadOnlyPlayerSoldier playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierId == soldierData.SoldierId);
+			IReadOnlyPlayerSoldier playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierData == soldierData);
 
 			if (playerSoldier != null)
 			{

@@ -9,7 +9,8 @@ namespace ProjectB.Data.RuntimeImpl
 
 	public class PlayerSoldier : IPlayerSoldier
 	{
-		public string SoldierId { get; }
+
+		public ISoldierData SoldierData { get; }
 		
 		public byte Rank { get; private set; }
 		
@@ -38,7 +39,7 @@ namespace ProjectB.Data.RuntimeImpl
 			SoldierStatus status,
 			int combatPower)
 		{
-			SoldierId = soldierData.SoldierId;
+			SoldierData = soldierData;
 			Rank = rank;
 			Exp = exp;
 			Level = level;

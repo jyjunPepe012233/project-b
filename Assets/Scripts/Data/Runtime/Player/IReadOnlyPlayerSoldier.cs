@@ -1,4 +1,5 @@
 using System;
+using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Types;
 
 namespace ProjectB.Data.Runtime.Player
@@ -6,7 +7,7 @@ namespace ProjectB.Data.Runtime.Player
 
 	public interface IReadOnlyPlayerSoldier
 	{
-		string SoldierId { get; }
+		ISoldierData SoldierData { get; }
 		
 		byte Rank { get; }
 		

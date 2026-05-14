@@ -18,17 +18,17 @@ namespace ProjectB.UI.Lists.PlayerSoldierList
 
 		private readonly List<PlayerSoldierCard> _cardInstances = new();
 		
-		public void UpdatePlayerSoldiers(IEnumerable<(IReadOnlyPlayerSoldier playerSoldier, ISoldierData soldierData)> data)
+		public void UpdatePlayerSoldiers(IEnumerable<IReadOnlyPlayerSoldier> playerSoldiers)
 		{
 			foreach (var card in _cardInstances)
 				Object.Destroy(card.gameObject);
 			_cardInstances.Clear(); 
 
-			foreach (var i in data)
+			foreach (var i in playerSoldiers)
 			{
 				var card = Object.Instantiate(_cardPrefab, _contentParent);
-				card.ApplyPlayerSoldierData(i.playerSoldier);
-				card.ApplySoldierData(i.soldierData);
+				card.ApplyPlayerSoldierData(i);
+				card.ApplySoldierData(i.SoldierData);
 				_cardInstances.Add(card);
 			}
 		}
