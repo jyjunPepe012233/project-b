@@ -45,6 +45,9 @@ namespace ProjectB.Gameplay
 				Debug.LogError("장비 아이템 소비에 실패했습니다!");
 				return;
 			}
+			
+			// TODO: 장비에 따라 플레이어 능력치를 업데이트하는 로직 필요
+			// 전투력 계산 로직처럼 internal service의 도움을 받을 듯
 
 			playerSoldier.SetEquipment(slot, equipment);
 
