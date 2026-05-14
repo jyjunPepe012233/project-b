@@ -1,12 +1,14 @@
 using ProjectB.Authoring.ScriptableObject.Invasion;
 using ProjectB.Authoring.ScriptableObject.Item;
 using ProjectB.Authoring.ScriptableObject.Morale;
+using ProjectB.Authoring.ScriptableObject.Player;
 using ProjectB.Authoring.ScriptableObject.Soldier;
 using ProjectB.Authoring.ScriptableObject.Summon;
 using ProjectB.Core.Types;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Static.Morale;
+using ProjectB.Data.Static.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Gameplay;
@@ -29,6 +31,7 @@ namespace ProjectB.Dependency.Scopes
 		[SerializeField] private SummonCostSettingSO _summonCostSettingSo;
 		[SerializeField] private MoraleSettingSO _moraleSettingSO;
 		[SerializeField] private SweepSettingSO _sweepSettingSO;
+		[SerializeField] private PlayerLevelUpSettingSO _playerLevelUpSettingSO;
 
 		protected override void Awake()
 		{
@@ -118,6 +121,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
+			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
 		}
 	}
 
