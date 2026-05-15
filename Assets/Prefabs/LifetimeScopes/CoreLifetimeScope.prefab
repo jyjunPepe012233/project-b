@@ -52,3 +52,6 @@ MonoBehaviour:
   _itemDatabaseSO: {fileID: 11400000, guid: fa78b18323eda4a7294e50322977dba4, type: 2}
   _invasionSettingSO: {fileID: 11400000, guid: df9751a4c71464ee4b60e18c04a38e08, type: 2}
   _summonCostSettingSo: {fileID: 11400000, guid: 9767b9a1d425a4494beae446f882d427, type: 2}
+  _moraleSettingSO: {fileID: 11400000, guid: 0b85552d8180f40208cd28fc1d437b7f, type: 2}
+  _sweepSettingSO: {fileID: 11400000, guid: fcab4d54eb4f84bdb9a2946eac28350d, type: 2}
+  _playerLevelUpSettingSO: {fileID: 11400000, guid: f494f1d39ae9849f2921b8ae89ccee27, type: 2}

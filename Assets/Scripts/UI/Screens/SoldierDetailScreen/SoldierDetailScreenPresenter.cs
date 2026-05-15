@@ -83,6 +83,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 			}
 			
 			_playerSoldierData = playerSoldier;
+			_soldierData = playerSoldier.SoldierData;
 			SubscribePlayerSoldierData();
 			
 			// 기본 업데이트
