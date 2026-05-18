@@ -11,12 +11,9 @@ namespace ProjectB.UI.Core
 	public abstract class UIView : IDisposable
 	{
 		[Required, SerializeField]
-		private GameObject _topElement;
+		private UIGroup _uiGroup;
 
-		[Required, SerializeField]
-		private CanvasGroup _canvasGroup;
-
-		public bool IsShowing { get; set; }
+		public bool IsShowing => _uiGroup.IsShowing;
 
 		public virtual void RegisterUICallbacks()
 		{
@@ -30,20 +27,12 @@ namespace ProjectB.UI.Core
 	
 		public virtual void Show()
 		{
-			if (_canvasGroup != null)
-			{
-				IsShowing = true;
-				_canvasGroup.SetVisible(true);
-			}
+			_uiGroup.Show();
 		}
 	
 		public virtual void Hide()
 		{
-			if (_canvasGroup != null)
-			{
-				IsShowing = false;
-				_canvasGroup.SetVisible(false);
-			}
+			_uiGroup.Hide();
 		}
 	}
 

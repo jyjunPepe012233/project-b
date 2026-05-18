@@ -1,7 +1,6 @@
 using System.Linq;
 using InspectorGadgets.Attributes;
 using ProjectB.Core.Supports;
-using ProjectB.Core.Types;
 using UnityEngine;
 
 namespace ProjectB.UI.Core
@@ -13,21 +12,40 @@ namespace ProjectB.UI.Core
 		private CanvasGroup _canvasGroup;
 		
 		[SerializeField]
-		private InterfaceRefs<IUIPresenter> _childUIPresenters;
+		private BaseUIPresenter[] _childUIPresenters;
+		
+		[SerializeField, Readonly]
+		private bool _isShowing;
+		public bool IsShowing => _isShowing;
 		
 		
 #if UNITY_EDITOR
+
+		[Button(SetDirty = true)]
+		public void SetupCanvasGroup()
+		{
+			if (_canvasGroup == null)
+			{
+				_canvasGroup = GetComponent<CanvasGroup>();
+				if (_canvasGroup == null)
+				{
+					_canvasGroup = gameObject.AddComponent<CanvasGroup>();
+				}
+
+				// 프리팹에도 변경 사항을 반영
+				UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+			}
+		}
 		
 		// 에디터에서 버튼을 눌러 자식 UI Presenter들을 자동으로 할당하는 메서드
-		[Button]
+		[Button(SetDirty = true)]
 		public void SetupChildUI()
 		{
-			_childUIPresenters = new InterfaceRefs<IUIPresenter>(GetComponentsInChildren<IUIPresenter>()
-				.Select(presenter => (Object)presenter) // GetComponentsInChild로 받아온 객체들이라 Object로 캐스팅 가능함
-				.ToArray());
+			_childUIPresenters = GetComponentsInChildren<BaseUIPresenter>(false)
+				.Where(p => p.gameObject != gameObject && p.transform.IsChildOf(transform)) // 자신을 포함시키면 논리적 재귀가 형성되므로 제외
+				.ToArray();
 			
-			// 변경 사항을 에디터에서 반영
-			UnityEditor.EditorUtility.SetDirty(this);
+			// 프리팹에도 변경 사항을 반영
 			UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
 		}
 #endif
@@ -36,13 +54,18 @@ namespace ProjectB.UI.Core
 		{
 			if (_canvasGroup == null)
 			{
-				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다.");
+				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다. Group: " + TransformDebug.GetHierarchyPath(transform));;
 			}
 			_canvasGroup.SetVisible(true);
 
 			
-			foreach (var presenter in _childUIPresenters.Value)
+			foreach (var presenter in _childUIPresenters)
 			{
+				if (presenter == null)
+				{
+					Debug.LogWarning("UIGroup: 자식 Presenter 요소 중 하나가 Null입니다. Group: " + TransformDebug.GetHierarchyPath(transform));
+					continue;
+				}
 				presenter.Show();
 			}
 		}
@@ -51,13 +74,18 @@ namespace ProjectB.UI.Core
 		{
 			if (_canvasGroup == null)
 			{
-				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다.");
+				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다. Group: " + TransformDebug.GetHierarchyPath(transform));
 			}
 			_canvasGroup.SetVisible(false);
 			
 			
-			foreach (var presenter in _childUIPresenters.Value)
+			foreach (var presenter in _childUIPresenters)
 			{
+				if (presenter == null)
+				{
+					Debug.LogWarning("UIGroup: 자식 Presenter 요소 중 하나가 Null입니다 Group: " + TransformDebug.GetHierarchyPath(transform));
+					continue;
+				}
 				presenter.Hide();
 			}
 		}

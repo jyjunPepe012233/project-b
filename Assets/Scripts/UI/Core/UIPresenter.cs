@@ -1,13 +1,13 @@
+using System;
+using ProjectB.Core.Supports;
 using UnityEngine;
 
 namespace ProjectB.UI.Core
 {
-
-	// UI Presenter는 연결된 UI View를 관리하는 MonoBehaviour임
-	// 수동적 클래스인 UIView를 통일된 생명주기 상에서 관리하며, defaultDisable과 같은 여러 옵션을 제공함
-	// 또, 이 클래스는 가능한 독립적, 자주적으로 작동해야 하며 다른 클래스에게 제어되지 않아야 함.
-	// (다른 클래스에게 제어받아야 하는 UI는 UIPresenter를 상속한 UIComponet를 사용하면 됨)
-	public abstract class UIPresenter<TView> : MonoBehaviour, IUIPresenter where TView : UIView
+	
+	// UI를 구현할 때는 UIPresenter를 상속받아서 구현하면 됨.
+	// 제네릭 없이 추상적으로 참조하고 싶을 때는 BaseUIPresenter로 참조하면 됨.
+	public abstract class UIPresenter<TView> : BaseUIPresenter where TView : UIView
 	{
 		[SerializeField] protected TView view;
 
@@ -67,19 +67,34 @@ namespace ProjectB.UI.Core
 		}
 		
 		
-		public void Show()
+		public override void Show()
 		{
-			if (initializeOnShow)
+			// UI 단위로 예외 처리를 해서 전체 UI 시스템이 멈추는 것을 방지함
+			try
 			{
-				InitializeView();
+				if (initializeOnShow)
+				{
+					InitializeView();
+				}
+
+				view.Show();
 			}
-			
-			view.Show();
+			catch (Exception e)
+			{
+				Debug.LogError($"Show() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
+			}
 		}
 		
-		public void Hide()
+		public override void Hide()
 		{
-			view.Hide();
+			try
+			{
+				view.Hide();
+			}
+			catch (Exception e)
+			{
+				Debug.LogError($"Hide() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
+			}
 		} 
 	}
 
