@@ -1,4 +1,3 @@
-using System;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.UI.Buttons.StageInfoButton;
 using ProjectB.UI.Modals.StageInfoModal;
@@ -21,9 +20,6 @@ namespace ProjectB.UI.Screens.WorldMapScreen
 		public void Awake()
 		{
 			StageInfoButtonEvents.Clicked += OnStageInfoButtonClicked;
-		
-			_stageInfoModalRight.Hide();
-			_stageInfoModalLeft.Hide();
 		}
 
 		public void OnDestroy()

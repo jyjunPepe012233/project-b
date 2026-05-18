@@ -10,12 +10,8 @@ namespace ProjectB.UI.Core
 	// 제네릭 없이 추상적으로 참조하고 싶을 때는 BaseUIPresenter로 참조하면 됨.
 	public abstract class UIPresenter<TView> : BaseUIPresenter, IValidatable where TView : UIView
 	{
+		[Space(12)]
 		[SerializeField] protected TView view;
-
-		[Header("Settings")]
-		[SerializeField] protected bool defaultDisable = false;
-		[SerializeField] protected bool dontDestroyOnLoad = false;
-		[SerializeField] protected bool initializeOnShow = true;
 		
 		public bool IsShowing => view.IsShowing;
 

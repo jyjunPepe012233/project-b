@@ -53,12 +53,17 @@ namespace ProjectB.UI.Core
 
 		public void Show()
 		{
+			_isShowing = true;
+			
+			
 			if (_canvasGroup == null)
 			{
 				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다. Group: " + TransformDebug.GetHierarchyPath(transform));;
 			}
-			_canvasGroup.SetVisible(true);
-
+			else
+			{
+				_canvasGroup.SetVisible(true);
+			}
 			
 			foreach (var presenter in _childUIPresenters)
 			{
@@ -67,17 +72,31 @@ namespace ProjectB.UI.Core
 					Debug.LogWarning("UIGroup: 자식 Presenter 요소 중 하나가 Null입니다. Group: " + TransformDebug.GetHierarchyPath(transform));
 					continue;
 				}
-				presenter.Show();
+
+				if (presenter.DefaultDisable)
+				{
+					presenter.Hide();
+				}
+				else
+				{
+					presenter.Show();
+				}
 			}
 		}
 		
 		public void Hide()
 		{
+			_isShowing = false;
+			
+			
 			if (_canvasGroup == null)
 			{
 				Debug.LogWarning("UIGroup: CanvasGroup이 할당되지 않았습니다. Group: " + TransformDebug.GetHierarchyPath(transform));
 			}
-			_canvasGroup.SetVisible(false);
+			else
+			{
+				_canvasGroup.SetVisible(false);
+			}
 			
 			
 			foreach (var presenter in _childUIPresenters)

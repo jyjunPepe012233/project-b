@@ -7,6 +7,16 @@ namespace ProjectB.UI.Core
 	// 제네릭 타입 없이도 UIPresenter를 참조할 수 있도록 제네릭이 없는 상위 클래스를 만듬
 	public abstract class BaseUIPresenter : MonoBehaviour
 	{
+		[Header("Settings")]
+		[SerializeField] protected bool defaultDisable = false;
+		public bool DefaultDisable => defaultDisable;
+		
+		[SerializeField] protected bool dontDestroyOnLoad = false;
+		public bool DontDestroyOnLoad => dontDestroyOnLoad;
+		
+		[SerializeField] protected bool initializeOnShow = true;
+		public bool InitializeOnShow => initializeOnShow;
+		
 		public abstract void Show();
 
 		public abstract void Hide();
