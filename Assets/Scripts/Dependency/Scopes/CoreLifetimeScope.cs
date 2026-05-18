@@ -41,6 +41,7 @@ namespace ProjectB.Dependency.Scopes
 			Container.Resolve<GlobalErrorHandler>();
 
 			Container.Resolve<FirebaseInitializer>();
+			Container.Resolve<GameFrameSetup>();
 		}
 		
 		protected override void AddInboundAdapters()
@@ -110,6 +111,9 @@ namespace ProjectB.Dependency.Scopes
 			// 지금은 임시로 Outbound Adapter 등록 메서드에서 등록
 			// + Awake에서 Resolve함 (게임 시작 시 바로 생성되어야 하므로)
 			Builder.Register<FirebaseInitializer>(Lifetime.Singleton);
+			
+			// FirebaseInitializer와 마찬가지
+			Builder.Register<GameFrameSetup>(Lifetime.Singleton);
 		}
 
 		protected override void AddData()
