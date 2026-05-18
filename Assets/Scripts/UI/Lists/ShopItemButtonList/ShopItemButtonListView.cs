@@ -13,9 +13,9 @@ namespace ProjectB.UI.Lists.ShopItemButtonList
 	public class ShopItemButtonListView : UIView
 	{
 		[SerializeField] private Transform _contentParent;
-		[SerializeField] private ShopItemButtonComponent _buttonPrefab;
+		[SerializeField] private ShopItemButtonPresenter _buttonPrefab;
 
-		private readonly List<ShopItemButtonComponent> _buttonInstances = new();
+		private readonly List<ShopItemButtonPresenter> _buttonInstances = new();
 		
 		public void UpdateShopItemButton(IEnumerable<IShopItem> shopItems)
 		{

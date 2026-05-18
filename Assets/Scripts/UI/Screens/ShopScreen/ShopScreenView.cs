@@ -14,14 +14,14 @@ namespace ProjectB.UI.Screens.ShopScreen
 	public class ShopScreenView : UIView
 	{
 		[Header("Shop Page Navigation Buttons")]
-		[SerializeField] private ShopPageNavigateButtonComponent _shopPageNavigateButtonPrefab;
+		[SerializeField] private ShopPageNavigateButtonPresenter _shopPageNavigateButtonPrefab;
 		[SerializeField] private Transform _buttonParent;
 		
 		[Header("Shop Page")]
 		[SerializeField] private ShopPageView _shopPageViewPrefab;
 		[SerializeField] private Transform _shopPageParent;
 
-		private readonly List<ShopPageNavigateButtonComponent> _buttonInstances = new();
+		private readonly List<ShopPageNavigateButtonPresenter> _buttonInstances = new();
 		private readonly List<(ShopPageView pageView, IShopPage pageData)> _shopPageInstances = new();
 		
 		public void InitializeNavigationButtons(IEnumerable<IShopPage> shopPages)

@@ -4,7 +4,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Lists.SoldierStatusUpgradeList
 {
 
-	public class SoldierStatusUpgradeListComponent : UIComponent<SoldierStatusUpgradeListView>
+	public class SoldierStatusUpgradeListPresenter : UIPresenter<SoldierStatusUpgradeListView>
 	{
 		public void UpdateStatus(SoldierStatus currentStatus, SoldierStatus nextStatus)
 		{

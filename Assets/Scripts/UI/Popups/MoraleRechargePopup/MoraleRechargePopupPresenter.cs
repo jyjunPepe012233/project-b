@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ProjectB.UI.Popups.MoraleRechargePopup
 {
 
-	public class MoraleRechargePopupPresenter : UIComponent<MoraleRechargePopupView>
+	public class MoraleRechargePopupPresenter : UIPresenter<MoraleRechargePopupView>
 	{
 		[SerializeField] private MoraleSettingInstaller _moraleSettingInstaller;
 		[SerializeField] private RechargeMoraleServicePortInstaller _rechargeMoraleServicePortInstaller;

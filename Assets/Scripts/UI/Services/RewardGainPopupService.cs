@@ -9,7 +9,7 @@ namespace ProjectB.UI.Services
 
 	public class RewardGainPopupService : MonoBehaviour
 	{
-		[SerializeField] private RewardGainPopupComponent _rewardGainPopupComponent;
+		[SerializeField] private RewardGainPopupPresenter _rewardGainPopupComponent;
 
 		public bool Opening
 		{

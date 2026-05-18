@@ -5,7 +5,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Buttons.ShopPageNavigateButton
 {
 
-	public class ShopPageNavigateButtonComponent : UIComponent<ShopPageNavigateButtonView>
+	public class ShopPageNavigateButtonPresenter : UIPresenter<ShopPageNavigateButtonView>
 	{
 		private IShopPage _targetPage;
 		

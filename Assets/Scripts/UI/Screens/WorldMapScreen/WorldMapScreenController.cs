@@ -13,8 +13,8 @@ namespace ProjectB.UI.Screens.WorldMapScreen
 		[SerializeField] private string _chapterNameFormat = "침략 ({0})";
 		[SerializeField] private TextMeshProUGUI _chapterNameText;
 	
-		[SerializeField] private StageInfoModalComponent _stageInfoModalRight;
-		[SerializeField] private StageInfoModalComponent _stageInfoModalLeft;
+		[SerializeField] private StageInfoModalPresenter _stageInfoModalRight;
+		[SerializeField] private StageInfoModalPresenter _stageInfoModalLeft;
 
 		private IStageData _lastStageData;
 	

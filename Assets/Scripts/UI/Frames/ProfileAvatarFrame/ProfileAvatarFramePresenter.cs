@@ -4,7 +4,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Others.ProfileAvatarFrame
 {
 
-	public class ProfileAvatarFrameComponent : UIComponent<ProfileAvatarFrameView>
+	public class ProfileAvatarFramePresenter : UIPresenter<ProfileAvatarFrameView>
 	{
 		public void SetAvatar(IProfileAvatar profileAvatar)
 		{

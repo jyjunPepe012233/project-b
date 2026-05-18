@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ProjectB.UI.Popups.RewardGainPopup
 {
 
-	public class RewardGainPopupComponent : UIComponent<RewardGainPopupView>
+	public class RewardGainPopupPresenter : UIPresenter<RewardGainPopupView>
 	{
 		[SerializeField] private float _addItemCardLoopDelay = 0.1f; // 팝업이 열리면 아이템 카드가 빠르게 뜸 (촤라락)
 

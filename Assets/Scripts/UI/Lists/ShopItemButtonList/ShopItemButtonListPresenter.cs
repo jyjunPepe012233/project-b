@@ -5,7 +5,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Lists.ShopItemButtonList
 {
 
-	public class ShopItemButtonListComponent : UIComponent<ShopItemButtonListView>
+	public class ShopItemButtonListPresenter : UIPresenter<ShopItemButtonListView>
 	{
 		public void UpdateShopItemData(IEnumerable<IShopItem> shopItems)
 		{

@@ -12,7 +12,7 @@ namespace ProjectB.UI.Screens.BackpackScreen
 	[Serializable]
 	public class BackpackPage : UIView
 	{
-		[SerializeField] private ItemSlotListComponent _itemSlotListComponent;
+		[SerializeField] private ItemSlotListPresenter _itemSlotListComponent;
 		
 		public void UpdateItemSlots(IEnumerable<IPlayerItem> playerItems)
 		{

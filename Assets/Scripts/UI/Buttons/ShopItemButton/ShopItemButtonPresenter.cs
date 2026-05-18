@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ProjectB.UI.Buttons.ShopItemButton
 {
 
-	public class ShopItemButtonComponent : UIComponent<ShopItemButtonView>
+	public class ShopItemButtonPresenter : UIPresenter<ShopItemButtonView>
 	{
 		private IShopItem _shopItemData;
 		

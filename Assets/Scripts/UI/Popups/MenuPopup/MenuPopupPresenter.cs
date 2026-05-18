@@ -4,7 +4,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Popups.MenuPopup
 {
 
-	public class MenuPopupPresenter : UIComponent<MenuPopupView>
+	public class MenuPopupPresenter : UIPresenter<MenuPopupView>
 	{
 		protected override void SetupSubscriptions()
 		{

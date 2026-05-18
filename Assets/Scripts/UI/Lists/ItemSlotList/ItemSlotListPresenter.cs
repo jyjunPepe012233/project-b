@@ -7,7 +7,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Lists.ItemSlotList
 {
 
-	public class ItemSlotListComponent : UIComponent<ItemSlotListView>
+	public class ItemSlotListPresenter : UIPresenter<ItemSlotListView>
 	{
 		public void UpdateItems(IEnumerable<(IItemData itemData, int quantity)> data)
 		{

@@ -12,7 +12,7 @@ namespace ProjectB.UI.Screens.SummonResultScreen
 	[Serializable]
 	public class SummonResultScreenView : UIView
 	{
-		[SerializeField] private SoldierListComponent _soldierList;
+		[SerializeField] private SoldierListPresenter _soldierList;
 		[SerializeField] private Button _closeButton;
 		[SerializeField] private Button _summonAgainButton;
 		

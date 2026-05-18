@@ -5,7 +5,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Lists.SoldierList
 {
 
-	public class SoldierListComponent : UIComponent<SoldierListView>
+	public class SoldierListPresenter : UIPresenter<SoldierListView>
 	{
 		public void UpdateSoldiers(IEnumerable<ISoldierData> soldiers)
 		{

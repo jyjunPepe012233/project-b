@@ -1,69 +1,99 @@
+using System.Linq;
+using InspectorGadgets.Attributes;
+using ProjectB.Core.Supports;
+using ProjectB.Core.Types;
+using ProjectB.UI.Core;
 using UnityEngine;
 
 namespace ProjectB.UI.Screens.Home
 {
-	// 260416-010025 현재 TitleScreen에서 Home으로 넘어가는 거 까지 개발했음.
-	// Home에서 오버레이들 껐다 키는 시스템을 DI 구조 기반으로 리팩토링 할 차례임
-			
-	// 일단, homeUIController를 여기서 참조하지 못하게 하고 
-	// 인스펙터에서 오버레이를 HomeUIController에 직접 등록할 수 있도록 변경하기
-			
-	// 그 뒤에 일단 오버레이 시스템 돌아가게 만들기
-			
-	// 오버레이 돌아가면 코드베이스 싹 훓고, 추가 개발 들어가면 됨(덱 편성 화면부터 개발하면 될 듯)
-	
-	// ㄴ 260416-214947 오버레이 시스템 어떻게 리팩토링 할 지 생각 했음?
-
 	public class HomeFullScreenOverlay : MonoBehaviour, IHomeFullScreenOverlay
 	{
-		[SerializeField] private GameObject _topElement;
+		[Required, SerializeField]
+		private CanvasGroup _canvasGroup;
 	
-		[SerializeField] private string _overlayID;
+		[Required, SerializeField]
+		private string _overlayID;
 		public string OverlayID => _overlayID;
 		
+		[SerializeField]
+		private InterfaceRefs<IUIPresenter> _childUIPresenters;
+
+		
+#if UNITY_EDITOR
+		
+		// 에디터에서 버튼을 눌러 자식 UI Presenter들을 자동으로 할당하는 메서드
+		[Button]
+		public void SetupChildUI()
+		{
+			_childUIPresenters = new InterfaceRefs<IUIPresenter>(GetComponentsInChildren<IUIPresenter>()
+				.Select(presenter => (Object)presenter) // GetComponentsInChild로 받아온 객체들이라 Object로 캐스팅 가능함
+				.ToArray());
+			
+			// 변경 사항을 에디터에서 반영
+			UnityEditor.EditorUtility.SetDirty(this);
+			UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+		}
+#endif
 	
 		public void Open()
 		{
-			if (_topElement == null)
+			if (_canvasGroup == null)
 			{
-				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] Top Element가 할당되지 않았습니다.");
-				return;
+				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] CanvasGroup이 할당되지 않았습니다.");
 			}
-		
-			_topElement.SetActive(true);
+			_canvasGroup.SetVisible(true);
+
+			
+			foreach (var presenter in _childUIPresenters.Value)
+			{
+				presenter.Show();
+			}
 		}
 
 		public void Hide()
 		{
-			if (_topElement == null)
+			if (_canvasGroup == null)
 			{
-				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] Top Element가 할당되지 않았습니다.");
-				return;
+				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] CanvasGroup이 할당되지 않았습니다.");
 			}
-		
-			_topElement.SetActive(false);
+			_canvasGroup.SetVisible(false);
+			
+			
+			foreach (var presenter in _childUIPresenters.Value)
+			{
+				presenter.Hide();
+			}
 		}
 
 		public void Show()
 		{
-			if (_topElement == null)
+			if (_canvasGroup == null)
 			{
-				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] Top Element가 할당되지 않았습니다.");
-				return;
+				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] CanvasGroup이 할당되지 않았습니다.");
 			}
-		
-			_topElement.SetActive(true);
+			_canvasGroup.SetVisible(true);
+			
+			
+			foreach (var presenter in _childUIPresenters.Value)
+			{
+				presenter.Show();
+			}
 		}
 
 		public void Close()
 		{
-			if (_topElement == null)
+			if (_canvasGroup == null)
 			{
-				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] Top Element가 할당되지 않았습니다.");
-				return;
+				Debug.LogWarning($"[{nameof(HomeFullScreenOverlay)}] CanvasGroup이 할당되지 않았습니다.");
 			}
-		
-			_topElement.SetActive(false);
+			_canvasGroup.SetVisible(false);
+			
+			
+			foreach (var presenter in _childUIPresenters.Value)
+			{
+				presenter.Hide();
+			}
 		}
 	}
 

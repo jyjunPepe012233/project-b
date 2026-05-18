@@ -13,7 +13,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 	public class LevelUpPageView : SoldierDetailPageView
 	{
 		[Header("Status")]
-		[SerializeField] private SoldierStatusUpgradeListComponent _statusUpgradeList;
+		[SerializeField] private SoldierStatusUpgradeListPresenter _statusUpgradeList;
 		
 		[Header("Combat Power")]
 		[SerializeField] private TextMeshProUGUI _currentCombatPowerText;

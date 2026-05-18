@@ -10,7 +10,7 @@ namespace ProjectB.UI.Screens.ShopScreen
 	public class ShopPageView : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI _pageNameText;
-		[SerializeField] private ShopItemButtonListComponent _shopItemButtonList;
+		[SerializeField] private ShopItemButtonListPresenter _shopItemButtonList;
 		
 		public void SetPageName(string pageName)
 		{

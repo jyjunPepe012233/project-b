@@ -21,7 +21,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 		[SerializeField] private TextMeshProUGUI _combatPowerText;
 
 		[Header("Status")]
-		[SerializeField] private SoldierStatusListComponent _statusList;
+		[SerializeField] private SoldierStatusListPresenter _statusList;
 		
 		public void SetLevel(short level)
 		{

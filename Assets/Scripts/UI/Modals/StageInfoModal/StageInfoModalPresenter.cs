@@ -4,7 +4,7 @@ using ProjectB.UI.Core;
 namespace ProjectB.UI.Modals.StageInfoModal
 {
 
-	public class StageInfoModalComponent : UIComponent<StageInfoModalView>
+	public class StageInfoModalPresenter : UIPresenter<StageInfoModalView>
 	{
 		protected override void SetupSubscriptions()
 		{
