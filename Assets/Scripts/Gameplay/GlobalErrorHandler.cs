@@ -20,7 +20,6 @@ namespace ProjectB.Gameplay
 
 		void OnUncaughtErrorCaught(ErrorData errorData)
 		{
-			Debug.Log(errorData.message);
 			_reportErrorPort.Report(errorData);
 		}
 	}
