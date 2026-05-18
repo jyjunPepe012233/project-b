@@ -1,10 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator.Editor
 {
 	[CustomEditor(typeof(ValidationLog))]
-	public class ValidationLogEditor : Editor
+	public class ValidationLogEditor : UnityEditor.Editor
 	{
 		private static readonly string[] TabNames = { "Errors", "Passed" };
 

@@ -1,5 +1,5 @@
 using System;
-using MonoBehaviourValidator;
+using AssetValidator;
 using ProjectB.Core.Supports;
 using UnityEngine;
 

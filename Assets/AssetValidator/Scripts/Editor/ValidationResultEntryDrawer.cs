@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator.Editor
 {
 	[CustomPropertyDrawer(typeof(ValidationResultEntry))]
 	public class ValidationResultEntryDrawer : PropertyDrawer

@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
 
 	public struct ValidationEntry

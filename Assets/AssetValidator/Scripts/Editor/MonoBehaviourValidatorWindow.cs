@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator.Editor
 {
 	public class MonoBehaviourValidatorWindow : EditorWindow
 	{
@@ -13,7 +13,7 @@ namespace MonoBehaviourValidator
 		private string _searchFolder;
 		private string _logDir;
 		private ValidationLog _log;
-		private Editor _logEditor;
+		private UnityEditor.Editor _logEditor;
 
 		[MenuItem("Tools/MonoBehaviour Validator/Open Settings")]
 		public static void Open()
@@ -119,7 +119,7 @@ namespace MonoBehaviourValidator
 		{
 			DestroyLogEditor();
 			if (_log != null)
-				_logEditor = Editor.CreateEditor(_log); // ValidationLog의 에디터를 생성 (ValidationLog의 인스펙터에는 검증 결과가 표시됨)
+				_logEditor = UnityEditor.Editor.CreateEditor(_log); // ValidationLog의 에디터를 생성 (ValidationLog의 인스펙터에는 검증 결과가 표시됨)
 		}
 
 		void DestroyLogEditor()

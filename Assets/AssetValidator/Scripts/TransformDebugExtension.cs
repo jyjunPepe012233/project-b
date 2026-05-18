@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
 
 	public static class TransformDebugExtension

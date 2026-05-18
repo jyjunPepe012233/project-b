@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
+
 	[Serializable]
 	public struct ValidationResultEntry
 	{

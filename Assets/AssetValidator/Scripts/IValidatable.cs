@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
 
 	public interface IValidatable

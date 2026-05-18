@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
 
 	public static class MonoBehaviourValidator
@@ -11,6 +11,7 @@ namespace MonoBehaviourValidator
 		public static string logDir = "Assets/MonoBehaviourValidator/Logs";
 
 		
+#if UNITY_EDITOR
 		[MenuItem("Tools/MonoBehaviour Validator/Validate All Prefabs")]
 		public static ValidationLog ValidateAll()
 		{
@@ -92,20 +93,7 @@ namespace MonoBehaviourValidator
 			Debug.Log($"Validation log saved: {assetPath}", log);
 			return log;
 		}
-
-		
-		
-		static ulong CreateValidationTargetHash(string path, string hierarchyPath)
-		{
-			ulong hash = 14695981039346656037UL;
-			foreach (char c in path + hierarchyPath)
-			{
-				hash ^= c;
-				hash *= 1099511628211;
-			}
-			
-			return hash;
-		}
+#endif
 	}
 
 }

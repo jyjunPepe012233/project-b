@@ -1,0 +1,18 @@
+{
+    "name": "AssetValidator.Editor",
+    "rootNamespace": "AssetValidator",
+    "references": [
+        "GUID:6867947f8ba984907a391d665a3c7e06"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

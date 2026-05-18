@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MonoBehaviourValidator
+namespace AssetValidator
 {
 
 	public class ValidationMethod

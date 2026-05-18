@@ -5,7 +5,6 @@ using ProjectB.UI.Core;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Video;
-using UnityEngine.Windows.WebCam;
 
 namespace ProjectB.UI.Screens.SummonAnimationScreen
 {
