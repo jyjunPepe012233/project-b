@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using InspectorGadgets.Attributes;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using ProjectB.UI.Core;
@@ -15,10 +16,10 @@ namespace ProjectB.UI.Popups.RewardGainPopup
 	[Serializable]
 	public class RewardGainPopupView : UIView
 	{
-		[SerializeField] private PlayableDirector _openAnimDirector;
-		[SerializeField] private Button _backgroundClickArea;
-		[SerializeField] private Transform _itemCardsContent;
-		[SerializeField] private ItemSlot _itemCardPrefab;
+		[Required, SerializeField] private PlayableDirector _openAnimDirector;
+		[Required, SerializeField] private Button _backgroundClickArea;
+		[Required, SerializeField] private Transform _itemCardsContent;
+		[Required, SerializeField] private ItemSlot _itemCardPrefab;
 
 		private readonly List<ItemSlot> _itemCardInstances = new();
 		

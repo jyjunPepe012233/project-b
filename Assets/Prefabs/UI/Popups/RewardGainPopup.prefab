@@ -487,7 +487,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &6052347079945883551
 MonoBehaviour:
@@ -1008,15 +1008,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fd47b05ce7453999ee11f0d48797fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDisable: 1
+  dontDestroyOnLoad: 1
+  initializeOnShow: 1
   view:
     _uiGroup: {fileID: 5043535966080972628}
     _openAnimDirector: {fileID: 3080258482296401887}
     _backgroundClickArea: {fileID: 4802629897804575955}
     _itemCardsContent: {fileID: 82341643151317787}
     _itemCardPrefab: {fileID: 2198789126781961490, guid: a392719b1a4484047a16f7a14be023a2, type: 3}
-  defaultDisable: 1
-  dontDestroyOnLoad: 1
-  initializeOnShow: 1
   _addItemCardLoopDelay: 0.1
 --- !u!114 &5043535966080972628
 MonoBehaviour:

@@ -51,7 +51,7 @@ namespace ProjectB.UI.Core
 		}
 #endif
 
-		public void Show()
+		public void Show(bool exceptDefaultDisable = false)
 		{
 			_isShowing = true;
 			
@@ -73,7 +73,7 @@ namespace ProjectB.UI.Core
 					continue;
 				}
 
-				if (presenter.DefaultDisable)
+				if (presenter.DefaultDisable && exceptDefaultDisable)
 				{
 					presenter.Hide();
 				}

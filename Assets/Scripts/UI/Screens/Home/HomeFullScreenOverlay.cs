@@ -17,7 +17,7 @@ namespace ProjectB.UI.Screens.Home
 	
 		public void Open()
 		{
-			_uiGroup.Show();
+			_uiGroup.Show(true); // 화면을 처음 열 때는 defaultDisable 설정이 있는 UI 요소들은 활성화하지 않음
 		}
 
 		public void Hide()
