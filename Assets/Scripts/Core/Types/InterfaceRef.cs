@@ -27,6 +27,12 @@ namespace ProjectB.Core.Types
 		private T _value;
 
 		public Object Raw => target;
+
+
+		public InterfaceRef(Object target)
+		{
+			this.target = target;
+		}
 	}
 
 	[Serializable]
@@ -54,6 +60,12 @@ namespace ProjectB.Core.Types
 		private T[] _values;
 
 		public IReadOnlyList<Object> Raw => targets;
+
+
+		public InterfaceRefs(Object[] targets)
+		{
+			this.targets = targets;
+		}
 	}
 
 }
