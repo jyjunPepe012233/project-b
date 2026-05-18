@@ -103,12 +103,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2269210613908369835, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 673174809724169198}
+    - targetCorrespondingSourceObject: {fileID: 2269210613908369835, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7003684016443556844}
+    - targetCorrespondingSourceObject: {fileID: 2269210613908369835, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7651891801705066734}
   m_SourcePrefab: {fileID: 100100000, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
---- !u!1 &353415682634990147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1615956143545707392, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
-  m_PrefabInstance: {fileID: 1336041033802459587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1006353555393206376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2269210613908369835, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}
@@ -126,12 +127,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39f7c90fc714a41b90b93cfafd5ece1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
-    _topElement: {fileID: 353415682634990147}
+    _uiGroup: {fileID: 7003684016443556844}
     _tmp: {fileID: 4576788878593499353}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _playerDataServicePortInstaller: {fileID: 0}
+--- !u!114 &7003684016443556844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006353555393206376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: -7651891801705066734}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &-7651891801705066734
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006353555393206376}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &4576788878593499353 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3246698414643218714, guid: 90b44e2eed0f348f294512edf44fbeea, type: 3}

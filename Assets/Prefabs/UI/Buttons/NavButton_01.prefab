@@ -294,6 +294,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5394892581677224634}
   - component: {fileID: 3954159441724195462}
+  - component: {fileID: 4236233386198239832}
+  - component: {fileID: 2746558564692583314}
   m_Layer: 5
   m_Name: NavButton_01
   m_TagString: Untagged
@@ -334,9 +336,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 9112059380510310968}
+    _uiGroup: {fileID: 4236233386198239832}
     _button: {fileID: 2333106551509606074}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _overlayID: 
+--- !u!114 &4236233386198239832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242556900505783842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 2746558564692583314}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &2746558564692583314
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242556900505783842}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6981342227488403267
 GameObject:
   m_ObjectHideFlags: 0

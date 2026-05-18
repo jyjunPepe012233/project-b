@@ -1,4 +1,5 @@
 using System;
+using MonoBehaviourValidator;
 using ProjectB.Core.Supports;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace ProjectB.UI.Core
 	
 	// UI를 구현할 때는 UIPresenter를 상속받아서 구현하면 됨.
 	// 제네릭 없이 추상적으로 참조하고 싶을 때는 BaseUIPresenter로 참조하면 됨.
-	public abstract class UIPresenter<TView> : BaseUIPresenter where TView : UIView
+	public abstract class UIPresenter<TView> : BaseUIPresenter, IValidatable where TView : UIView
 	{
 		[SerializeField] protected TView view;
 
@@ -81,7 +82,7 @@ namespace ProjectB.UI.Core
 			}
 			catch (Exception e)
 			{
-				Debug.LogError($"Show() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
+				Debug.LogError($"() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
 			}
 		}
 		
@@ -96,6 +97,17 @@ namespace ProjectB.UI.Core
 				Debug.LogError($"Hide() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
 			}
 		} 
+		
+		
+		
+		// IValidatable 구현
+		public MonoBehaviour GetMonoBehaviour() => this;
+
+		public ValidationMethod GetValidationMethod()
+		{
+			return new ValidationMethod()
+				.Register("View에 UIGroup 할당", () => view.UIGroup != null);
+		}
 	}
 
 }

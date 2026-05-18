@@ -48,6 +48,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2006795333611803943}
   - component: {fileID: 4214115116105745889}
+  - component: {fileID: 8831734015992306104}
+  - component: {fileID: 4767835876508686266}
   m_Layer: 5
   m_Name: SoldierCardList
   m_TagString: Untagged
@@ -88,13 +90,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 6728142146148383197}
+    _uiGroup: {fileID: 8831734015992306104}
     _contentParent: {fileID: 2745209130736899688}
     _cardPrefab: {fileID: 274046110436500872, guid: 9f19dd9f96f014739900d1a6992639e4, type: 3}
   defaultDisable: 0
   dontDestroyOnLoad: 0
-  initializeOnEnable: 1
   initializeOnShow: 1
+--- !u!114 &8831734015992306104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37539433708056969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4767835876508686266}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &4767835876508686266
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37539433708056969}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &119236520083751820
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3331561190704430342}
   - component: {fileID: 1106406164215114484}
+  - component: {fileID: 1395728466996311847}
+  - component: {fileID: 1788408836710471037}
   m_Layer: 5
   m_Name: SummonAgainButton(Close Overlay)
   m_TagString: Untagged
@@ -145,11 +175,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 5449471472200704617}
+    _uiGroup: {fileID: 1395728466996311847}
     _button: {fileID: 3972181858888420477}
   defaultDisable: 0
   dontDestroyOnLoad: 0
-  initializeOnEnable: 1
+  initializeOnShow: 1
+--- !u!114 &1395728466996311847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119236520083751820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1788408836710471037}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &1788408836710471037
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119236520083751820}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &152719654567120798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1410,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3870923264323398358}
   - component: {fileID: 7494394666366064350}
+  - component: {fileID: 6607961584127271678}
+  - component: {fileID: 3923364074215262871}
   m_Layer: 5
   m_Name: HomeCloseOverlayButton
   m_TagString: Untagged
@@ -1393,11 +1452,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 2975761248148602872}
+    _uiGroup: {fileID: 6607961584127271678}
     _button: {fileID: 9164162511375368098}
   defaultDisable: 0
   dontDestroyOnLoad: 0
-  initializeOnEnable: 1
+  initializeOnShow: 1
+--- !u!114 &6607961584127271678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331061504101694217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 3923364074215262871}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &3923364074215262871
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331061504101694217}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6525988270533148939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,9 +1629,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1530021520505649619}
   - component: {fileID: 2891831853545708593}
+  - component: {fileID: 2730785909293503007}
   - component: {fileID: 4954669166617598307}
   - component: {fileID: 8066641738248778848}
   - component: {fileID: 6525927187101139843}
+  - component: {fileID: 1560256135828302901}
   m_Layer: 5
   m_Name: Canvas_SummonResult
   m_TagString: Untagged
@@ -1586,14 +1674,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 4907231659741732798}
+    _uiGroup: {fileID: 2730785909293503007}
     _soldierList: {fileID: 4214115116105745889}
     _closeButton: {fileID: 9164162511375368098}
     _summonAgainButton: {fileID: 3972181858888420477}
   defaultDisable: 0
   dontDestroyOnLoad: 0
-  initializeOnEnable: 1
+  initializeOnShow: 1
   _summonServicePortInstaller: {fileID: 0}
+--- !u!114 &2730785909293503007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795591730676191063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1560256135828302901}
+  _childUIPresenters:
+  - {fileID: 4214115116105745889}
+  - {fileID: 7494394666366064350}
+  - {fileID: 1106406164215114484}
+  _isShowing: 0
 --- !u!223 &4954669166617598307
 Canvas:
   m_ObjectHideFlags: 0
@@ -1657,6 +1763,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &1560256135828302901
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795591730676191063}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7444060308748065288
 GameObject:
   m_ObjectHideFlags: 0

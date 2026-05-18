@@ -567,6 +567,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3018955492825263541}
   - component: {fileID: 1784706130582538956}
+  - component: {fileID: 1664540206737871068}
+  - component: {fileID: 4208683884616513020}
   m_Layer: 0
   m_Name: ListItem_ShopPageNavigateButton
   m_TagString: Untagged
@@ -606,12 +608,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba276cc19273490a84015e14a5c7d62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
-    _topElement: {fileID: 6179671339106304964}
+    _uiGroup: {fileID: 1664540206737871068}
     _button: {fileID: 6557378164105997069}
     _pageNameText: {fileID: 3141512195008515542}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
+--- !u!114 &1664540206737871068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774728055289723266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4208683884616513020}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &4208683884616513020
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774728055289723266}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7950889307634450758
 GameObject:
   m_ObjectHideFlags: 0

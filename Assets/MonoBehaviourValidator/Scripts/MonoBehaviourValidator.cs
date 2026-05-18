@@ -8,10 +8,11 @@ namespace MonoBehaviourValidator
 	public static class MonoBehaviourValidator
 	{
 		public static string searchFolder = "Assets/Prefabs/";
+		public static string logDir = "Assets/MonoBehaviourValidator/Logs";
 
 		
 		[MenuItem("Tools/MonoBehaviour Validator/Validate All Prefabs")]
-		public static void ValidateAll()
+		public static ValidationLog ValidateAll()
 		{
 			string[] guids = AssetDatabase.FindAssets(
 				"t:Prefab",
@@ -55,10 +56,10 @@ namespace MonoBehaviourValidator
 
 						if (!isValid)
 						{
-							Debug.LogError($"Validation Error: {entry.message}\nPrefab: {path}\nGameObject: {hierarchyPath}\n");
+							Debug.LogError($"Validation Error: {entry.name}\nPrefab: {path}\nGameObject: {hierarchyPath}\n");
 						}
 						
-						ValidationResultEntry resultEntry = new ValidationResultEntry(isValid, entry.message, prefab, hierarchyPath);
+						ValidationResultEntry resultEntry = new ValidationResultEntry(isValid, entry.name, prefab, hierarchyPath);
 						allResults.Add(resultEntry);
 					}
 
@@ -67,6 +68,29 @@ namespace MonoBehaviourValidator
 			}
 			
 			Debug.Log("Validation completed for all prefabs in folder: " + searchFolder);
+
+			return SaveLog(allResults);
+		}
+
+		
+		static ValidationLog SaveLog(List<ValidationResultEntry> results)
+		{
+			if (!AssetDatabase.IsValidFolder(logDir))
+			{
+				AssetDatabase.CreateFolder("Assets/MonoBehaviourValidator", "Logs");
+			}
+
+			string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+			string assetPath = $"{logDir}/ValidationLog_{timestamp}.asset";
+
+			ValidationLog log = ScriptableObject.CreateInstance<ValidationLog>();
+			log.validationResults = results.ToArray();
+
+			AssetDatabase.CreateAsset(log, assetPath);
+			AssetDatabase.SaveAssets();
+
+			Debug.Log($"Validation log saved: {assetPath}", log);
+			return log;
 		}
 
 		

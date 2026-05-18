@@ -167,6 +167,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5805569481889845228}
   - component: {fileID: 2821331878314716731}
+  - component: {fileID: 6712075831383586605}
+  - component: {fileID: 4716579761629606230}
   m_Layer: 5
   m_Name: Button_StageInfo_01
   m_TagString: Untagged
@@ -207,15 +209,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 3001816927023685108}
+    _uiGroup: {fileID: 6712075831383586605}
     _button: {fileID: 5116732859904594677}
     _stageLevelFormat: '{0}-{1}'
     _stageLevelText: {fileID: 5626232679709064046}
     _stageNameText: {fileID: 6338406141726131550}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _stage:
     target: {fileID: 0}
   _invasionSettingInstaller: {fileID: 0}
   _isRightSide: 0
+--- !u!114 &6712075831383586605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805533877694895393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4716579761629606230}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &4716579761629606230
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805533877694895393}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1486134124485868014
 PrefabInstance:
   m_ObjectHideFlags: 0

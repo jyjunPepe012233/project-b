@@ -406,6 +406,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5415488233290561039}
   - component: {fileID: 6374081895591833258}
+  - component: {fileID: 142513355871182387}
+  - component: {fileID: 4940439912486411016}
   m_Layer: 5
   m_Name: NavButton_SoldierDetailPage_BasePrefab
   m_TagString: Untagged
@@ -445,12 +447,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3187a2ea3e47d09db44add3019572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
-    _topElement: {fileID: 9215321090475408319}
+    _uiGroup: {fileID: 142513355871182387}
     _button: {fileID: 6620870947073633415}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _pageId: 
+--- !u!114 &142513355871182387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680834394871522126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4940439912486411016}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &4940439912486411016
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680834394871522126}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6107957208443841212
 GameObject:
   m_ObjectHideFlags: 0

@@ -969,6 +969,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8295821467102988023}
   - component: {fileID: 988263410310779307}
+  - component: {fileID: 5043535966080972628}
+  - component: {fileID: 6193258420548683403}
   m_Layer: 0
   m_Name: RewardGainPopup
   m_TagString: Untagged
@@ -1007,16 +1009,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 2408197701971086386}
+    _uiGroup: {fileID: 5043535966080972628}
     _openAnimDirector: {fileID: 3080258482296401887}
     _backgroundClickArea: {fileID: 4802629897804575955}
     _itemCardsContent: {fileID: 82341643151317787}
     _itemCardPrefab: {fileID: 2198789126781961490, guid: a392719b1a4484047a16f7a14be023a2, type: 3}
   defaultDisable: 1
   dontDestroyOnLoad: 1
-  initializeOnEnable: 1
   initializeOnShow: 1
   _addItemCardLoopDelay: 0.1
+--- !u!114 &5043535966080972628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180307512850229738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 6193258420548683403}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &6193258420548683403
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180307512850229738}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6411394478716585836
 GameObject:
   m_ObjectHideFlags: 0

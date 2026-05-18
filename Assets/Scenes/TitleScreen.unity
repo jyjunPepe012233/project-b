@@ -201,11 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8e7f810e9543feac68a13a167c5f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1383442416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8265573148023669071, guid: 0a9cffd23d00f4f10acd41baa212654c, type: 3}
-  m_PrefabInstance: {fileID: 4127475815143450136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1383442420 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4349711561881563883, guid: 0a9cffd23d00f4f10acd41baa212654c, type: 3}
@@ -313,13 +308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cd78ef3c314900b7b339de108a9f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view:
+    _uiGroup: {fileID: 0}
+    _touchAreaButton: {fileID: 4127475815143450137}
   defaultDisable: 0
   dontDestroyOnLoad: 0
   initializeOnShow: 1
-  initializeOnEnable: 1
-  view:
-    _topElement: {fileID: 1383442416}
-    _touchAreaButton: {fileID: 4127475815143450137}
   _titleScreenManagerPortInstaller: {fileID: 1381521320}
 --- !u!1001 &1689268779413890368
 PrefabInstance:

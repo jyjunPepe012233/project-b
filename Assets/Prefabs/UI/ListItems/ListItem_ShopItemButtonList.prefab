@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2027150937246751647}
   - component: {fileID: 6557079540740097240}
+  - component: {fileID: 4924675158642556850}
+  - component: {fileID: 1135806542372710636}
   m_Layer: 5
   m_Name: ListItem_ShopItemButtonList
   m_TagString: Untagged
@@ -49,16 +51,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1cadd77ba14f0dbb27fa820bd908e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDisable: 0
-  initializeOnShow: 1
-  initializeOnEnable: 1
   view:
-    _topElement: {fileID: 6576501066589693954}
+    _uiGroup: {fileID: 4924675158642556850}
     _itemNameText: {fileID: 6285241483026306768}
     _itemQuantityText: {fileID: 6398916701065321390}
     _priceText: {fileID: 6821549345567506498}
     _purchaseButton: {fileID: 7925063746845101339}
     _backgroundParent128: {fileID: 2330174303088339459}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
+--- !u!114 &4924675158642556850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706865864098470492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1135806542372710636}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &1135806542372710636
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706865864098470492}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &729765676424232146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1405,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 8176313013485052648}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

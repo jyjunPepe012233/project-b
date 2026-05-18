@@ -107,6 +107,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5674157587066588311, guid: 33a2d889e063d4ea2ba08d19b1ef0fe7, type: 3}
   m_PrefabInstance: {fileID: 2214053380160756993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6187597565707747231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5433354229482316446, guid: 33a2d889e063d4ea2ba08d19b1ef0fe7, type: 3}
+  m_PrefabInstance: {fileID: 2214053380160756993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3219523382623414334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4777607641317037322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,13 +131,25 @@ PrefabInstance:
       value: HomeOverlay_SummonAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _uiGroup
+      value: 
+      objectReference: {fileID: 6187597565707747231}
+    - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
       propertyPath: _overlayID
+      value: SummonAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _overlayId
       value: SummonAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
       propertyPath: _topElement
       value: 
       objectReference: {fileID: 3219523382623414334}
+    - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.targets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8539797764765618994, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

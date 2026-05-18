@@ -174,9 +174,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7457446185503578745}
+  - component: {fileID: 8453323992537345068}
   - component: {fileID: 4688682143546766613}
   - component: {fileID: 5252373056300510592}
   - component: {fileID: 2711076823913467258}
+  - component: {fileID: -2920022838222073017}
   m_Layer: 5
   m_Name: Canvas_SoldierListScreen
   m_TagString: Untagged
@@ -208,6 +210,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &8453323992537345068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558070285094640156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: -2920022838222073017}
+  _childUIPresenters:
+  - {fileID: 5546100227700871972}
+  - {fileID: 5717434074641515056}
+  - {fileID: 5699244685722369900}
+  - {fileID: 5783709162631564967}
+  _isShowing: 0
 --- !u!223 &4688682143546766613
 Canvas:
   m_ObjectHideFlags: 0
@@ -271,6 +292,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &-2920022838222073017
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558070285094640156}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3904828695557066364
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +475,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4427173249001066247}
   - component: {fileID: 5783709162631564967}
+  - component: {fileID: 5133346505511240873}
+  - component: {fileID: 3059429115619263649}
   m_Layer: 5
   m_Name: SoldierList
   m_TagString: Untagged
@@ -482,14 +517,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 3904828695557066364}
+    _uiGroup: {fileID: 5133346505511240873}
     _contentParent: {fileID: 3887847955980346000}
     _cardPrefab: {fileID: 4189540498079293433, guid: 1a9e9803f30ae4b8d9e2c2818f496cbe, type: 3}
   defaultDisable: 0
   dontDestroyOnLoad: 0
-  initializeOnEnable: 1
-  _soldierDatabaseInstaller: {fileID: 0}
+  initializeOnShow: 1
   _playerDataServicePortInstaller: {fileID: 0}
+--- !u!114 &5133346505511240873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128815013394278062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 3059429115619263649}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &3059429115619263649
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128815013394278062}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7164075767698974189
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +791,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eab1087855b448308872322fb98c0fc, type: 3}
+--- !u!114 &5717434074641515056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8653791678490505202, guid: 5eab1087855b448308872322fb98c0fc, type: 3}
+  m_PrefabInstance: {fileID: 3981206608432639426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650b0a59fea2640eb9eff4f2dab8cff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8514368984032190973 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4713310768404565055, guid: 5eab1087855b448308872322fb98c0fc, type: 3}
@@ -837,6 +909,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4713310768404565055, guid: 6050669e974a54c63a91a2bf07c4b571, type: 3}
   m_PrefabInstance: {fileID: 5017058543615572170}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5546100227700871972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 673174809724169198, guid: 6050669e974a54c63a91a2bf07c4b571, type: 3}
+  m_PrefabInstance: {fileID: 5017058543615572170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39f7c90fc714a41b90b93cfafd5ece1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6702448419401806728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1238,3 +1321,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4030664755722488202, guid: 7e7f0d8bb81cc485d9c3085422941747, type: 3}
   m_PrefabInstance: {fileID: 8373055222685228197}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5699244685722369900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4261770309908194249, guid: 7e7f0d8bb81cc485d9c3085422941747, type: 3}
+  m_PrefabInstance: {fileID: 8373055222685228197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879df47aaafb468eaa7399812f189ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

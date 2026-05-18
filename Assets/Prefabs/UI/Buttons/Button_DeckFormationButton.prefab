@@ -308,6 +308,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5146821791212108246}
   - component: {fileID: 6468878782528261033}
+  - component: {fileID: 590256503885529538}
+  - component: {fileID: 6831592940228189937}
   m_Layer: 5
   m_Name: Button_DeckFormationButton
   m_TagString: Untagged
@@ -348,9 +350,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 3739720646641100558}
+    _uiGroup: {fileID: 590256503885529538}
     _button: {fileID: 4502460028012860293}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _overlayID: DeckFormation
+--- !u!114 &590256503885529538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026165907455653282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 6831592940228189937}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &6831592940228189937
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026165907455653282}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6517890269039078063
 GameObject:
   m_ObjectHideFlags: 0

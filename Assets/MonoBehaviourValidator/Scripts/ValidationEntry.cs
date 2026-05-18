@@ -5,12 +5,12 @@ namespace MonoBehaviourValidator
 
 	public struct ValidationEntry
 	{
-		public string message;
+		public string name;
 		public Func<bool> validationFunc;
 
-		public ValidationEntry(string message, Func<bool> validationFunc)
+		public ValidationEntry(string name, Func<bool> validationFunc)
 		{
-			this.message = message;
+			this.name = name;
 			this.validationFunc = validationFunc;
 		}
 	}

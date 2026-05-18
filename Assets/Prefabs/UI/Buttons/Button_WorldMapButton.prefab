@@ -503,6 +503,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2755481224142499928}
   - component: {fileID: 3650088168254886797}
+  - component: {fileID: 4268483901732903890}
+  - component: {fileID: 8181371331717912102}
   m_Layer: 5
   m_Name: Button_WorldMapButton
   m_TagString: Untagged
@@ -543,9 +545,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view:
-    _topElement: {fileID: 4142005885829381231}
+    _uiGroup: {fileID: 4268483901732903890}
     _button: {fileID: 8316398619249921789}
+  defaultDisable: 0
+  dontDestroyOnLoad: 0
+  initializeOnShow: 1
   _overlayID: WorldMap
+--- !u!114 &4268483901732903890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289548221434122352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 8181371331717912102}
+  _childUIPresenters: []
+  _isShowing: 0
+--- !u!225 &8181371331717912102
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289548221434122352}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6556648883225358856
 GameObject:
   m_ObjectHideFlags: 0

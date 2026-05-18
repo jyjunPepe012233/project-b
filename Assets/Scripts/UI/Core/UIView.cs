@@ -12,6 +12,7 @@ namespace ProjectB.UI.Core
 	{
 		[Required, SerializeField]
 		private UIGroup _uiGroup;
+		public UIGroup UIGroup => _uiGroup;
 
 		public bool IsShowing => _uiGroup.IsShowing;
 

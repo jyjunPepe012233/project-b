@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e153c95a43d54751b145d8bea9aaf3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _homeUIController: {fileID: 0}
-  _topElement: {fileID: 0}
-  _overlayID: 
+  _uiGroup: {fileID: 0}
+  _overlayId: 

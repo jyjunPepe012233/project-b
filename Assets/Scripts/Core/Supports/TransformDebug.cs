@@ -12,8 +12,6 @@ namespace ProjectB.Core.Supports
 		{
 			if (current == null) return "<null>";
 			
-			StringBuilder sb = new StringBuilder();
-
 			// string.Join에서는 역순으로 문자열이 조합되므로,
 			// Stack을 사용하여 부모->자식 순으로 조회되게 함
 			Stack<string> pathParts = new Stack<string>();

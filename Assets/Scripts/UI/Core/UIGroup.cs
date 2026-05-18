@@ -1,12 +1,13 @@
 using System.Linq;
 using InspectorGadgets.Attributes;
+using MonoBehaviourValidator;
 using ProjectB.Core.Supports;
 using UnityEngine;
 
 namespace ProjectB.UI.Core
 {
 
-	public class UIGroup : MonoBehaviour
+	public class UIGroup : MonoBehaviour, IValidatable
 	{
 		[Required, SerializeField]
 		private CanvasGroup _canvasGroup;
@@ -88,6 +89,19 @@ namespace ProjectB.UI.Core
 				}
 				presenter.Hide();
 			}
+		}
+		
+		
+		
+		// IValidatable 구현
+		public MonoBehaviour GetMonoBehaviour() => this;
+
+		public ValidationMethod GetValidationMethod()
+		{
+			return new ValidationMethod()
+				.Register("CanvasGroup 할당", () => _canvasGroup != null)
+				.Register("자식 Presenter 요소 중 Null 존재 여부 검증",
+					() => _childUIPresenters?.All(p => p != null) ?? true); // _childUIPresenter가 null이면 유효한 상태임(요소가 없음)ㄴ
 		}
 	}
 
