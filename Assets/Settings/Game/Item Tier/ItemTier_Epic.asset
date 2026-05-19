@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemTierName: "\uC124\uD654"
   _itemTierLevel: 100
-  _backgroundPrefab128: {fileID: 6244869983977159121, guid: f7189f7f716a44acabc0788e2c9e23ce, type: 3}
+  _backgroundPrefab128: {fileID: 5234264970327438058, guid: 4d33e571eec7f489899c623c34e9de37, type: 3}
