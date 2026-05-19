@@ -13,7 +13,10 @@ namespace ProjectB.UI.Screens.BackpackScreen
 	{
 		[Header("Pages")]
 		[SerializeField] private BackpackPage _consumablePage;
+		public BackpackPage ConsumablePage => _consumablePage;
+		
 		[SerializeField] private BackpackPage _equipmentPage;
+		public BackpackPage EquipmentPage => _equipmentPage;
 
 		public override void RegisterUICallbacks()
 		{

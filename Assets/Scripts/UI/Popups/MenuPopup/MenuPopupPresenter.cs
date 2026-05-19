@@ -1,11 +1,15 @@
+using ProjectB.Dependency.Installers;
 using ProjectB.UI.Buttons.MenuButton;
 using ProjectB.UI.Core;
+using UnityEngine;
 
 namespace ProjectB.UI.Popups.MenuPopup
 {
 
 	public class MenuPopupPresenter : UIPresenter<MenuPopupView>
 	{
+		[SerializeField] private MenuServicePortInstaller _menuServicePortInstaller;
+
 		protected override void SetupSubscriptions()
 		{
 			base.SetupSubscriptions();
@@ -36,7 +40,7 @@ namespace ProjectB.UI.Popups.MenuPopup
 
 		void OnOpenBackpackButtonClicked()
 		{
-			
+			_menuServicePortInstaller.Port.OpenBackpack();
 			Hide();
 		}
 	}

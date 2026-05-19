@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using InspectorGadgets.Attributes;
 using ProjectB.Core.Types;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace ProjectB.UI.Screens.Home
 		public static Action<string> OpenOverlay; // string: overlayID
 		public static Action CloseOverlay; // string: overlayID
 		
+		[Inspectable(Readonly = true)]
 		public static string CurrentOverlayID { get; private set; }
 		
 		
