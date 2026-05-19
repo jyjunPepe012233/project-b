@@ -6,12 +6,9 @@ namespace AssetValidator.Editor
 	public class MonoBehaviourValidatorWindow : EditorWindow
 	{
 		private const string PREF_KEY_SEARCH_FOLDER = "MonoBehaviourValidator.SearchFolder";
-		private const string PREF_KEY_LOG_DIRECTORY = "MonoBehaviourValidator.LogDir";
 		private const string DEFAULT_FOLDER = "Assets/Prefabs/";
-		private const string DEFAULT_LOG_DIRECTORY = "Assets/MonoBehaviourValidator/Logs";
 
 		private string _searchFolder;
-		private string _logDir;
 		private ValidationLog _log;
 		private UnityEditor.Editor _logEditor;
 
@@ -27,9 +24,6 @@ namespace AssetValidator.Editor
 		{
 			_searchFolder = EditorPrefs.GetString(PREF_KEY_SEARCH_FOLDER, MonoBehaviourValidator.searchFolder);
 			MonoBehaviourValidator.searchFolder = _searchFolder;
-
-			_logDir = EditorPrefs.GetString(PREF_KEY_LOG_DIRECTORY, MonoBehaviourValidator.logDir);
-			MonoBehaviourValidator.logDir = _logDir;
 		}
 
 		private void OnDisable()
@@ -45,7 +39,18 @@ namespace AssetValidator.Editor
 		void OnGUI()
 		{
 			EditorGUILayout.Space(8); // 패딩
+
+			// Log Directory (읽기 전용)
+			EditorGUILayout.LabelField("Log Directory", EditorStyles.boldLabel);
+			using (new EditorGUI.DisabledScope(true)) // using 내부의 필드들을 읽기 전용으로 만듬... 원리를 모르곘음 ㅠㅠ
+			{
+				EditorGUILayout.TextField(MonoBehaviourValidator.logDir);
+			}
+			EditorGUILayout.HelpBox("이 폴더에 Log 애셋이 생성됩니다", MessageType.Info);
+
 			
+			EditorGUILayout.Space(4); // Log Directory 섹션과 Search Folder 섹션 사이 간격
+
 			// Search Folder 설정
 			EditorGUILayout.LabelField("Search Folder", EditorStyles.boldLabel);
 			EditorGUI.BeginChangeCheck();
@@ -55,22 +60,8 @@ namespace AssetValidator.Editor
 				EditorPrefs.SetString(PREF_KEY_SEARCH_FOLDER, _searchFolder);
 				MonoBehaviourValidator.searchFolder = _searchFolder;
 			}
-			
 			EditorGUILayout.HelpBox("이 폴더 하위의 모든 프리팹이 검증됩니다.", MessageType.Info);
 			
-			EditorGUILayout.Space(4); // Search Folder 섹션과 Log Directory 섹션 사이 간격
-			
-			// Log Directory 설정
-			EditorGUILayout.LabelField("Log Directory", EditorStyles.boldLabel);
-			EditorGUI.BeginChangeCheck();
-			_logDir = EditorGUILayout.TextField(_logDir);
-			if (EditorGUI.EndChangeCheck())
-			{
-				EditorPrefs.SetString(PREF_KEY_LOG_DIRECTORY, _logDir);
-				MonoBehaviourValidator.logDir = _logDir;
-			}
-			
-			EditorGUILayout.HelpBox("이 폴더에 Log 애셋이 생성됩니다", MessageType.Info);
 
 			EditorGUILayout.Space(4); // 위 섹션과 버튼 사이 간격
 
@@ -94,10 +85,6 @@ namespace AssetValidator.Editor
 				_searchFolder = DEFAULT_FOLDER;
 				EditorPrefs.SetString(PREF_KEY_SEARCH_FOLDER, _searchFolder);
 				MonoBehaviourValidator.searchFolder = _searchFolder;
-
-				_logDir = DEFAULT_LOG_DIRECTORY;
-				EditorPrefs.SetString(PREF_KEY_LOG_DIRECTORY, _logDir);
-				MonoBehaviourValidator.logDir = _logDir;
 			}
 
 			EditorGUILayout.Space(4);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ namespace AssetValidator
 	public static class MonoBehaviourValidator
 	{
 		public static string searchFolder = "Assets/Prefabs/";
-		public static string logDir = "Assets/MonoBehaviourValidator/Logs";
+		public const string logDir = "Assets/AssetValidator/Logs";
 
 		
 #if UNITY_EDITOR
-		[MenuItem("Tools/MonoBehaviour Validator/Validate All Prefabs")]
+		[MenuItem("Tools/Asset Validator/Validate All Prefabs")]
 		public static ValidationLog ValidateAll()
 		{
 			string[] guids = AssetDatabase.FindAssets(
@@ -78,7 +79,9 @@ namespace AssetValidator
 		{
 			if (!AssetDatabase.IsValidFolder(logDir))
 			{
-				AssetDatabase.CreateFolder("Assets/MonoBehaviourValidator", "Logs");
+				string parentDir = logDir.Substring(0, logDir.LastIndexOf('/'));
+				string folderName = logDir.Substring(logDir.LastIndexOf('/') + 1);
+				AssetDatabase.CreateFolder(parentDir, folderName);
 			}
 
 			string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
