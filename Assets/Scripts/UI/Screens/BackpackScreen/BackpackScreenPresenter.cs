@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AssetValidator;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Types;
@@ -66,7 +67,7 @@ namespace ProjectB.UI.Screens.BackpackScreen
 				if (itemCategory != pageCategory) return;
 				
 				var playerData = _playerDataServicePortInstaller.Port.GetPlayerData();
-				updateAction?.Invoke(playerData.Items);
+				updateAction?.Invoke(playerData.Items.Where(pi => pi.ItemData.Category == itemCategory));
 			}
 			
 			// 지역 메서드를 사용하여 다양한 페이지를 간단하게 업데이트
