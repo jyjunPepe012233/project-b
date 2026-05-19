@@ -73,13 +73,6 @@ namespace ProjectB.UI.Screens.BackpackScreen
 			UpdateIfCategoryMatches(view.UpdateConsumablePage, ItemCategory.Consumable);
 			UpdateIfCategoryMatches(view.UpdateEquipmentPage, ItemCategory.Equipment);
 		}
-
-		public override ValidationMethod GetValidationMethod()
-		{
-			return base.GetValidationMethod()
-				.Register("ConsumablePage에 UIGroup 할당", () => view.ConsumablePage.UIGroup != null)
-				.Register("EquipmentPage에 UIGroup 할당", () => view.EquipmentPage.UIGroup != null);
-		}
 	}
 
 }

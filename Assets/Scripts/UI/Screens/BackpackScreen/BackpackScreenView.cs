@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AssetValidator;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Types;
 using ProjectB.UI.Core;
@@ -58,6 +59,17 @@ namespace ProjectB.UI.Screens.BackpackScreen
 		public void UpdateEquipmentPage(IEnumerable<IPlayerItem> playerItems)
 		{
 			_equipmentPage.UpdateItemSlots(playerItems);
+		}
+
+
+		public override ValidationMethod GetValidationMethod(ValidationMethod chain)
+		{
+			var validationMethod = base.GetValidationMethod(chain)
+				.Register("ConsumablePage 할당", () => _consumablePage != null)
+				.Register("EquipmentPage 할당", () => _equipmentPage != null);
+			_consumablePage.GetValidationMethod(validationMethod);
+			_equipmentPage.GetValidationMethod(validationMethod);
+			return validationMethod;
 		}
 	}
 

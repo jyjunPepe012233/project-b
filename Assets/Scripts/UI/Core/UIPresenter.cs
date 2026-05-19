@@ -102,8 +102,7 @@ namespace ProjectB.UI.Core
 		// 하위 Presenter에서 검증 처리를 추가할 수 있도록 virtual로 선언
 		public virtual ValidationMethod GetValidationMethod()
 		{
-			return new ValidationMethod()
-				.Register("View에 UIGroup 할당", () => view.UIGroup != null);
+			return view.GetValidationMethod(new ValidationMethod());
 		}
 	}
 

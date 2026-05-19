@@ -1,4 +1,5 @@
 using System;
+using AssetValidator;
 using InspectorGadgets.Attributes;
 using ProjectB.Core.Supports;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace ProjectB.UI.Core
 	{
 		[Required, SerializeField]
 		private UIGroup _uiGroup;
-		public UIGroup UIGroup => _uiGroup;
 
 		public bool IsShowing => _uiGroup.IsShowing;
 
@@ -34,6 +34,13 @@ namespace ProjectB.UI.Core
 		public virtual void Hide()
 		{
 			_uiGroup.Hide();
+		}
+
+
+		public virtual ValidationMethod GetValidationMethod(ValidationMethod chain)
+		{
+			return chain
+				.Register("UIGroup 할당", () => _uiGroup != null);
 		}
 	}
 
