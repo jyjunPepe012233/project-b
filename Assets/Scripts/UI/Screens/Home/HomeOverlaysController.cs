@@ -71,6 +71,12 @@ namespace ProjectB.UI.Screens.Home
 				return;
 			}
 			
+			if (CurrentOverlayID == overlayID)
+			{
+				Debug.LogWarning($"[{nameof(HomeOverlaysController)}] 이미 켜져있는 OverlayID: {overlayID}");
+				return;
+			}
+			
 			// 켜져있는 오버레이가 있으면 숨김
 			if (_overlayStack.Count != 0)
 			{
