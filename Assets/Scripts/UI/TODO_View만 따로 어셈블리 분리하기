@@ -1,2 +1,56 @@
 View만 TextMeshProUGUI 등을 사용할 수 있게 할 수도 있고,
 구조 상 여러모로 좋을 것 같음
+
+
+그리고 MVP 구조 리팩토링하기
+
+예를 들어 아래 코드처럼 View가 Presenter를 가지고 있고, Presenter들을 제어하는 구조로 가면 View가 Presenter를 제어하면서 "로직 의미"를 이해하게 됨.
+-> Presenter에만 로직이 있어야 하고 View는 UGUI를 조작하는 중재자 역할을 해야한다는 책임 분배가 침해됨
+
+(중요한 건, View는 특정 UI 요소의 렌더링 어댑터 역할을 해야한다는 것임)
+
+
+
+	[Serializable]
+	public class BackpackScreenView : UIView
+	{
+		[Required, SerializeField] private ItemSlotButtonListPresenter _itemList;
+		[SerializeField] private ItemInfoPanelView _itemInfoPanel;
+		
+		public event Action<IItemData> ItemListSlotClicked;
+		public event Action ConsumeButtonClicked;
+
+		public override void RegisterUICallbacks()
+		{
+			base.RegisterUICallbacks();
+			_itemInfoPanel.RegisterUICallbacks();
+			
+			_itemList.SlotClicked += OnItemListSlotClicked;
+			_itemInfoPanel.ConsumeButtonClicked += OnConsumeButtonClicked;
+		}
+
+		public override void Dispose()
+		{
+			base.Dispose();
+			_itemInfoPanel.Dispose();
+			
+			_itemList.SlotClicked -= OnItemListSlotClicked;
+			_itemInfoPanel.ConsumeButtonClicked -= OnConsumeButtonClicked;
+		}
+
+		// 이제부터 protected virtual로 선언하는 습관을 들이기로 했음 (26.05.21.)
+		protected virtual void OnItemListSlotClicked(IItemData itemData)
+		{
+			ItemListSlotClicked?.Invoke(itemData);
+		}
+		
+		protected virtual void OnConsumeButtonClicked()
+		{
+			ConsumeButtonClicked?.Invoke();
+		}
+		
+		
+		public void UpdateItemList(IEnumerable<IPlayerItem> items)
+		{
+			_itemList.UpdateItems(items); 
+		}
