@@ -1,0 +1,10 @@
+문제 발견:
+UGUI가 제공하는 기본 컴포넌트 중에는 부모 RectTransform의 크기가 변경될 때 자식 RectTransform의 크기를 원하는 비율로 자동으로 조정하는 컴포넌트가 없었음.
+
+해결 과정:
+1. 처음에는 OnValidate나 UIBehaviour의 OnRectTransformDimensionsChange 등의 콜백을 사용하려 구현하려 했으나, 부모 RectTransform의 크기가 변경되는 것을 감지해야 했기 때문에 이 방식은 적합하지 않았음
+2. 그래서 Root 컴포넌트를 만들고, Root가 자식 UI들을 관리하는 방식으로 구현함.
+3. 이 때 에디터 사용 시점 및 런타임 중에도 적절한 때에 UI를 갱신시키고 싶었는데, UGUI의 Layout Pass에 맞춰서 UI를 갱신시키는 방식으로 구현하여 해결할 수 있었음.
+
+결과:
+UIConstraintRoot를 최상위 게임오브젝트에 붙이고, 그 아래에 RelativeSizeElement 등의 UI 제약(UIConstraintElement)를 붙이면 Layout Pass에 따라 원하는 제약이 적용됨  

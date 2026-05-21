@@ -609,17 +609,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50c8187ef8954f2f9d27529116eaca8, type: 3}
---- !u!114 &319877619025912431 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 905362025519942076, guid: a50c8187ef8954f2f9d27529116eaca8, type: 3}
-  m_PrefabInstance: {fileID: 639532075549830099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2726793109152975213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1396015270870817378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1999518480648057265, guid: a50c8187ef8954f2f9d27529116eaca8, type: 3}
@@ -686,10 +675,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeOverlay_Shop
       objectReference: {fileID: 0}
-    - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
-      propertyPath: _uiGroup
-      value: 
-      objectReference: {fileID: 319877619025912431}
     - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
       propertyPath: _overlayID
       value: Shop
@@ -762,6 +747,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[0]
+      value: 
+      objectReference: {fileID: 1396015270870817378}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[1]
+      value: 
+      objectReference: {fileID: 4544394140686431542}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[2]
+      value: 
+      objectReference: {fileID: 7879494981000586166}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[3]
+      value: 
+      objectReference: {fileID: 4484791136399141735}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

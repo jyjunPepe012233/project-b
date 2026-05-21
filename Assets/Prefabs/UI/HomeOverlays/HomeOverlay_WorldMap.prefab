@@ -961,17 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5585f1d73e4fe8acc3e43ee41b7525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6075972666733784854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5856941643605462732, guid: 9aa679502a6934c49adfb49f361e03aa, type: 3}
-  m_PrefabInstance: {fileID: 367669637752398298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7367299887350615125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4abbb4cff9142afa5ce5af1869a5abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6597587193699613235 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6815475720098946025, guid: 9aa679502a6934c49adfb49f361e03aa, type: 3}
@@ -1066,10 +1055,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeOverlay_WorldMap
       objectReference: {fileID: 0}
-    - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
-      propertyPath: _uiGroup
-      value: 
-      objectReference: {fileID: 6075972666733784854}
     - target: {fileID: 7990027965447427718, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
       propertyPath: _overlayID
       value: WorldMap
@@ -1178,6 +1163,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[0]
+      value: 
+      objectReference: {fileID: 8254098553467520511}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[1]
+      value: 
+      objectReference: {fileID: 8431222071790063903}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[2]
+      value: 
+      objectReference: {fileID: 937173665897367437}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[3]
+      value: 
+      objectReference: {fileID: 2231876696015189240}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[4]
+      value: 
+      objectReference: {fileID: 8260614647546518314}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[5]
+      value: 
+      objectReference: {fileID: 17480860019828768}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[6]
+      value: 
+      objectReference: {fileID: 2745244136312508039}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[7]
+      value: 
+      objectReference: {fileID: 7964848633802805433}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[8]
+      value: 
+      objectReference: {fileID: 6879205474082626050}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[9]
+      value: 
+      objectReference: {fileID: 6597587193699613235}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[10]
+      value: 
+      objectReference: {fileID: 1262245182949478373}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[11]
+      value: 
+      objectReference: {fileID: 4680499438709213068}
+    - target: {fileID: 8826744919691202931, guid: d255ecea6c3d145688c6388b1bb40361, type: 3}
+      propertyPath: _childUIPresenters.Array.data[12]
+      value: 
+      objectReference: {fileID: 792434137702789722}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
