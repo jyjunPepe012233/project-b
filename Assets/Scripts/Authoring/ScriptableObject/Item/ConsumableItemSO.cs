@@ -1,6 +1,5 @@
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
-using UnityEngine;
 
 namespace ProjectB.Authoring.ScriptableObject.Item
 {
@@ -10,8 +9,6 @@ namespace ProjectB.Authoring.ScriptableObject.Item
 	public abstract class ConsumableItemSO : ItemDataSO, IConsumableItem
 	{
 		public override ItemCategory Category => ItemCategory.Consumable;
-
-		public abstract void Consume();
 	}
 
 }
