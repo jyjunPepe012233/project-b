@@ -11,7 +11,6 @@ namespace ProjectB.UI.Parts
 	{
 		[Header("Button")]
 		[Required, SerializeField] private Button _button;
-		public Button Button => _button;
 		
 		public event Action Clicked;
 
