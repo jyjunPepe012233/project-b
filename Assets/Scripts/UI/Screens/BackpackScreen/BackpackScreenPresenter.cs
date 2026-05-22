@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using AssetValidator;
-using ProjectB.Data.Runtime.Player;
+using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using ProjectB.Dependency.Installers;
 using ProjectB.UI.Buttons.BackpackNavigateButton;
@@ -15,19 +12,23 @@ namespace ProjectB.UI.Screens.BackpackScreen
 	public class BackpackScreenPresenter : UIPresenter<BackpackScreenView>
 	{
 		[SerializeField] private PlayerDataServicePortInstaller _playerDataServicePortInstaller;
-		
+
 		private ItemCategory _currentCategory;
 
 		protected override void SetupSubscriptions()
 		{
 			base.SetupSubscriptions();
 			BackpackNavigateButtonEvents.Clicked += OnNavigateButtonClicked;
+			
+			view.ItemListSlotClicked += OnItemListSlotClicked;
 		}
 
 		protected override void DisposeSubscriptions()
 		{
 			base.DisposeSubscriptions();
 			BackpackNavigateButtonEvents.Clicked -= OnNavigateButtonClicked;
+
+			view.ItemListSlotClicked -= OnItemListSlotClicked;
 		}
 
 		protected override void InitializeView()
@@ -36,7 +37,6 @@ namespace ProjectB.UI.Screens.BackpackScreen
 			
 			// 처음 열었을 때는 소비 아이템 페이지가 보이도록 설정
 			OpenPage(ItemCategory.Consumable);
-			UpdatePage(_currentCategory);
 		}
 
 		void OnNavigateButtonClicked(ItemCategory category)
@@ -46,33 +46,32 @@ namespace ProjectB.UI.Screens.BackpackScreen
 			{
 				OpenPage(category);
 			}
-
-			UpdatePage(category);
+		}
+		
+		void OnItemListSlotClicked(IItemData itemData)
+		{
+			var playerItems = _playerDataServicePortInstaller.Port.GetPlayerData().Items;
+			var playerItem = playerItems.FirstOrDefault(item => item.ItemData == itemData);
+			if (playerItem != null)
+			{
+				view.UpdateItemInfoPanel(playerItem);
+				view.SetItemInfoPanelDisabledPanelActive(false);
+				view.SetItemInfoPanelEnabledPanelActive(true);
+			}
 		}
 		
 		void OpenPage(ItemCategory category)
 		{
 			_currentCategory = category;
 
-			view.SetVisibleConsumablePage(category == ItemCategory.Consumable);
-			view.SetVisibleEquipmentPage(category == ItemCategory.Equipment);
-		}
-		
-		void UpdatePage(ItemCategory itemCategory)
-		{
-			// 특정 페이지를 업데이트하는 메서드와 페이지의 카테고리를 입력하여
-			// itemCategory와 페이지의 카테고리가 일치하면 해당 페이지의 아이템 리스트를 업데이트하는 메서드
-			void UpdateIfCategoryMatches(Action<IEnumerable<IPlayerItem>> updateAction, ItemCategory pageCategory)
-			{
-				if (itemCategory != pageCategory) return;
-				
-				var playerData = _playerDataServicePortInstaller.Port.GetPlayerData();
-				updateAction?.Invoke(playerData.Items.Where(pi => pi.ItemData.Category == itemCategory));
-			}
+			// 아이템 리스트 초기화
+			var playerItems = _playerDataServicePortInstaller.Port.GetPlayerData().Items;
+			var categoryItems = playerItems.Where(item => item.ItemData.Category == category);
+			view.UpdateItemList(categoryItems);
 			
-			// 지역 메서드를 사용하여 다양한 페이지를 간단하게 업데이트
-			UpdateIfCategoryMatches(view.UpdateConsumablePage, ItemCategory.Consumable);
-			UpdateIfCategoryMatches(view.UpdateEquipmentPage, ItemCategory.Equipment);
+			// 아이템 상세 정보 패널을 비활성화 상태로 바꿈
+			view.SetItemInfoPanelDisabledPanelActive(true);
+			view.SetItemInfoPanelEnabledPanelActive(false);
 		}
 	}
 

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using AssetValidator;
 using ProjectB.Data.Static.Item;
 using ProjectB.UI.Core;
 using ProjectB.UI.Parts;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace ProjectB.UI.Lists.ItemSlotList
@@ -12,23 +14,30 @@ namespace ProjectB.UI.Lists.ItemSlotList
 	[Serializable]
 	public class ItemSlotListView : UIView
 	{
-		[SerializeField] private Transform _contentParent;
-		[SerializeField] private ItemSlot _slotPrefab;
+		[SerializeField] protected Transform contentParent;
+		[SerializeField] protected ItemSlot slotPrefab;
 
-		private readonly List<ItemSlot> _slotInstances = new();
+		protected readonly List<ItemSlot> slotInstances = new();
 
-		public void UpdateItems(IEnumerable<(IItemData itemData, int quantity)> data)
+		public virtual void UpdateItems(IEnumerable<(IItemData itemData, int quantity)> data)
 		{
-			foreach (var slot in _slotInstances)
+			foreach (var slot in slotInstances)
 				Object.Destroy(slot.gameObject);
-			_slotInstances.Clear();
+			slotInstances.Clear();
 
 			foreach (var (itemData, quantity) in data)
 			{
-				var slot = Object.Instantiate(_slotPrefab, _contentParent);
+				var slot = Object.Instantiate(slotPrefab, contentParent);
 				slot.SetItemInfo(itemData, quantity);
-				_slotInstances.Add(slot);
+				slotInstances.Add(slot);
 			}
+		}
+
+		public override ValidationMethod GetValidationMethod(ValidationMethod chain)
+		{
+			return base.GetValidationMethod(chain)
+				.Register("ContentParent 할당", () => contentParent != null)
+				.Register("SlotPrefab 할당", () => slotPrefab != null);
 		}
 	}
 

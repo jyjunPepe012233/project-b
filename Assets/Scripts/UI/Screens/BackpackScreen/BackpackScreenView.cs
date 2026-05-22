@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using AssetValidator;
+using InspectorGadgets.Attributes;
 using ProjectB.Data.Runtime.Player;
-using ProjectB.Data.Types;
+using ProjectB.Data.Static.Item;
 using ProjectB.UI.Core;
+using ProjectB.UI.Lists.ItemSlotList;
 using UnityEngine;
 
 namespace ProjectB.UI.Screens.BackpackScreen
@@ -12,63 +14,71 @@ namespace ProjectB.UI.Screens.BackpackScreen
 	[Serializable]
 	public class BackpackScreenView : UIView
 	{
-		[Header("Pages")]
-		[SerializeField] private BackpackPage _consumablePage;
-		public BackpackPage ConsumablePage => _consumablePage;
+		[Required, SerializeField] private ItemSlotButtonListPresenter _itemList;
+		[SerializeField] private ItemInfoPanelView _itemInfoPanel;
 		
-		[SerializeField] private BackpackPage _equipmentPage;
-		public BackpackPage EquipmentPage => _equipmentPage;
+		public event Action<IItemData> ItemListSlotClicked;
+		public event Action ConsumeButtonClicked;
 
 		public override void RegisterUICallbacks()
 		{
 			base.RegisterUICallbacks();
-			_consumablePage.RegisterUICallbacks();
-			_equipmentPage.RegisterUICallbacks();
+			_itemInfoPanel.RegisterUICallbacks();
+			
+			_itemList.SlotClicked += OnItemListSlotClicked;
+			_itemInfoPanel.ConsumeButtonClicked += OnConsumeButtonClicked;
 		}
-
+		
 		public override void Dispose()
 		{
 			base.Dispose();
-			_consumablePage.Dispose();
-			_equipmentPage.Dispose();
-		}
-
-		public void SetVisibleConsumablePage(bool active)
-		{
-			SetVisiblePage(_consumablePage, active);
-		}
-
-		public void SetVisibleEquipmentPage(bool active)
-		{
-			SetVisiblePage(_equipmentPage, active);
-		}
-
-		void SetVisiblePage(BackpackPage page, bool active)
-		{
-			if (active)
-				page.Show();
-			else
-				page.Hide();
-		}
-
-		public void UpdateConsumablePage(IEnumerable<IPlayerItem> playerItems)
-		{
-			_consumablePage.UpdateItemSlots(playerItems);
+			_itemInfoPanel.Dispose();
+			
+			_itemList.SlotClicked -= OnItemListSlotClicked;
+			_itemInfoPanel.ConsumeButtonClicked -= OnConsumeButtonClicked;
 		}
 		
-		public void UpdateEquipmentPage(IEnumerable<IPlayerItem> playerItems)
+		// 이제부터 protected virtual로 선언하는 습관을 들이기로 했음 (26.05.21.)
+		protected virtual void OnItemListSlotClicked(IItemData itemData)
 		{
-			_equipmentPage.UpdateItemSlots(playerItems);
+			ItemListSlotClicked?.Invoke(itemData);
+		}
+		
+		protected virtual void OnConsumeButtonClicked()
+		{
+			ConsumeButtonClicked?.Invoke();
+		}
+		
+		
+		public void UpdateItemList(IEnumerable<IPlayerItem> items)
+		{
+			_itemList.UpdateItems(items);
 		}
 
+		public void UpdateItemInfoPanel(IPlayerItem playerItem)
+		{
+			// TODO: 사실 이 코드는 View가 아니라 Presenter에 있어야 함 (데이터와 UI 사이의 연결을 담당하는 코드를 "의미"를 가지기 때문)
+			
+			_itemInfoPanel.SetItemNameText(playerItem.ItemData.ItemName);
+			_itemInfoPanel.SetItemDescriptionText(playerItem.ItemData.DetailedDescription);
+			_itemInfoPanel.SetItemQuantityText(playerItem.Quantity);
+			_itemInfoPanel.SetConsumeButtonActive(playerItem.ItemData is IConsumableItem);
+		}
+		
+		public void SetItemInfoPanelDisabledPanelActive(bool active)
+		{
+			_itemInfoPanel.SetDisabledPanelActive(active);
+		}
+		
+		public void SetItemInfoPanelEnabledPanelActive(bool active)
+		{
+			_itemInfoPanel.SetEnabledPanelActive(active);
+		}
 
 		public override ValidationMethod GetValidationMethod(ValidationMethod chain)
 		{
 			var validationMethod = base.GetValidationMethod(chain)
-				.Register("ConsumablePage 할당", () => _consumablePage != null)
-				.Register("EquipmentPage 할당", () => _equipmentPage != null);
-			_consumablePage.GetValidationMethod(validationMethod);
-			_equipmentPage.GetValidationMethod(validationMethod);
+				.Register("ItemList 할당", () => _itemList != null);
 			return validationMethod;
 		}
 	}

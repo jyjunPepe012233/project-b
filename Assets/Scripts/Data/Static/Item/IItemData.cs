@@ -9,6 +9,8 @@ namespace ProjectB.Data.Static.Item
 		string ItemId { get; }
 		
 		string ItemName { get; }
+
+		string DetailedDescription { get; }
 		
 		Sprite Icon128 { get; }
 		
