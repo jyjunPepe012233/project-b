@@ -8,7 +8,9 @@ namespace ProjectB.Infrastructure
 
 	public class LoadBackpackScreenService : ILoadBackpackScreenPort
 	{
-		private HomeOverlaysControlService _homeOverlaysControlService; // TODO: 근데 HomeOverlaysControlService도 DI로 주입받을 수는 없나?
+		private HomeOverlaysControlService _homeOverlaysControlService;
+		// 근데 HomeOverlaysControlService도 DI로 주입받을 수는 없나?
+		//   26. 05. 23. HomeOverlaysControlService는 외부 기술(UI 시스템)의 일부이기 때문에 DI에 참여시키면 안 됨.
 
 		public bool IsLoaded => GetUIService(out var service) && service.CurrentOverlayID == "Backpack";
 
