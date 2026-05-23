@@ -55,3 +55,4 @@ MonoBehaviour:
   _moraleSettingSO: {fileID: 11400000, guid: 0b85552d8180f40208cd28fc1d437b7f, type: 2}
   _sweepSettingSO: {fileID: 11400000, guid: fcab4d54eb4f84bdb9a2946eac28350d, type: 2}
   _playerLevelUpSettingSO: {fileID: 11400000, guid: f494f1d39ae9849f2921b8ae89ccee27, type: 2}
+  _globalSoldierLevelUpSettingSO: {fileID: 11400000, guid: 825f7caa854074a6c9dd9fbb86c53f0b, type: 2}

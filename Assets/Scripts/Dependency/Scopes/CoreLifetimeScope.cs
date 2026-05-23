@@ -32,6 +32,7 @@ namespace ProjectB.Dependency.Scopes
 		[SerializeField] private MoraleSettingSO _moraleSettingSO;
 		[SerializeField] private SweepSettingSO _sweepSettingSO;
 		[SerializeField] private PlayerLevelUpSettingSO _playerLevelUpSettingSO;
+		[SerializeField] private GlobalSoldierLevelUpSettingSO _globalSoldierLevelUpSettingSO;
 
 		protected override void Awake()
 		{
@@ -131,6 +132,7 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
 			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
+			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
 		}
 	}
 

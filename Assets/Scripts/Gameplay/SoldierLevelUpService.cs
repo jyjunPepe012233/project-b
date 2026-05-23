@@ -13,18 +13,17 @@ namespace ProjectB.Gameplay
 
 	public class SoldierLevelUpService : ISoldierLevelUpServicePort
 	{
-		// ConsumeFoods 한번에 소모할 식량의 양 비율. 기준은 사도의 레벨업에 필요한 식량의 양
-		// TODO: SO 기반 Setting으로 분리하기
-		private const float FOODS_CONSUME_RATIO = 0.3f;
-		
+		private readonly IGlobalSoldierLevelUpSetting _globalSoldierLevelUpSetting;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly ISoldierStatusComputerPort _soldierStatusComputerPort;
 		private readonly ISoldierCombatPowerComputerPort _soldierCombatPowerComputerPort;
 
-		public SoldierLevelUpService(IPlayerSessionHolderPort playerSessionHolderPort,
+		public SoldierLevelUpService(IGlobalSoldierLevelUpSetting globalSoldierLevelUpSetting,
+			IPlayerSessionHolderPort playerSessionHolderPort,
 			ISoldierStatusComputerPort soldierStatusComputerPort, 
 			ISoldierCombatPowerComputerPort soldierCombatPowerComputerPort)
 		{
+			_globalSoldierLevelUpSetting = globalSoldierLevelUpSetting;
 			_playerSessionHolderPort = playerSessionHolderPort;
 			_soldierStatusComputerPort = soldierStatusComputerPort;
 			_soldierCombatPowerComputerPort = soldierCombatPowerComputerPort;
@@ -52,10 +51,10 @@ namespace ProjectB.Gameplay
 			}
 			
 			// targetExp는 이 레벨에서 레벨 업을 하기 위해 필요한 식량의 수를 의미함
-			int targetExp = soldier.LevelUpExpSetting.GetLevelUpExpOfLevel(playerSoldier.Level);
+			int targetExp = soldier.LevelUpSetting.GetLevelUpExpOfLevel(playerSoldier.Level);
 
 			// consumeFood는 이번에 병사의 경험치로 변환할 식량의 수를 의미함 
-			int consumeFood = (int)(targetExp * FOODS_CONSUME_RATIO);
+			int consumeFood = (int)(targetExp * _globalSoldierLevelUpSetting.FoodConsumeRatio);
 			
 			if (!playerData.TryConsumeFoods(consumeFood)) // 내림
 			{
@@ -71,7 +70,7 @@ namespace ProjectB.Gameplay
 				int nextTargetExp;
 				
 				// 다음 레벨의 target exp보다 현재 remainExp가 더 많이 남았을 때
-				while ((nextTargetExp = soldier.LevelUpExpSetting.GetLevelUpExpOfLevel(playerSoldier.Level)) <= remainExp)
+				while ((nextTargetExp = soldier.LevelUpSetting.GetLevelUpExpOfLevel(playerSoldier.Level)) <= remainExp)
 				{ 
 					if (playerSoldier.Level >= playerData.Level) // 레벨업 반복 도중에 플레이어 레벨보다 병사 레벨이 높아지는 것을 방지
 					{
@@ -115,8 +114,8 @@ namespace ProjectB.Gameplay
 				return 0;
 			}
 
-			var targetExp = soldier.LevelUpExpSetting.GetLevelUpExpOfLevel(playerSoldier.Level);
-			return (int)(targetExp * FOODS_CONSUME_RATIO);
+			var targetExp = soldier.LevelUpSetting.GetLevelUpExpOfLevel(playerSoldier.Level);
+			return (int)(targetExp * _globalSoldierLevelUpSetting.FoodConsumeRatio);
 		}
 
 		public SoldierStatus GetNextLevelStatus(ISoldierData soldier)

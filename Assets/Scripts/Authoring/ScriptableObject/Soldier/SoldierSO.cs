@@ -3,6 +3,7 @@ using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Spirit;
 using ProjectB.Data.Types;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ProjectB.Authoring.ScriptableObject.Soldier
 {
@@ -12,7 +13,7 @@ namespace ProjectB.Authoring.ScriptableObject.Soldier
 	{
 		public ISoldierCardDisplaySetting CardDisplaySetting => this;
 		
-		public ISoldierLevelUpExpSetting LevelUpExpSetting => _soldierLevelUpExpSettingSo;
+		public ISoldierLevelUpSetting LevelUpSetting => _soldierLevelUpSettingSo;
 		
 		
 		[Header("Soldier Info")]
@@ -66,8 +67,9 @@ namespace ProjectB.Authoring.ScriptableObject.Soldier
 
 
 
+		[FormerlySerializedAs("_soldierLevelUpExpSettingSo")]
 		[Header("LevelUp Exp Setting")]
-		[SerializeField] private SoldierLevelUpExpSettingSO _soldierLevelUpExpSettingSo;
+		[SerializeField] private SoldierLevelUpSettingSo _soldierLevelUpSettingSo;
 	}
 
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 namespace ProjectB.Authoring.ScriptableObject.Soldier
 {
 
-	[CreateAssetMenu(menuName = "Project B/Soldier/Level Up Cost Setting")]
-	public class SoldierLevelUpExpSettingSO : UnityEngine.ScriptableObject, ISoldierLevelUpExpSetting
+	[CreateAssetMenu(menuName = "Project B/Soldier/Level Up Setting")]
+	public class SoldierLevelUpSettingSo : UnityEngine.ScriptableObject, ISoldierLevelUpSetting
 	{
 		[Header("인덱스+1 이 레벨입니다")]
 		[SerializeField] private int[] _levelUpCosts;
-		
+
 		public int GetLevelUpExpOfLevel(int level)
 		{
 			if (_levelUpCosts.Length == 0)

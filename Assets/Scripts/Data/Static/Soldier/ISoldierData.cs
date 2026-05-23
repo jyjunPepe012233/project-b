@@ -8,7 +8,7 @@ namespace ProjectB.Data.Static.Soldier
 	{
 		ISoldierCardDisplaySetting CardDisplaySetting { get; }
 		
-		ISoldierLevelUpExpSetting LevelUpExpSetting { get; }
+		ISoldierLevelUpSetting LevelUpSetting { get; }
 		
 		
 		string SoldierId { get; }

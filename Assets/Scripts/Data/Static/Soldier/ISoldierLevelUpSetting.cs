@@ -1,7 +1,7 @@
 namespace ProjectB.Data.Static.Soldier
 {
 
-	public interface ISoldierLevelUpExpSetting
+	public interface ISoldierLevelUpSetting
 	{
 		int GetLevelUpExpOfLevel(int level);
 	}

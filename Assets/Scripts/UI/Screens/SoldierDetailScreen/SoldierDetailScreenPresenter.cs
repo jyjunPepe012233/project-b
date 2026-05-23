@@ -110,7 +110,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 
 			view.LevelUpPageView.SetCurrentLevel(_playerSoldierData.Level);
 			view.LevelUpPageView.SetCurrentExperience(_playerSoldierData.Exp);
-			view.LevelUpPageView.SetTargetExperience(_soldierData.LevelUpExpSetting.GetLevelUpExpOfLevel(_playerSoldierData.Level));
+			view.LevelUpPageView.SetTargetExperience(_soldierData.LevelUpSetting.GetLevelUpExpOfLevel(_playerSoldierData.Level));
 			view.LevelUpPageView.SetConsumeFoodAmount(_soldierLevelUpServicePortInstaller.Port.GetConsumeFoodAmount(playerSoldier.SoldierData));
 		}
 
@@ -147,7 +147,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 			view.InfoPageView.SetLevel(_playerSoldierData.Level);
 			
 			view.LevelUpPageView.SetCurrentLevel(_playerSoldierData.Level);
-			view.LevelUpPageView.SetTargetExperience(_soldierData.LevelUpExpSetting.GetLevelUpExpOfLevel(_playerSoldierData.Level));
+			view.LevelUpPageView.SetTargetExperience(_soldierData.LevelUpSetting.GetLevelUpExpOfLevel(_playerSoldierData.Level));
 			
 			view.LevelUpPageView.SetConsumeFoodAmount(_soldierLevelUpServicePortInstaller.Port.GetConsumeFoodAmount(_playerSoldierData.SoldierData));
 		}

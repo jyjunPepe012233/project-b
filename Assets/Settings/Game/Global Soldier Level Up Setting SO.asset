@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba67835b72940dca9d2708a7e086039, type: 3}
-  m_Name: Default Soldier LevelUp Exp Setting
+  m_Script: {fileID: 11500000, guid: 904be0e4d66f4eb6abf717c4da21f3c8, type: 3}
+  m_Name: Global Soldier Level Up Setting SO
   m_EditorClassIdentifier: 
-  _levelUpCosts: 110000002200000033000000440000005c000000740000008c000000a4000000ca000000f0000000
+  _foodConsumeRatio: 0.3
