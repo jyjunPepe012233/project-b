@@ -25,7 +25,7 @@ namespace ProjectB.Gameplay
 		public void ConsumeItem(IItemData itemData)
 		{
 			// 플레이어의 인벤토리에서 아이템 소모 시도
-			if (!_internalInventoryServicePort.TryConsumeItem(itemData, 1)) // 지금은 일단 1개 소모 메서드만 구현하고 있음.
+			if (!_internalInventoryServicePort.TryClearItem(itemData, 1)) // 지금은 일단 1개 소모 메서드만 구현하고 있음.
 			{
 				Debug.LogError("ConsumeItem을 시도했지만 아이템이 충분하지 않음 ItemData: " + itemData);
 				return;

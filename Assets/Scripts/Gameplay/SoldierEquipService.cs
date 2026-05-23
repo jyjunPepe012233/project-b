@@ -40,7 +40,7 @@ namespace ProjectB.Gameplay
 			}
 
 			// 내부적으로 장비 아이템 소비를 데이터에 반영하는 데에 실패하면 장착 안 함
-			if (!_internalInventoryServicePort.TryConsumeItem(equipmentItemData, 1))
+			if (!_internalInventoryServicePort.TryClearItem(equipmentItemData, 1))
 			{
 				Debug.LogError("장비 아이템 소비에 실패했습니다!");
 				return;

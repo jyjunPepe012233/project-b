@@ -109,7 +109,7 @@ namespace ProjectB.Gameplay
 			}
 		}
 
-		public bool TryConsumeItem(IItemData itemData, int quantity)
+		public bool TryClearItem(IItemData itemData, int quantity)
 		{
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 

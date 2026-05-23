@@ -41,7 +41,7 @@ namespace ProjectB.Gameplay
 			// 재료 일괄 소모
 			foreach (var craftMaterial in craftMaterials)
 			{
-				_internalInventoryServicePort.TryConsumeItem(craftMaterial.material, craftMaterial.amount);
+				_internalInventoryServicePort.TryClearItem(craftMaterial.material, craftMaterial.amount);
 			}
 
 			// IEquipmentItem은 IItemData도 구현하므로 캐스팅하여 인벤토리에 지급
