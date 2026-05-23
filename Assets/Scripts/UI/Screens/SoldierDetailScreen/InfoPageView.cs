@@ -23,7 +23,7 @@ namespace ProjectB.UI.Screens.SoldierDetailScreen
 		[Header("Status")]
 		[SerializeField] private SoldierStatusListPresenter _statusList;
 		
-		public void SetLevel(short level)
+		public void SetLevel(int level)
 		{
 			_levelText.text = level.ToString();
 		}

@@ -16,7 +16,7 @@ namespace ProjectB.Data.RuntimeImpl
 		
 		public int Exp { get; private set; }
 
-		public short Level { get; private set; }
+		public int Level { get; private set; }
 		
 		public SoldierStatus Status { get; private set; }
 		

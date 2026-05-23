@@ -13,7 +13,7 @@ namespace ProjectB.Data.Runtime.Player
 		
 		int Exp { get; }
 		
-		short Level { get; } // TODO: 그냥 int로 바꾸기. 메모리 2byte 줄여봐야 의미 없음 (메서드 호환성 안 좋음)
+		int Level { get; } // Level은 21억까지 표현해야하는 숫자는 아니지만 연산이 많아 메서드/연산자 호환성을 위해 int로 선언함
 		
 		SoldierStatus Status { get; }
 		

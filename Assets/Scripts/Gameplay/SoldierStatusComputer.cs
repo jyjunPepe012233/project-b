@@ -16,14 +16,14 @@ namespace ProjectB.Gameplay
 
 		public SoldierStatus GetNextLevelStatus(ISoldierData soldierData, IPlayerSoldier playerSoldier)
 		{
-			return ComputeStatusAtLevel(soldierData, (short)(playerSoldier.Level + 1)); // TODO: short로 하니까 가끔 캐스팅하기 귀찮음. 나중에 int로 바꾸는거 고려하기
+			return ComputeStatusAtLevel(soldierData, playerSoldier.Level + 1);
 		}
 
 		
 		// 나중에 레벨 외에도 장비, 버프 등 다른 요소들도 고려해서 스탯 계산하는 방식으로 확장해야 할 듯
 		// 일단은 레벨에 따른 스텟 계산만 구현함
 		
-		private SoldierStatus ComputeStatusAtLevel(ISoldierData soldierData, short level)
+		private SoldierStatus ComputeStatusAtLevel(ISoldierData soldierData, int level)
 		{
 			// 레벨 당 BaseStatus에 StatusGrowth를 계속 곱하는 방식
 			// (레벨이 오를수록 레벨 업을 통한 스탯 증가량이 커짐)
