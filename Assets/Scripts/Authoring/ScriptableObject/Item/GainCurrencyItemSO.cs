@@ -6,7 +6,7 @@ namespace ProjectB.Authoring.ScriptableObject.Item
 {
 
 	[CreateAssetMenu(fileName = "Gain Currency Item", menuName = "Project B/Item/Gain Currency Item")]
-	public sealed class GainCurrencyItemSO : ConsumableItemSO
+	public sealed class GainCurrencyItemSO : ConsumableItemSO, IGainCurrencyItem
 	{
 		[SerializeField] private CurrencyType _currencyType;
 		public CurrencyType CurrencyType => _currencyType;
