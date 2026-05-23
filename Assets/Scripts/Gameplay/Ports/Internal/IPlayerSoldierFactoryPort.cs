@@ -4,7 +4,7 @@ using ProjectB.Data.Static.Soldier;
 namespace ProjectB.Gameplay.Ports.Internal
 {
 
-	public interface IPlayerSoldierFactory // TODO: 이름 뒤에 Port 붙이기
+	public interface IPlayerSoldierFactoryPort
 	{
 		IPlayerSoldier Create(ISoldierData soldierData);
 	}

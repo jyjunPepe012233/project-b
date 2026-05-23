@@ -6,11 +6,11 @@ using ProjectB.Gameplay.Ports.Internal;
 namespace ProjectB.Gameplay
 {
 
-	public class PlayerSoldierFactory : IPlayerSoldierFactory
+	public class PlayerSoldierFactoryPort : IPlayerSoldierFactoryPort
 	{
 		private readonly ISoldierCombatPowerComputerPort _soldierCombatPowerComputerPort;
 
-		public PlayerSoldierFactory(ISoldierCombatPowerComputerPort soldierCombatPowerComputerPort)
+		public PlayerSoldierFactoryPort(ISoldierCombatPowerComputerPort soldierCombatPowerComputerPort)
 		{
 			_soldierCombatPowerComputerPort = soldierCombatPowerComputerPort;
 		}

@@ -8,11 +8,11 @@ using UnityEngine;
 namespace ProjectB.Gameplay
 {
 
-	public class GainCurrencyItemResolver : IConsumableItemResolver<IGainCurrencyItem>
+	public class GainCurrencyItemResolverPort : IConsumableItemResolverPort<IGainCurrencyItem>
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 
-		public GainCurrencyItemResolver(IPlayerSessionHolderPort playerSessionHolderPort)
+		public GainCurrencyItemResolverPort(IPlayerSessionHolderPort playerSessionHolderPort)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
 		}

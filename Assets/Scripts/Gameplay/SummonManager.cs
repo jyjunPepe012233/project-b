@@ -21,7 +21,7 @@ namespace ProjectB.Gameplay
 		private readonly ILoadSummonResultScreenPort _loadSummonResultScreenPort;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly ISummonCostSetting _summonCostSetting;
-		private readonly IPlayerSoldierFactory _playerSoldierFactory;
+		private readonly IPlayerSoldierFactoryPort _playerSoldierFactoryPort;
 		
 		public event Action<SummonResult> StartAnimation;
 		public event Action AnimationPerfectlyUnloaded;
@@ -39,14 +39,14 @@ namespace ProjectB.Gameplay
 			ILoadSummonResultScreenPort loadSummonResultScreenPort, 
 			IPlayerSessionHolderPort playerSessionHolderPort,
 			ISummonCostSetting summonCostSetting,
-			IPlayerSoldierFactory playerSoldierFactory)
+			IPlayerSoldierFactoryPort playerSoldierFactoryPort)
 		{
 			_soldierDatabase = soldierDatabase;
 			_loadSummonAnimationScreenPort = loadSummonAnimationScreenPort;
 			_loadSummonResultScreenPort = loadSummonResultScreenPort;
 			_playerSessionHolderPort = playerSessionHolderPort;
 			_summonCostSetting = summonCostSetting;
-			_playerSoldierFactory = playerSoldierFactory;
+			_playerSoldierFactoryPort = playerSoldierFactoryPort;
 		}
 
 		
@@ -84,7 +84,7 @@ namespace ProjectB.Gameplay
 			var soldier = _soldierDatabase.Soldiers[i];
 
 			// 저장
-			playerData.AddSoldier(_playerSoldierFactory.Create(soldier));
+			playerData.AddSoldier(_playerSoldierFactoryPort.Create(soldier));
 			
 			// TODO:
 			// PlayerSession의 정보를 직렬화하여 저장하는 과정 필요함
@@ -117,7 +117,7 @@ namespace ProjectB.Gameplay
 			
 			// 저장
 			playerData.AddSoldiers(
-				Array.ConvertAll(summonedSoldiers, s => _playerSoldierFactory.Create(s))
+				Array.ConvertAll(summonedSoldiers, s => _playerSoldierFactoryPort.Create(s))
 			);
 
 			LoadSummonAnimation(new SummonResult(summonedSoldiers, SummonType.Summon10x));

@@ -13,13 +13,13 @@ namespace ProjectB.Gameplay
 	public class ConsumeItemService : IConsumeItemServicePort
 	{
 		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
-		private readonly IConsumableItemResolver<IGainCurrencyItem> _gainCurrencyItemResolver;
+		private readonly IConsumableItemResolverPort<IGainCurrencyItem> _gainCurrencyItemResolverPort;
 
 		public ConsumeItemService(IInternalInventoryServicePort internalInventoryServicePort,
-			IConsumableItemResolver<IGainCurrencyItem> gainCurrencyItemResolver)
+			IConsumableItemResolverPort<IGainCurrencyItem> gainCurrencyItemResolverPort)
 		{
 			_internalInventoryServicePort = internalInventoryServicePort;
-			_gainCurrencyItemResolver = gainCurrencyItemResolver;
+			_gainCurrencyItemResolverPort = gainCurrencyItemResolverPort;
 		}
 
 		public void ConsumeItem(IItemData itemData)
@@ -34,7 +34,7 @@ namespace ProjectB.Gameplay
 			switch (itemData)
 			{
 				case IGainCurrencyItem gainCurrencyItem:
-					_gainCurrencyItemResolver.OnConsume(gainCurrencyItem, 1); 
+					_gainCurrencyItemResolverPort.OnConsume(gainCurrencyItem, 1); 
 					break;
 				
 				default:

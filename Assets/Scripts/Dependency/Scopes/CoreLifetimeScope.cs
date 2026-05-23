@@ -118,12 +118,12 @@ namespace ProjectB.Dependency.Scopes
 			// Internal Port 어댑터 등록
 			RegisterPortAdapter<ISoldierStatusComputerPort, SoldierStatusComputer>();
 			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
-			RegisterPortAdapter<IPlayerSoldierFactory, PlayerSoldierFactory>();
+			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactoryPort>();
 			RegisterPortAdapter<IInternalInventoryServicePort, InternalInventoryService>();
 			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
 			
 			// ConsumableItemResolver들은 제네릭으로 관리되며, 주입받을 때도 제네릭 타입으로 종류를 구분하면 됨
-			RegisterPortAdapter<IConsumableItemResolver<IGainCurrencyItem>, GainCurrencyItemResolver>();
+			RegisterPortAdapter<IConsumableItemResolverPort<IGainCurrencyItem>, GainCurrencyItemResolverPort>();
 			
 			
 			
