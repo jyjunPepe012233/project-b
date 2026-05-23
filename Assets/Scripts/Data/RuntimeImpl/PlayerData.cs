@@ -1,47 +1,45 @@
 using System;
 using System.Collections.Generic;
 using ProjectB.Data.Runtime.Player;
-using ProjectB.Data.Runtime.Summon;
 using UnityEngine;
 
 namespace ProjectB.Data.RuntimeImpl
 {
-	// TODO: SerializeField 없이 자동 프로퍼티로만 구성하는 방법 고민해보기
 
 	[Serializable]
 	public class PlayerData : IPlayerData
 	{
-		[SerializeField] private string _playerName;
+		private string _playerName;
 		public string PlayerName => _playerName;
 		
-		[SerializeField] private int _level;
+		private int _level;
 		public int Level => _level;
 		
-		[SerializeField] private int _experience;
+		private int _experience;
 		public int Experience => _experience;
 
-		[SerializeField] private int _coins;
+		private int _coins;
 		public int Coins => _coins;
 
-		[SerializeField] private int _gems;
+		private int _gems;
 		public int Gems => _gems;
 
-		[SerializeField] private int _morale;
+		private int _morale;
 		public int Morale => _morale;
 		
-		[SerializeField] private int _dailyMoraleRechargeCount;
+		private int _dailyMoraleRechargeCount;
 		public int DailyMoraleRechargeCount => _dailyMoraleRechargeCount;
 
-		[SerializeField] private int _foods;
+		private int _foods;
 		public int Foods => _foods;
 
 		
-		[SerializeField] private List<IPlayerSoldier> _soldiers = new List<IPlayerSoldier>();
+		private readonly List<IPlayerSoldier> _soldiers = new List<IPlayerSoldier>();
 		IReadOnlyCollection<IReadOnlyPlayerSoldier> IReadOnlyPlayerData.Soldiers => _soldiers; // IReadOnlyPlayerData로 접근하면 이 프로퍼티
 		IReadOnlyCollection<IPlayerSoldier> IPlayerData.Soldiers => _soldiers; // IPlayerData로 접근하면 이 프로퍼티
 		
 		
-		[SerializeField] private List<IPlayerItem> _items = new List<IPlayerItem>();
+		private readonly List<IPlayerItem> _items = new List<IPlayerItem>();
 		IReadOnlyCollection<IReadOnlyPlayerItem> IReadOnlyPlayerData.Items => _items;
 		IReadOnlyCollection<IPlayerItem> IPlayerData.Items => _items;
 		
@@ -54,9 +52,6 @@ namespace ProjectB.Data.RuntimeImpl
 		public event Action DailyMoraleRechargeCountChanged;
 		public event Action FoodsChanged;
 
-		public PlayerData()
-		{
-		}
 
 		public PlayerData(string playerName, int level, int experience, int coins, int gems, int morale, int foods)
 		{
