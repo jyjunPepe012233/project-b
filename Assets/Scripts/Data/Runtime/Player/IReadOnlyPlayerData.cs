@@ -23,9 +23,9 @@ namespace ProjectB.Data.Runtime.Player
 
 		int Foods { get; }
 
-		IReadOnlyCollection<IPlayerSoldier> Soldiers { get; }
+		IReadOnlyCollection<IReadOnlyPlayerSoldier> Soldiers { get; }
 
-		IReadOnlyCollection<IPlayerItem> Items { get; }
+		IReadOnlyCollection<IReadOnlyPlayerItem> Items { get; }
 		
 		event Action ExperienceChanged;
 		

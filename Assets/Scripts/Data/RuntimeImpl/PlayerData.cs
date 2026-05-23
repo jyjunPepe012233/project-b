@@ -35,11 +35,17 @@ namespace ProjectB.Data.RuntimeImpl
 		[SerializeField] private int _foods;
 		public int Foods => _foods;
 
+		
 		[SerializeField] private List<IPlayerSoldier> _soldiers = new List<IPlayerSoldier>();
-		public IReadOnlyCollection<IPlayerSoldier> Soldiers => _soldiers;
+		IReadOnlyCollection<IReadOnlyPlayerSoldier> IReadOnlyPlayerData.Soldiers => _soldiers; // IReadOnlyPlayerData로 접근하면 이 프로퍼티
+		IReadOnlyCollection<IPlayerSoldier> IPlayerData.Soldiers => _soldiers; // IPlayerData로 접근하면 이 프로퍼티
+		
 		
 		[SerializeField] private List<IPlayerItem> _items = new List<IPlayerItem>();
-		public IReadOnlyCollection<IPlayerItem> Items => _items;
+		IReadOnlyCollection<IReadOnlyPlayerItem> IReadOnlyPlayerData.Items => _items;
+		IReadOnlyCollection<IPlayerItem> IPlayerData.Items => _items;
+		
+		
 		public event Action ExperienceChanged;
 		public event Action LevelChanged;
 		public event Action CoinsChanged;
