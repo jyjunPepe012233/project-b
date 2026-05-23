@@ -1,9 +1,11 @@
+using VContainer.Unity;
+
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class SummonResultScreenLifetimeScope : StructuredLifetimeScope
+	public class SummonResultScreenLifetimeScope : LifetimeScope
 	{
-		// SummonScreenLifetimeScope을 Parent로 가짐 
+		
 	}
 
 }

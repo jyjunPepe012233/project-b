@@ -19,12 +19,15 @@ using ProjectB.Gameplay.Ports.Outbound;
 using ProjectB.Infrastructure;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class CoreLifetimeScope : StructuredLifetimeScope
+	public sealed class CoreLifetimeScope : LifetimeScope
 	{
+		private IContainerBuilder _builder;
+		
 		[SerializeField] private SoldierDatabaseSO _soldierDatabaseSO;
 		[SerializeField] private ItemDatabaseSO _itemDatabaseSO;
 		[SerializeField] private InvasionSettingSO _invasionSettingSO;
@@ -33,62 +36,86 @@ namespace ProjectB.Dependency.Scopes
 		[SerializeField] private SweepSettingSO _sweepSettingSO;
 		[SerializeField] private PlayerLevelUpSettingSO _playerLevelUpSettingSO;
 		[SerializeField] private GlobalSoldierLevelUpSettingSO _globalSoldierLevelUpSettingSO;
-
+		
+		
+		void RegisterPortAdapter<TPort, TAdapter>()
+			where TPort : class
+			where TAdapter : class, TPort
+		{
+			_builder.Register<TAdapter>(Lifetime.Singleton).As<TPort>();
+		}
+		
+		
+		void RegisterPortInstance<TPort, TAdapter>(TAdapter instance)
+			where TPort : class
+			where TAdapter : class, TPort
+		{
+			_builder.RegisterInstance(instance).As<TPort>();
+		}
+		
+		
 		protected override void Awake()
 		{
 			base.Awake();
 			
 			Container.Resolve<PlayerSessionInitializer>();
 			Container.Resolve<GlobalErrorHandler>();
-
 			Container.Resolve<FirebaseInitializer>();
 			Container.Resolve<GameFrameSetup>();
 		}
-		
-		protected override void AddInboundAdapters()
+
+
+		protected sealed override void Configure(IContainerBuilder builder)
 		{
-			base.AddInboundAdapters();
-			Builder.Register<LoadingManager>(Lifetime.Singleton).As<
-				ILoadingServicePort,
-				ILoadingOverlayManagerPort
-			>();
+			_builder = builder;
+			
+			
+			// 데이터 등록
+			RegisterPortInstance<IInvasionSetting, InvasionSettingSO>(_invasionSettingSO);
+			RegisterPortInstance<ISoldierDatabase, SoldierDatabaseSO>(_soldierDatabaseSO);
+			RegisterPortInstance<IItemDatabase, ItemDatabaseSO>(_itemDatabaseSO);
+			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
+			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
+			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
+			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
+			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
+			
+			
+			
+			// Initializer 등록
+			builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
+			builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
+			builder.Register<FirebaseInitializer>(Lifetime.Singleton);
+			builder.Register<GameFrameSetup>(Lifetime.Singleton);
+			
+			// 이 클래스들은 게임 시작 시 바로 작동을 시작해야 하는 Entry Point이므로 직접 Resolve함
+			Container.Resolve<PlayerSessionInitializer>();
+			Container.Resolve<GlobalErrorHandler>();
+			Container.Resolve<FirebaseInitializer>();
+			Container.Resolve<GameFrameSetup>();
 
+			
+			
+			// Inbound Port 어댑터 등록
+			RegisterPortAdapter<ITitleScreenManagerPort, TitleScreenManager>();
+			builder.Register<LoadingManager>(Lifetime.Singleton).As<ILoadingServicePort, ILoadingOverlayManagerPort>();
+			RegisterPortAdapter<IHomeScreenManagerPort, HomeScreenManager>();
 			RegisterPortAdapter<IPlayerDataServicePort, PlayerDataService>();
-
-			// TODO:
-			// PlayerSessionInitializer는 Inbound Adapter가 아니라 독립적으로 작동하는 게임 시스템에 가까움.
-			// 이 사례처럼 클래스에 대한 분리 기준이 항상 명확하게 작용하지 않고 있으므로 StructureLifetimeScope를 리팩토링하여
-			// 클래스 구분을 최대한 유연하게 만들거나 없애는 방안을 고려해볼 수 있음.
-			// 지금은 임시로 Inbound Adapter를 등록하는 메서드에서 등록함
-			// + 추가로, 이 클래스는 게임 실행 시 바로 생성되어야 하는 Entry Point이므로 Awake에서 Resolve함
-			Builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
-			
-			// GlobalErrorHandler도 PlayerSessionInitializer와 같은 `Entry Point` 성격의 클래스임
-			// 이것도 마찬가지로 임시로 Inbound Adapter 등록 메서드에서 등록
-			Builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
-			
-			
-			// 사도 정보는 대부분의 화면에서 열릴 수 있기 때문에 Core에 등록
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
-			
-			// 플레이어가 보유한 아이템들의 정보는 인벤토리 화면 뿐만 아니라 다양한 화면에서 필요할 수 있기 때문에 Core에 등록 
 			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
-			
-			// 메뉴는 게임 내 거의 모든 화면에서 열릴 수 있기 때문에 Core에 등록
-			// 사실 Home 화면에서만 열리긴 하는데, 이후 변경 가능성이 있으니까 Core에 등록
-			RegisterPortAdapter<IMenuServicePort, MenuService>();
-
 			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
 			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
-
-			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
-		}
-
-		protected override void AddInternalAdapters()
-		{
-			base.AddInternalAdapters();
+			RegisterPortAdapter<IShopServicePort, ShopService>();
+			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonServicePort, ISummonAnimationManagerPort>();
+			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
+			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
+			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
+			
+			
+			
+			// Internal Port 어댑터 등록
 			RegisterPortAdapter<ISoldierStatusComputerPort, SoldierStatusComputer>();
 			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
 			RegisterPortAdapter<IPlayerSoldierFactory, PlayerSoldierFactory>();
@@ -97,11 +124,12 @@ namespace ProjectB.Dependency.Scopes
 			
 			// ConsumableItemResolver들은 제네릭으로 관리되며, 주입받을 때도 제네릭 타입으로 종류를 구분하면 됨
 			RegisterPortAdapter<IConsumableItemResolver<IGainCurrencyItem>, GainCurrencyItemResolver>();
-		}
-
-		protected override void AddOutboundAdapters()
-		{
-			base.AddOutboundAdapters();
+			
+			
+			
+			// Outbound Port 어댑터 등록
+			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
+			RegisterPortAdapter<IUnloadScreenPort, UnloadScreenService>();
 			RegisterPortAdapter<IControlLoadingOverlayPort, ControlLoadingOverlayService>();
 			RegisterPortAdapter<ILoadHomePort, LoadHomeService>();
 			RegisterPortAdapter<IPlayerSessionHolderPort, PlayerSessionHolderService>();
@@ -112,27 +140,6 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
 			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
 			RegisterPortAdapter<ILoadBackpackScreenPort, LoadBackpackScreenService>();
-			
-			// 사실 Outbound Port 보다는 Infrastructure 내부의 특정 기술 사용을 위한 독립적 클래스임
-			// 지금은 임시로 Outbound Adapter 등록 메서드에서 등록
-			// + Awake에서 Resolve함 (게임 시작 시 바로 생성되어야 하므로)
-			Builder.Register<FirebaseInitializer>(Lifetime.Singleton);
-			
-			// FirebaseInitializer와 마찬가지
-			Builder.Register<GameFrameSetup>(Lifetime.Singleton);
-		}
-
-		protected override void AddData()
-		{
-			base.AddData();
-			RegisterPortInstance<IInvasionSetting, InvasionSettingSO>(_invasionSettingSO);
-			RegisterPortInstance<ISoldierDatabase, SoldierDatabaseSO>(_soldierDatabaseSO);
-			RegisterPortInstance<IItemDatabase, ItemDatabaseSO>(_itemDatabaseSO);
-			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
-			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
-			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
-			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
-			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
 		}
 	}
 

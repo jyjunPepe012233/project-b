@@ -1,25 +1,11 @@
-using ProjectB.Gameplay;
-using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Outbound;
-using ProjectB.Infrastructure;
-using VContainer;
+using VContainer.Unity;
 
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class SummonScreenLifetimeScope : StructuredLifetimeScope
+	public class SummonScreenLifetimeScope : LifetimeScope
 	{
-		protected override void AddInboundAdapters()
-		{
-			base.AddInboundAdapters();
-			Builder.Register<SummonManager>(Lifetime.Singleton).As<
-				ISummonServicePort,
-				ISummonAnimationManagerPort
-			>();
-			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
-			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
-			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
-		}
+		
 	}
 
 }

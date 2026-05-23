@@ -1,7 +1,9 @@
+using VContainer.Unity;
+
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class SoldierListScreenLifetimeScope : StructuredLifetimeScope
+	public class SoldierListScreenLifetimeScope : LifetimeScope
 	{
 		
 	}

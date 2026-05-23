@@ -1,21 +1,11 @@
-using ProjectB.Gameplay;
-using ProjectB.Gameplay.Ports.Inbound;
+using VContainer.Unity;
 
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class TitleScreenLifetimeScope : StructuredLifetimeScope
+	public class TitleScreenLifetimeScope : LifetimeScope
 	{
-		protected override void AddInboundAdapters()
-		{
-			base.AddInboundAdapters();
-			RegisterPortAdapter<ITitleScreenManagerPort, TitleScreenManager>();
-		}
-
-		protected override void AddOutboundAdapters()
-		{
-			base.AddInboundAdapters();
-		}
+		
 	}
 
 }

@@ -1,16 +1,11 @@
-using ProjectB.Gameplay;
-using ProjectB.Gameplay.Ports.Inbound;
+using VContainer.Unity;
 
 namespace ProjectB.Dependency.Scopes
 {
 
-	public class ShopScreenLifetimeScope : StructuredLifetimeScope
+	public class ShopScreenLifetimeScope : LifetimeScope
 	{
-		protected override void AddInboundAdapters()
-		{
-			base.AddInboundAdapters();
-			RegisterPortAdapter<IShopServicePort, ShopService>();
-		}
+		
 	}
 
 }
