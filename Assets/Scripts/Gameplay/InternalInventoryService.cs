@@ -17,6 +17,8 @@ namespace ProjectB.Gameplay
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly ILoadRewardGainPopupPort _loadRewardGainPopupPort;
+		
+		public event Action InventoryUpdated;
 
 		public InternalInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, ILoadRewardGainPopupPort loadRewardGainPopupPort)
 		{
@@ -40,6 +42,8 @@ namespace ProjectB.Gameplay
 				IPlayerItem newItem = new PlayerItem(itemData, quantity);
 				playerData.AddItem(newItem);
 			}
+
+			InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 
@@ -88,6 +92,8 @@ namespace ProjectB.Gameplay
 				}
 			}
 			
+			InventoryUpdated?.Invoke();
+			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 
 			switch (gainAction)
@@ -127,6 +133,8 @@ namespace ProjectB.Gameplay
 			{
 				playerData.RemoveItem(existingItem);
 			}
+			
+			InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 			

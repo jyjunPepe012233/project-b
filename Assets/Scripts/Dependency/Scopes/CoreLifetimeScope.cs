@@ -81,7 +81,8 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
-			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
+
+			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
 		}
 
 		protected override void AddInternalAdapters()
@@ -91,6 +92,10 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
 			RegisterPortAdapter<IPlayerSoldierFactory, PlayerSoldierFactory>();
 			RegisterPortAdapter<IInternalInventoryServicePort, InternalInventoryService>();
+			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
+			
+			// ConsumableItemResolver들은 제네릭으로 관리되며, 주입받을 때도 제네릭 타입으로 종류를 구분하면 됨
+			RegisterPortAdapter<IConsumableItemResolver<IGainCurrencyItem>, GainCurrencyItemResolver>();
 		}
 
 		protected override void AddOutboundAdapters()

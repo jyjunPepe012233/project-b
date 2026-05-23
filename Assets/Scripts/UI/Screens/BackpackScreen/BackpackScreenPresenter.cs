@@ -1,4 +1,5 @@
 using System.Linq;
+using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using ProjectB.Dependency.Installers;
@@ -11,9 +12,12 @@ namespace ProjectB.UI.Screens.BackpackScreen
 
 	public class BackpackScreenPresenter : UIPresenter<BackpackScreenView>
 	{
-		[SerializeField] private PlayerDataServicePortInstaller _playerDataServicePortInstaller;
+		[SerializeField] private InventoryServicePortInstaller _inventoryServicePortInstaller;
+		[SerializeField] private ConsumeItemServicePortInstaller _consumeItemServicePortInstaller;
 
 		private ItemCategory _currentCategory;
+
+		private IReadOnlyPlayerItem _showingItemOnItemInfoPanel;
 
 		protected override void SetupSubscriptions()
 		{
@@ -21,6 +25,9 @@ namespace ProjectB.UI.Screens.BackpackScreen
 			BackpackNavigateButtonEvents.Clicked += OnNavigateButtonClicked;
 			
 			view.ItemListSlotClicked += OnItemListSlotClicked;
+			view.ConsumeButtonClicked += OnConsumeButtonClicked;
+			
+			_inventoryServicePortInstaller.Port.InventoryUpdated += OnInventoryUpdated;
 		}
 
 		protected override void DisposeSubscriptions()
@@ -29,6 +36,9 @@ namespace ProjectB.UI.Screens.BackpackScreen
 			BackpackNavigateButtonEvents.Clicked -= OnNavigateButtonClicked;
 
 			view.ItemListSlotClicked -= OnItemListSlotClicked;
+			view.ConsumeButtonClicked -= OnConsumeButtonClicked;
+			
+			_inventoryServicePortInstaller.Port.InventoryUpdated -= OnInventoryUpdated;
 		}
 
 		protected override void InitializeView()
@@ -50,26 +60,69 @@ namespace ProjectB.UI.Screens.BackpackScreen
 		
 		void OnItemListSlotClicked(IItemData itemData)
 		{
-			var playerItems = _playerDataServicePortInstaller.Port.GetPlayerData().Items;
+			var playerItems = _inventoryServicePortInstaller.Port.Items;
 			var playerItem = playerItems.FirstOrDefault(item => item.ItemData == itemData);
 			if (playerItem != null)
 			{
-				view.UpdateItemInfoPanel(playerItem);
-				view.SetItemInfoPanelDisabledPanelActive(false);
-				view.SetItemInfoPanelEnabledPanelActive(true);
+				UpdateItemInfoPanel(playerItem);
+			}
+		}
+
+		void OnConsumeButtonClicked()
+		{
+			if (_showingItemOnItemInfoPanel == null)
+			{
+				Debug.LogError("소비 버튼이 클릭되었지만 선택된 아이템이 없음");
+				return;
+			}
+			_consumeItemServicePortInstaller.Port.ConsumeItem(_showingItemOnItemInfoPanel.ItemData);
+		}
+		
+		void OnInventoryUpdated()
+		{
+			UpdateItemList(_currentCategory);
+			
+			// 인벤토리 업데이트 시, 현재 보고 있는 아이템이 인벤토리에 여전히 존재하는지 확인하고,
+			// 없으면 아이템 정보 패널을 비활성화 상태로 전환
+			if (_inventoryServicePortInstaller.Port.Items.All(pi => pi != _showingItemOnItemInfoPanel))
+			{
+				ClearItemInfoPanel();
+			}
+			else
+			{
+				UpdateItemInfoPanel(_showingItemOnItemInfoPanel);
 			}
 		}
 		
 		void OpenPage(ItemCategory category)
 		{
 			_currentCategory = category;
+			
+			UpdateItemList(category);
+			ClearItemInfoPanel();
+		}
 
+		void UpdateItemList(ItemCategory category)
+		{
 			// 아이템 리스트 초기화
-			var playerItems = _playerDataServicePortInstaller.Port.GetPlayerData().Items;
+			var playerItems = _inventoryServicePortInstaller.Port.Items;
 			var categoryItems = playerItems.Where(item => item.ItemData.Category == category);
 			view.UpdateItemList(categoryItems);
+		}
+
+		void UpdateItemInfoPanel(IReadOnlyPlayerItem playerItem)
+		{
+			_showingItemOnItemInfoPanel = playerItem;
 			
-			// 아이템 상세 정보 패널을 비활성화 상태로 바꿈
+			view.UpdateItemInfoPanel(playerItem);
+			view.SetItemInfoPanelDisabledPanelActive(false);
+			view.SetItemInfoPanelEnabledPanelActive(true);
+		}
+		
+		void ClearItemInfoPanel()
+		{
+			_showingItemOnItemInfoPanel = null;
+			
 			view.SetItemInfoPanelDisabledPanelActive(true);
 			view.SetItemInfoPanelEnabledPanelActive(false);
 		}

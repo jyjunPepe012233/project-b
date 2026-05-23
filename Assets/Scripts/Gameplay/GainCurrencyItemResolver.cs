@@ -25,7 +25,6 @@ namespace ProjectB.Gameplay
 			switch (gainCurrencyItem.CurrencyType)
 			{
 				case CurrencyType.Coins:
-					Debug.Log(28);
 					playerData.AddCoins(amount);
 					break;
 				

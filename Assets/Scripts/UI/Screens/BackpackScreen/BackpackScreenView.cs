@@ -50,12 +50,12 @@ namespace ProjectB.UI.Screens.BackpackScreen
 		}
 		
 		
-		public void UpdateItemList(IEnumerable<IPlayerItem> items)
+		public void UpdateItemList(IEnumerable<IReadOnlyPlayerItem> items)
 		{
 			_itemList.UpdateItems(items);
 		}
 
-		public void UpdateItemInfoPanel(IPlayerItem playerItem)
+		public void UpdateItemInfoPanel(IReadOnlyPlayerItem playerItem)
 		{
 			// TODO: 사실 이 코드는 View가 아니라 Presenter에 있어야 함 (데이터와 UI 사이의 연결을 담당하는 코드를 "의미"를 가지기 때문)
 			

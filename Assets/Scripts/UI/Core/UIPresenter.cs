@@ -78,7 +78,7 @@ namespace ProjectB.UI.Core
 			}
 			catch (Exception e)
 			{
-				Debug.LogError($"() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
+				Debug.LogError($"Show() 중 예외 발생\nUI: {TransformDebug.GetHierarchyPath(transform)}\n\n{e}");
 			}
 		}
 		

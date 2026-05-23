@@ -24,7 +24,7 @@ namespace ProjectB.UI.Lists.ItemSlotList
 			view.SlotClicked -= OnViewSlotClicked;
 		}
 
-		public void UpdateItems(IEnumerable<IPlayerItem> data)
+		public void UpdateItems(IEnumerable<IReadOnlyPlayerItem> data)
 		{
 			var tuple = data.Select(item => (item.ItemData, item.Quantity)); 
 			view.UpdateItems(tuple);
