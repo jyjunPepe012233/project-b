@@ -58,9 +58,10 @@ namespace ProjectB.Dependency.Scopes
 		{
 			base.Awake();
 			
+			// base.Awake() 후에(= Configure 후) Resolve해야함.
 			Container.Resolve<PlayerSessionInitializer>();
 			Container.Resolve<GlobalErrorHandler>();
-			Container.Resolve<FirebaseInitializer>();
+			// Container.Resolve<FirebaseInitializer>();
 			Container.Resolve<GameFrameSetup>();
 		}
 
@@ -78,27 +79,21 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
 			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
-			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
+			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);	
 			
 			
 			
 			// Initializer 등록
+			// 이 클래스들은 Awake 시점에서 Resolve됨.
 			builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
 			builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
 			builder.Register<FirebaseInitializer>(Lifetime.Singleton);
 			builder.Register<GameFrameSetup>(Lifetime.Singleton);
-			
-			// 이 클래스들은 게임 시작 시 바로 작동을 시작해야 하는 Entry Point이므로 직접 Resolve함
-			Container.Resolve<PlayerSessionInitializer>();
-			Container.Resolve<GlobalErrorHandler>();
-			Container.Resolve<FirebaseInitializer>();
-			Container.Resolve<GameFrameSetup>();
 
 			
 			
 			// Inbound Port 어댑터 등록
 			RegisterPortAdapter<ITitleScreenManagerPort, TitleScreenManager>();
-			builder.Register<LoadingManager>(Lifetime.Singleton).As<ILoadingServicePort, ILoadingOverlayManagerPort>();
 			RegisterPortAdapter<IHomeScreenManagerPort, HomeScreenManager>();
 			RegisterPortAdapter<IPlayerDataServicePort, PlayerDataService>();
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
@@ -108,14 +103,15 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
 			RegisterPortAdapter<IShopServicePort, ShopService>();
+			RegisterPortAdapter<IMenuServicePort, MenuService>();
+			RegisterPortAdapter<ISoldierLevelUpServicePort, SoldierLevelUpService>();
+			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
 			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonServicePort, ISummonAnimationManagerPort>();
-			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
-			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
-			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
 			
 			
 			
 			// Internal Port 어댑터 등록
+			RegisterPortAdapter<ILoadingTransitionServicePort , LoadingTransitionService>();
 			RegisterPortAdapter<ISoldierStatusComputerPort, SoldierStatusComputer>();
 			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
 			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactory>();
@@ -130,8 +126,8 @@ namespace ProjectB.Dependency.Scopes
 			// Outbound Port 어댑터 등록
 			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
 			RegisterPortAdapter<IUnloadScreenPort, UnloadScreenService>();
-			RegisterPortAdapter<ILoadLoadingOverlayServicePort, LoadLoadingOverlayServiceService>();
-			RegisterPortAdapter<ILoadHomePort, LoadHomeService>();
+			RegisterPortAdapter<ILoadingOverlayServicePort, LoadingOverlayService>();
+			RegisterPortAdapter<ILoadHomeScreenPort, LoadHomeScreenService>();
 			RegisterPortAdapter<IPlayerSessionHolderPort, PlayerSessionHolderService>();
 			RegisterPortAdapter<ILoadPlayerDataPort, LoadPlayerDataService>();
 			RegisterPortAdapter<IInitializePlayerSessionPort, InitializePlayerSessionService>();
@@ -140,6 +136,8 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
 			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
 			RegisterPortAdapter<ILoadBackpackScreenPort, LoadBackpackScreenService>();
+			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
+			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
 		}
 	}
 

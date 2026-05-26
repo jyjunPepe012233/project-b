@@ -1,57 +1,19 @@
 using System.Collections;
-using ProjectB.Dependency.Installers;
-using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.UI.Core;
-using UnityEngine;
 
 namespace ProjectB.UI.Screens.LoadingOverlay
 {
 
 	public class LoadingOverlayPresenter : UIPresenter<LoadingOverlayView>
 	{
-		[SerializeField] private LoadingOverlayManagerPortInstaller _loadingOverlayManagerPortInstaller;
-
-		private ILoadingOverlayManagerPort _loadingOverlayManager;
+		public IEnumerator OpenTransition()
+		{
+			yield return view.OpenTransitionCoroutine();
+		}
 		
-		protected override void SetupReferences()
+		public IEnumerator CloseTransition()
 		{
-			base.SetupReferences();
-			_loadingOverlayManager = _loadingOverlayManagerPortInstaller.Port;
-		}
-
-		protected override void SetupSubscriptions()
-		{
-			base.SetupSubscriptions();
-			_loadingOverlayManager.LoadingStarted += OnLoadingStarted;
-			_loadingOverlayManager.LoadingFinished += OnLoadingFinished;
-		}
-
-		protected override void DisposeSubscriptions()
-		{
-			base.DisposeSubscriptions();
-			
-			_loadingOverlayManager.LoadingStarted -= OnLoadingStarted;
-			_loadingOverlayManager.LoadingFinished -= OnLoadingFinished;
-		}
-
-		private void OnLoadingStarted()
-		{
-			IEnumerator Coroutine()
-			{
-				yield return view.OpenTransitionCoroutine();
-				_loadingOverlayManager.TransitionReadied();
-			}
-			StartCoroutine(Coroutine());
-		}
-
-		private void OnLoadingFinished()
-		{
-			IEnumerator Coroutine()
-			{
-				yield return view.CloseTransitionCoroutine();
-				_loadingOverlayManager.TransitionDisposed();
-			}
-			StartCoroutine(Coroutine());
+			yield return view.CloseTransitionCoroutine();
 		}
 	}
 
