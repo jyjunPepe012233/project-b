@@ -5,7 +5,9 @@ namespace ProjectB.Gameplay.Ports.Outbound
 
 	public interface ILoadSummonScreenPort
 	{
-		public IEnumerator Load();
+		IEnumerator Load();
+		
+		IEnumerator Unload();
 	}
 
 }

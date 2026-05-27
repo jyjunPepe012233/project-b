@@ -3,7 +3,7 @@ using ProjectB.Gameplay.Ports.Inbound;
 namespace ProjectB.Dependency.Installers
 {
 
-	public class HomeScreenManagerPortInstaller : DIBasedPortInstaller<IHomeScreenManagerPort>
+	public class HomeScreenServicePortInstaller : DIBasedPortInstaller<IHomeScreenServicePort>
 	{
 		
 	}

@@ -94,7 +94,7 @@ namespace ProjectB.Dependency.Scopes
 			
 			// Inbound Port 어댑터 등록
 			RegisterPortAdapter<ITitleScreenManagerPort, TitleScreenManager>();
-			RegisterPortAdapter<IHomeScreenManagerPort, HomeScreenManager>();
+			RegisterPortAdapter<IHomeScreenServicePort, HomeScreenService>();
 			RegisterPortAdapter<IPlayerDataServicePort, PlayerDataService>();
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
 			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
