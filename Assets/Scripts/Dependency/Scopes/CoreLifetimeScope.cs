@@ -137,6 +137,9 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortAdapter<ILoadBackpackScreenPort, LoadBackpackScreenService>();
 			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
 			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
+			RegisterPortAdapter<ILoadShopScreenServicePort, LoadShopScreenService>();
+			RegisterPortAdapter<ILoadSoldierListScreenServicePort, LoadSoldierListScreenService>();
+			RegisterPortAdapter<ILoadWorldMapScreenServicePort, LoadWorldMapScreenService>();
 		}
 	}
 
