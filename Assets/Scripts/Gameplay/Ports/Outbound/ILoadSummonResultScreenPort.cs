@@ -8,9 +8,9 @@ namespace ProjectB.Gameplay.Ports.Outbound
 	{
 		bool IsLoaded { get; }
 		
-		IEnumerator LoadSummonResultScreen(SummonResult result);
+		IEnumerator Load();
 		
-		IEnumerator UnloadSummonResultScreen();
+		IEnumerator Unload();
 	}
 
 }

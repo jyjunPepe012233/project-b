@@ -37,7 +37,7 @@ namespace ProjectB.Gameplay
 
 			if (playerSoldier != null)
 			{
-				yield return _loadSoldierDetailScreenPort.Load(playerSoldier);
+				yield return _loadSoldierDetailScreenPort.Load();
 				SoldierDataUpdateCallback?.Invoke(playerSoldier);
 			}
 			else

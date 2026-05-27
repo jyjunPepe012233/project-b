@@ -5,9 +5,9 @@ namespace ProjectB.Gameplay.Ports.Outbound
 
 	public interface ILoadSummonAnimationScreenPort
 	{
-		IEnumerator LoadSummonAnimationScreen();
+		IEnumerator Load();
 
-		IEnumerator UnloadSummonAnimationScreen();
+		IEnumerator Unload();
 	}
 
 }

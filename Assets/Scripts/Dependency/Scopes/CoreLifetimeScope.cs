@@ -125,7 +125,6 @@ namespace ProjectB.Dependency.Scopes
 			
 			// Outbound Port 어댑터 등록
 			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
-			RegisterPortAdapter<IUnloadScreenPort, UnloadScreenService>();
 			RegisterPortAdapter<ILoadingOverlayServicePort, LoadingOverlayService>();
 			RegisterPortAdapter<ILoadHomeScreenPort, LoadHomeScreenService>();
 			RegisterPortAdapter<IPlayerSessionHolderPort, PlayerSessionHolderService>();

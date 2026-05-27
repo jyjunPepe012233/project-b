@@ -143,13 +143,13 @@ namespace ProjectB.Gameplay
 			if (_loadSummonResultScreenPort.IsLoaded)
 			{
 				// 결과 화면이 켜져있으면 닫음
-				yield return _loadSummonResultScreenPort.UnloadSummonResultScreen();
+				yield return _loadSummonResultScreenPort.Unload();
 			}
 			
 			_isAnimationPlaying = true;
 			
 			// 애니메이션 로드 및 시작 (뽑기 결과 전달)
-			yield return _loadSummonAnimationScreenPort.LoadSummonAnimationScreen();
+			yield return _loadSummonAnimationScreenPort.Load();
 			StartAnimation?.Invoke(result);
 
 			// 애니메이션 주체가 애니메이션이 끝났음을 알릴 때까지 대기
@@ -158,12 +158,12 @@ namespace ProjectB.Gameplay
 			yield return new WaitUntil(() => isFinished);
 
 			// 애니메이션 정리
-			yield return _loadSummonAnimationScreenPort.UnloadSummonAnimationScreen();
+			yield return _loadSummonAnimationScreenPort.Unload();
 			AnimationPerfectlyUnloaded?.Invoke();
 			
 			_isAnimationPlaying = false;
 			
-			yield return _loadSummonResultScreenPort.LoadSummonResultScreen(result);
+			yield return _loadSummonResultScreenPort.Load();
 			ShowSummonResult?.Invoke(result); // 결과 화면이 켜졌으면 화면에 결과 전달
 		}
 		
