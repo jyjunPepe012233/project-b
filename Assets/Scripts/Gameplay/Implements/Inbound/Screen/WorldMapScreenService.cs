@@ -3,7 +3,7 @@ using ProjectB.Gameplay.Ports.Inbound.Screen;
 namespace ProjectB.Gameplay.Implements.Inbound.Screen
 {
 
-	public class SoldierListScreenService : BaseScreenService, ISoldierListScreenService
+	public class WorldMapScreenService : BaseScreenService, IWorldMapScreenService
 	{
 		
 	}

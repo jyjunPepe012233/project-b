@@ -1,11 +1,8 @@
 namespace ProjectB.Gameplay.Ports.Inbound.Screen
 {
 
-	public interface IWorldMapScreenService
+	public interface IWorldMapScreenService : IBaseScreenService
 	{
-		void Open();
-		
-		void Close();
 	}
 
 }

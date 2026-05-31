@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Inbound.Screen
 {
 
-	public interface IShopScreenService
+	public interface IShopScreenService : IBaseScreenService
 	{
 		void Open();
 

@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Inbound.Screen
 {
 
-	public interface ISoldierListScreenService
+	public interface ISoldierListScreenService : IBaseScreenService
 	{
 		void Open();
 
