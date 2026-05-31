@@ -1,4 +1,5 @@
 using ProjectB.Gameplay.Ports.Inbound;
+using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.UI.Core;
 using ProjectB.UI.View.Buttons;
 
@@ -8,12 +9,12 @@ namespace ProjectB.UI.View.Screens
 	public class TitleScreenPresenter : UIPresenter
 	{
 		private readonly ButtonView _clickAreaView;
-		private readonly ITitleScreenManagerPort _titleScreenManagerPort;
+		private readonly ITitleScreenManager _titleScreenManager;
 
-		public TitleScreenPresenter(ButtonView clickAreaView, ITitleScreenManagerPort titleScreenManagerPort)
+		public TitleScreenPresenter(ButtonView clickAreaView, ITitleScreenManager titleScreenManager)
 		{
 			_clickAreaView = clickAreaView;
-			_titleScreenManagerPort = titleScreenManagerPort;
+			_titleScreenManager = titleScreenManager;
 		}
 
 		protected override void SetupViewCallbacks()
@@ -30,7 +31,7 @@ namespace ProjectB.UI.View.Screens
 
 		void OnClickAreaClicked()
 		{
-			_titleScreenManagerPort.Touched();
+			_titleScreenManager.Touched();
 		}
 	}
 

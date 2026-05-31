@@ -1,13 +1,11 @@
 using ProjectB.Core.Supports;
-using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Outbound;
-using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound.Screen
 {
-
+	
 	public class TitleScreenManager : ITitleScreenManager
 	{
 		private readonly ILoadHomeScreenPort _loadHomeScreenScenePort;
