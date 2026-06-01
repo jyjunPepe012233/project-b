@@ -1,9 +1,11 @@
 {
-    "name": "ProjectB.UI",
+    "name": "ProjectB.UI.Presenters",
     "rootNamespace": "ProjectB",
     "references": [
         "GUID:57c074a4726b4ac9a0b105d90daef00c",
         "GUID:edf03d21d85fa438b8e12a8dcd26200b",
+        "GUID:de4f40fdb7fb46ea853345d07a4c4fe0",
+        "GUID:91c9687a4123472e8a2355b936cd1a64",
         "GUID:6934533433c34282a53f61bc6c623e17",
         "GUID:4516fe32c11b32b4c8eb0d5ed6f6d7bc",
         "GUID:6867947f8ba984907a391d665a3c7e06"
