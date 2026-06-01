@@ -1,5 +1,5 @@
 {
-    "name": "ProjectB.UI.Presenters",
+    "name": "ProjectB.UI.Presenter",
     "rootNamespace": "ProjectB",
     "references": [
         "GUID:57c074a4726b4ac9a0b105d90daef00c",
