@@ -1,23 +1,27 @@
 using System.Collections.Generic;
-using ProjectB.UI.Core;
 using UnityEngine;
 
-namespace ProjectB.UI.View.Common
+namespace ProjectB.UI.Collections
 {
-	public abstract class BasePrefabPoolView<T> : TopElementView where T : Object
+	public abstract class PrefabPool<T> where T : Object
 	{
-		private readonly List<T> _activeObjects = new List<T>();
-		private readonly List<T> _poolObjects = new List<T>();
+		private readonly List<T> _activeObjects;
+		private readonly List<T> _poolObjects;
 		
+		private Transform _parentTransform;
 		private T _prefab;
-		
-		public IReadOnlyList<T> ActiveObjects => _activeObjects;
-		public IReadOnlyList<T> PoolObjects => _poolObjects;
 
-		public void SetPrefab(T prefab)
+		protected PrefabPool(Transform parentTransform, T prefab, int capacity = 0)
 		{
+			_activeObjects = new List<T>(capacity);
+			_poolObjects = new List<T>(capacity);
+			
+			_parentTransform = parentTransform;
 			_prefab = prefab;
 		}
+
+		public IReadOnlyList<T> ActiveObjects => _activeObjects;
+		public IReadOnlyList<T> PoolObjects => _poolObjects;
 		
 		public T Load()
 		{
@@ -39,7 +43,7 @@ namespace ProjectB.UI.View.Common
 			}
 			else
 			{
-				var newObj = Instantiate(_prefab, transform, false);
+				var newObj = Object.Instantiate(_prefab, _parentTransform, false);
 				_activeObjects.Add(newObj);
 				return newObj;
 			}
