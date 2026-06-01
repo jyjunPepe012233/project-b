@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace ProjectB.UI.View.Common
 {
-
-	public class PrefabPoolView<T> : TopElementView where T : Component
+	public abstract class BasePrefabPoolView<T> : TopElementView where T : Object
 	{
 		private readonly List<T> _activeObjects = new List<T>();
 		private readonly List<T> _poolObjects = new List<T>();
@@ -34,7 +33,7 @@ namespace ProjectB.UI.View.Common
 				var obj = _poolObjects[lastIndex];
 				_poolObjects.RemoveAt(lastIndex);
 				
-				obj.gameObject.SetActive(true);
+				SetActiveObject(obj, true);
 				_activeObjects.Add(obj);
 				return obj;
 			}
@@ -50,11 +49,13 @@ namespace ProjectB.UI.View.Common
 		{
 			foreach (var obj in _activeObjects)
 			{
-				obj.gameObject.SetActive(false);
+				SetActiveObject(obj, false);
 				_poolObjects.Add(obj);
 			}
 			_activeObjects.Clear();
 		}
+		
+		protected abstract void SetActiveObject(T obj, bool active);
 	}
 
 }
