@@ -11,10 +11,6 @@ namespace ProjectB.UI.Core
 		[SerializeField, Readonly] private bool _isShowing;
 		public bool IsShowing => _isShowing;
 		
-		// 이 View가 Presenter나 상위 View에게 제어되는지 확인하기 위한 플래그
-		// 이 클래스의 MarkAsControlled()가 호출되면 true로 설정됨
-		[SerializeField, Readonly] private bool _isControlled;
-		
 		[Header("Settings")]
 		[SerializeField] protected bool defaultDisable = false; // 페이지가 열릴 때 기본적으로 비활성화되어 있어야 하는지 여부
 
@@ -41,30 +37,16 @@ namespace ProjectB.UI.Core
 		}
 #endif
 
-		// Presenter나 상위 View가 이 UIView를 제어하는지 확인하기 위한 처리를 하는 메서드.
-		// 다른 요소에게 제어되지 않는다고 판단되면, UIView가 자체적으로 Hide됨
-		public void MarkAsControlled()
+		protected virtual void Awake()
 		{
-			if (_isControlled)
-			{
-				Debug.LogWarning("UIView: 이미 제어되고 있는 UI입니다. UI: " + TransformDebug.GetHierarchyPath(transform));
-				return;
-			}
 			
-			_isControlled = true;
 		}
-
-
-		void Start()
+		
+		protected virtual void Start()
 		{
-			if (_isControlled)
+			if (defaultDisable)
 			{
-				Show();
-			}
-			else
-			{
-				Debug.LogWarning("UIView: 제어되지 않는 UI가 자체적으로 Hide 처리되었습니다. UI: " + TransformDebug.GetHierarchyPath(transform));
-				Hide();
+				Hide(); // Default Disable로 설정되어 있으면 초기 상태를 Hide로 설정
 			}
 		}
 		
