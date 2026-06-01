@@ -7,8 +7,6 @@ namespace ProjectB.Gameplay.Ports.Inbound
 
 	public interface IInventoryServicePort
 	{
-		public event Action InventoryUpdated;
-		
 		IReadOnlyList<IReadOnlyPlayerItem> Items { get; }
 	}
 

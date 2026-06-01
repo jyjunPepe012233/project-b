@@ -6,6 +6,7 @@ using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.RuntimeImpl;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
+using ProjectB.Gameplay.Events;
 using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Outbound;
 using UnityEngine;
@@ -16,14 +17,12 @@ namespace ProjectB.Gameplay
 	public class InternalInventoryService : IInternalInventoryServicePort
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
-		private readonly ILoadRewardGainPopupPort _loadRewardGainPopupPort;
+		private readonly InventoryEvents _inventoryEvents;
 		
-		public event Action InventoryUpdated;
-
-		public InternalInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, ILoadRewardGainPopupPort loadRewardGainPopupPort)
+		public InternalInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, InventoryEvents inventoryEvents)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
-			_loadRewardGainPopupPort = loadRewardGainPopupPort;
+			_inventoryEvents = inventoryEvents;
 		}
 
 		public void GiveItem(IItemData itemData, int quantity, ItemGainAction gainAction)
@@ -43,22 +42,10 @@ namespace ProjectB.Gameplay
 				playerData.AddItem(newItem);
 			}
 
-			InventoryUpdated?.Invoke();
-			
-			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
+			_inventoryEvents.ItemAdded?.Invoke(new ItemGain(itemData, quantity), gainAction);
+			_inventoryEvents.InventoryUpdated?.Invoke();
 
-			switch (gainAction)
-			{
-				case ItemGainAction.NoAction:
-					Debug.Log("NoAction 아이템 획득: " + itemData.ItemId + " x" + quantity);
-					break;
-				
-				case ItemGainAction.Reward:
-					var singleItemGainArr = new[] { new ItemGain(itemData, quantity) };
-					CoroutineHandler.StartAndAdd(_loadRewardGainPopupPort.Load(singleItemGainArr));
-					break;
-			}
-			
+			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 		}
 
 		public void GiveItems(IEnumerable<ItemGain> itemGains, ItemGainAction gainAction)
@@ -91,22 +78,15 @@ namespace ProjectB.Gameplay
 					playerData.AddItem(newItem);
 				}
 			}
-			
-			InventoryUpdated?.Invoke();
+
+
+			foreach (var itemGain in distinctItemGain)
+			{
+				_inventoryEvents.ItemAdded?.Invoke(new ItemGain(itemGain.Key, itemGain.Value), gainAction);
+			}
+			_inventoryEvents.InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
-
-			switch (gainAction)
-			{
-				case ItemGainAction.NoAction:
-					Debug.Log("NoAction 아이템 획득! (벌크 획득 함수 사용)");
-					break;
-				
-				case ItemGainAction.Reward:
-					var itemGainArr = distinctItemGain.Select(kvp => new ItemGain(kvp.Key, kvp.Value));
-					CoroutineHandler.StartAndAdd(_loadRewardGainPopupPort.Load(itemGainArr));
-					break;
-			}
 		}
 
 		public bool TryClearItem(IItemData itemData, int quantity)
@@ -134,7 +114,8 @@ namespace ProjectB.Gameplay
 				playerData.RemoveItem(existingItem);
 			}
 			
-			InventoryUpdated?.Invoke();
+			_inventoryEvents.ItemRemoved?.Invoke(new ItemGain(itemData, quantity));
+			_inventoryEvents.InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 			

@@ -8,8 +8,6 @@ namespace ProjectB.Gameplay.Ports.Internal
 
 	public interface IInternalInventoryServicePort
 	{
-		event Action InventoryUpdated;
-		
 		void GiveItem(IItemData itemData, int quantity, ItemGainAction gainAction);
 		
 		void GiveItems(IEnumerable<ItemGain> itemGains, ItemGainAction gainAction);
