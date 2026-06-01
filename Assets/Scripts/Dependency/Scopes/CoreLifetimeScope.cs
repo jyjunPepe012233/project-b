@@ -159,21 +159,6 @@ namespace ProjectB.Dependency.Scopes
 			// - Error
 			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
 			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
-
-			// - Screen
-			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
-			RegisterPortAdapter<ILoadHomeScreenPort, LoadHomeScreenService>();
-			RegisterPortAdapter<ILoadSoldierDetailScreenPort, LoadSoldierDetailScreenService>();
-			RegisterPortAdapter<ILoadBackpackScreenPort, LoadBackpackScreenService>();
-			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
-			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
-			RegisterPortAdapter<ILoadShopScreenServicePort, LoadShopScreenService>();
-			RegisterPortAdapter<ILoadSoldierListScreenServicePort, LoadSoldierListScreenService>();
-			RegisterPortAdapter<ILoadWorldMapScreenServicePort, LoadWorldMapScreenService>();
-			
-			// - 분류 X
-			RegisterPortAdapter<ILoadingOverlayServicePort, LoadingOverlayService>();
-			RegisterPortAdapter<ILoadRewardGainPopupPort, LoadRewardGainPopupPort>();
 		}
 	}
 
