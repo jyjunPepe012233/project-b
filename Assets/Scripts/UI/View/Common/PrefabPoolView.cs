@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ProjectB.UI.View.Common
 {
 
-	public class PrefabPoolView<T> : UIView where T : Component
+	public class PrefabPoolView<T> : TopElementView where T : Component
 	{
 		private readonly List<T> _activeObjects = new List<T>();
 		private readonly List<T> _poolObjects = new List<T>(); 
