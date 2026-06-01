@@ -5,13 +5,13 @@ namespace ProjectB.UI.Core
 
 	public abstract class UIPresenter : IDisposable
 	{
-		public void Initialize()
+		public virtual void Initialize()
 		{
 			SetupViewCallbacks();
 			SetupModelSubscription();
 		}
 
-		public void Dispose()
+		public virtual void Dispose()
 		{
 			DisposeViewCallbacks();
 			DisposeModelSubscription();
