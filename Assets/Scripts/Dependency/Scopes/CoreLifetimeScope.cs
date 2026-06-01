@@ -12,8 +12,9 @@ using ProjectB.Data.Static.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Gameplay;
-using ProjectB.Gameplay.Ports;
+using ProjectB.Gameplay.Implements.Inbound.Screen;
 using ProjectB.Gameplay.Ports.Inbound;
+using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Outbound;
 using ProjectB.Infrastructure;
@@ -27,7 +28,7 @@ namespace ProjectB.Dependency.Scopes
 	public sealed class CoreLifetimeScope : LifetimeScope
 	{
 		private IContainerBuilder _builder;
-		
+
 		[SerializeField] private SoldierDatabaseSO _soldierDatabaseSO;
 		[SerializeField] private ItemDatabaseSO _itemDatabaseSO;
 		[SerializeField] private InvasionSettingSO _invasionSettingSO;
@@ -69,9 +70,23 @@ namespace ProjectB.Dependency.Scopes
 		protected sealed override void Configure(IContainerBuilder builder)
 		{
 			_builder = builder;
+
+			// ==============================================================
+			// Initializer 등록
+			// 어셈블리, 포트 종류 등과 무관하게 Awake 시점부터 필요한 객체들을 등록
+			// 이 클래스들은 Awake 시점에서 Resolve됨.
+			// ==============================================================
+			
+			builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
+			builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
+			builder.Register<FirebaseInitializer>(Lifetime.Singleton);
+			builder.Register<GameFrameSetup>(Lifetime.Singleton);
 			
 			
-			// 데이터 등록
+			// ==============================================================
+			// 데이터 인스턴스 등록
+			// ==============================================================
+			
 			RegisterPortInstance<IInvasionSetting, InvasionSettingSO>(_invasionSettingSO);
 			RegisterPortInstance<ISoldierDatabase, SoldierDatabaseSO>(_soldierDatabaseSO);
 			RegisterPortInstance<IItemDatabase, ItemDatabaseSO>(_itemDatabaseSO);
@@ -79,67 +94,86 @@ namespace ProjectB.Dependency.Scopes
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
 			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
-			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);	
+			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
 			
-			
-			
-			// Initializer 등록
-			// 이 클래스들은 Awake 시점에서 Resolve됨.
-			builder.Register<PlayerSessionInitializer>(Lifetime.Singleton);
-			builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
-			builder.Register<FirebaseInitializer>(Lifetime.Singleton);
-			builder.Register<GameFrameSetup>(Lifetime.Singleton);
 
-			
-			
+			// ==============================================================
 			// Inbound Port 어댑터 등록
-			RegisterPortAdapter<ITitleScreenManagerPort, TitleScreenManager>();
-			RegisterPortAdapter<IHomeScreenServicePort, HomeScreenService>();
+			// ==============================================================
+			
+			// - Player
 			RegisterPortAdapter<IPlayerDataServicePort, PlayerDataService>();
+
+			// - Soldier
 			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
-			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
-			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
-			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
 			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
+			RegisterPortAdapter<ISoldierLevelUpServicePort, SoldierLevelUpService>();
+
+			// - Inventory
+			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
+			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
+			
+			// - Screen
+			RegisterPortAdapter<ITitleScreenManager, TitleScreenManager>();
+			RegisterPortAdapter<ISummonScreenService, SummonScreenService>();
+			RegisterPortAdapter<IShopScreenService, ShopScreenService>();
+			RegisterPortAdapter<ISoldierListScreenService, SoldierListScreenService>();
+			RegisterPortAdapter<IWorldMapScreenService, WorldMapScreenService>();
+			
+			// - 분류 X
+			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
+			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<IShopServicePort, ShopService>();
 			RegisterPortAdapter<IMenuServicePort, MenuService>();
-			RegisterPortAdapter<ISoldierLevelUpServicePort, SoldierLevelUpService>();
-			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
 			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonServicePort, ISummonAnimationManagerPort>();
 			
 			
-			
+			// ==============================================================
 			// Internal Port 어댑터 등록
-			RegisterPortAdapter<ILoadingTransitionServicePort , LoadingTransitionService>();
+			// ==============================================================
+
+			// - Computer
 			RegisterPortAdapter<ISoldierStatusComputerPort, SoldierStatusComputer>();
 			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
+
+			// - Factory
 			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactory>();
+			
+			// - 분류 X
+			RegisterPortAdapter<ILoadingTransitionServicePort , LoadingTransitionService>();
 			RegisterPortAdapter<IInternalInventoryServicePort, InternalInventoryService>();
 			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
-			
-			// ConsumableItemResolver들은 제네릭으로 관리되며, 주입받을 때도 제네릭 타입으로 종류를 구분하면 됨
 			RegisterPortAdapter<IConsumableItemResolverPort<IGainCurrencyItem>, GainCurrencyItemResolver>();
 			
 			
-			
+			// ==============================================================
 			// Outbound Port 어댑터 등록
-			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
-			RegisterPortAdapter<ILoadingOverlayServicePort, LoadingOverlayService>();
-			RegisterPortAdapter<ILoadHomeScreenPort, LoadHomeScreenService>();
+			// ==============================================================
+
+			// - Player
 			RegisterPortAdapter<IPlayerSessionHolderPort, PlayerSessionHolderService>();
 			RegisterPortAdapter<ILoadPlayerDataPort, LoadPlayerDataService>();
 			RegisterPortAdapter<IInitializePlayerSessionPort, InitializePlayerSessionService>();
-			RegisterPortAdapter<ILoadSoldierDetailScreenPort, LoadSoldierDetailScreenService>();
-			RegisterPortAdapter<ILoadRewardGainPopupPort, LoadRewardGainPopupPort>();
+
+			// - Error
 			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
 			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
+
+			// - Screen
+			RegisterPortAdapter<ILoadSummonScreenPort, LoadSummonScreenService>();
+			RegisterPortAdapter<ILoadHomeScreenPort, LoadHomeScreenService>();
+			RegisterPortAdapter<ILoadSoldierDetailScreenPort, LoadSoldierDetailScreenService>();
 			RegisterPortAdapter<ILoadBackpackScreenPort, LoadBackpackScreenService>();
 			RegisterPortAdapter<ILoadSummonAnimationScreenPort, LoadSummonAnimationScreenService>();
 			RegisterPortAdapter<ILoadSummonResultScreenPort, LoadSummonResultScreenService>();
 			RegisterPortAdapter<ILoadShopScreenServicePort, LoadShopScreenService>();
 			RegisterPortAdapter<ILoadSoldierListScreenServicePort, LoadSoldierListScreenService>();
 			RegisterPortAdapter<ILoadWorldMapScreenServicePort, LoadWorldMapScreenService>();
+			
+			// - 분류 X
+			RegisterPortAdapter<ILoadingOverlayServicePort, LoadingOverlayService>();
+			RegisterPortAdapter<ILoadRewardGainPopupPort, LoadRewardGainPopupPort>();
 		}
 	}
 
