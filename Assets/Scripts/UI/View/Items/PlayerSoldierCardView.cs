@@ -17,45 +17,16 @@ namespace ProjectB.UI.View.Items
 		[SerializeField] protected RectTransform _roleIconParent;
 		[SerializeField] protected RectTransform _spiritIconParent;
 		
-		// 아래 3개 변수는 런타임 중에 초기화되므로 하므로 **내부에서도 프로퍼티를 통해서만 접근할 것**
 		private PrefabDictionary<ISoldierData> _soldierDisplayDictionary;
 		private PrefabDictionary<ISoldierRoleData> _roleIconDictionary;
 		private PrefabDictionary<ISpiritData> _spiritIconDictionary;
 
-		protected PrefabDictionary<ISoldierData> SoldierDisplayDictionary
+		protected override void Awake()
 		{
-			get
-			{
-				if (_soldierDisplayDictionary == null)
-				{
-					_soldierDisplayDictionary = new PrefabDictionary<ISoldierData>(_soldierDisplayParent, 4);
-				}
-				return _soldierDisplayDictionary;
-			}
-		}
-		
-		protected PrefabDictionary<ISoldierRoleData> RoleIconDictionary
-		{
-			get
-			{
-				if (_roleIconDictionary == null)
-				{
-					_roleIconDictionary = new PrefabDictionary<ISoldierRoleData>(_roleIconParent, 4);
-				}
-				return _roleIconDictionary;
-			}
-		}
-		
-		protected PrefabDictionary<ISpiritData> SpiritIconDictionary
-		{
-			get
-			{
-				if (_spiritIconDictionary == null)
-				{
-					_spiritIconDictionary = new PrefabDictionary<ISpiritData>(_spiritIconParent, 4);
-				}
-				return _spiritIconDictionary;
-			}
+			base.Awake();
+			_soldierDisplayDictionary = new PrefabDictionary<ISoldierData>(_soldierDisplayParent, 4);
+			_roleIconDictionary = new PrefabDictionary<ISoldierRoleData>(_roleIconParent, 4);
+			_spiritIconDictionary = new PrefabDictionary<ISpiritData>(_spiritIconParent, 4);
 		}
 		
 		public void SetSoldierName(string name)
@@ -74,7 +45,7 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_soldierDisplayParent != null)
 			{
-				SoldierDisplayDictionary.RegisterAndSetActiveInstance(null, soldierDisplayPrefab);
+				_soldierDisplayDictionary.RegisterAndSetActiveInstance(null, soldierDisplayPrefab);
 			}
 			else
 			{
@@ -86,7 +57,7 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_roleIconParent != null)
 			{
-				RoleIconDictionary.RegisterAndSetActiveInstance(null, roleIconPrefab);
+				_roleIconDictionary.RegisterAndSetActiveInstance(null, roleIconPrefab);
 			}
 			else
 			{
@@ -98,7 +69,7 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_spiritIconParent != null)
 			{
-				SpiritIconDictionary.RegisterAndSetActiveInstance(null, spiritIconPrefab);
+				_spiritIconDictionary.RegisterAndSetActiveInstance(null, spiritIconPrefab);
 			}
 			else
 			{
