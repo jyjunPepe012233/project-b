@@ -62,7 +62,7 @@ namespace ProjectB.Dependency.Scopes
 			// base.Awake() 후에(= Configure 후) Resolve해야함.
 			Container.Resolve<PlayerSessionInitializer>();
 			Container.Resolve<GlobalErrorHandler>();
-			// Container.Resolve<FirebaseInitializer>();
+			Container.Resolve<FirebaseInitializer>();
 			Container.Resolve<GameFrameSetup>();
 		}
 
