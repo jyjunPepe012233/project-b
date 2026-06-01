@@ -1,0 +1,11 @@
+Data에서
+ 
+Data (asmdef)
+ㄴ Runtime
+ㄴ RuntimeImpl
+
+Data.ReadOnly (asmdef)
+ㄴ RuntimeReadOnly
+ㄴ Static
+
+로 분리하기
