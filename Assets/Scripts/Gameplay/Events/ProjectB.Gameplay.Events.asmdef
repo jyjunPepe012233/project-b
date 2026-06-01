@@ -1,0 +1,17 @@
+{
+    "name": "ProjectB.Gameplay.Events",
+    "rootNamespace": "ProjectB",
+    "references": [
+        "GUID:57c074a4726b4ac9a0b105d90daef00c",
+        "GUID:edf03d21d85fa438b8e12a8dcd26200b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
