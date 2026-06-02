@@ -69,7 +69,7 @@ namespace ProjectB.UI.Core
 			else
 			{
 				_canvasGroup.SetVisible(true);
-			}
+				}
 			
 			OnShowed();
 			OnSetupUICallbacks(); // Show 시 UI 콜백 등록
