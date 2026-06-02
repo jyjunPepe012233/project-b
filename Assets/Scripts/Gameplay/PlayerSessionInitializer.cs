@@ -1,4 +1,5 @@
 using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 
 namespace ProjectB.Gameplay
 {

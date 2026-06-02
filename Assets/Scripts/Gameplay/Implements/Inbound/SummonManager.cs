@@ -5,13 +5,13 @@ using ProjectB.Data.Runtime.Summon;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Data.Types;
-using ProjectB.Gameplay.Ports;
 using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Internal.Factory;
+using ProjectB.Gameplay.Ports.Outbound.Player;
+using ProjectB.Gameplay.Ports.Outbound.Screen;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound
 {
 
 	public class SummonManager : ISummonServicePort, ISummonAnimationManagerPort

@@ -3,7 +3,7 @@ using AssetValidator;
 using InspectorGadgets.Attributes;
 using ProjectB.UI.Core;
 using ProjectB.UI.View.Common;
-using ProjectB.UI.View.Frames;
+using ProjectB.UI.View.Items;
 using ProjectB.UI.View.Lists;
 using UnityEngine;
 using UnityEngine.Playables;

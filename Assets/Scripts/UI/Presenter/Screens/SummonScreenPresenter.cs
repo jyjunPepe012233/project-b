@@ -4,7 +4,7 @@ using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.UI.View.Buttons;
 using ProjectB.UI.View.Common;
 
-namespace ProjectB.UI.Presenters.Screens
+namespace ProjectB.UI.Presenter.Screens
 {
 
 	public class SummonScreenPresenter : BaseScreenPresenter<ISummonScreenService>

@@ -2,10 +2,10 @@ using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Internal
 {
 
 	public class GainCurrencyItemResolver : IConsumableItemResolverPort<IGainCurrencyItem>

@@ -1,7 +1,7 @@
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 
-namespace ProjectB.Gameplay.Ports.Internal
+namespace ProjectB.Gameplay.Ports.Internal.Factory
 {
 
 	public interface IPlayerSoldierFactoryPort

@@ -1,5 +1,6 @@
 using ProjectB.Core.Types;
 using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Error;
 using UnityEngine;
 
 namespace ProjectB.Gameplay

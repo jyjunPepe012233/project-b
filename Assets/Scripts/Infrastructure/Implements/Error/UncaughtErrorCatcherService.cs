@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using ProjectB.Core.Types;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Error;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure
+namespace ProjectB.Infrastructure.Implements.Error
 {
 	// 로그로 보고된 에러는 Exception 객체가 없으므로 사용하는 더미 클래스
 	public class CustomLogWrapperException : Exception

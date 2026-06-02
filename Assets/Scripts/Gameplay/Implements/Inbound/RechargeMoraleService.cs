@@ -1,9 +1,9 @@
 using System;
 using ProjectB.Data.Static.Morale;
 using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound
 {
 
 	public class RechargeMoraleService : IRechargeMoraleServicePort

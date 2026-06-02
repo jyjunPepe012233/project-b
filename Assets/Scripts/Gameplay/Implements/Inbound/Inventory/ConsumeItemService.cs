@@ -1,13 +1,9 @@
-using System;
-using System.Linq;
-using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Item;
-using ProjectB.Gameplay.Ports.Inbound;
+using ProjectB.Gameplay.Ports.Inbound.Inventory;
 using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 {
 
 	public class ConsumeItemService : IConsumeItemServicePort

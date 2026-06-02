@@ -1,7 +1,7 @@
 using System.Collections;
 using ProjectB.Data.Types;
 
-namespace ProjectB.Gameplay.Ports.Outbound
+namespace ProjectB.Gameplay.Ports.Outbound.Screen
 {
 
 	public interface ILoadHomeScreenPort

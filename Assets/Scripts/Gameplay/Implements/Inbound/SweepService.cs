@@ -5,10 +5,10 @@ using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound
 {
 
 	public class SweepService : ISweepService

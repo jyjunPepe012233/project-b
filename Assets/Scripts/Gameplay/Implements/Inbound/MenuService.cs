@@ -1,8 +1,8 @@
 using ProjectB.Core.Supports;
 using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Screen;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound
 {
 
 	public class MenuService : IMenuServicePort

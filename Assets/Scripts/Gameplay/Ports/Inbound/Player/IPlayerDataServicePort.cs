@@ -1,6 +1,6 @@
 using ProjectB.Data.Runtime.Player;
 
-namespace ProjectB.Gameplay.Ports.Inbound
+namespace ProjectB.Gameplay.Ports.Inbound.Player
 {
 
 	public interface IPlayerDataServicePort

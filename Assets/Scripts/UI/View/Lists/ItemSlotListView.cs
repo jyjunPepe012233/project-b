@@ -1,6 +1,6 @@
 using ProjectB.UI.Collections;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Frames;
+using ProjectB.UI.View.Items;
 using UnityEngine;
 
 namespace ProjectB.UI.View.Lists

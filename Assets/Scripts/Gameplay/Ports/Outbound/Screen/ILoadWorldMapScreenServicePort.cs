@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace ProjectB.Gameplay.Ports.Outbound
+namespace ProjectB.Gameplay.Ports.Outbound.Screen
 {
 
 	public interface ILoadWorldMapScreenServicePort

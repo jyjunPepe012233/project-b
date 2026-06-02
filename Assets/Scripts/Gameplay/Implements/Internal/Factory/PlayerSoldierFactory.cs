@@ -1,9 +1,10 @@
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.RuntimeImpl;
 using ProjectB.Data.Static.Soldier;
-using ProjectB.Gameplay.Ports.Internal;
+using ProjectB.Gameplay.Ports.Internal.Computer;
+using ProjectB.Gameplay.Ports.Internal.Factory;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Internal.Factory
 {
 
 	public class PlayerSoldierFactory : IPlayerSoldierFactoryPort

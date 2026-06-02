@@ -4,7 +4,7 @@ using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Outbound;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Internal
 {
 
 	public class LoadingTransitionService : ILoadingTransitionServicePort

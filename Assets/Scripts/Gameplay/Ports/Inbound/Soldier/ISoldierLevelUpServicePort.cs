@@ -1,9 +1,7 @@
-using System;
-using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Types;
 
-namespace ProjectB.Gameplay.Ports.Inbound
+namespace ProjectB.Gameplay.Ports.Inbound.Soldier
 {
 
 	public interface ISoldierLevelUpServicePort

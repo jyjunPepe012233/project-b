@@ -4,11 +4,12 @@ using System.Linq;
 using ProjectB.Core.Supports;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
-using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Inbound.Soldier;
+using ProjectB.Gameplay.Ports.Outbound.Player;
+using ProjectB.Gameplay.Ports.Outbound.Screen;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 {
 
 	public class SoldierDetailService : ISoldierDetailServicePort

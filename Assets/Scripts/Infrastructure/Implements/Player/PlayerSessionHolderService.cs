@@ -1,7 +1,7 @@
 using ProjectB.Data.Runtime.Player;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 
-namespace ProjectB.Infrastructure
+namespace ProjectB.Infrastructure.Implements.Player
 {
 
 	public class PlayerSessionHolderService : IPlayerSessionHolderPort

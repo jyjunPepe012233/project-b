@@ -1,9 +1,9 @@
 using Firebase.Crashlytics;
 using ProjectB.Core.Types;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Error;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure
+namespace ProjectB.Infrastructure.Implements.Error
 {
 
 	public class ReportErrorService : IReportErrorPort

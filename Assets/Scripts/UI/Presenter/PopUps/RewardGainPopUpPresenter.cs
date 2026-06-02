@@ -4,7 +4,7 @@ using ProjectB.Core.Supports;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Events;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Frames;
+using ProjectB.UI.View.Items;
 using ProjectB.UI.View.PopUps;
 using UnityEngine;
 

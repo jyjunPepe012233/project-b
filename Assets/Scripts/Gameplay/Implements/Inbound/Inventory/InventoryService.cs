@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProjectB.Data.Runtime.Player;
-using ProjectB.Gameplay.Ports.Inbound;
+using ProjectB.Gameplay.Ports.Inbound.Inventory;
 using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 {
 	
 	public class InventoryService : IInventoryServicePort

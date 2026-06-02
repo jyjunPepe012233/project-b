@@ -1,10 +1,10 @@
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Types;
-using ProjectB.Gameplay.Ports.Internal;
+using ProjectB.Gameplay.Ports.Internal.Computer;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Internal.Computer
 {
 	
 	public class SoldierStatusComputer : ISoldierStatusComputerPort

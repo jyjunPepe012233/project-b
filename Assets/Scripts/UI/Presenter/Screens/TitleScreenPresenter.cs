@@ -2,7 +2,7 @@ using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.UI.Core;
 using ProjectB.UI.View.Buttons;
 
-namespace ProjectB.UI.Presenters.Screens
+namespace ProjectB.UI.Presenter.Screens
 {
 
 	// TitleScreenPresenter는 BaseScreenPresenter를 상속받지 않음

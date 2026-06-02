@@ -1,6 +1,6 @@
 using ProjectB.Data.Runtime.Player;
 
-namespace ProjectB.Gameplay.Ports.Outbound
+namespace ProjectB.Gameplay.Ports.Outbound.Player
 {
 
 	// 왜 플레이어의 데이터를 저장하는 Port는 데이터 별로 분리되었고,

@@ -1,14 +1,13 @@
-using System;
 using System.Linq;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Types;
-using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
+using ProjectB.Gameplay.Ports.Inbound.Soldier;
+using ProjectB.Gameplay.Ports.Internal.Computer;
+using ProjectB.Gameplay.Ports.Outbound.Player;
 using UnityEngine;
 
-namespace ProjectB.Gameplay
+namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 {
 
 	public class SoldierLevelUpService : ISoldierLevelUpServicePort
