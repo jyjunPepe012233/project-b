@@ -1,8 +1,4 @@
 using ProjectB.Core.Supports;
-using ProjectB.Data.Runtime.Player;
-using ProjectB.Data.Static.Soldier;
-using ProjectB.Data.Static.Spirit;
-using ProjectB.UI.Collections;
 using ProjectB.UI.View.Buttons;
 using TMPro;
 using UnityEngine;
@@ -17,17 +13,9 @@ namespace ProjectB.UI.View.Items
 		[SerializeField] protected RectTransform _roleIconParent;
 		[SerializeField] protected RectTransform _spiritIconParent;
 		
-		private PrefabDictionary<ISoldierData> _soldierDisplayDictionary;
-		private PrefabDictionary<ISoldierRoleData> _roleIconDictionary;
-		private PrefabDictionary<ISpiritData> _spiritIconDictionary;
-
-		protected override void Awake()
-		{
-			base.Awake();
-			_soldierDisplayDictionary = new PrefabDictionary<ISoldierData>(_soldierDisplayParent, 4);
-			_roleIconDictionary = new PrefabDictionary<ISoldierRoleData>(_roleIconParent, 4);
-			_spiritIconDictionary = new PrefabDictionary<ISpiritData>(_spiritIconParent, 4);
-		}
+		private GameObject _soldierDisplayInstance;
+		private GameObject _roleIconInstance;
+		private GameObject _spiritIconInstance;
 		
 		public void SetSoldierName(string name)
 		{
@@ -45,7 +33,11 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_soldierDisplayParent != null)
 			{
-				_soldierDisplayDictionary.RegisterAndSetActiveInstance(null, soldierDisplayPrefab);
+				if (_soldierDisplayInstance != null)
+				{
+					Destroy(_soldierDisplayInstance);
+				}
+				_soldierDisplayInstance = Instantiate(soldierDisplayPrefab, _soldierDisplayParent, false);
 			}
 			else
 			{
@@ -57,7 +49,11 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_roleIconParent != null)
 			{
-				_roleIconDictionary.RegisterAndSetActiveInstance(null, roleIconPrefab);
+				if (_roleIconInstance != null)
+				{
+					Destroy(_roleIconInstance);
+				}
+				_roleIconInstance = Instantiate(roleIconPrefab, _roleIconParent, false);
 			}
 			else
 			{
@@ -69,7 +65,11 @@ namespace ProjectB.UI.View.Items
 		{
 			if (_spiritIconParent != null)
 			{
-				_spiritIconDictionary.RegisterAndSetActiveInstance(null, spiritIconPrefab);
+				if (_spiritIconInstance != null)
+				{
+					Destroy(_spiritIconInstance);
+				}
+				_spiritIconInstance = Instantiate(spiritIconPrefab, _spiritIconParent, false);
 			}
 			else
 			{
