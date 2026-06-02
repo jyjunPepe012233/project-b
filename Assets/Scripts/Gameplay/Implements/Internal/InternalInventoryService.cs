@@ -42,7 +42,10 @@ namespace ProjectB.Gameplay
 				playerData.AddItem(newItem);
 			}
 
-			_inventoryEvents.ItemAdded?.Invoke(new ItemGain(itemData, quantity), gainAction);
+			_inventoryEvents.ItemAdded?.Invoke(
+				new ItemGain[] { new(itemData, quantity) },
+				gainAction
+			);
 			_inventoryEvents.InventoryUpdated?.Invoke();
 
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
@@ -53,17 +56,17 @@ namespace ProjectB.Gameplay
 			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
 
 			// ItemGains의 중복되는 아이템 항목을 없애는 처리
-			Dictionary<IItemData, int> distinctItemGain = new();
+			Dictionary<IItemData, int> distinctItemGainDict = new();
 			foreach (var itemGain in itemGains)
 			{
 				// 딕셔너리에 아이템이 없으면 추가, 있으면 개수 누적
-				if (!distinctItemGain.TryAdd(itemGain.item, itemGain.quantity))
+				if (!distinctItemGainDict.TryAdd(itemGain.item, itemGain.quantity))
 				{
-					distinctItemGain[itemGain.item] += itemGain.quantity;
+					distinctItemGainDict[itemGain.item] += itemGain.quantity;
 				}
 			}
 
-			foreach (var itemGain in distinctItemGain)
+			foreach (var itemGain in distinctItemGainDict)
 			{
 				// 찾지 못하면 null이 할당됨
 				var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemGain.Key);
@@ -80,10 +83,11 @@ namespace ProjectB.Gameplay
 			}
 
 
-			foreach (var itemGain in distinctItemGain)
-			{
-				_inventoryEvents.ItemAdded?.Invoke(new ItemGain(itemGain.Key, itemGain.Value), gainAction);
-			}
+			// TODO: Non-Alloc 방식으로 변경 필요 (ListPool 등 활용)
+			_inventoryEvents.ItemAdded?.Invoke(
+				distinctItemGainDict.Select(kvp => new ItemGain(kvp.Key, kvp.Value)),
+				gainAction
+			);
 			_inventoryEvents.InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
@@ -114,7 +118,7 @@ namespace ProjectB.Gameplay
 				playerData.RemoveItem(existingItem);
 			}
 			
-			_inventoryEvents.ItemRemoved?.Invoke(new ItemGain(itemData, quantity));
+			_inventoryEvents.ItemRemoved?.Invoke(new ItemGain[] { new(itemData, quantity) });
 			_inventoryEvents.InventoryUpdated?.Invoke();
 			
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
