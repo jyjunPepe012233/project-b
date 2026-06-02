@@ -22,6 +22,17 @@ namespace ProjectB.UI.View.Frames
 		
 		
 		
+		public void Initialize(string itemName,
+			int quantity,
+			Sprite iconSprite,
+			GameObject tierBackgroundPrefab)
+		{
+			SetItemName(itemName);
+			SetItemQuantity(quantity);
+			SetIcon128(iconSprite);
+			SetTierBackground(tierBackgroundPrefab);
+		}
+		
 		public void SetItemName(string itemName)
 		{
 			if (_itemNameText != null)
@@ -38,7 +49,7 @@ namespace ProjectB.UI.View.Frames
 			}
 		}
 		
-		public void SetIcon(Sprite iconSprite)
+		public void SetIcon128(Sprite iconSprite)
 		{
 			if (_iconImage128 != null)
 			{
