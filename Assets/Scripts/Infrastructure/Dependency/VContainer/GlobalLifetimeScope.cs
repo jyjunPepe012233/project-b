@@ -39,7 +39,7 @@ using VContainer.Unity;
 namespace ProjectB.Infrastructure.Dependency
 {
 
-	public sealed class CoreLifetimeScope : LifetimeScope
+	public sealed class GlobalLifetimeScope : LifetimeScope
 	{
 		private IContainerBuilder _builder;
 
