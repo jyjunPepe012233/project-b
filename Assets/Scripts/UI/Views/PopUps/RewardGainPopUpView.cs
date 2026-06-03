@@ -1,15 +1,14 @@
-using System.Collections.Generic;
 using AssetValidator;
 using InspectorGadgets.Attributes;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Common;
-using ProjectB.UI.View.Items;
-using ProjectB.UI.View.Lists;
+using ProjectB.UI.Views.Common;
+using ProjectB.UI.Views.Items;
+using ProjectB.UI.Views.Lists;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.View.PopUps
+namespace ProjectB.UI.Views.PopUps
 {
 
 	public class RewardGainPopUpView : UIView

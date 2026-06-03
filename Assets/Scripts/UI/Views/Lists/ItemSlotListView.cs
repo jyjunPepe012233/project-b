@@ -1,9 +1,9 @@
 using ProjectB.UI.Collections;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Items;
+using ProjectB.UI.Views.Items;
 using UnityEngine;
 
-namespace ProjectB.UI.View.Lists
+namespace ProjectB.UI.Views.Lists
 {
 
 	public class ItemSlotListView : UIView

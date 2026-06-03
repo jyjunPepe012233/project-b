@@ -5,7 +5,7 @@ using ProjectB.UI.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.View.Buttons
+namespace ProjectB.UI.Views.Buttons
 {
 
 	[Serializable]

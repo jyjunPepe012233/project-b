@@ -1,9 +1,9 @@
 using ProjectB.Core.Supports;
-using ProjectB.UI.View.Buttons;
+using ProjectB.UI.Views.Buttons;
 using TMPro;
 using UnityEngine;
 
-namespace ProjectB.UI.View.Items
+namespace ProjectB.UI.Views.Items
 {
 
 	public class PlayerSoldierCardView : ButtonView

@@ -4,11 +4,11 @@ using ProjectB.Core.Supports;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Events;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Items;
-using ProjectB.UI.View.PopUps;
+using ProjectB.UI.Views.Items;
+using ProjectB.UI.Views.PopUps;
 using UnityEngine;
 
-namespace ProjectB.UI.Presenter.PopUps
+namespace ProjectB.UI.Presenters.PopUps
 {
 	// TODO 26.06.02. 00시 26분 할 일 메모
 	// 지금 UI 구조 리팩토링 하고 있음...

@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using AssetValidator;
-using ProjectB.Core.Supports;
 using ProjectB.UI.Core;
-using UnityEngine;
 
-namespace ProjectB.UI.View.Common
+namespace ProjectB.UI.Views.Common
 {
 	
 	// 최상위 요소로서, 하위 UI 전체를 조작하는 기능을 제공하는 View임

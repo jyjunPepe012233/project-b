@@ -1,8 +1,8 @@
 using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.UI.Core;
-using ProjectB.UI.View.Buttons;
+using ProjectB.UI.Views.Buttons;
 
-namespace ProjectB.UI.Presenter.Navigation
+namespace ProjectB.UI.Presenters.Navigation
 {
 
 	// Home 화면에서, 다른 화면으로 이동하는 버튼들을 관리하는 Presenter

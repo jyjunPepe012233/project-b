@@ -1,9 +1,9 @@
-using ProjectB.UI.View.Buttons;
+using ProjectB.UI.Views.Buttons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.View.Items
+namespace ProjectB.UI.Views.Items
 {
 
 	public class ItemSlotView : ButtonView

@@ -1,10 +1,10 @@
 using ProjectB.Gameplay.Ports.Inbound.Player;
 using ProjectB.Gameplay.Ports.Inbound.Screen;
-using ProjectB.UI.View.Buttons;
-using ProjectB.UI.View.Common;
-using ProjectB.UI.View.Lists;
+using ProjectB.UI.Views.Buttons;
+using ProjectB.UI.Views.Common;
+using ProjectB.UI.Views.Lists;
 
-namespace ProjectB.UI.Presenter.Screens
+namespace ProjectB.UI.Presenters.Screens
 {
 
 	public class SoldierListScreenPresenter : BaseScreenPresenter<ISoldierListScreenService>
