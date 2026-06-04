@@ -16,14 +16,14 @@ namespace ProjectB.Gameplay.Implements.Inbound
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly IInvasionSetting _invasionSetting;
 		private readonly ISweepSetting _sweepSetting;
-		private readonly IInternalPlayerLevelUpServicePort _internalPlayerLevelUpService;
-		private readonly IInternalInventoryServicePort _internalInventoryService;
+		private readonly IInternalPlayerLevelUpService _internalPlayerLevelUpService;
+		private readonly IInternalInventoryService _internalInventoryService;
 
 		public SweepService(IPlayerSessionHolderPort playerSessionHolderPort,
 			IInvasionSetting invasionSetting,
 			ISweepSetting sweepSetting,
-			IInternalPlayerLevelUpServicePort internalPlayerLevelUpService,
-			IInternalInventoryServicePort internalInventoryService)
+			IInternalPlayerLevelUpService internalPlayerLevelUpService,
+			IInternalInventoryService internalInventoryService)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
 			_invasionSetting = invasionSetting;

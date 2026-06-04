@@ -8,20 +8,20 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 
 	public class ConsumeItemService : IConsumeItemService
 	{
-		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
-		private readonly IConsumableItemResolverPort<IGainCurrencyItem> _gainCurrencyItemResolverPort;
+		private readonly IInternalInventoryService _internalInventoryService;
+		private readonly IConsumableItemResolver<IGainCurrencyItem> _gainCurrencyItemResolver;
 
-		public ConsumeItemService(IInternalInventoryServicePort internalInventoryServicePort,
-			IConsumableItemResolverPort<IGainCurrencyItem> gainCurrencyItemResolverPort)
+		public ConsumeItemService(IInternalInventoryService internalInventoryService,
+			IConsumableItemResolver<IGainCurrencyItem> gainCurrencyItemResolver)
 		{
-			_internalInventoryServicePort = internalInventoryServicePort;
-			_gainCurrencyItemResolverPort = gainCurrencyItemResolverPort;
+			_internalInventoryService = internalInventoryService;
+			_gainCurrencyItemResolver = gainCurrencyItemResolver;
 		}
 
 		public void ConsumeItem(IItemData itemData)
 		{
 			// 플레이어의 인벤토리에서 아이템 소모 시도
-			if (!_internalInventoryServicePort.TryClearItem(itemData, 1)) // 지금은 일단 1개 소모 메서드만 구현하고 있음.
+			if (!_internalInventoryService.TryClearItem(itemData, 1)) // 지금은 일단 1개 소모 메서드만 구현하고 있음.
 			{
 				Debug.LogError("ConsumeItem을 시도했지만 아이템이 충분하지 않음 ItemData: " + itemData);
 				return;
@@ -30,7 +30,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 			switch (itemData)
 			{
 				case IGainCurrencyItem gainCurrencyItem:
-					_gainCurrencyItemResolverPort.OnConsume(gainCurrencyItem, 1); 
+					_gainCurrencyItemResolver.OnConsume(gainCurrencyItem, 1); 
 					break;
 				
 				default:

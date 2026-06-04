@@ -10,12 +10,12 @@ namespace ProjectB.Gameplay.Implements.Inbound.Screen
 	public class TitleScreenManager : ITitleScreenManager
 	{
 		private readonly ILoadHomeScreenPort _loadHomeScreenScenePort;
-		private readonly ILoadingTransitionServicePort _loadingTransitionServicePort;
+		private readonly ILoadingTransitionService _loadingTransitionService;
 		
-		public TitleScreenManager(ILoadHomeScreenPort loadHomeScreenPort, ILoadingTransitionServicePort loadingTransitionServicePort)
+		public TitleScreenManager(ILoadHomeScreenPort loadHomeScreenPort, ILoadingTransitionService loadingTransitionService)
 		{
 			_loadHomeScreenScenePort = loadHomeScreenPort;
-			_loadingTransitionServicePort = loadingTransitionServicePort;
+			_loadingTransitionService = loadingTransitionService;
 		}
 
 		public void Touched()
@@ -26,7 +26,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Screen
 		void LoadHomeWithTransition()
 		{
 			var loadingTask = _loadHomeScreenScenePort.GetLoadingTask();
-			CoroutineHandler.StartAndAdd(_loadingTransitionServicePort.LoadScreenWithTransition(loadingTask));
+			CoroutineHandler.StartAndAdd(_loadingTransitionService.LoadScreenWithTransition(loadingTask));
 		}
 	}
 

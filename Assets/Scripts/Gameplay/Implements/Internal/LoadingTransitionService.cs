@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Internal
 {
 
-	public class LoadingTransitionService : ILoadingTransitionServicePort
+	public class LoadingTransitionService : ILoadingTransitionService
 	{
 		private readonly ILoadingOverlayServicePort _loadingOverlayServicePort;
 

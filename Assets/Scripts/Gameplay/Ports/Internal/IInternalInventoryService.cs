@@ -6,7 +6,7 @@ using ProjectB.Data.Types;
 namespace ProjectB.Gameplay.Ports.Internal
 {
 
-	public interface IInternalInventoryServicePort
+	public interface IInternalInventoryService
 	{
 		void GiveItem(IItemData itemData, int quantity, ItemGainAction gainAction);
 		

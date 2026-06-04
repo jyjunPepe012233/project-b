@@ -12,13 +12,13 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 	public class CraftEquipmentService : ICraftEquipmentService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
-		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
+		private readonly IInternalInventoryService _internalInventoryService;
 
 		public CraftEquipmentService(IPlayerSessionHolderPort playerSessionHolderPort,
-			IInternalInventoryServicePort internalInventoryServicePort)
+			IInternalInventoryService internalInventoryService)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
-			_internalInventoryServicePort = internalInventoryServicePort;
+			_internalInventoryService = internalInventoryService;
 		}
 
 		public void Craft(IEquipmentItem equipment)
@@ -41,11 +41,11 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 			// 재료 일괄 소모
 			foreach (var craftMaterial in craftMaterials)
 			{
-				_internalInventoryServicePort.TryClearItem(craftMaterial.material, craftMaterial.amount);
+				_internalInventoryService.TryClearItem(craftMaterial.material, craftMaterial.amount);
 			}
 
 			// IEquipmentItem은 IItemData도 구현하므로 캐스팅하여 인벤토리에 지급
-			_internalInventoryServicePort.GiveItem(equipment, 1, ItemGainAction.Reward);
+			_internalInventoryService.GiveItem(equipment, 1, ItemGainAction.Reward);
 
 			// TODO: 플레이어 데이터 직렬화(JSON 저장 등) 로직 필요
 		}

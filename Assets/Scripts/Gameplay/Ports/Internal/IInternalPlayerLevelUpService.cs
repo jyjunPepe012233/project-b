@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Internal
 {
 
-	public interface IInternalPlayerLevelUpServicePort
+	public interface IInternalPlayerLevelUpService
 	{
 		void GiveExperience(int experience);
 	}

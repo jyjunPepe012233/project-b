@@ -12,7 +12,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Internal
 {
 
-	public class InternalInventoryService : IInternalInventoryServicePort
+	public class InternalInventoryService : IInternalInventoryService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly InventoryEvents _inventoryEvents;

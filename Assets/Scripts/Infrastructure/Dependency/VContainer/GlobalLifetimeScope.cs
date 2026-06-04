@@ -148,17 +148,17 @@ namespace ProjectB.Infrastructure.Dependency
 			// ==============================================================
 
 			// - Computer
-			RegisterPortAdapter<ISoldierStatusComputerPort, SoldierStatusComputer>();
-			RegisterPortAdapter<ISoldierCombatPowerComputerPort, SoldierCombatPowerComputer>();
+			RegisterPortAdapter<ISoldierStatusComputer, SoldierStatusComputer>();
+			RegisterPortAdapter<ISoldierCombatPowerComputer, SoldierCombatPowerComputer>();
 
 			// - Factory
 			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactory>();
 			
 			// - 분류 X
-			RegisterPortAdapter<ILoadingTransitionServicePort , LoadingTransitionService>();
-			RegisterPortAdapter<IInternalInventoryServicePort, InternalInventoryService>();
-			RegisterPortAdapter<IInternalPlayerLevelUpServicePort, InternalPlayerLevelUpService>();
-			RegisterPortAdapter<IConsumableItemResolverPort<IGainCurrencyItem>, GainCurrencyItemResolver>();
+			RegisterPortAdapter<ILoadingTransitionService , LoadingTransitionService>();
+			RegisterPortAdapter<IInternalInventoryService, InternalInventoryService>();
+			RegisterPortAdapter<IInternalPlayerLevelUpService, InternalPlayerLevelUpService>();
+			RegisterPortAdapter<IConsumableItemResolver<IGainCurrencyItem>, GainCurrencyItemResolver>();
 			
 			
 			// ==============================================================

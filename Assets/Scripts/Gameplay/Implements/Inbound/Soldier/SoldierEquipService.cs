@@ -13,13 +13,13 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 	public class SoldierEquipService : ISoldierEquipService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
-		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
+		private readonly IInternalInventoryService _internalInventoryService;
 
 		public SoldierEquipService(IPlayerSessionHolderPort playerSessionHolderPort,
-			IInternalInventoryServicePort internalInventoryServicePort)
+			IInternalInventoryService internalInventoryService)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
-			_internalInventoryServicePort = internalInventoryServicePort;
+			_internalInventoryService = internalInventoryService;
 		}
 
 		public void Equip(IPlayerSoldier playerSoldier, SoldierEquipmentSlot slot, IEquipmentItem equipment)
@@ -40,7 +40,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 			}
 
 			// 내부적으로 장비 아이템 소비를 데이터에 반영하는 데에 실패하면 장착 안 함
-			if (!_internalInventoryServicePort.TryClearItem(equipmentItemData, 1))
+			if (!_internalInventoryService.TryClearItem(equipmentItemData, 1))
 			{
 				Debug.LogError("장비 아이템 소비에 실패했습니다!");
 				return;

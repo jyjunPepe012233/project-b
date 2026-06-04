@@ -5,7 +5,7 @@ using ProjectB.Data.Types;
 namespace ProjectB.Gameplay.Ports.Internal.Computer
 {
 
-	public interface ISoldierStatusComputerPort
+	public interface ISoldierStatusComputer
 	{
 		SoldierStatus ComputeSoldierStatus(ISoldierData soldierData, IPlayerSoldier playerSoldier);
 		

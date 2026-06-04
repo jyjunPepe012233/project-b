@@ -11,12 +11,12 @@ namespace ProjectB.Gameplay.Implements.Inbound
 	public class ShopService : IShopService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
-		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
+		private readonly IInternalInventoryService _internalInventoryService;
 
-		public ShopService(IPlayerSessionHolderPort playerSessionHolderPort, IInternalInventoryServicePort internalInventoryServicePort)
+		public ShopService(IPlayerSessionHolderPort playerSessionHolderPort, IInternalInventoryService internalInventoryService)
 		{
 			_playerSessionHolderPort = playerSessionHolderPort;
-			_internalInventoryServicePort = internalInventoryServicePort;
+			_internalInventoryService = internalInventoryService;
 		}
 
 		public void BuyItem(IShopItem shopItem)
@@ -52,7 +52,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 			if (isPurchaseSuccess)
 			{
-				_internalInventoryServicePort.GiveItem(shopItem.ItemData, shopItem.Quantity, ItemGainAction.Reward);
+				_internalInventoryService.GiveItem(shopItem.ItemData, shopItem.Quantity, ItemGainAction.Reward);
 			}
 		}
 	}

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Internal.Computer
 {
 	
-	public class SoldierStatusComputer : ISoldierStatusComputerPort
+	public class SoldierStatusComputer : ISoldierStatusComputer
 	{
 		public SoldierStatus ComputeSoldierStatus(ISoldierData soldierData, IPlayerSoldier playerSoldier)
 		{

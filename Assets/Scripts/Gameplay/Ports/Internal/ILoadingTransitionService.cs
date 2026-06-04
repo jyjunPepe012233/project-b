@@ -5,7 +5,7 @@ using ProjectB.Data.Types;
 namespace ProjectB.Gameplay.Ports.Internal
 {
 
-	public interface ILoadingTransitionServicePort
+	public interface ILoadingTransitionService
 	{
 		IEnumerator LoadScreenWithTransition(ILoadingTask loadingTask);
 	}

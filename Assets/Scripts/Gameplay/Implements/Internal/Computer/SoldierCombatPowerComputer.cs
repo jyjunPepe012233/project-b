@@ -5,7 +5,7 @@ using ProjectB.Gameplay.Ports.Internal.Computer;
 namespace ProjectB.Gameplay.Implements.Internal.Computer
 {
 
-	public class SoldierCombatPowerComputer : ISoldierCombatPowerComputerPort
+	public class SoldierCombatPowerComputer : ISoldierCombatPowerComputer
 	{
 		public int ComputeCombatPower(ISoldierData soldierData, SoldierStatus status)
 		{

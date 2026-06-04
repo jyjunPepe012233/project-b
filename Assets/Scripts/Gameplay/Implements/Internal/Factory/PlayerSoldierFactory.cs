@@ -9,11 +9,11 @@ namespace ProjectB.Gameplay.Implements.Internal.Factory
 
 	public class PlayerSoldierFactory : IPlayerSoldierFactoryPort
 	{
-		private readonly ISoldierCombatPowerComputerPort _soldierCombatPowerComputerPort;
+		private readonly ISoldierCombatPowerComputer _soldierCombatPowerComputer;
 
-		public PlayerSoldierFactory(ISoldierCombatPowerComputerPort soldierCombatPowerComputerPort)
+		public PlayerSoldierFactory(ISoldierCombatPowerComputer soldierCombatPowerComputer)
 		{
-			_soldierCombatPowerComputerPort = soldierCombatPowerComputerPort;
+			_soldierCombatPowerComputer = soldierCombatPowerComputer;
 		}
 
 		public IPlayerSoldier Create(ISoldierData soldierData)
@@ -23,7 +23,7 @@ namespace ProjectB.Gameplay.Implements.Internal.Factory
 				exp: 0,
 				level: 1,
 				status: soldierData.BaseStatus,
-				combatPower: _soldierCombatPowerComputerPort.ComputeCombatPower(soldierData, soldierData.BaseStatus));
+				combatPower: _soldierCombatPowerComputer.ComputeCombatPower(soldierData, soldierData.BaseStatus));
 		}
 	}
 

@@ -14,18 +14,18 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 	{
 		private readonly IGlobalSoldierLevelUpSetting _globalSoldierLevelUpSetting;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
-		private readonly ISoldierStatusComputerPort _soldierStatusComputerPort;
-		private readonly ISoldierCombatPowerComputerPort _soldierCombatPowerComputerPort;
+		private readonly ISoldierStatusComputer _soldierStatusComputer;
+		private readonly ISoldierCombatPowerComputer _soldierCombatPowerComputer;
 
 		public SoldierLevelUpService(IGlobalSoldierLevelUpSetting globalSoldierLevelUpSetting,
 			IPlayerSessionHolderPort playerSessionHolderPort,
-			ISoldierStatusComputerPort soldierStatusComputerPort, 
-			ISoldierCombatPowerComputerPort soldierCombatPowerComputerPort)
+			ISoldierStatusComputer soldierStatusComputer, 
+			ISoldierCombatPowerComputer soldierCombatPowerComputer)
 		{
 			_globalSoldierLevelUpSetting = globalSoldierLevelUpSetting;
 			_playerSessionHolderPort = playerSessionHolderPort;
-			_soldierStatusComputerPort = soldierStatusComputerPort;
-			_soldierCombatPowerComputerPort = soldierCombatPowerComputerPort;
+			_soldierStatusComputer = soldierStatusComputer;
+			_soldierCombatPowerComputer = soldierCombatPowerComputer;
 		}
 
 
@@ -93,10 +93,10 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 				playerSoldier.SetExp(playerSoldier.Exp + consumeFood);
 			}
 			
-			var newStatus = _soldierStatusComputerPort.ComputeSoldierStatus(soldier, playerSoldier);
+			var newStatus = _soldierStatusComputer.ComputeSoldierStatus(soldier, playerSoldier);
 			playerSoldier.SetStatus(newStatus);
 			
-			var newCombatPower = _soldierCombatPowerComputerPort.ComputeCombatPower(soldier, newStatus);
+			var newCombatPower = _soldierCombatPowerComputer.ComputeCombatPower(soldier, newStatus);
 			playerSoldier.SetCombatPower(newCombatPower);
 		}
 
@@ -128,7 +128,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 				return default;
 			}
 			
-			return _soldierStatusComputerPort.GetNextLevelStatus(soldier, playerSoldier);
+			return _soldierStatusComputer.GetNextLevelStatus(soldier, playerSoldier);
 		}
 
 		public int GetNextLevelCombatPower(ISoldierData soldier)
@@ -142,8 +142,8 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 				return 0;
 			}
 			
-			SoldierStatus nextLevelStatus = _soldierStatusComputerPort.GetNextLevelStatus(soldier, playerSoldier);
-			return _soldierCombatPowerComputerPort.ComputeCombatPower(soldier, nextLevelStatus);
+			SoldierStatus nextLevelStatus = _soldierStatusComputer.GetNextLevelStatus(soldier, playerSoldier);
+			return _soldierCombatPowerComputer.ComputeCombatPower(soldier, nextLevelStatus);
 		}
 	}
 

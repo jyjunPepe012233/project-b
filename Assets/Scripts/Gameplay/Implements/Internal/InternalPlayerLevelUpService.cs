@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Internal
 {
 
-	public class InternalPlayerLevelUpService : IInternalPlayerLevelUpServicePort
+	public class InternalPlayerLevelUpService : IInternalPlayerLevelUpService
 	{
 		private readonly IPlayerLevelUpSetting _playerLevelUpSetting;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
