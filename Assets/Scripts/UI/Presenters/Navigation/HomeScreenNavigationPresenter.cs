@@ -1,4 +1,5 @@
-using ProjectB.Gameplay.Ports.Inbound.Screen;
+using System;
+using ProjectB.Gameplay.Ports.Inbound.Overlay;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Buttons;
 
@@ -13,28 +14,28 @@ namespace ProjectB.UI.Presenters.Navigation
 		private readonly ButtonView _soldierListButtonView; // 병사 목록
 		private readonly ButtonView _worldMapButtonView; // 월드맵(침략)
 		
-		private readonly ISummonScreenService _summonScreenService;
-		private readonly IShopScreenService _shopScreenService;
-		private readonly ISoldierListScreenService _soldierListScreenService;
-		private readonly IWorldMapScreenService _worldMapScreenService;
+		private readonly ISummonOverlayService _summonOverlayService;
+		private readonly IShopOverlayService _shopOverlayService;
+		private readonly ISoldierListOverlayService _soldierListOverlayService;
+		private readonly IWorldMapOverlayService _worldMapOverlayService;
 
 		public HomeScreenNavigationPresenter(ButtonView summonButtonView,
 			ButtonView shopButtonView,
 			ButtonView soldierListButtonView,
 			ButtonView worldMapButtonView,
-			ISummonScreenService summonScreenService,
-			IShopScreenService shopScreenService,
-			ISoldierListScreenService soldierListScreenService,
-			IWorldMapScreenService worldMapScreenService)
+			ISummonOverlayService summonOverlayService,
+			IShopOverlayService shopOverlayService,
+			ISoldierListOverlayService soldierListOverlayService,
+			IWorldMapOverlayService worldMapOverlayService)
 		{
 			_summonButtonView = summonButtonView;
 			_shopButtonView = shopButtonView;
 			_soldierListButtonView = soldierListButtonView;
 			_worldMapButtonView = worldMapButtonView;
-			_summonScreenService = summonScreenService;
-			_shopScreenService = shopScreenService;
-			_soldierListScreenService = soldierListScreenService;
-			_worldMapScreenService = worldMapScreenService;
+			_summonOverlayService = summonOverlayService;
+			_shopOverlayService = shopOverlayService;
+			_soldierListOverlayService = soldierListOverlayService;
+			_worldMapOverlayService = worldMapOverlayService;
 		}
 
 		protected override void SetupViewCallbacks()
@@ -57,22 +58,22 @@ namespace ProjectB.UI.Presenters.Navigation
 		
 		void OnSummonButtonClicked()
 		{
-			_summonScreenService.Open();
+			_summonOverlayService.Open();
 		}
 		
 		void OnSoldierListButtonClicked()
 		{
-			_soldierListScreenService.Open();
+			_soldierListOverlayService.Open();
 		}
 		
 		void OnShopButtonClicked()
 		{
-			_shopScreenService.Open();
+			_shopOverlayService.Open();
 		}
 		
 		void OnWorldMapButtonClicked()
 		{
-			_worldMapScreenService.Open();
+			_worldMapOverlayService.Open();
 		}
 	}
 

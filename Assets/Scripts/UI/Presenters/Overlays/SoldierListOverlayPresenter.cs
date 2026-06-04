@@ -1,22 +1,25 @@
+using ProjectB.Gameplay.Events.Overlay;
+using ProjectB.Gameplay.Ports.Inbound.Overlay;
 using ProjectB.Gameplay.Ports.Inbound.Player;
-using ProjectB.Gameplay.Ports.Inbound.Screen;
+using ProjectB.UI.Presenters.Screens;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 using ProjectB.UI.Views.Lists;
 
-namespace ProjectB.UI.Presenters.Screens
+namespace ProjectB.UI.Presenters.Overlays
 {
 
-	public class SoldierListScreenPresenter : BaseScreenPresenter<ISoldierListScreenService>
+	public class SoldierListOverlayPresenter : BaseOverlayPresenter<ISoldierListOverlayService, SoldierListOverlayEvents>
 	{
 		private readonly PlayerSoldierCardListView _soldierListView;
 		private readonly IPlayerDataService _playerDataService;
 
-		public SoldierListScreenPresenter(TopElementView topElementView,
+		public SoldierListOverlayPresenter(TopElementView topElementView,
 			ButtonView closeButton,
-			ISoldierListScreenService screenService,
+			ISoldierListOverlayService overlayService,
+			SoldierListOverlayEvents overlayEvents,
 			PlayerSoldierCardListView soldierListView,
-			IPlayerDataService playerDataService) : base(topElementView, closeButton, screenService)
+			IPlayerDataService playerDataService) : base(topElementView, closeButton, overlayService, overlayEvents)
 		{
 			_soldierListView = soldierListView;
 			_playerDataService = playerDataService;
