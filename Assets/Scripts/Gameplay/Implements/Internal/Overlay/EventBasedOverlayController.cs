@@ -4,7 +4,7 @@ using ProjectB.Gameplay.Events.Overlay;
 namespace ProjectB.Gameplay.Implements.Internal.Overlay
 {
 
-	public abstract class EventBasedOverlayController<TEvents> where TEvents : BaseOverlayEvents
+	public abstract class EventBasedOverlayController<TEvents> : IOverlayController where TEvents : IOverlayEvents
 	{
 		private readonly TEvents _events;
 		
