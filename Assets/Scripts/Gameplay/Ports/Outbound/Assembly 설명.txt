@@ -1,0 +1,7 @@
+Outbound Ports 어셈블리는 게임플레이가 외부 기술을 추상적으로 사용할 수 있도록 하는 인터페이스들이 모여있는 어셈블리임
+interface인 Outbound Port들은 Infrastructure 어셈블리에서 외부 기술과 함께 구현됨.  
+
+예를 들어 IReportErrorPort가 있으면
+Infrastructure 어셈블리에서 ReportErrorFirebaseAdpater라는 클래스가 Firebase Crashlytics를 사용하여 "Error를 Report"함
+
+이러한 특징에 따라, 이 어셈블리의 인터페이스들은 IXXXPort라는 이름을 가지며, 구현 클래스들은 XXXAdapter라는 이름을 가짐

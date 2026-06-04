@@ -1,0 +1,8 @@
+Internal Ports 어셈블리는 Gameplay의 시스템 내부에서 사용되는 기능들을 모아놓은 어셈블리임.
+Gameplay 외부에서 Internal Port를 참조하면 안되며, Inbound Port가 Internal Port를, Internal Port가 Internal Port를 사용하는 흐름만 가능함.
+
+목적에 따라, 여기는 특정 공식이나 Factory, Resolver 등의 인터페이스들이 모여있음
+
+예시:
+- IPlayerSoldierFactory: IPlayerSoldier 데이터를 규칙에 따라 생성하는 인터페이스
+- ISoldierCombatPowerComputer: 병사 전투력을 계산하는 인터페이스
