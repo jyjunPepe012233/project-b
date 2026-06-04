@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Internal.Overlay
 {
 
-	public interface ISummonOverlayController : IBaseOverlayController
+	public interface ISummonOverlayController : IOverlayController
 	{
 		
 	}

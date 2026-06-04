@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace ProjectB.Gameplay.Implements.Internal.Overlay
+namespace ProjectB.Gameplay.Ports.Internal.Overlay
 {
 
 	public interface IOverlayController
