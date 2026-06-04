@@ -10,7 +10,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 {
 
-	public class SoldierLevelUpService : ISoldierLevelUpServicePort
+	public class SoldierLevelUpService : ISoldierLevelUpService
 	{
 		private readonly IGlobalSoldierLevelUpSetting _globalSoldierLevelUpSetting;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;

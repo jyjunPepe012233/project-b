@@ -5,7 +5,7 @@ using ProjectB.Data.Static.Soldier;
 namespace ProjectB.Gameplay.Ports.Inbound.Soldier
 {
 
-	public interface ISoldierDetailServicePort
+	public interface ISoldierDetailService
 	{
 		event Action<IReadOnlyPlayerSoldier> SoldierDataUpdateCallback;
 		

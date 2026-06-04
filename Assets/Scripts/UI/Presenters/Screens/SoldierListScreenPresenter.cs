@@ -10,16 +10,16 @@ namespace ProjectB.UI.Presenters.Screens
 	public class SoldierListScreenPresenter : BaseScreenPresenter<ISoldierListScreenService>
 	{
 		private readonly PlayerSoldierCardListView _soldierListView;
-		private readonly IPlayerDataServicePort _playerDataServicePort;
+		private readonly IPlayerDataService _playerDataService;
 
 		public SoldierListScreenPresenter(TopElementView topElementView,
 			ButtonView closeButton,
 			ISoldierListScreenService screenService,
 			PlayerSoldierCardListView soldierListView,
-			IPlayerDataServicePort playerDataServicePort) : base(topElementView, closeButton, screenService)
+			IPlayerDataService playerDataService) : base(topElementView, closeButton, screenService)
 		{
 			_soldierListView = soldierListView;
-			_playerDataServicePort = playerDataServicePort;
+			_playerDataService = playerDataService;
 		}
 
 		protected override void OnOpenScreen()
@@ -33,7 +33,7 @@ namespace ProjectB.UI.Presenters.Screens
 		{
 			_soldierListView.ClearCards();
 			
-			foreach (var playerSoldier in _playerDataServicePort.GetPlayerData().Soldiers)
+			foreach (var playerSoldier in _playerDataService.GetPlayerData().Soldiers)
 			{
 				var soldierCard = _soldierListView.CreateCard();
 

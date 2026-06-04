@@ -6,7 +6,7 @@ using ProjectB.Gameplay.Ports.Outbound.Player;
 namespace ProjectB.Gameplay.Implements.Inbound
 {
 
-	public class RechargeMoraleService : IRechargeMoraleServicePort
+	public class RechargeMoraleService : IRechargeMoraleService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly IMoraleSetting _moraleSetting;

@@ -4,7 +4,7 @@ using ProjectB.Data.Runtime.Summon;
 namespace ProjectB.Gameplay.Ports.Inbound
 {
 
-	public interface ISummonAnimationManagerPort
+	public interface ISummonAnimationManager
 	{
 		// 애니메이션이 시작되면 Manager가 외부로 알리는 이벤트
 		event Action<SummonResult> StartAnimation;

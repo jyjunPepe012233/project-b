@@ -12,7 +12,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 {
 
-	public class SoldierDetailService : ISoldierDetailServicePort
+	public class SoldierDetailService : ISoldierDetailService
 	{
 		private readonly ILoadSoldierDetailScreenPort _loadSoldierDetailScreenPort;
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;

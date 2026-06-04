@@ -8,7 +8,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound
 {
 
-	public class ShopService : IShopServicePort
+	public class ShopService : IShopService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly IInternalInventoryServicePort _internalInventoryServicePort;

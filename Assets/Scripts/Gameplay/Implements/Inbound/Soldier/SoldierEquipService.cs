@@ -10,7 +10,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 {
 
-	public class SoldierEquipService : ISoldierEquipServicePort
+	public class SoldierEquipService : ISoldierEquipService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly IInternalInventoryServicePort _internalInventoryServicePort;

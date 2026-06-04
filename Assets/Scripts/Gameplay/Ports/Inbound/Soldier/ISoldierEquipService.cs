@@ -5,7 +5,7 @@ using ProjectB.Data.Types;
 namespace ProjectB.Gameplay.Ports.Inbound.Soldier
 {
 
-	public interface ISoldierEquipServicePort
+	public interface ISoldierEquipService
 	{
 		void Equip(IPlayerSoldier playerSoldier, SoldierEquipmentSlot slot, IEquipmentItem equipment);
 	}

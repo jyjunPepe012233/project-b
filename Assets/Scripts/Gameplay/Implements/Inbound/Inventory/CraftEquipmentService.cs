@@ -9,7 +9,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 {
 
-	public class CraftEquipmentService : ICraftEquipmentServicePort
+	public class CraftEquipmentService : ICraftEquipmentService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		private readonly IInternalInventoryServicePort _internalInventoryServicePort;

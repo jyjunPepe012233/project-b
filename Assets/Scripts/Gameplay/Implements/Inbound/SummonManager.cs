@@ -14,7 +14,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound
 {
 
-	public class SummonManager : ISummonServicePort, ISummonAnimationManagerPort
+	public class SummonManager : ISummonService, ISummonAnimationManager
 	{
 		private readonly ISoldierDatabase _soldierDatabase;
 		private readonly ILoadSummonAnimationScreenPort _loadSummonAnimationScreenPort;

@@ -5,7 +5,7 @@ using ProjectB.Gameplay.Ports.Outbound.Player;
 namespace ProjectB.Gameplay.Implements.Inbound.Player
 {
 
-	public class PlayerDataService : IPlayerDataServicePort
+	public class PlayerDataService : IPlayerDataService
 	{
 		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
 		

@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Inbound
 {
 
-	public interface IMenuServicePort
+	public interface IMenuService
 	{
 		void OpenBackpack();
 	}

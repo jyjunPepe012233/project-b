@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 {
 
-	public class ConsumeItemService : IConsumeItemServicePort
+	public class ConsumeItemService : IConsumeItemService
 	{
 		private readonly IInternalInventoryServicePort _internalInventoryServicePort;
 		private readonly IConsumableItemResolverPort<IGainCurrencyItem> _gainCurrencyItemResolverPort;

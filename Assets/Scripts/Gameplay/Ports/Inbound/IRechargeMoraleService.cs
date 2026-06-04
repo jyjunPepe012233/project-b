@@ -1,7 +1,7 @@
 namespace ProjectB.Gameplay.Ports.Inbound
 {
 
-	public interface IRechargeMoraleServicePort
+	public interface IRechargeMoraleService
 	{
 		int GetRemainingRechargeCount();
 

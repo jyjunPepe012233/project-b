@@ -5,7 +5,7 @@ using ProjectB.Gameplay.Ports.Outbound.Screen;
 namespace ProjectB.Gameplay.Implements.Inbound
 {
 
-	public class MenuService : IMenuServicePort
+	public class MenuService : IMenuService
 	{
 		private readonly ILoadBackpackScreenPort _loadBackpackScreenPort;
 

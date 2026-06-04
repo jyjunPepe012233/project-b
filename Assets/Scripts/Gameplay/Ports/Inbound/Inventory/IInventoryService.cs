@@ -4,7 +4,7 @@ using ProjectB.Data.Runtime.Player;
 namespace ProjectB.Gameplay.Ports.Inbound.Inventory
 {
 
-	public interface IInventoryServicePort
+	public interface IInventoryService
 	{
 		IReadOnlyList<IReadOnlyPlayerItem> Items { get; }
 	}

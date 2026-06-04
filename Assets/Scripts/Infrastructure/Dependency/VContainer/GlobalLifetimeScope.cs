@@ -116,17 +116,17 @@ namespace ProjectB.Infrastructure.Dependency
 			// ==============================================================
 			
 			// - Player
-			RegisterPortAdapter<IPlayerDataServicePort, PlayerDataService>();
+			RegisterPortAdapter<IPlayerDataService, PlayerDataService>();
 
 			// - Soldier
-			RegisterPortAdapter<ISoldierDetailServicePort, SoldierDetailService>();
-			RegisterPortAdapter<ISoldierEquipServicePort, SoldierEquipService>();
-			RegisterPortAdapter<ICraftEquipmentServicePort, CraftEquipmentService>();
-			RegisterPortAdapter<ISoldierLevelUpServicePort, SoldierLevelUpService>();
+			RegisterPortAdapter<ISoldierDetailService, SoldierDetailService>();
+			RegisterPortAdapter<ISoldierEquipService, SoldierEquipService>();
+			RegisterPortAdapter<ICraftEquipmentService, CraftEquipmentService>();
+			RegisterPortAdapter<ISoldierLevelUpService, SoldierLevelUpService>();
 
 			// - Inventory
-			RegisterPortAdapter<IInventoryServicePort, InventoryService>();
-			RegisterPortAdapter<IConsumeItemServicePort, ConsumeItemService>();
+			RegisterPortAdapter<IInventoryService, InventoryService>();
+			RegisterPortAdapter<IConsumeItemService, ConsumeItemService>();
 			
 			// - Screen
 			RegisterPortAdapter<ITitleScreenManager, TitleScreenManager>();
@@ -136,11 +136,11 @@ namespace ProjectB.Infrastructure.Dependency
 			RegisterPortAdapter<IWorldMapScreenService, WorldMapScreenService>();
 			
 			// - 분류 X
-			RegisterPortAdapter<IRechargeMoraleServicePort, RechargeMoraleService>();
+			RegisterPortAdapter<IRechargeMoraleService, RechargeMoraleService>();
 			RegisterPortAdapter<ISweepService, SweepService>();
-			RegisterPortAdapter<IShopServicePort, ShopService>();
-			RegisterPortAdapter<IMenuServicePort, MenuService>();
-			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonServicePort, ISummonAnimationManagerPort>();
+			RegisterPortAdapter<IShopService, ShopService>();
+			RegisterPortAdapter<IMenuService, MenuService>();
+			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonService, ISummonAnimationManager>();
 			
 			
 			// ==============================================================

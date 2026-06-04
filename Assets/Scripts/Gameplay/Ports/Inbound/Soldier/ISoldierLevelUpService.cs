@@ -4,7 +4,7 @@ using ProjectB.Data.Types;
 namespace ProjectB.Gameplay.Ports.Inbound.Soldier
 {
 
-	public interface ISoldierLevelUpServicePort
+	public interface ISoldierLevelUpService
 	{
 		void ConsumeFoods(ISoldierData soldier);
 

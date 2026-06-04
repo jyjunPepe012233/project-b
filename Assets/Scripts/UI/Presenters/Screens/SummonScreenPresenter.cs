@@ -12,18 +12,18 @@ namespace ProjectB.UI.Presenters.Screens
 		private readonly ButtonView _summon1xButtonView;
 		private readonly ButtonView _summon10xButtonView;
 		
-		private readonly ISummonServicePort _summonServicePort;
+		private readonly ISummonService _summonService;
 
 		public SummonScreenPresenter(TopElementView topElementView,
 			ButtonView closeButton,
 			ISummonScreenService summonScreenService,
 			ButtonView summon1XButtonView,
 			ButtonView summon10XButtonView,
-			ISummonServicePort summonServicePort) : base(topElementView, closeButton, summonScreenService)
+			ISummonService summonService) : base(topElementView, closeButton, summonScreenService)
 		{
 			_summon1xButtonView = summon1XButtonView;
 			_summon10xButtonView = summon10XButtonView;
-			_summonServicePort = summonServicePort;
+			_summonService = summonService;
 		}
 
 		protected override void SetupViewCallbacks()
@@ -42,12 +42,12 @@ namespace ProjectB.UI.Presenters.Screens
 		
 		void OnSummon1XButtonClicked()
 		{
-			_summonServicePort.Summon(SummonType.Summon1x);
+			_summonService.Summon(SummonType.Summon1x);
 		}
 		
 		void OnSummon10XButtonClicked()
 		{
-			_summonServicePort.Summon(SummonType.Summon10x);
+			_summonService.Summon(SummonType.Summon10x);
 		}
 	}
 
