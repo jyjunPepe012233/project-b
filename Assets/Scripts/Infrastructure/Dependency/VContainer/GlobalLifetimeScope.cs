@@ -139,7 +139,6 @@ namespace ProjectB.Infrastructure.Dependency
 			RegisterPortAdapter<IRechargeMoraleService, RechargeMoraleService>();
 			RegisterPortAdapter<ISweepService, SweepService>();
 			RegisterPortAdapter<IShopService, ShopService>();
-			RegisterPortAdapter<IMenuService, MenuService>();
 			builder.Register<SummonManager>(Lifetime.Singleton).As<ISummonService, ISummonAnimationManager>();
 			
 			
