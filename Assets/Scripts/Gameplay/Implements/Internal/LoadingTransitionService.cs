@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Internal;
@@ -11,23 +12,22 @@ namespace ProjectB.Gameplay.Implements.Internal
 	{
 		private readonly ILoadingOverlayServicePort _loadingOverlayServicePort;
 
-		private ILoadingTask _currentLoadingTask;
+		private bool _isLoading = false;
 		
 		public LoadingTransitionService(ILoadingOverlayServicePort loadingOverlayServicePort)
 		{
 			_loadingOverlayServicePort = loadingOverlayServicePort;
 		}
 		
-		public IEnumerator LoadScreenWithTransition(ILoadingTask loadingTask)
+		public IEnumerator LoadScreenWithTransition(Func<IEnumerator> loadScreenAction)
 		{
-			if (_currentLoadingTask != null)
+			if (_isLoading)
 			{
 				Debug.LogError("LoadingTransitionService: 이미 로딩이 진행 중인데 다시 로딩이 시도됨");
 				yield break;
 			}
 			
-			_currentLoadingTask = loadingTask;
-			
+			_isLoading = true;
 			
 			// 1. 로딩 오버레이 로드
 			yield return _loadingOverlayServicePort.Load();
@@ -37,10 +37,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 			
 			
 			// 2. 실제 화면 로드
-			yield return loadingTask.LoadFunc();
-			
-			// 2-1. 실제 화면 로드가 완료될때까지 대기
-			yield return new WaitUntil(() => loadingTask.IsDone);
+			yield return loadScreenAction();
 			
 			
 			// 3. 트랜지션의 Fade Out이 끝날 때까지 대기
@@ -50,7 +47,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 			yield return _loadingOverlayServicePort.Unload();
 			
 			
-			_currentLoadingTask = null;
+			_isLoading = false;
 		}
 	}
 
