@@ -1,21 +1,19 @@
-using ProjectB.Core.Supports;
 using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.Gameplay.Ports.Internal;
-using ProjectB.Gameplay.Ports.Outbound;
-using ProjectB.Gameplay.Ports.Outbound.Screen;
+using ProjectB.Gameplay.Ports.Internal.Screen;
 
 namespace ProjectB.Gameplay.Implements.Inbound.Screen
 {
 	
 	public class TitleScreenManager : ITitleScreenManager
 	{
-		private readonly ILoadHomeScreenPort _loadHomeScreenScenePort;
-		private readonly ILoadingTransitionService _loadingTransitionService;
+		private readonly IHomeScreenLoader _homeScreenLoader;
+		private readonly IChangeScreenTransitionService _changeScreenTransitionService;
 		
-		public TitleScreenManager(ILoadHomeScreenPort loadHomeScreenPort, ILoadingTransitionService loadingTransitionService)
+		public TitleScreenManager(IHomeScreenLoader homeScreenLoader, IChangeScreenTransitionService changeScreenTransitionService)
 		{
-			_loadHomeScreenScenePort = loadHomeScreenPort;
-			_loadingTransitionService = loadingTransitionService;
+			_homeScreenLoader = homeScreenLoader;
+			_changeScreenTransitionService = changeScreenTransitionService;
 		}
 
 		public void Touched()
@@ -25,8 +23,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Screen
 
 		void LoadHomeWithTransition()
 		{
-			var loadingTask = _loadHomeScreenScenePort.GetLoadingTask();
-			CoroutineHandler.StartAndAdd(_loadingTransitionService.LoadScreenWithTransition(loadingTask));
+			_changeScreenTransitionService.ChangeScreenWithTransition(_homeScreenLoader.Load);
 		}
 	}
 

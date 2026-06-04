@@ -5,8 +5,9 @@ using ProjectB.Core.Supports;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Gameplay.Ports.Inbound.Soldier;
+using ProjectB.Gameplay.Ports.Internal.Overlay;
+using ProjectB.Gameplay.Ports.Internal.Screen;
 using ProjectB.Gameplay.Ports.Outbound.Player;
-using ProjectB.Gameplay.Ports.Outbound.Screen;
 using UnityEngine;
 
 namespace ProjectB.Gameplay.Implements.Inbound.Soldier
@@ -14,14 +15,14 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 	public class SoldierDetailService : ISoldierDetailService
 	{
-		private readonly ILoadSoldierDetailScreenPort _loadSoldierDetailScreenPort;
+		private readonly ISoldierDetailOverlayController _soldierDetailOverlayController;
 		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		
 		public event Action<IReadOnlyPlayerSoldier> SoldierDataUpdateCallback;
-		
-		public SoldierDetailService(ILoadSoldierDetailScreenPort loadSoldierDetailScreenPort, IHoldPlayerSessionPort holdPlayerSessionPort)
+
+		public SoldierDetailService(ISoldierDetailOverlayController soldierDetailOverlayController, IHoldPlayerSessionPort holdPlayerSessionPort)
 		{
-			_loadSoldierDetailScreenPort = loadSoldierDetailScreenPort;
+			_soldierDetailOverlayController = soldierDetailOverlayController;
 			_holdPlayerSessionPort = holdPlayerSessionPort;
 		}
 
@@ -38,7 +39,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 			if (playerSoldier != null)
 			{
-				yield return _loadSoldierDetailScreenPort.Load();
+				yield return _soldierDetailOverlayController.Open();
 				SoldierDataUpdateCallback?.Invoke(playerSoldier);
 			}
 			else

@@ -8,7 +8,6 @@ using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Internal.Factory;
 using ProjectB.Gameplay.Ports.Outbound.Player;
-using ProjectB.Gameplay.Ports.Outbound.Screen;
 using UnityEngine;
 
 namespace ProjectB.Gameplay.Implements.Inbound
@@ -17,8 +16,8 @@ namespace ProjectB.Gameplay.Implements.Inbound
 	public class SummonManager : ISummonService, ISummonAnimationManager
 	{
 		private readonly ISoldierDatabase _soldierDatabase;
-		private readonly ILoadSummonAnimationScreenPort _loadSummonAnimationScreenPort;
-		private readonly ILoadSummonResultScreenPort _loadSummonResultScreenPort;
+//		private readonly ILoadSummonAnimationScreenPort _loadSummonAnimationScreenPort;
+//		private readonly ILoadSummonResultScreenPort _loadSummonResultScreenPort;
 		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly ISummonCostSetting _summonCostSetting;
 		private readonly IPlayerSoldierFactoryPort _playerSoldierFactoryPort;
@@ -35,15 +34,15 @@ namespace ProjectB.Gameplay.Implements.Inbound
 		private bool _isAnimationPlaying;
 		
 		public SummonManager(ISoldierDatabase soldierDatabase,
-			ILoadSummonAnimationScreenPort loadSummonAnimationScreenPort,
-			ILoadSummonResultScreenPort loadSummonResultScreenPort, 
+//			ILoadSummonAnimationScreenPort loadSummonAnimationScreenPort,
+//			ILoadSummonResultScreenPort loadSummonResultScreenPort, 
 			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISummonCostSetting summonCostSetting,
 			IPlayerSoldierFactoryPort playerSoldierFactoryPort)
 		{
 			_soldierDatabase = soldierDatabase;
-			_loadSummonAnimationScreenPort = loadSummonAnimationScreenPort;
-			_loadSummonResultScreenPort = loadSummonResultScreenPort;
+//			_loadSummonAnimationScreenPort = loadSummonAnimationScreenPort;
+//			_loadSummonResultScreenPort = loadSummonResultScreenPort;
 			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_summonCostSetting = summonCostSetting;
 			_playerSoldierFactoryPort = playerSoldierFactoryPort;
@@ -132,41 +131,45 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 		IEnumerator SummonAnimationCoroutine(SummonResult result)
 		{
-			if (_isAnimationPlaying)
-			{
-				// 애니메이션이 재생 중인 경우 애니메이션 로드 방지
-				// 이미 위 메서드들에서 체크하고 있지만 확장 시 체크를 누락할 수 있으므로 한번 더 체크
-				Debug.LogError("모집 연출이 이미 재생 중이지만 다시 재생하려고 시도했습니다.");
-				yield break;
-			}
-
-			if (_loadSummonResultScreenPort.IsLoaded)
-			{
-				// 결과 화면이 켜져있으면 닫음
-				yield return _loadSummonResultScreenPort.Unload();
-			}
-			
-			_isAnimationPlaying = true;
-			
-			// 애니메이션 로드 및 시작 (뽑기 결과 전달)
-			yield return _loadSummonAnimationScreenPort.Load();
-			StartAnimation?.Invoke(result);
-
-			// 애니메이션 주체가 애니메이션이 끝났음을 알릴 때까지 대기
-			bool isFinished = false;
-			_AnimationFinishedInternal += () => isFinished = true;
-			yield return new WaitUntil(() => isFinished);
-
-			// 애니메이션 정리
-			yield return _loadSummonAnimationScreenPort.Unload();
-			AnimationPerfectlyUnloaded?.Invoke();
-			
-			_isAnimationPlaying = false;
-			
-			yield return _loadSummonResultScreenPort.Load();
-			ShowSummonResult?.Invoke(result); // 결과 화면이 켜졌으면 화면에 결과 전달
+			throw new NotImplementedException();
 		}
+//		{
+//			if (_isAnimationPlaying)
+//			{
+//				// 애니메이션이 재생 중인 경우 애니메이션 로드 방지
+//				// 이미 위 메서드들에서 체크하고 있지만 확장 시 체크를 누락할 수 있으므로 한번 더 체크
+//				Debug.LogError("모집 연출이 이미 재생 중이지만 다시 재생하려고 시도했습니다.");
+//				yield break;
+//			}
+//
+//			if (_loadSummonResultScreenPort.IsLoaded)
+//			{
+//				// 결과 화면이 켜져있으면 닫음
+//				yield return _loadSummonResultScreenPort.Unload();
+//			}
+//			
+//			_isAnimationPlaying = true;
+//			
+//			// 애니메이션 로드 및 시작 (뽑기 결과 전달)
+//			yield return _loadSummonAnimationScreenPort.Load();
+//			StartAnimation?.Invoke(result);
+//
+//			// 애니메이션 주체가 애니메이션이 끝났음을 알릴 때까지 대기
+//			bool isFinished = false;
+//			_AnimationFinishedInternal += () => isFinished = true;
+//			yield return new WaitUntil(() => isFinished);
+//
+//			// 애니메이션 정리
+//			yield return _loadSummonAnimationScreenPort.Unload();
+//			AnimationPerfectlyUnloaded?.Invoke();
+//			
+//			_isAnimationPlaying = false;
+//			
+//			yield return _loadSummonResultScreenPort.Load();
+//			ShowSummonResult?.Invoke(result); // 결과 화면이 켜졌으면 화면에 결과 전달
+//		}
 		
+
 		// 외부의 애니메이션 연출 주체가 애니메이션이 끝났음을 알리는 메서드
 		public void FinishAnimation()
 		{

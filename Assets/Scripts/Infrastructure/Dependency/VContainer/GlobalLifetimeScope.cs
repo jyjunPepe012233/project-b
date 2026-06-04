@@ -5,24 +5,33 @@ using ProjectB.Data.Static.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Gameplay;
+using ProjectB.Gameplay.Events;
+using ProjectB.Gameplay.Events.Overlay;
 using ProjectB.Gameplay.Implements.Inbound;
 using ProjectB.Gameplay.Implements.Inbound.Inventory;
+using ProjectB.Gameplay.Implements.Inbound.Overlay;
 using ProjectB.Gameplay.Implements.Inbound.Player;
 using ProjectB.Gameplay.Implements.Inbound.Screen;
 using ProjectB.Gameplay.Implements.Inbound.Soldier;
 using ProjectB.Gameplay.Implements.Internal;
 using ProjectB.Gameplay.Implements.Internal.Computer;
 using ProjectB.Gameplay.Implements.Internal.Factory;
+using ProjectB.Gameplay.Implements.Internal.Overlay;
+using ProjectB.Gameplay.Implements.Internal.Screen;
 using ProjectB.Gameplay.Ports.Inbound;
 using ProjectB.Gameplay.Ports.Inbound.Inventory;
+using ProjectB.Gameplay.Ports.Inbound.Overlay;
 using ProjectB.Gameplay.Ports.Inbound.Player;
 using ProjectB.Gameplay.Ports.Inbound.Screen;
 using ProjectB.Gameplay.Ports.Inbound.Soldier;
 using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Internal.Computer;
 using ProjectB.Gameplay.Ports.Internal.Factory;
+using ProjectB.Gameplay.Ports.Internal.Overlay;
+using ProjectB.Gameplay.Ports.Internal.Screen;
 using ProjectB.Gameplay.Ports.Outbound.Error;
 using ProjectB.Gameplay.Ports.Outbound.Player;
+using ProjectB.Gameplay.Ports.Outbound.Scene;
 using ProjectB.Infrastructure.Authoring.Invasion;
 using ProjectB.Infrastructure.Authoring.Item;
 using ProjectB.Infrastructure.Authoring.Morale;
@@ -31,6 +40,7 @@ using ProjectB.Infrastructure.Authoring.Soldier;
 using ProjectB.Infrastructure.Authoring.Summon;
 using ProjectB.Infrastructure.Implements.Error;
 using ProjectB.Infrastructure.Implements.Player;
+using ProjectB.Infrastructure.Implements.Scene;
 using ProjectB.Infrastructure.Services;
 using UnityEngine;
 using VContainer;
@@ -95,6 +105,13 @@ namespace ProjectB.Infrastructure.Dependency
 			builder.Register<GlobalErrorHandler>(Lifetime.Singleton);
 			builder.Register<FirebaseInitializer>(Lifetime.Singleton);
 			builder.Register<GameFrameSetup>(Lifetime.Singleton);
+			builder.Register<InventoryEvents>(Lifetime.Singleton);
+			builder.Register<ChangeScreenTransitionEvents>(Lifetime.Singleton);
+			builder.Register<SummonOverlayEvents>(Lifetime.Singleton);
+			builder.Register<ShopOverlayEvents>(Lifetime.Singleton);
+			builder.Register<SoldierListOverlayEvents>(Lifetime.Singleton);
+			builder.Register<WorldMapOverlayEvents>(Lifetime.Singleton);
+			builder.Register<SoldierDetailOverlayEvents>(Lifetime.Singleton);
 			
 			
 			// ==============================================================
@@ -130,10 +147,12 @@ namespace ProjectB.Infrastructure.Dependency
 			
 			// - Screen
 			RegisterPortAdapter<ITitleScreenManager, TitleScreenManager>();
-			RegisterPortAdapter<ISummonScreenService, SummonScreenService>();
-			RegisterPortAdapter<IShopScreenService, ShopScreenService>();
-			RegisterPortAdapter<ISoldierListScreenService, SoldierListScreenService>();
-			RegisterPortAdapter<IWorldMapScreenService, WorldMapScreenService>();
+			
+			// - Overlay
+			RegisterPortAdapter<ISummonOverlayService, SummonOverlayService>();
+			RegisterPortAdapter<IShopOverlayService, ShopOverlayService>();
+			RegisterPortAdapter<ISoldierListOverlayService, SoldierListOverlayService>();
+			RegisterPortAdapter<IWorldMapOverlayService, WorldMapOverlayService>();
 			
 			// - 분류 X
 			RegisterPortAdapter<IRechargeMoraleService, RechargeMoraleService>();
@@ -153,8 +172,26 @@ namespace ProjectB.Infrastructure.Dependency
 			// - Factory
 			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactory>();
 			
+			// - Overlay
+			builder.Register<SummonOverlayController>(Lifetime.Singleton)
+				.AsSelf()
+				.As<ISummonOverlayController>();
+			builder.Register<ShopOverlayController>(Lifetime.Singleton)
+				.AsSelf();
+			builder.Register<SoldierListOverlayController>(Lifetime.Singleton)
+				.AsSelf();
+			builder.Register<WorldMapOverlayController>(Lifetime.Singleton)
+				.AsSelf();
+			builder.Register<SoldierDetailOverlayController>(Lifetime.Singleton)
+				.AsSelf()
+				.As<ISoldierDetailOverlayController>();
+			
+			// - Screen
+			RegisterPortAdapter<IHomeScreenLoader, HomeScreenLoader>();
+			RegisterPortAdapter<ILoadingScreenController, LoadingScreenController>();
+			
 			// - 분류 X
-			RegisterPortAdapter<ILoadingTransitionService , LoadingTransitionService>();
+			RegisterPortAdapter<IChangeScreenTransitionService, ChangeScreenTransitionService>();
 			RegisterPortAdapter<IInternalInventoryService, InternalInventoryService>();
 			RegisterPortAdapter<IInternalPlayerLevelUpService, InternalPlayerLevelUpService>();
 			RegisterPortAdapter<IConsumableItemResolver<IGainCurrencyItem>, GainCurrencyItemResolver>();
@@ -168,6 +205,9 @@ namespace ProjectB.Infrastructure.Dependency
 			RegisterPortAdapter<IHoldPlayerSessionPort, HoldPlayerSessionService>();
 			RegisterPortAdapter<ILoadPlayerDataPort, TestLoadPlayerDataService>();
 			RegisterPortAdapter<IInitializePlayerSessionPort, InitializePlayerSessionService>();
+			
+			// - Scene
+			RegisterPortAdapter<IControlScenePort, ControlSceneAdapter>();
 
 			// - Error
 			RegisterPortAdapter<ICatchUncaughtErrorPort, CatchUncaughtErrorAdapter>();
