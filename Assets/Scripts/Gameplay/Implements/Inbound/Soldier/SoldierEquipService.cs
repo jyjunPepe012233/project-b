@@ -12,19 +12,19 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 	public class SoldierEquipService : ISoldierEquipService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IInternalInventoryService _internalInventoryService;
 
-		public SoldierEquipService(IPlayerSessionHolderPort playerSessionHolderPort,
+		public SoldierEquipService(IHoldPlayerSessionPort holdPlayerSessionPort,
 			IInternalInventoryService internalInventoryService)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_internalInventoryService = internalInventoryService;
 		}
 
 		public void Equip(IPlayerSoldier playerSoldier, SoldierEquipmentSlot slot, IEquipmentItem equipment)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// IEquipmentItem은 IItemData도 구현하므로 캐스팅 가능
 			IItemData equipmentItemData = (IItemData)equipment;

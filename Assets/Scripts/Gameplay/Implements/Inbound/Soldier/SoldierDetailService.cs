@@ -15,14 +15,14 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 	public class SoldierDetailService : ISoldierDetailService
 	{
 		private readonly ILoadSoldierDetailScreenPort _loadSoldierDetailScreenPort;
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		
 		public event Action<IReadOnlyPlayerSoldier> SoldierDataUpdateCallback;
 		
-		public SoldierDetailService(ILoadSoldierDetailScreenPort loadSoldierDetailScreenPort, IPlayerSessionHolderPort playerSessionHolderPort)
+		public SoldierDetailService(ILoadSoldierDetailScreenPort loadSoldierDetailScreenPort, IHoldPlayerSessionPort holdPlayerSessionPort)
 		{
 			_loadSoldierDetailScreenPort = loadSoldierDetailScreenPort;
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 		}
 
 		public void ShowSoldierDetail(ISoldierData soldierData)
@@ -32,7 +32,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 		
 		IEnumerator ShowSoldierDetailRoutine(ISoldierData soldierData)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			IReadOnlyPlayerSoldier playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierData == soldierData);
 

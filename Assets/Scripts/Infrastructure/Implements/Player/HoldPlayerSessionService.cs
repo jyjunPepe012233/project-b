@@ -5,7 +5,7 @@ using ProjectB.Infrastructure.Services;
 namespace ProjectB.Infrastructure.Implements.Player
 {
 
-	public class PlayerSessionHolderService : IPlayerSessionHolderPort
+	public class HoldPlayerSessionService : IHoldPlayerSessionPort
 	{
 		public IPlayerSession GetPlayerSession()
 		{

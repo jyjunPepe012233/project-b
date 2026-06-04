@@ -8,15 +8,15 @@ namespace ProjectB.Gameplay
 
 	public class GlobalErrorHandler
 	{
-		private readonly IUncaughtErrorCatcherPort _uncaughtErrorCatcherPort;
+		private readonly ICatchUncaughtErrorPort _catchUncaughtErrorPort;
 		private readonly IReportErrorPort _reportErrorPort;
 
-		public GlobalErrorHandler(IUncaughtErrorCatcherPort uncaughtErrorCatcherPort, IReportErrorPort reportErrorPort)
+		public GlobalErrorHandler(ICatchUncaughtErrorPort catchUncaughtErrorPort, IReportErrorPort reportErrorPort)
 		{
-			_uncaughtErrorCatcherPort = uncaughtErrorCatcherPort;
+			_catchUncaughtErrorPort = catchUncaughtErrorPort;
 			_reportErrorPort = reportErrorPort;
 			
-			_uncaughtErrorCatcherPort.UncaughtErrorCaught += OnUncaughtErrorCaught;
+			_catchUncaughtErrorPort.UncaughtErrorCaught += OnUncaughtErrorCaught;
 		}
 
 		void OnUncaughtErrorCaught(ErrorData errorData)

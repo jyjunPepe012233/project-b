@@ -5,7 +5,7 @@ using ProjectB.Gameplay.Ports.Outbound.Player;
 namespace ProjectB.Infrastructure.Implements.Player
 {
 
-	public class LoadPlayerDataService : ILoadPlayerDataPort
+	public class TestLoadPlayerDataService : ILoadPlayerDataPort
 	{
 		public IPlayerData LoadPlayerData()
 		{

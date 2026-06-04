@@ -13,13 +13,13 @@ namespace ProjectB.Infrastructure.Implements.Error
 	
 	
 
-	public class UncaughtErrorCatcherService : IUncaughtErrorCatcherPort, IDisposable
+	public class CatchUncaughtErrorAdapter : ICatchUncaughtErrorPort, IDisposable
 	{
 		public event Action<ErrorData> UncaughtErrorCaught;
 		
 		private readonly Dictionary<ulong, DateTime> _recentErrorHashes = new(); // hash, time 
 
-		public UncaughtErrorCatcherService()
+		public CatchUncaughtErrorAdapter()
 		{
 			Application.logMessageReceived += OnLogMessageReceived;
 			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;

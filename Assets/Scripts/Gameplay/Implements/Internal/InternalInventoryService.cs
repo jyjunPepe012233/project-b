@@ -14,18 +14,18 @@ namespace ProjectB.Gameplay.Implements.Internal
 
 	public class InternalInventoryService : IInternalInventoryService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly InventoryEvents _inventoryEvents;
 		
-		public InternalInventoryService(IPlayerSessionHolderPort playerSessionHolderPort, InventoryEvents inventoryEvents)
+		public InternalInventoryService(IHoldPlayerSessionPort holdPlayerSessionPort, InventoryEvents inventoryEvents)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_inventoryEvents = inventoryEvents;
 		}
 
 		public void GiveItem(IItemData itemData, int quantity, ItemGainAction gainAction)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// 찾지 못하면 null이 할당됨
 			var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemData);
@@ -51,7 +51,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 
 		public void GiveItems(IEnumerable<ItemGain> itemGains, ItemGainAction gainAction)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// ItemGains의 중복되는 아이템 항목을 없애는 처리
 			Dictionary<IItemData, int> distinctItemGainDict = new();
@@ -93,7 +93,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 
 		public bool TryClearItem(IItemData itemData, int quantity)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// 찾지 못하면 null이 할당됨
 			var existingItem = playerData.Items.FirstOrDefault(x => x.ItemData == itemData);

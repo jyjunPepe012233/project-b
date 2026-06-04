@@ -13,19 +13,19 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 	public class SweepService : ISweepService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IInvasionSetting _invasionSetting;
 		private readonly ISweepSetting _sweepSetting;
 		private readonly IInternalPlayerLevelUpService _internalPlayerLevelUpService;
 		private readonly IInternalInventoryService _internalInventoryService;
 
-		public SweepService(IPlayerSessionHolderPort playerSessionHolderPort,
+		public SweepService(IHoldPlayerSessionPort holdPlayerSessionPort,
 			IInvasionSetting invasionSetting,
 			ISweepSetting sweepSetting,
 			IInternalPlayerLevelUpService internalPlayerLevelUpService,
 			IInternalInventoryService internalInventoryService)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_invasionSetting = invasionSetting;
 			_sweepSetting = sweepSetting;
 			_internalPlayerLevelUpService = internalPlayerLevelUpService;
@@ -47,7 +47,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 			}
 			
 			
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// 면제 횟수에 따라 소모할 사기를 계산하고, 사기가 부족하면 면제 중단
 			int totalMoraleCost = count * _sweepSetting.MoraleCost;

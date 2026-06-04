@@ -4,7 +4,7 @@ using ProjectB.Core.Types;
 namespace ProjectB.Gameplay.Ports.Outbound.Error
 {
 
-	public interface IUncaughtErrorCatcherPort
+	public interface ICatchUncaughtErrorPort
 	{
 		event Action<ErrorData> UncaughtErrorCaught;
 	}

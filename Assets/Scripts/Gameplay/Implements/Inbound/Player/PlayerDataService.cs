@@ -7,23 +7,23 @@ namespace ProjectB.Gameplay.Implements.Inbound.Player
 
 	public class PlayerDataService : IPlayerDataService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		
-		public PlayerDataService(IPlayerSessionHolderPort playerSessionHolderPort)
+		public PlayerDataService(IHoldPlayerSessionPort holdPlayerSessionPort)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 		}
 
 		public IReadOnlyPlayerData GetPlayerData()
 		{
 			// IPlayerData가 IReadOnlyPlayerData로 캐스팅
-			return _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			return _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 		}
 
 		public int GetTotalCombatPower()
 		{
 			int totalCombatPower = 0;
-			foreach (var soldier in _playerSessionHolderPort.GetPlayerSession().PlayerData.Soldiers)
+			foreach (var soldier in _holdPlayerSessionPort.GetPlayerSession().PlayerData.Soldiers)
 			{
 				totalCombatPower += soldier.CombatPower;
 			}

@@ -19,7 +19,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 		private readonly ISoldierDatabase _soldierDatabase;
 		private readonly ILoadSummonAnimationScreenPort _loadSummonAnimationScreenPort;
 		private readonly ILoadSummonResultScreenPort _loadSummonResultScreenPort;
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly ISummonCostSetting _summonCostSetting;
 		private readonly IPlayerSoldierFactoryPort _playerSoldierFactoryPort;
 		
@@ -37,14 +37,14 @@ namespace ProjectB.Gameplay.Implements.Inbound
 		public SummonManager(ISoldierDatabase soldierDatabase,
 			ILoadSummonAnimationScreenPort loadSummonAnimationScreenPort,
 			ILoadSummonResultScreenPort loadSummonResultScreenPort, 
-			IPlayerSessionHolderPort playerSessionHolderPort,
+			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISummonCostSetting summonCostSetting,
 			IPlayerSoldierFactoryPort playerSoldierFactoryPort)
 		{
 			_soldierDatabase = soldierDatabase;
 			_loadSummonAnimationScreenPort = loadSummonAnimationScreenPort;
 			_loadSummonResultScreenPort = loadSummonResultScreenPort;
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_summonCostSetting = summonCostSetting;
 			_playerSoldierFactoryPort = playerSoldierFactoryPort;
 		}
@@ -71,7 +71,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 			}
 			
 			// 보석 소모
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price1x))
 			{
 				// 보석 소모에 실패할 경우(부족할 경우) 모집을 방지
@@ -99,7 +99,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 			if (_isAnimationPlaying) return;
 			
 			// 보석 소모
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price10x))
 			{
 				// 보석 소모에 실패할 경우(부족할 경우) 모집을 방지

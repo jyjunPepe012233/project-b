@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ProjectB.Infrastructure.Implements.Error
 {
 
-	public class ReportErrorService : IReportErrorPort
+	public class FirebaseReportErrorAdapter : IReportErrorPort
 	{
 
 		public void Report(ErrorData errorData)

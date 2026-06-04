@@ -8,24 +8,24 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 	public class RechargeMoraleService : IRechargeMoraleService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IMoraleSetting _moraleSetting;
 
-		public RechargeMoraleService(IPlayerSessionHolderPort playerSessionHolderPort, IMoraleSetting moraleSetting)
+		public RechargeMoraleService(IHoldPlayerSessionPort holdPlayerSessionPort, IMoraleSetting moraleSetting)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_moraleSetting = moraleSetting;
 		}
 
 		public int GetRemainingRechargeCount()
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			return _moraleSetting.MaxDailyRechargeCount - playerData.DailyMoraleRechargeCount;
 		}
 		
 		public int GetExpectedMoraleAfterRecharge(int count)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			return Math.Min(playerData.Morale + count * _moraleSetting.MoralePerRecharge, _moraleSetting.MaxMorale);
 		}
 		
@@ -36,7 +36,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 		public bool VerifyRechargeCount(int count)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			
 			// 일일 충전 횟수가 초과되면 충전 불가
 			if (playerData.DailyMoraleRechargeCount + count > _moraleSetting.MaxDailyRechargeCount)
@@ -56,7 +56,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 		public void Recharge(int count)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			if (!VerifyRechargeCount(count))
 			{

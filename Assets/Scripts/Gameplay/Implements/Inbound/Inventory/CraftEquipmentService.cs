@@ -11,19 +11,19 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 
 	public class CraftEquipmentService : ICraftEquipmentService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IInternalInventoryService _internalInventoryService;
 
-		public CraftEquipmentService(IPlayerSessionHolderPort playerSessionHolderPort,
+		public CraftEquipmentService(IHoldPlayerSessionPort holdPlayerSessionPort,
 			IInternalInventoryService internalInventoryService)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_internalInventoryService = internalInventoryService;
 		}
 
 		public void Craft(IEquipmentItem equipment)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			var craftMaterials = equipment.CraftMaterials.ToArray();
 
 			// 재료 전체 사전 검증

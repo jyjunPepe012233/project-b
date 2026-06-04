@@ -10,16 +10,16 @@ namespace ProjectB.Gameplay.Implements.Inbound.Inventory
 	
 	public class InventoryService : IInventoryService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IInternalInventoryService _internalInventoryService;
 
 		// TODO: 메모리 큰일남. 인벤토리 더티체크 필요
-		public IReadOnlyList<IReadOnlyPlayerItem> Items => _playerSessionHolderPort.GetPlayerSession().PlayerData.Items.ToArray();
+		public IReadOnlyList<IReadOnlyPlayerItem> Items => _holdPlayerSessionPort.GetPlayerSession().PlayerData.Items.ToArray();
 
-		public InventoryService(IPlayerSessionHolderPort playerSessionHolderPort,
+		public InventoryService(IHoldPlayerSessionPort holdPlayerSessionPort,
 			IInternalInventoryService internalInventoryService)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_internalInventoryService = internalInventoryService;
 		}
 	}

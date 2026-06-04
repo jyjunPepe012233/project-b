@@ -166,13 +166,13 @@ namespace ProjectB.Infrastructure.Dependency
 			// ==============================================================
 
 			// - Player
-			RegisterPortAdapter<IPlayerSessionHolderPort, PlayerSessionHolderService>();
-			RegisterPortAdapter<ILoadPlayerDataPort, LoadPlayerDataService>();
+			RegisterPortAdapter<IHoldPlayerSessionPort, HoldPlayerSessionService>();
+			RegisterPortAdapter<ILoadPlayerDataPort, TestLoadPlayerDataService>();
 			RegisterPortAdapter<IInitializePlayerSessionPort, InitializePlayerSessionService>();
 
 			// - Error
-			RegisterPortAdapter<IUncaughtErrorCatcherPort, UncaughtErrorCatcherService>();
-			RegisterPortAdapter<IReportErrorPort, ReportErrorService>();
+			RegisterPortAdapter<ICatchUncaughtErrorPort, CatchUncaughtErrorAdapter>();
+			RegisterPortAdapter<IReportErrorPort, FirebaseReportErrorAdapter>();
 		}
 	}
 

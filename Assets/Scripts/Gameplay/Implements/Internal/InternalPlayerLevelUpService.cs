@@ -9,12 +9,12 @@ namespace ProjectB.Gameplay.Implements.Internal
 	public class InternalPlayerLevelUpService : IInternalPlayerLevelUpService
 	{
 		private readonly IPlayerLevelUpSetting _playerLevelUpSetting;
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 
-		public InternalPlayerLevelUpService(IPlayerLevelUpSetting playerLevelUpSetting, IPlayerSessionHolderPort playerSessionHolderPort)
+		public InternalPlayerLevelUpService(IPlayerLevelUpSetting playerLevelUpSetting, IHoldPlayerSessionPort holdPlayerSessionPort)
 		{
 			_playerLevelUpSetting = playerLevelUpSetting;
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 		}
 
 		public void GiveExperience(int experience)
@@ -25,7 +25,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 			}
 			
 			
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// 최대 레벨 확인
 			if (playerData.Level == _playerLevelUpSetting.MaxLevel)

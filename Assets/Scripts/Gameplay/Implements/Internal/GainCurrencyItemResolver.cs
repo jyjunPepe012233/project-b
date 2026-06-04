@@ -10,16 +10,16 @@ namespace ProjectB.Gameplay.Implements.Internal
 
 	public class GainCurrencyItemResolver : IConsumableItemResolver<IGainCurrencyItem>
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 
-		public GainCurrencyItemResolver(IPlayerSessionHolderPort playerSessionHolderPort)
+		public GainCurrencyItemResolver(IHoldPlayerSessionPort holdPlayerSessionPort)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 		}
 
 		public void OnConsume(IGainCurrencyItem gainCurrencyItem, int count)
 		{
-			IPlayerData playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			IPlayerData playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			int amount = gainCurrencyItem.Amount * count;
 			
 			switch (gainCurrencyItem.CurrencyType)

@@ -13,17 +13,17 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 	public class SoldierLevelUpService : ISoldierLevelUpService
 	{
 		private readonly IGlobalSoldierLevelUpSetting _globalSoldierLevelUpSetting;
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly ISoldierStatusComputer _soldierStatusComputer;
 		private readonly ISoldierCombatPowerComputer _soldierCombatPowerComputer;
 
 		public SoldierLevelUpService(IGlobalSoldierLevelUpSetting globalSoldierLevelUpSetting,
-			IPlayerSessionHolderPort playerSessionHolderPort,
+			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISoldierStatusComputer soldierStatusComputer, 
 			ISoldierCombatPowerComputer soldierCombatPowerComputer)
 		{
 			_globalSoldierLevelUpSetting = globalSoldierLevelUpSetting;
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_soldierStatusComputer = soldierStatusComputer;
 			_soldierCombatPowerComputer = soldierCombatPowerComputer;
 		}
@@ -32,7 +32,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 		public void ConsumeFoods(ISoldierData soldier)
 		{
-			IPlayerData playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			IPlayerData playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			
 			// 플레이어가 soldier를 가지고 있는지 확인
 			IPlayerSoldier playerSoldier = playerData.Soldiers.FirstOrDefault(i => i.SoldierData == soldier);
@@ -104,7 +104,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 		
 		public int GetConsumeFoodAmount(ISoldierData soldier)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			var playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierData == soldier);
 			if (playerSoldier == null)
@@ -119,7 +119,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 		public SoldierStatus GetNextLevelStatus(ISoldierData soldier)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			var playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierData == soldier);
 			if (playerSoldier == null)
@@ -133,7 +133,7 @@ namespace ProjectB.Gameplay.Implements.Inbound.Soldier
 
 		public int GetNextLevelCombatPower(ISoldierData soldier)
 		{
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			var playerSoldier = playerData.Soldiers.FirstOrDefault(s => s.SoldierData == soldier);
 			if (playerSoldier == null)

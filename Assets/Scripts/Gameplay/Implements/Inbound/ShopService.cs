@@ -10,12 +10,12 @@ namespace ProjectB.Gameplay.Implements.Inbound
 
 	public class ShopService : IShopService
 	{
-		private readonly IPlayerSessionHolderPort _playerSessionHolderPort;
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly IInternalInventoryService _internalInventoryService;
 
-		public ShopService(IPlayerSessionHolderPort playerSessionHolderPort, IInternalInventoryService internalInventoryService)
+		public ShopService(IHoldPlayerSessionPort holdPlayerSessionPort, IInternalInventoryService internalInventoryService)
 		{
-			_playerSessionHolderPort = playerSessionHolderPort;
+			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_internalInventoryService = internalInventoryService;
 		}
 
@@ -33,7 +33,7 @@ namespace ProjectB.Gameplay.Implements.Inbound
 				return;
 			}
 			
-			var playerData = _playerSessionHolderPort.GetPlayerSession().PlayerData;
+			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 
 			// switch문에서 각 재화 소모 시도 후
 			// 재화 소모에 성공하면 성공 플래그(isPurchaseSuccess)를 true로 바꿈
