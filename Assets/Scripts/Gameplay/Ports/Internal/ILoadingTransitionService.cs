@@ -7,7 +7,7 @@ namespace ProjectB.Gameplay.Ports.Internal
 
 	public interface ILoadingTransitionService
 	{
-		IEnumerator LoadScreenWithTransition(Func<IEnumerator> loadScreenAction);
+		void LoadScreenWithTransition(Func<IEnumerator> loadScreenAction);
 	}
 
 }

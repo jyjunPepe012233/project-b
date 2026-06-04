@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ProjectB.Core.Supports;
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Ports.Internal;
 using ProjectB.Gameplay.Ports.Outbound;
@@ -18,8 +19,13 @@ namespace ProjectB.Gameplay.Implements.Internal
 		{
 			_loadingOverlayServicePort = loadingOverlayServicePort;
 		}
+
+		public void LoadScreenWithTransition(Func<IEnumerator> loadScreenAction)
+		{
+			CoroutineHandler.StartAndAdd(LoadScreenWithTransitionInternal(loadScreenAction));
+		}
 		
-		public IEnumerator LoadScreenWithTransition(Func<IEnumerator> loadScreenAction)
+		IEnumerator LoadScreenWithTransitionInternal(Func<IEnumerator> loadScreenAction)
 		{
 			if (_isLoading)
 			{
