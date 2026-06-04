@@ -61,7 +61,6 @@ namespace ProjectB.Infrastructure.Dependency.Types
 				Type = assembly.GetType(_typeName); // type의 FullName을 바탕으로 Type을 찾음
 				if (Type != null)
 				{
-					Debug.Log(Type.FullName);
 					break;
 				}
 			}
