@@ -23,6 +23,12 @@ namespace ProjectB.UI.Presenters.Labels.ResourceBar
 			_playerData = _playerDataService.GetPlayerData();
 		}
 
+		public override void Initialize()
+		{
+			base.Initialize();
+			_intValueLabelView.SetValue(_playerData.Gems);
+		}
+
 		protected override void SetupModelSubscription()
 		{
 			base.SetupModelSubscription();
