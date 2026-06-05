@@ -1,5 +1,5 @@
 using ProjectB.Data.Runtime.Player;
-using ProjectB.Gameplay.Ports.Inbound.Player;
+using ProjectB.Gameplay.Inbound.Ports.Player;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Label;
 

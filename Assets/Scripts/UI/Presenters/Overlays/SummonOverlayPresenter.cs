@@ -1,8 +1,7 @@
 using ProjectB.Data.Types;
 using ProjectB.Gameplay.Events.Overlay;
-using ProjectB.Gameplay.Ports.Inbound;
-using ProjectB.Gameplay.Ports.Inbound.Overlay;
-using ProjectB.UI.Presenters.Screens;
+using ProjectB.Gameplay.Inbound.Ports;
+using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 

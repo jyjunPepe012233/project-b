@@ -1,4 +1,4 @@
-using ProjectB.Gameplay.Ports.Inbound.Screen;
+using ProjectB.Gameplay.Inbound.Ports.Screen;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Buttons;
 

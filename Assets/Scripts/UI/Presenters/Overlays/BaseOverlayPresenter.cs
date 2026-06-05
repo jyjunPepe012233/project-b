@@ -1,11 +1,10 @@
 using ProjectB.Gameplay.Events.Overlay;
-using ProjectB.Gameplay.Ports.Inbound.Overlay;
-using ProjectB.Gameplay.Ports.Inbound.Screen;
+using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 
-namespace ProjectB.UI.Presenters.Screens
+namespace ProjectB.UI.Presenters.Overlays
 {
 	
 	// Screen 단위의 Presenter들의 공통 기능을 제공하는 추상 클래스임.

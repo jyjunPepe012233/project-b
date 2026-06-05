@@ -2,10 +2,10 @@
     "name": "ProjectB.UI",
     "rootNamespace": "ProjectB",
     "references": [
-        "GUID:57c074a4726b4ac9a0b105d90daef00c",
-        "GUID:edf03d21d85fa438b8e12a8dcd26200b",
+        "GUID:6867947f8ba984907a391d665a3c7e06",
         "GUID:4516fe32c11b32b4c8eb0d5ed6f6d7bc",
-        "GUID:6867947f8ba984907a391d665a3c7e06"
+        "GUID:57c074a4726b4ac9a0b105d90daef00c",
+        "GUID:edf03d21d85fa438b8e12a8dcd26200b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
