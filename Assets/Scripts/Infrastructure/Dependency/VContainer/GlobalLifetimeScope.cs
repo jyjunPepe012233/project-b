@@ -188,7 +188,7 @@ namespace ProjectB.Infrastructure.Dependency
 			
 			// - Screen
 			RegisterPortAdapter<IHomeScreenLoader, HomeScreenLoader>();
-			RegisterPortAdapter<ILoadingScreenController, LoadingScreenController>();
+			RegisterPortAdapter<ITransitionScreenController, TransitionScreenController>();
 			
 			// - 분류 X
 			RegisterPortAdapter<IChangeScreenTransitionService, ChangeScreenTransitionService>();

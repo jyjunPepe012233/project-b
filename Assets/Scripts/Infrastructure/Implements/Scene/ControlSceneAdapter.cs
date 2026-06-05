@@ -57,6 +57,8 @@ namespace ProjectB.Infrastructure.Implements.Scene
 			}
 			
 			_asyncOperation = null;
+
+			yield return null; // 씬 로드 완료 후 한 프레임 대기
 		}
 		
 
