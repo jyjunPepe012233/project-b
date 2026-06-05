@@ -1,3 +1,4 @@
+using AssetValidator;
 using InspectorGadgets.Attributes;
 using ProjectB.UI.Core;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 {
 
-	public abstract class UIPresenterScope<TPresenter> : LifetimeScopeInjectionTarget where TPresenter : UIPresenter
+	public abstract class UIPresenterScope<TPresenter> : LifetimeScopeInjectionTarget, IValidatable
+		where TPresenter : UIPresenter
 	{
 		protected TPresenter Presenter { get; private set; }
 
@@ -50,6 +52,16 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 		}
 
 		protected abstract TPresenter Compose();
+
+		
+		
+		MonoBehaviour IValidatable.GetMonoBehaviour() => this;
+
+		public ValidationMethod GetValidationMethod()
+		{
+			return new ValidationMethod()
+				.Register("LifetimeScope Reference 설정", _reference.IsValid);
+		}
 	}
 
 }
