@@ -48,6 +48,14 @@ namespace ProjectB.UI.Core
 			{
 				Hide(); // Default Disable로 설정되어 있으면 초기 상태를 Hide로 설정
 			}
+			else
+			{
+				_isShowing = true;
+				_canvasGroup.SetVisible(true);
+				
+				OnShowed();
+				OnSetupUICallbacks();
+			}
 		}
 		
 		
