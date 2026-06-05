@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 465171995090937937}
   - component: {fileID: 7097483549577594318}
   m_Layer: 5
-  m_Name: Label_ResourceBar_BasePrefab
+  m_Name: UI_Label_ResourceBar_BasePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
