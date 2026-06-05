@@ -14,6 +14,8 @@ namespace ProjectB.Infrastructure.Dependency
 		protected LifetimeScopeReference _reference;
 
 		private LifetimeScope _lifetimeScope;
+		
+		public bool IsInjected { get; private set; }
 
 		protected virtual void Start()
 		{
@@ -25,6 +27,7 @@ namespace ProjectB.Infrastructure.Dependency
 				{
 					_lifetimeScope = lifetimeScope;
 					_lifetimeScope.Container.Inject(this);
+					IsInjected = true;
 					OnInjected();
 				}
 				else

@@ -7,6 +7,8 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 	{
 		protected TPresenter Presenter { get; private set; }
 		
+		protected bool IsInitialized { get; private set; }
+		
 		protected override void OnInjected()
 		{
 			base.OnInjected();
@@ -16,19 +18,28 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 
 		protected virtual void OnEnable()
 		{
-			Presenter.Initialize();
+			if (IsInjected && !IsInitialized)
+			{
+				IsInitialized = true;
+				Presenter.Initialize();
+			}
 		}
 
 		protected virtual void OnDisable()
 		{
-			Presenter.Dispose();
+			if (IsInitialized)
+			{
+				Presenter.Dispose();
+				IsInitialized = false;
+			}
 		}
 		
 		protected virtual void OnDestroy()
 		{
-			if (Presenter != null)
+			if (IsInitialized)
 			{
 				Presenter.Dispose();
+				IsInitialized = false;
 			}
 		}
 
