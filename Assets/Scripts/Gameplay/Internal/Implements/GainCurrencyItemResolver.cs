@@ -1,0 +1,42 @@
+using ProjectB.Data.Runtime.Player;
+using ProjectB.Data.Static.Item;
+using ProjectB.Data.Types;
+using ProjectB.Gameplay.Internal.Ports;
+using ProjectB.Gameplay.Outbound.Ports.Player;
+using UnityEngine;
+
+namespace ProjectB.Gameplay.Internal.Implements
+{
+
+	public class GainCurrencyItemResolver : IConsumableItemResolver<IGainCurrencyItem>
+	{
+		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
+
+		public GainCurrencyItemResolver(IHoldPlayerSessionPort holdPlayerSessionPort)
+		{
+			_holdPlayerSessionPort = holdPlayerSessionPort;
+		}
+
+		public void OnConsume(IGainCurrencyItem gainCurrencyItem, int count)
+		{
+			IPlayerData playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
+			int amount = gainCurrencyItem.Amount * count;
+			
+			switch (gainCurrencyItem.CurrencyType)
+			{
+				case CurrencyType.Coins:
+					playerData.AddCoins(amount);
+					break;
+				
+				case CurrencyType.Gems:
+					playerData.AddGems(amount);
+					break;
+				
+				default:
+					Debug.LogError("GainCurrencyItem을 소모할 수 없음. 이 재화 타입에 대한 분기문이 존재하지 않음 CurrencyType: " + gainCurrencyItem.CurrencyType);
+					break;
+			}
+		}
+	}
+
+} 

@@ -1,0 +1,21 @@
+{
+    "name": "ProjectB.Gameplay.Inbound.Implements",
+    "rootNamespace": "ProjectB",
+    "references": [
+        "GUID:57c074a4726b4ac9a0b105d90daef00c",
+        "GUID:edf03d21d85fa438b8e12a8dcd26200b",
+        "GUID:e4e10771afd645f4ac8b6c5471abb247",
+        "GUID:7185c1b2031c4d88ab23388e677598b0",
+        "GUID:78d88e0d41a9490f975921d89b619553",
+        "GUID:5bade9b1d8334ecf8267778a0ecf39ff"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
