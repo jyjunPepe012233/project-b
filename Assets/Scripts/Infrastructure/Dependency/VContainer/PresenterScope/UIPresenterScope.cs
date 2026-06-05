@@ -1,4 +1,6 @@
+using InspectorGadgets.Attributes;
 using ProjectB.UI.Core;
+using UnityEngine;
 
 namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 {
@@ -6,13 +8,17 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 	public abstract class UIPresenterScope<TPresenter> : LifetimeScopeInjectionTarget where TPresenter : UIPresenter
 	{
 		protected TPresenter Presenter { get; private set; }
+
 		
-		protected bool IsInitialized { get; private set; }
+		[SerializeField, Readonly] private bool _isInitialized; 
+		public bool IsInitialized => _isInitialized;
 		
 		protected override void OnInjected()
 		{
 			base.OnInjected();
 			Presenter = Compose();
+			
+			_isInitialized = true;
 			Presenter.Initialize();
 		}
 
@@ -20,7 +26,7 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 		{
 			if (IsInjected && !IsInitialized)
 			{
-				IsInitialized = true;
+				_isInitialized = true;
 				Presenter.Initialize();
 			}
 		}
@@ -30,7 +36,7 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 			if (IsInitialized)
 			{
 				Presenter.Dispose();
-				IsInitialized = false;
+				_isInitialized = false;
 			}
 		}
 		
@@ -39,7 +45,7 @@ namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
 			if (IsInitialized)
 			{
 				Presenter.Dispose();
-				IsInitialized = false;
+				_isInitialized = false;
 			}
 		}
 
