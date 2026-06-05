@@ -4,10 +4,6 @@ using ProjectB.UI.Views.Buttons;
 
 namespace ProjectB.UI.Presenters.Screens
 {
-
-	// TitleScreenPresenter는 BaseScreenPresenter를 상속받지 않음
-	// BaseScreenPresenter는 화면 열기/닫기 중심의 기능을 제공하는데,
-	// 타이틀 화면은 게임 시작 시 자동으로 열리고 다시 열리지 않으므로 BaseScreenPresenter의 기능이 필요하지 않음.
 	
 	public class TitleScreenPresenter : UIPresenter
 	{
