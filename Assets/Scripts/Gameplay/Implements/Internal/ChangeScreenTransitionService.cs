@@ -12,14 +12,14 @@ namespace ProjectB.Gameplay.Implements.Internal
 	public class ChangeScreenTransitionService : IChangeScreenTransitionService
 	{
 		private readonly ChangeScreenTransitionEvents _changeScreenTransitionEvents;
-		private readonly ILoadingScreenController _loadingScreenController;
+		private readonly ITransitionScreenController _transitionScreenController;
 
 		private bool _isLoading = false;
 
-		public ChangeScreenTransitionService(ChangeScreenTransitionEvents changeScreenTransitionEvents, ILoadingScreenController loadingScreenController)
+		public ChangeScreenTransitionService(ChangeScreenTransitionEvents changeScreenTransitionEvents, ITransitionScreenController transitionScreenController)
 		{
 			_changeScreenTransitionEvents = changeScreenTransitionEvents;
-			_loadingScreenController = loadingScreenController;
+			_transitionScreenController = transitionScreenController;
 		}
 
 		public void ChangeScreenWithTransition(Func<IEnumerator> changeScreenAction)
@@ -38,7 +38,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 			_isLoading = true;
 			
 			// 1. 로딩 오버레이 씬 로드
-			yield return _loadingScreenController.LoadAdditive();
+			yield return _transitionScreenController.LoadAdditive();
 
 			// 1-2. 트랜지션의 Fade In이 끝날 때까지 대기
 			bool isFadeInCompleted = false;
@@ -61,7 +61,7 @@ namespace ProjectB.Gameplay.Implements.Internal
 			
 			
 			// 3-1. 로딩 오버레이 씬 언로드
-			yield return _loadingScreenController.Unload();
+			yield return _transitionScreenController.Unload();
 			
 			
 			_isLoading = false;

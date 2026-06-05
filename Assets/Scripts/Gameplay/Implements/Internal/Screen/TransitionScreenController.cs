@@ -5,23 +5,23 @@ using ProjectB.Gameplay.Ports.Outbound.Scene;
 namespace ProjectB.Gameplay.Implements.Internal.Screen
 {
 
-	public class LoadingScreenController : ILoadingScreenController
+	public class TransitionScreenController : ITransitionScreenController
 	{
 		private readonly IControlScenePort _controlScenePort;
 
-		public LoadingScreenController(IControlScenePort controlScenePort)
+		public TransitionScreenController(IControlScenePort controlScenePort)
 		{
 			_controlScenePort = controlScenePort;
 		}
 
 		public IEnumerator LoadAdditive()
 		{
-			yield return _controlScenePort.LoadSceneAdditive("LoadingScreen");
+			yield return _controlScenePort.LoadSceneAdditive("TransitionScreen");
 		}
 
 		public IEnumerator Unload()
 		{
-			yield return _controlScenePort.UnloadScene("LoadingScreen");
+			yield return _controlScenePort.UnloadScene("TransitionScreen");
 		}
 	}
 

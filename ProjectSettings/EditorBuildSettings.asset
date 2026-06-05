@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 4ca48b74fcae34a849f0a399c89c40e9
   - enabled: 1
-    path: Assets/Scenes/LoadingOverlay.unity
+    path: Assets/Scenes/TransitionScreen.unity
     guid: 6e92b8ca0771a461e996c645cd7ec20c
   - enabled: 1
     path: Assets/Scenes/Home.unity
