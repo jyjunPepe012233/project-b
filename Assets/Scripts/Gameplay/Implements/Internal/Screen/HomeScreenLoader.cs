@@ -16,7 +16,7 @@ namespace ProjectB.Gameplay.Implements.Internal.Screen
 
 		public IEnumerator Load()
 		{
-			yield return _controlScenePort.LoadScene("Home");
+			yield return _controlScenePort.LoadScene("HomeScreen");
 		}
 	}
 
