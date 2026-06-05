@@ -28,7 +28,6 @@ namespace ProjectB.UI.Presenters.Screens
 		protected override void SetupModelSubscription()
 		{
 			base.SetupModelSubscription();
-			Debug.Log(31);
 			_changeScreenTransitionEvents.StartFadeIn += OnStartFadeIn;
 			_changeScreenTransitionEvents.StartFadeOut += OnStartFadeOut;
 		}
