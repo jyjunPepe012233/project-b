@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091439529958543435, guid: 3bc042e36b9884bc3b8a4b6fb7ed8303, type: 3}
       propertyPath: m_Name
-      value: Label_ResourceBar_Coin_Presented
+      value: UI_Label_ResourceBar_Coin_Presented
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _typeName: ProjectB.Infrastructure.Dependency.GlobalLifetimeScope
+    _typeName: ProjectB.Dependency.GlobalLifetimeScope
   _isInitialized: 0
   _intValueLabelView: {fileID: 6885094091614862186}
 --- !u!114 &6885094091614862186 stripped

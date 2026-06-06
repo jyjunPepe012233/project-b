@@ -129,6 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _typeName: ProjectB.Infrastructure.Dependency.GlobalLifetimeScope
+    _typeName: ProjectB.Dependency.GlobalLifetimeScope
   _isInitialized: 0
   _buttonView: {fileID: 1315298654576485684}

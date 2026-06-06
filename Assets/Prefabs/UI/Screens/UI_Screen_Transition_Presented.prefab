@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _typeName: ProjectB.Infrastructure.Dependency.GlobalLifetimeScope
+    _typeName: ProjectB.Dependency.GlobalLifetimeScope
+  _isInitialized: 0
   _fadeInAsset: {fileID: 11400000, guid: 065d30ad83ec0476ca5d3e1085dd0c7a, type: 2}
   _fadeOutAsset: {fileID: 11400000, guid: 8edc940f74c5946d0a879c5e8934bb58, type: 2}
   _transitionScreenView: {fileID: 3050267643326888647}
