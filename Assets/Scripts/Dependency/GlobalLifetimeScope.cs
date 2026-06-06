@@ -52,6 +52,8 @@ namespace ProjectB.Dependency
 			RegisterInboundSystems();
 			RegisterInternalSystems();
 			RegisterOutboundSystems();
+			RegisterMonoSystems();
+			RegisterEvents();
 		}
 
 		protected override void Awake()

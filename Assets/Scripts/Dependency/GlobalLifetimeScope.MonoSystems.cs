@@ -26,7 +26,7 @@ namespace ProjectB.Dependency
 		void RegisterMonoSystems()
 		{
 			// Gameplay MonoSystems
-			RegisterMonoSystem<GlobalErrorHandler>();
+//			RegisterMonoSystem<GlobalErrorHandler>();
 			RegisterMonoSystem<PlayerSessionInitializer>();
 			
 			// Infrastructure MonoSystems
