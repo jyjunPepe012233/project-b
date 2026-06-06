@@ -8,17 +8,17 @@ using ProjectB.UI.Views.Lists;
 namespace ProjectB.UI.Presenters.Overlays
 {
 
-	public class SoldierListOverlayPresenter : BaseOverlayPresenter<ISoldierListOverlayService, SoldierListOverlayEvents>
+	public class SoldierListOverlayPresenter : BaseOverlayPresenter<SoldierListOverlayEvents>
 	{
 		private readonly PlayerSoldierCardListView _soldierListView;
 		private readonly IPlayerDataService _playerDataService;
 
 		public SoldierListOverlayPresenter(TopElementView topElementView,
-			ButtonView closeButton,
-			ISoldierListOverlayService overlayService,
+			ButtonView closeButtonView,
 			SoldierListOverlayEvents overlayEvents,
+			IOverlayStackService overlayStackService,
 			PlayerSoldierCardListView soldierListView,
-			IPlayerDataService playerDataService) : base(topElementView, closeButton, overlayService, overlayEvents)
+			IPlayerDataService playerDataService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_soldierListView = soldierListView;
 			_playerDataService = playerDataService;

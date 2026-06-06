@@ -6,7 +6,7 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 	public class WorldMapOverlayService : BaseOverlayService<IWorldMapOverlayController>, IWorldMapOverlayService
 	{
-		public WorldMapOverlayService(IWorldMapOverlayController controller) : base(controller)
+		public WorldMapOverlayService(IOverlayManager overlayManager, IWorldMapOverlayController controller) : base(overlayManager, controller)
 		{
 		}
 	}

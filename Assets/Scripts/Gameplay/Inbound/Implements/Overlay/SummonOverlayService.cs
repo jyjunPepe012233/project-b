@@ -6,7 +6,7 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 	public class SummonOverlayService : BaseOverlayService<ISummonOverlayController>, ISummonOverlayService
 	{
-		public SummonOverlayService(ISummonOverlayController controller) : base(controller)
+		public SummonOverlayService(IOverlayManager overlayManager, ISummonOverlayController controller) : base(overlayManager, controller)
 		{
 		}
 	}

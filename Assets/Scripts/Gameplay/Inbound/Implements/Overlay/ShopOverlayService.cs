@@ -6,7 +6,7 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 	public class ShopOverlayService : BaseOverlayService<IShopOverlayController>, IShopOverlayService
 	{
-		public ShopOverlayService(IShopOverlayController controller) : base(controller)
+		public ShopOverlayService(IOverlayManager overlayManager, IShopOverlayController controller) : base(overlayManager, controller)
 		{
 		}
 	}

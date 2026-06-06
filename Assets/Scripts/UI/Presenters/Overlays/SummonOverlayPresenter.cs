@@ -8,20 +8,21 @@ using ProjectB.UI.Views.Common;
 namespace ProjectB.UI.Presenters.Overlays
 {
 
-	public class SummonOverlayPresenter : BaseOverlayPresenter<ISummonOverlayService, SummonOverlayEvents>
+	public class SummonOverlayPresenter : BaseOverlayPresenter<SummonOverlayEvents>
 	{
 		private readonly ButtonView _summon1xButtonView;
 		private readonly ButtonView _summon10xButtonView;
 		
 		private readonly ISummonService _summonService;
 
+
 		public SummonOverlayPresenter(TopElementView topElementView,
-			ButtonView closeButton,
-			ISummonOverlayService overlayService,
+			ButtonView closeButtonView,
 			SummonOverlayEvents overlayEvents,
+			IOverlayStackService overlayStackService,
 			ButtonView summon1XButtonView,
 			ButtonView summon10XButtonView,
-			ISummonService summonService) : base(topElementView, closeButton, overlayService, overlayEvents)
+			ISummonService summonService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_summon1xButtonView = summon1XButtonView;
 			_summon10xButtonView = summon10XButtonView;

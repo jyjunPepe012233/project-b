@@ -6,21 +6,18 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 	public abstract class BaseOverlayService<TController> where TController : IOverlayController
 	{
+		protected readonly IOverlayManager _overlayManager;
 		protected readonly TController _controller;
 
-		protected BaseOverlayService(TController controller)
+		protected BaseOverlayService(IOverlayManager overlayManager, TController controller)
 		{
+			_overlayManager = overlayManager;
 			_controller = controller;
 		}
 		
 		public void Open()
 		{
-			CoroutineHandler.StartAndAdd(_controller.Open());
-		}
-
-		public void Close()
-		{
-			CoroutineHandler.StartAndAdd(_controller.Close());
+			CoroutineHandler.StartAndAdd(_overlayManager.Open(_controller));
 		}
 	}
 

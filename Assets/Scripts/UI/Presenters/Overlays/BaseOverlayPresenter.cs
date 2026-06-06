@@ -14,25 +14,24 @@ namespace ProjectB.UI.Presenters.Overlays
 	
 	// + closeButton에 대한 의존성도 가지며, closeButtonView가 클릭되었을 때 TOverlayService의 Close()를 호출하는 기능도 제공함.
 	
-	public abstract class BaseOverlayPresenter<TOverlayService, TOverlayEvents> : UIPresenter
-		where TOverlayService : class, IOverlayService
+	public abstract class BaseOverlayPresenter<TOverlayEvents> : UIPresenter
 		where TOverlayEvents : class, IOverlayEvents
 	{
 		protected readonly TopElementView topElementView;
 		protected readonly ButtonView closeButtonView;
 		
-		protected readonly TOverlayService overlayService;
 		protected readonly TOverlayEvents overlayEvents;
+		protected readonly IOverlayStackService overlayStackService;
 		
 		protected BaseOverlayPresenter(TopElementView topElementView,
 			ButtonView closeButtonView,
-			TOverlayService overlayService,
-			TOverlayEvents overlayEvents)
+			TOverlayEvents overlayEvents,
+			IOverlayStackService overlayStackService)
 		{
 			this.topElementView = topElementView;
 			this.closeButtonView = closeButtonView;
-			this.overlayService = overlayService;
 			this.overlayEvents = overlayEvents;
+			this.overlayStackService = overlayStackService;
 		}
 
 		protected override void SetupViewCallbacks()
@@ -49,7 +48,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		
 		protected virtual void OnCloseButtonClicked()
 		{
-			overlayService.Close();
+			overlayStackService.CloseCurrentOverlay();
 		}
 
 		protected override void SetupModelSubscription()

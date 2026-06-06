@@ -6,7 +6,7 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 	public class SoldierListOverlayService : BaseOverlayService<ISoldierListOverlayController>, ISoldierListOverlayService
 	{
-		public SoldierListOverlayService(ISoldierListOverlayController controller) : base(controller)
+		public SoldierListOverlayService(IOverlayManager overlayManager, ISoldierListOverlayController controller) : base(overlayManager, controller)
 		{
 		}
 	}
