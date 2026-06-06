@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using ProjectB.Gameplay.Events.Overlay;
 using ProjectB.Gameplay.Internal.Ports.Overlay;
@@ -23,6 +24,18 @@ namespace ProjectB.Gameplay.Internal.Implements.Overlay
 		public virtual IEnumerator Close()
 		{
 			_events.Close?.Invoke();
+			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+		}
+
+		public IEnumerator Show()
+		{
+			_events.Show?.Invoke();
+			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+		}
+
+		public IEnumerator Hide()
+		{
+			_events.Hide?.Invoke();
 			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
 		}
 	}
