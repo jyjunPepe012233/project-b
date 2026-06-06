@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4341264423664819332}
   - component: {fileID: 3444727674713530942}
+  - component: {fileID: 8663207435877082177}
   m_Layer: 5
   m_Name: UI_Layout_Header_Right
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -55, y: -45}
-  m_SizeDelta: {x: 1000, y: 65}
+  m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &3444727674713530942
 MonoBehaviour:
@@ -64,6 +65,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8663207435877082177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432735130815113009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1001 &2069990276660747339
 PrefabInstance:
   m_ObjectHideFlags: 0
