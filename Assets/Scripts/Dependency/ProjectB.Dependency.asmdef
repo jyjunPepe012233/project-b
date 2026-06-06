@@ -1,0 +1,26 @@
+{
+    "name": "ProjectB.Dependency",
+    "rootNamespace": "ProjectB",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:57c074a4726b4ac9a0b105d90daef00c",
+        "GUID:edf03d21d85fa438b8e12a8dcd26200b",
+        "GUID:e405b7fac45d346f097038ca1b180d05",
+        "GUID:7185c1b2031c4d88ab23388e677598b0",
+        "GUID:bde1a5ee6fdf4ff4bc9c6928391ae306",
+        "GUID:78d88e0d41a9490f975921d89b619553",
+        "GUID:d124762b9ecf2479288478308826efe3",
+        "GUID:5bade9b1d8334ecf8267778a0ecf39ff",
+        "GUID:16829cbfc39f84e478b090e2e0c8340d",
+        "GUID:8111cc061b9e4757ad28c6bf6634d9c6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
