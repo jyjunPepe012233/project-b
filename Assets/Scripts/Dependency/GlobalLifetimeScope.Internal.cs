@@ -1,4 +1,5 @@
 using ProjectB.Data.Static.Item;
+using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.Gameplay.Internal.Implements;
 using ProjectB.Gameplay.Internal.Implements.Computer;
 using ProjectB.Gameplay.Internal.Implements.Factory;
@@ -25,6 +26,7 @@ namespace ProjectB.Dependency
 			RegisterPortAdapter<IPlayerSoldierFactoryPort, PlayerSoldierFactory>();
 			
 			// Overlay
+			RegisterPortAdapter<IOverlayManager, OverlayManager>();
 			RegisterPortAdapter<IShopOverlayController, ShopOverlayController>();
 			RegisterPortAdapter<ISoldierDetailOverlayController, SoldierDetailOverlayController>();
 			RegisterPortAdapter<ISoldierListOverlayController, SoldierListOverlayController>();

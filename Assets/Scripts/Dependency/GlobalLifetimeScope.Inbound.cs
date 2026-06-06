@@ -26,6 +26,7 @@ namespace ProjectB.Dependency
 			RegisterPortAdapter<IInventoryService, InventoryService>();
 			
 			// Overlay
+			RegisterPortAdapter<IOverlayStackService, OverlayStackService>();
 			RegisterPortAdapter<IShopOverlayService, ShopOverlayService>();
 			RegisterPortAdapter<ISoldierListOverlayService, SoldierListOverlayService>();
 			RegisterPortAdapter<ISummonOverlayService, SummonOverlayService>();
