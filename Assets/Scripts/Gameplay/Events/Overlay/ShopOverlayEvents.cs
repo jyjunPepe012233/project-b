@@ -3,11 +3,8 @@ using System;
 namespace ProjectB.Gameplay.Events.Overlay
 {
 
-	public class ShopOverlayEvents : IOverlayEvents
+	public class ShopOverlayEvents : BaseOverlayEvents
 	{
-		public Action Open { get; set; }
-		
-		public Action Close { get; set; }
 	}
 
 }
