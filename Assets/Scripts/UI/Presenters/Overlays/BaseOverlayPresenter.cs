@@ -56,6 +56,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			base.SetupModelSubscription();
 			overlayEvents.Open += OnOpenScreen;
 			overlayEvents.Close += OnCloseScreen;
+			overlayEvents.Show += OnShowScreen;
+			overlayEvents.Hide += OnHideScreen;
 		}
 
 		protected override void DisposeModelSubscription()
@@ -63,6 +65,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			base.DisposeModelSubscription();
 			overlayEvents.Open -= OnOpenScreen;
 			overlayEvents.Close -= OnCloseScreen;
+			overlayEvents.Show -= OnShowScreen;
+			overlayEvents.Hide -= OnHideScreen;
 		}
 		
 		protected virtual void OnOpenScreen()
@@ -73,6 +77,16 @@ namespace ProjectB.UI.Presenters.Overlays
 		}
 		
 		protected virtual void OnCloseScreen()
+		{
+			topElementView.Hide();
+		}
+		
+		protected virtual void OnShowScreen()
+		{
+			topElementView.Show(true);
+		}
+
+		protected virtual void OnHideScreen()
 		{
 			topElementView.Hide();
 		}
