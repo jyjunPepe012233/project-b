@@ -1,0 +1,19 @@
+{
+    "name": "ProjectB.Infrastructure.VContainer.Editor",
+    "rootNamespace": "ProjectB",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:57c074a4726b4ac9a0b105d90daef00c",
+        "GUID:edf03d21d85fa438b8e12a8dcd26200b",
+        "GUID:16829cbfc39f84e478b090e2e0c8340d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
