@@ -1253,6 +1253,7 @@ GameObject:
   - component: {fileID: 8489262964510830669}
   - component: {fileID: 8055804141057394519}
   - component: {fileID: 2126114811558757460}
+  - component: {fileID: 2954105958239510003}
   m_Layer: 5
   m_Name: UI_Item_PlayerSoldierCard
   m_TagString: Untagged
@@ -1312,6 +1313,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2954105958239510003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489262964510830670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f1a6795934c0e8fc2efcb71bcf8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dirtyOnValidate: 1
+  _dirtyOnEnable: 1
+  _dirtyOnDisable: 1
+  _dirtyOnParentChange: 1
+  _dirtyOnChildrenChange: 1
+  _dirtyOnRectTransformChange: 1
 --- !u!1 &8489262965031674092
 GameObject:
   m_ObjectHideFlags: 0

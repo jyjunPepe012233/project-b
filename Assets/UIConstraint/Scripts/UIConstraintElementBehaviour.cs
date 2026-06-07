@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -63,6 +64,7 @@ namespace UIConstraint
 			};
 #else
 			ApplyConstraint(); // 런타임
+			SetDirty();
 #endif
 		}
 
@@ -79,6 +81,16 @@ namespace UIConstraint
 		}
 		
 		protected override void OnRectTransformDimensionsChange()
+		{
+			ApplyConstraintWithEditorDelay();
+		}
+
+		protected override void OnTransformParentChanged()
+		{
+			ApplyConstraintWithEditorDelay();
+		}
+
+		protected void OnTransformChildrenChanged()
 		{
 			ApplyConstraintWithEditorDelay();
 		}
