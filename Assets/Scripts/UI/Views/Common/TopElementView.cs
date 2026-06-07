@@ -16,6 +16,8 @@ namespace ProjectB.UI.Views.Common
 			
 			foreach (var childView in _childViews)
 			{
+				if (childView == this) continue; // 자기 자신은 제외
+
 				childView.Show();
 			}
 		}
@@ -26,6 +28,8 @@ namespace ProjectB.UI.Views.Common
 			
 			foreach (var childView in _childViews)
 			{
+				if (childView == this) continue; // 자기 자신은 제외
+				
 				childView.Hide();
 			}
 		}

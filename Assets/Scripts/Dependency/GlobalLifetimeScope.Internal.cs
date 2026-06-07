@@ -31,6 +31,8 @@ namespace ProjectB.Dependency
 			RegisterPortAdapter<ISoldierDetailOverlayController, SoldierDetailOverlayController>();
 			RegisterPortAdapter<ISoldierListOverlayController, SoldierListOverlayController>();
 			RegisterPortAdapter<ISummonOverlayController, SummonOverlayController>();
+			RegisterPortAdapter<ISummonAnimationOverlayController, SummonAnimationOverlayController>();
+			RegisterPortAdapter<ISummonResultOverlayController, SummonResultOverlayController>();
 			RegisterPortAdapter<IWorldMapOverlayController, WorldMapOverlayController>();
 			
 			// Screen

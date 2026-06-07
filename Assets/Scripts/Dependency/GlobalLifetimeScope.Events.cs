@@ -11,12 +11,16 @@ namespace ProjectB.Dependency
 			// 분류 X
 			RegisterMonoSystem<ChangeScreenTransitionEvents>();
 			RegisterMonoSystem<InventoryEvents>();
+			RegisterMonoSystem<SummonAnimationEvents>();
+			RegisterMonoSystem<SummonResultEvents>();
 			
 			// Overlay
 			RegisterMonoSystem<ShopOverlayEvents>();
 			RegisterMonoSystem<SoldierDetailOverlayEvents>();
 			RegisterMonoSystem<SoldierListOverlayEvents>();
 			RegisterMonoSystem<SummonOverlayEvents>();
+			RegisterMonoSystem<SummonAnimationOverlayEvents>();
+			RegisterMonoSystem<SummonResultOverlayEvents>();
 			RegisterMonoSystem<WorldMapOverlayEvents>();
 		}
 	}

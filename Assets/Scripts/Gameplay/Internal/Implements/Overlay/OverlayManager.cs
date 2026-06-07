@@ -10,6 +10,8 @@ namespace ProjectB.Gameplay.Internal.Implements.Overlay
 	{
 		private readonly Stack<IOverlayController> _overlayStack = new Stack<IOverlayController>();
 		
+		public IOverlayController CurrentOverlay => _overlayStack.Count > 0 ? _overlayStack.Peek() : null;
+		
 		public IEnumerator Open(IOverlayController overlayController)
 		{
 			// 뒤로 밀려난 Overlay를 Hide

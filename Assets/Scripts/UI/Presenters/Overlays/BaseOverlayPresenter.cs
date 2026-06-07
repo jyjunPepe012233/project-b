@@ -67,7 +67,9 @@ namespace ProjectB.UI.Presenters.Overlays
 		
 		protected virtual void OnOpenScreen()
 		{
-			topElementView.Show();
+			// Overlay의 TopElementView는 일반적으로 defaultDisable이므로,
+			// topElementView를 열 때는 includeDefaultDisable을 통해 강제로 활성화하도록 함
+			topElementView.Show(includeDefaultDisable: true);
 		}
 		
 		protected virtual void OnCloseScreen()

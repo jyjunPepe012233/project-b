@@ -1,5 +1,7 @@
+using ProjectB.Core.Supports;
 using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.Gameplay.Internal.Ports.Overlay;
+using UnityEngine;
 
 namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 {
@@ -15,12 +17,12 @@ namespace ProjectB.Gameplay.Inbound.Implements.Overlay
 
 		public void CloseCurrentOverlay()
 		{
-			_overlayManager.Close();
+			CoroutineHandler.StartAndAdd(_overlayManager.Close());
 		}
 
 		public void CloseAllOverlays()
 		{
-			_overlayManager.CloseAll();
+			CoroutineHandler.StartAndAdd(_overlayManager.CloseAll());
 		}
 	}
 

@@ -1,6 +1,8 @@
+using System;
 using ProjectB.Infrastructure.Dependency.Types;
 using UnityEngine;
 using VContainer.Unity;
+using Object = UnityEngine.Object;
 
 namespace ProjectB.Infrastructure.Dependency
 {
@@ -19,21 +21,30 @@ namespace ProjectB.Infrastructure.Dependency
 
 		protected virtual void Start()
 		{
-			if (_reference.IsValid())
+			// VContainer에서 Exception이 발생하면 프레임의 PlayerLoop 자체가 끊길 수 있으므로
+			// 컴포넌트 단위로 예외처리하여 문제가 되는 컴포넌트만 영향을 받도록 함
+			try
 			{
-				Object obj = FindObjectOfType(_reference.Type);
+				if (_reference.IsValid())
+				{
+					Object obj = FindObjectOfType(_reference.Type);
+
+					if (obj is LifetimeScope lifetimeScope)
+					{
+						_lifetimeScope = lifetimeScope;
+						_lifetimeScope.Container.Inject(this);
+						IsInjected = true;
+						OnInjected();
+					}
+					else
+					{
+						Debug.LogError("LifetimeScopeInjectionTarget: 대상을 찾을 수 없음: " + _reference.Type.FullName);
+					}
+				}
 				
-				if (obj is LifetimeScope lifetimeScope)
-				{
-					_lifetimeScope = lifetimeScope;
-					_lifetimeScope.Container.Inject(this);
-					IsInjected = true;
-					OnInjected();
-				}
-				else
-				{
-					Debug.LogError("LifetimeScopeInjectionTarget: 대상을 찾을 수 없음: " + _reference.Type.FullName);
-				}
+			} catch (Exception e)
+			{
+				Debug.LogError("Injection 실패: " + e);
 			}
 		}
 

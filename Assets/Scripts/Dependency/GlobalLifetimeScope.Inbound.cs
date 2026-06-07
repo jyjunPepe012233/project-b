@@ -46,8 +46,7 @@ namespace ProjectB.Dependency
 			// 분류 X
 			RegisterPortAdapter<IRechargeMoraleService, RechargeMoraleService>();
 			RegisterPortAdapter<IShopService, ShopService>();
-//			RegisterPortAdapter<ISummonAnimationManager, SummonAnimationManager>(); // 현재 사용하지 않음
-//			RegisterPortAdapter<ISummonService, SummonService>(); // 구현체가 없음
+			RegisterPortAdapter<ISummonService, SummonService>();
 			RegisterPortAdapter<ISweepService, SweepService>();
 		}
 	}

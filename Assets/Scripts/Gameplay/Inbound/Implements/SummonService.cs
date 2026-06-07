@@ -5,47 +5,49 @@ using ProjectB.Data.Runtime.Summon;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using ProjectB.Data.Types;
+using ProjectB.Gameplay.Events;
 using ProjectB.Gameplay.Inbound.Ports;
 using ProjectB.Gameplay.Internal.Ports.Factory;
+using ProjectB.Gameplay.Internal.Ports.Overlay;
 using ProjectB.Gameplay.Outbound.Ports.Player;
 using UnityEngine;
 
 namespace ProjectB.Gameplay.Inbound.Implements
 {
 
-	public class SummonManager : ISummonService, ISummonAnimationManager
+	public class SummonService : ISummonService
 	{
 		private readonly ISoldierDatabase _soldierDatabase;
-//		private readonly ILoadSummonAnimationScreenPort _loadSummonAnimationScreenPort;
-//		private readonly ILoadSummonResultScreenPort _loadSummonResultScreenPort;
 		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly ISummonCostSetting _summonCostSetting;
 		private readonly IPlayerSoldierFactoryPort _playerSoldierFactoryPort;
+		private readonly IOverlayManager _overlayManager;
+		private readonly ISummonResultOverlayController _summonResultOverlayController;
+		private readonly ISummonAnimationOverlayController _summonAnimationOverlayController;
+		private readonly SummonAnimationEvents _summonAnimationEvents;
+		private readonly SummonResultEvents _summonResultEvents;
 		
-		public event Action<SummonResult> StartAnimation;
-		public event Action AnimationPerfectlyUnloaded;
-		public event Action<SummonResult> ShowSummonResult;
-
-		// 외부에서는 ISummonAnimationManagerPort.AnimationFinished() 메서드를 통해서 애니메이션 종료를 알리고
-		// AnimationFinished() 메서드가 _AnimationFinishedInternal 이벤트를 호출하는 형태로 구현함.
-		// (코루틴 중에 애니메이션 종료를 알아야 하기 때문임)
-		private event Action _AnimationFinishedInternal;
-
 		private bool _isAnimationPlaying;
 		
-		public SummonManager(ISoldierDatabase soldierDatabase,
-//			ILoadSummonAnimationScreenPort loadSummonAnimationScreenPort,
-//			ILoadSummonResultScreenPort loadSummonResultScreenPort, 
+		public SummonService(ISoldierDatabase soldierDatabase,
 			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISummonCostSetting summonCostSetting,
-			IPlayerSoldierFactoryPort playerSoldierFactoryPort)
+			IPlayerSoldierFactoryPort playerSoldierFactoryPort,
+			IOverlayManager overlayManager,
+			ISummonResultOverlayController summonResultOverlayController,
+			ISummonAnimationOverlayController summonAnimationOverlayController,
+			SummonAnimationEvents summonAnimationEvents,
+			SummonResultEvents summonResultEvents)
 		{
 			_soldierDatabase = soldierDatabase;
-//			_loadSummonAnimationScreenPort = loadSummonAnimationScreenPort;
-//			_loadSummonResultScreenPort = loadSummonResultScreenPort;
 			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_summonCostSetting = summonCostSetting;
 			_playerSoldierFactoryPort = playerSoldierFactoryPort;
+			_overlayManager = overlayManager;
+			_summonResultOverlayController = summonResultOverlayController;
+			_summonAnimationOverlayController = summonAnimationOverlayController;
+			_summonAnimationEvents = summonAnimationEvents;
+			_summonResultEvents = summonResultEvents;
 		}
 
 		
@@ -74,7 +76,7 @@ namespace ProjectB.Gameplay.Inbound.Implements
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price1x))
 			{
 				// 보석 소모에 실패할 경우(부족할 경우) 모집을 방지
-				Debug.Log("보석이 부족하여 모집에 실패했습니다");
+				Debug.Log("SummonManager: 보석이 부족하여 모집에 실패했습니다");
 				return;
 			}
 			
@@ -102,7 +104,7 @@ namespace ProjectB.Gameplay.Inbound.Implements
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price10x))
 			{
 				// 보석 소모에 실패할 경우(부족할 경우) 모집을 방지
-				Debug.Log("보석이 부족하여 모집에 실패했습니다");
+				Debug.Log("SummonManager: 보석이 부족하여 모집에 실패했습니다");
 				return;
 			}
 			
@@ -124,6 +126,7 @@ namespace ProjectB.Gameplay.Inbound.Implements
 		
 		
 		
+		
 		void LoadSummonAnimation(SummonResult result)
 		{
 			CoroutineHandler.StartAndAdd(SummonAnimationCoroutine(result));
@@ -131,49 +134,49 @@ namespace ProjectB.Gameplay.Inbound.Implements
 
 		IEnumerator SummonAnimationCoroutine(SummonResult result)
 		{
-			throw new NotImplementedException();
-		}
-//		{
-//			if (_isAnimationPlaying)
-//			{
-//				// 애니메이션이 재생 중인 경우 애니메이션 로드 방지
-//				// 이미 위 메서드들에서 체크하고 있지만 확장 시 체크를 누락할 수 있으므로 한번 더 체크
-//				Debug.LogError("모집 연출이 이미 재생 중이지만 다시 재생하려고 시도했습니다.");
-//				yield break;
-//			}
-//
-//			if (_loadSummonResultScreenPort.IsLoaded)
-//			{
-//				// 결과 화면이 켜져있으면 닫음
-//				yield return _loadSummonResultScreenPort.Unload();
-//			}
-//			
-//			_isAnimationPlaying = true;
-//			
-//			// 애니메이션 로드 및 시작 (뽑기 결과 전달)
-//			yield return _loadSummonAnimationScreenPort.Load();
-//			StartAnimation?.Invoke(result);
-//
-//			// 애니메이션 주체가 애니메이션이 끝났음을 알릴 때까지 대기
-//			bool isFinished = false;
-//			_AnimationFinishedInternal += () => isFinished = true;
-//			yield return new WaitUntil(() => isFinished);
-//
-//			// 애니메이션 정리
-//			yield return _loadSummonAnimationScreenPort.Unload();
-//			AnimationPerfectlyUnloaded?.Invoke();
-//			
-//			_isAnimationPlaying = false;
-//			
-//			yield return _loadSummonResultScreenPort.Load();
-//			ShowSummonResult?.Invoke(result); // 결과 화면이 켜졌으면 화면에 결과 전달
-//		}
-		
+			if (_isAnimationPlaying)
+			{
+				// 애니메이션이 재생 중인 경우 애니메이션 로드 방지
+				// 이미 위 메서드들에서 체크하고 있지만 확장 시 체크를 누락할 수 있으므로 한번 더 체크
+				Debug.LogError("SummonManager: 모집 연출이 이미 재생 중이지만 다시 재생하려고 시도했습니다.");
+				yield break;
+			}
 
-		// 외부의 애니메이션 연출 주체가 애니메이션이 끝났음을 알리는 메서드
-		public void FinishAnimation()
-		{
-			_AnimationFinishedInternal?.Invoke();
+			_isAnimationPlaying = true;
+
+			if (_overlayManager.CurrentOverlay == _summonResultOverlayController)
+			{
+				// 결과 화면이 켜져있으면 닫음
+				yield return _overlayManager.Close();
+			}
+
+			// 애니메이션 시작
+			yield return _overlayManager.Open(_summonAnimationOverlayController);
+
+			// 애니메이션 주체가 애니메이션이 끝났음을 알릴 때까지 대기
+			bool isFinished = false;
+			_summonAnimationEvents.AnimationFinished += () => isFinished = true;
+
+			// Invoke 후 즉시 AnimationFinished 이벤트가 발생할 수 있으므로
+			// AnimationFinished 이벤트 구독 후에 이 이벤트를 Invoke해야 함.
+			_summonAnimationEvents.StartAnimation?.Invoke(result);
+
+			yield return new WaitUntil(() => isFinished);
+
+			// 애니메이션 정리
+			if (_overlayManager.CurrentOverlay == _summonAnimationOverlayController)
+			{
+				yield return _overlayManager.Close(); // 애니메이션 Overlay 닫기
+			}
+			else
+			{
+				Debug.LogWarning("SummonManager: 애니메이션이 끝난 시점에 애니메이션이 켜져있지 않습니다.");
+			}
+
+			_isAnimationPlaying = false;
+
+			yield return _overlayManager.Open(_summonResultOverlayController); // 결과 Overlay 열기
+			_summonResultEvents.ShowSummonResult?.Invoke(result);
 		}
 	}
 
