@@ -1,6 +1,6 @@
 using ProjectB.Gameplay.Inbound.Ports.Overlay;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.OpenOverlayButton
+namespace ProjectB.Infrastructure.UI.Buttons.OpenOverlayButton
 {
 
 	public class OpenSoldierListOverlayButtonPresenterScope : OpenOverlayButtonPresenterScope<ISoldierListOverlayService>

@@ -4,7 +4,7 @@ using ProjectB.Data.Static.Shop;
 using ProjectB.Data.Types;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Shop
+namespace ProjectB.Authoring.Shop
 {
 
 	[CreateAssetMenu(fileName = "Shop Item", menuName = "Project B/Shop/Shop Item")]

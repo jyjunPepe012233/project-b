@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	public class EquipmentMaterialItem : ItemDataSO, IEquipmentMaterialItem

@@ -4,7 +4,7 @@ using ProjectB.UI.Views.Label;
 using UnityEngine;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
+namespace ProjectB.Infrastructure.UI.Labels
 {
 
 	public class CoinBarPresenterScope : UIPresenterScope<CoinBarPresenter>

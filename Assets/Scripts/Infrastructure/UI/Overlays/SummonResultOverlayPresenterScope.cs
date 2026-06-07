@@ -8,7 +8,7 @@ using ProjectB.UI.Views.Lists;
 using UnityEngine;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.Overlays
+namespace ProjectB.Infrastructure.UI.Overlays
 {
 
 	public class SummonResultOverlayPresenterScope : BaseOverlayPresenterScope<SummonResultOverlayPresenter, SummonResultOverlayEvents>

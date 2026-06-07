@@ -6,7 +6,7 @@ using ProjectB.UI.Views.Common;
 using UnityEngine;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.Overlays
+namespace ProjectB.Infrastructure.UI.Overlays
 {
 
 	public abstract class BaseOverlayPresenterScope<TPresenter, TOverlayEvents> : UIPresenterScope<TPresenter>

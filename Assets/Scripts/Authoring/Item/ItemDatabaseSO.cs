@@ -4,7 +4,7 @@ using ProjectB.Core.Types;
 using ProjectB.Data.Static.Item;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	[CreateAssetMenu(menuName = "Project B/Item/Item Database")]

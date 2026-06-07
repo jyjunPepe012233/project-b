@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProjectB.Infrastructure.Dependency.Types;
+using ProjectB.Infrastructure.VContainer.Types;
 using UnityEditor;
 using UnityEngine;
 using VContainer.Unity;
 
-namespace ProjectB.Infrastructure.Dependency.Editor.PropertyDrawers
+namespace ProjectB.Infrastructure.VContainer.Editor.PropertyDrawers
 {
 	// 모든 어셈블리에 존재하는 LifetimeScope를 상속받은 타입들을
 	// 드롭다운 메뉴로 보여주고, LifetimeScopeReference.TypeName 필드에 선택된 타입의 FullName을 저장하는 커스텀 프로퍼티 드로워

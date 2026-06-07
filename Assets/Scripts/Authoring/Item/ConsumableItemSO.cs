@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	// 이 클래스를 상속하여 소비 아이템을 정의할 것 (예: 재화를 얻는 아이템, 아이템을 얻는 아이템, 뽑기 아이템 등)

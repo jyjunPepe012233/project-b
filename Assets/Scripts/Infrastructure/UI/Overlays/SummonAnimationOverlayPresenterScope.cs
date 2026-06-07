@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.Overlays
+namespace ProjectB.Infrastructure.UI.Overlays
 {
 
 	public class SummonAnimationOverlayPresenterScope : BaseOverlayPresenterScope<SummonAnimationOverlayPresenter, SummonAnimationOverlayEvents>

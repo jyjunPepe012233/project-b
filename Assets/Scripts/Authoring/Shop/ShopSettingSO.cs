@@ -3,7 +3,7 @@ using ProjectB.Core.Types;
 using ProjectB.Data.Static.Shop;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Shop
+namespace ProjectB.Authoring.Shop
 {
 
 	[CreateAssetMenu(menuName = "Project B/Shop/Shop Setting")]

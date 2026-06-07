@@ -4,7 +4,7 @@ using ProjectB.Core.Types;
 using ProjectB.Data.Static.Invasion;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Invasion
+namespace ProjectB.Authoring.Invasion
 {
 
 	[CreateAssetMenu(menuName = "Project B/Invasion/Invasion Setting")]

@@ -3,7 +3,7 @@ using ProjectB.UI.Presenters.Screens;
 using ProjectB.UI.Views.Buttons;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
+namespace ProjectB.Infrastructure.UI.Screens
 {
 
 	public class TitleScreenPresenterScope : UIPresenterScope<TitleScreenPresenter>

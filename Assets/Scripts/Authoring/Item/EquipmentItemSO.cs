@@ -6,7 +6,7 @@ using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	[CreateAssetMenu(fileName = "Equipment Item", menuName = "Project B/Item/Equipment Item")]

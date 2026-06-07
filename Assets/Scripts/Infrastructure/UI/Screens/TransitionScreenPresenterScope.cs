@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
+namespace ProjectB.Infrastructure.UI.Screens
 {
 
 	public class TransitionScreenPresenterScope : UIPresenterScope<TransitionScreenPresenter>

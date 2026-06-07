@@ -3,7 +3,7 @@ using ProjectB.Core.Types;
 using ProjectB.Data.Static.Avatar;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Avatar
+namespace ProjectB.Authoring.Avatar
 {
 
 	public class AvatarDatabaseSO : UnityEngine.ScriptableObject, IAvatarDatabase

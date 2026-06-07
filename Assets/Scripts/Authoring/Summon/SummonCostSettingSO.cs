@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Summon;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Summon
+namespace ProjectB.Authoring.Summon
 {
 
 	[CreateAssetMenu(menuName = "Project B/Summon/Summon Price Setting")]

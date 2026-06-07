@@ -2,7 +2,7 @@ using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	public abstract class ItemDataSO : UnityEngine.ScriptableObject, IItemData

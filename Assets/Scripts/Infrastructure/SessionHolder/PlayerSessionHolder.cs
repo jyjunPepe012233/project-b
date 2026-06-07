@@ -1,7 +1,7 @@
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.RuntimeImpl;
 
-namespace ProjectB.Infrastructure.Services
+namespace ProjectB.Infrastructure.SessionHolder
 {
 
 	public static class PlayerSessionHolder

@@ -16,7 +16,7 @@ using ProjectB.Gameplay.Outbound.Ports.Scene;
 using ProjectB.Infrastructure.Adapters.Error;
 using ProjectB.Infrastructure.Adapters.Player;
 using ProjectB.Infrastructure.Adapters.Scene;
-using ProjectB.Infrastructure.Services;
+using ProjectB.Infrastructure.MonoSystems;
 
 namespace ProjectB.Dependency
 {

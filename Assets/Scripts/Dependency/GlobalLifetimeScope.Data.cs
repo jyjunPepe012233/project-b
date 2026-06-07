@@ -1,15 +1,15 @@
+using ProjectB.Authoring.Invasion;
+using ProjectB.Authoring.Item;
+using ProjectB.Authoring.Morale;
+using ProjectB.Authoring.Player;
+using ProjectB.Authoring.Soldier;
+using ProjectB.Authoring.Summon;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Static.Morale;
 using ProjectB.Data.Static.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
-using ProjectB.Infrastructure.Authoring.Invasion;
-using ProjectB.Infrastructure.Authoring.Item;
-using ProjectB.Infrastructure.Authoring.Morale;
-using ProjectB.Infrastructure.Authoring.Player;
-using ProjectB.Infrastructure.Authoring.Soldier;
-using ProjectB.Infrastructure.Authoring.Summon;
 using UnityEngine;
 
 namespace ProjectB.Dependency

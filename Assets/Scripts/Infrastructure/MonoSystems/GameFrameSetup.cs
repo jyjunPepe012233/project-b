@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Services
+namespace ProjectB.Infrastructure.MonoSystems
 {
 
 	public class GameFrameSetup

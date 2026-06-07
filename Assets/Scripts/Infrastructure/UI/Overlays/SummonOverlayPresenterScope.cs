@@ -5,7 +5,7 @@ using ProjectB.UI.Views.Buttons;
 using UnityEngine;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.Overlays
+namespace ProjectB.Infrastructure.UI.Overlays
 {
 
 	public class SummonOverlayPresenterScope : BaseOverlayPresenterScope<SummonOverlayPresenter, SummonOverlayEvents>

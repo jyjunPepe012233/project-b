@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Avatar;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Avatar
+namespace ProjectB.Authoring.Avatar
 {
 
 	[CreateAssetMenu(menuName = "Project B/Avatar/Profile Avatar")]

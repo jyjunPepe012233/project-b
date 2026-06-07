@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using VContainer.Unity;
 
-namespace ProjectB.Infrastructure.Dependency.Types
+namespace ProjectB.Infrastructure.VContainer.Types
 {
 	// LifetimeScope 타입을 참조하기 위한 구조체임
 	// Property Drawer가 구현되어 있어, 이 구조체가 Inspector에 띄워지면 모든 LifetimeScope 타입을 선택 가능한 드롭다운 메뉴가 됨

@@ -4,7 +4,7 @@ using ProjectB.UI.Views.Buttons;
 using UnityEngine;
 using VContainer;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope.OpenOverlayButton
+namespace ProjectB.Infrastructure.UI.Buttons.OpenOverlayButton
 {
 
 	public abstract class OpenOverlayButtonPresenterScope<TOverlayService> : UIPresenterScope<OpenOverlayButtonPresenter<TOverlayService>> where TOverlayService : class, IOverlayService

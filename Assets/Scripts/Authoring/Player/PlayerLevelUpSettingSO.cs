@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Player;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Player
+namespace ProjectB.Authoring.Player
 {
 
 	[CreateAssetMenu(menuName = "Project B/Player/Level Up Setting")]

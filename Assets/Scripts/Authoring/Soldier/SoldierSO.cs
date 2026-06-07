@@ -5,7 +5,7 @@ using ProjectB.Data.Types;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace ProjectB.Infrastructure.Authoring.Soldier
+namespace ProjectB.Authoring.Soldier
 {
 
 	[CreateAssetMenu(menuName = "Project B/Soldier/Soldier")]

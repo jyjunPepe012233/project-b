@@ -7,7 +7,7 @@ using ProjectB.Data.Static.Item;
 using ProjectB.Data.Types;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Invasion
+namespace ProjectB.Authoring.Invasion
 {
 
 	[CreateAssetMenu(menuName = "Project B/Invasion/Stage")]

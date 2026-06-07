@@ -1,10 +1,9 @@
 using System;
-using ProjectB.Infrastructure.Dependency.Types;
 using UnityEngine;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
 
-namespace ProjectB.Infrastructure.Dependency
+namespace ProjectB.Infrastructure.VContainer.Types
 {
 	
 	// 이 클래스를 상속받아 사용하면

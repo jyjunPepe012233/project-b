@@ -1,9 +1,10 @@
 using AssetValidator;
 using InspectorGadgets.Attributes;
+using ProjectB.Infrastructure.VContainer.Types;
 using ProjectB.UI.Core;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Dependency.VContainer.PresenterScope
+namespace ProjectB.Infrastructure.UI
 {
 
 	public abstract class UIPresenterScope<TPresenter> : LifetimeScopeInjectionTarget, IValidatable

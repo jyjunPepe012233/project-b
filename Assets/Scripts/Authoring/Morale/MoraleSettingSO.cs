@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Morale;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Morale
+namespace ProjectB.Authoring.Morale
 {
 
 	[CreateAssetMenu(menuName = "Project B/Morale/Morale Setting")]

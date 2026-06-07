@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Spirit;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Spirit
+namespace ProjectB.Authoring.Spirit
 {
 
 	[CreateAssetMenu(menuName = "Project B/Spirit")]

@@ -1,7 +1,7 @@
 using ProjectB.Data.Static.Item;
 using UnityEngine;
 
-namespace ProjectB.Infrastructure.Authoring.Item
+namespace ProjectB.Authoring.Item
 {
 
 	[CreateAssetMenu(fileName = "Item Tier", menuName = "Project B/Item/Tier")]
