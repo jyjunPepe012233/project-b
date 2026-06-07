@@ -24,7 +24,11 @@ namespace ProjectB.Core.Supports
 
 		public static Coroutine StartAndAdd(IEnumerator iEnumerator)
 		{
-			Coroutine coroutine = _runner.StartCoroutine(iEnumerator);
+			// Flatten을 사용하여 중첩 Yield를 하나의 Yield 흐름으로 만듬.
+			// Flatten을 사용하지 않으면 Unity는 한 프레임에 하나의 yield return만 처리하기 때문에, 중첩된 IEnumerator가 있을 경우 중첩 IEnumerator가 있을 때마다 한 프레임씩 지연될 수 있음
+			// (Unity의 고질적인 문제를 해결하기 위한 조치임. 자세한 설명은 EnumeratorExtension.cs를 참조할 것)
+			Coroutine coroutine = _runner.StartCoroutine(iEnumerator.Flatten());
+			
 			Add(coroutine);
 			return coroutine;
 		}
