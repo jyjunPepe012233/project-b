@@ -9,8 +9,10 @@ namespace ProjectB.UI.Views.Common
 	{
 		private readonly List<UIView> _childViews = new();
 		
-		protected override void OnShowed()
+		public override void Show(bool includeDefaultDisable = false)
 		{
+			base.Show(includeDefaultDisable);
+			
 			// _childViews 리스트에 하위 UI 요소들을 모두 등록함
 			GetComponentsInChildren<UIView>(true, _childViews);
 			
@@ -22,8 +24,10 @@ namespace ProjectB.UI.Views.Common
 			}
 		}
 
-		protected override void OnHided()
+		public override void Hide()
 		{
+			base.Hide();
+			
 			GetComponentsInChildren<UIView>(true, _childViews);
 			
 			foreach (var childView in _childViews)

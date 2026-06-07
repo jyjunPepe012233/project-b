@@ -53,14 +53,13 @@ namespace ProjectB.UI.Core
 				_isShowing = true;
 				_canvasGroup.SetVisible(true);
 				
-				OnShowed();
 				OnSetupUICallbacks();
 			}
 		}
 		
 		
 		/// <param name="includeDefaultDisable">true라면 defaultDisable로 설정된 UI를 포함하고 Show함</param>
-		public void Show(bool includeDefaultDisable = false)
+		public virtual void Show(bool includeDefaultDisable = false)
 		{
 			if (defaultDisable && !includeDefaultDisable)
 			{
@@ -77,13 +76,12 @@ namespace ProjectB.UI.Core
 			else
 			{
 				_canvasGroup.SetVisible(true);
-				}
+			}
 			
-			OnShowed();
 			OnSetupUICallbacks(); // Show 시 UI 콜백 등록
 		}
 		
-		public void Hide()
+		public virtual void Hide()
 		{
 			_isShowing = false;
 			
@@ -97,22 +95,7 @@ namespace ProjectB.UI.Core
 				_canvasGroup.SetVisible(false);
 			}
 			
-			OnHided();
 			OnDisposeUICallbacks(); // Hide 시 UI 콜백 해제
-		}
-
-		// UIView를 상속받은 클래스에서 Show 시 처리해야하는 추가 작업이 있다면 여기서 구현하면 됨
-		// 예를 들어, Show 시 SubView도 Show하는 작업은 여기서 구현하면 됨	
-		protected virtual void OnShowed()
-		{
-			
-		}
-
-		// UIView를 상속받은 클래스에서 Hide 시 처리해야하는 추가 작업이 있다면 여기서 구현하면 됨
-		// 예를 들어, Hide 시 SubView도 Hide하는 작업은 여기서 구현하면 됨
-		protected virtual void OnHided()
-		{
-			
 		}
 		
 		protected virtual void OnSetupUICallbacks()

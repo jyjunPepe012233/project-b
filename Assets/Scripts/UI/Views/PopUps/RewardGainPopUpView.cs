@@ -23,18 +23,19 @@ namespace ProjectB.UI.Views.PopUps
 			_itemSlotListView.Initialize(itemSlotPrefab, initialCardCapacity);
 		}
 
-		protected override void OnShowed()
+		public override void Show(bool includeDefaultDisable = false)
 		{
-			base.OnShowed();
+			base.Show(includeDefaultDisable);
+			
 			_openAnimDirector.Stop();
 			_openAnimDirector.Play();
 			
 			_topElementView.Show();
 		}
 
-		protected override void OnHided()
+		public override void Hide()
 		{
-			base.OnHided();
+			base.Hide();
 			_topElementView.Hide();
 		}
 
