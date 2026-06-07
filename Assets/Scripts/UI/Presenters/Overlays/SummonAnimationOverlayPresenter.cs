@@ -1,3 +1,4 @@
+using System.Collections;
 using ProjectB.Core.Supports;
 using ProjectB.Data.Runtime.Summon;
 using ProjectB.Gameplay.Events;
@@ -48,7 +49,13 @@ namespace ProjectB.UI.Presenters.Overlays
 			// 이후 확장을 위해 summonResultEvents를 인자로 받기는 하나,
 			// 현재는 뽑기 결과에 상관 없이 모두 같은 애니메이션이 재생되므로 사용하지는 않음
 			
-			CoroutineHandler.StartAndAdd(_summonAnimationView.PlayAnimation(_summonAnimationAsset));
+			CoroutineHandler.StartAndAdd(PlayAnimationRoutine());
+		}
+
+		IEnumerator PlayAnimationRoutine()
+		{
+			yield return _summonAnimationView.PlayAnimation(_summonAnimationAsset);
+			_summonAnimationEvents.AnimationFinished?.Invoke();
 		}
 	}
 
