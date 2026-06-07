@@ -16,6 +16,17 @@ namespace ProjectB.UI.Views.Items
 		private GameObject _soldierDisplayInstance;
 		private GameObject _roleIconInstance;
 		private GameObject _spiritIconInstance;
+
+		public void Initialize(string name,
+			GameObject soldierDisplayPrefab,
+			GameObject roleIconPrefab,
+			GameObject spiritIconPrefab)
+		{
+			SetSoldierName(name);
+			SetSoldierDisplay(soldierDisplayPrefab);
+			SetRoleIcon(roleIconPrefab);
+			SetSpiritIcon(spiritIconPrefab);
+		}
 		
 		public void SetSoldierName(string name)
 		{
