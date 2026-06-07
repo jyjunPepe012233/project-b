@@ -18,25 +18,25 @@ namespace ProjectB.Gameplay.Internal.Implements.Overlay
 		public virtual IEnumerator Open()
 		{
 			_events.Open?.Invoke();
-			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+			yield break;
 		}
 		
 		public virtual IEnumerator Close()
 		{
 			_events.Close?.Invoke();
-			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+			yield break;
 		}
 
 		public IEnumerator Show()
 		{
 			_events.Show?.Invoke();
-			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+			yield break;
 		}
 
 		public IEnumerator Hide()
 		{
 			_events.Hide?.Invoke();
-			yield return null; // UI 조작 후 안정성을 위해 한 프레임 대기
+			yield break;
 		}
 	}
 
