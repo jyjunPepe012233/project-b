@@ -2,8 +2,7 @@ using System.Collections;
 using ProjectB.Core.Supports;
 using ProjectB.Gameplay.Events;
 using ProjectB.UI.Core;
-using ProjectB.UI.Views.Screens;
-using UnityEngine;
+using ProjectB.UI.Views.Media;
 using UnityEngine.Playables;
 
 namespace ProjectB.UI.Presenters.Screens
@@ -13,15 +12,15 @@ namespace ProjectB.UI.Presenters.Screens
 	{
 		private readonly PlayableAsset _fadeInAsset;
 		private readonly PlayableAsset _fadeOutAsset;
-		private readonly TransitionScreenView _transitionScreenView;
+		private readonly PlayableView _playableView;
 			
 		private readonly ChangeScreenTransitionEvents _changeScreenTransitionEvents;
 
-		public TransitionScreenPresenter(PlayableAsset fadeInAsset, PlayableAsset fadeOutAsset, TransitionScreenView transitionScreenView, ChangeScreenTransitionEvents changeScreenTransitionEvents)
+		public TransitionScreenPresenter(PlayableAsset fadeInAsset, PlayableAsset fadeOutAsset, PlayableView playableView, ChangeScreenTransitionEvents changeScreenTransitionEvents)
 		{
 			_fadeInAsset = fadeInAsset;
 			_fadeOutAsset = fadeOutAsset;
-			_transitionScreenView = transitionScreenView;
+			_playableView = playableView;
 			_changeScreenTransitionEvents = changeScreenTransitionEvents;
 		}
 
@@ -46,7 +45,7 @@ namespace ProjectB.UI.Presenters.Screens
 
 		IEnumerator FadeInRoutine()
 		{
-			yield return _transitionScreenView.PlayFadeIn(_fadeInAsset);
+			yield return _playableView.Play(_fadeInAsset);
 			_changeScreenTransitionEvents.FadeInComplete?.Invoke();
 		}
 		
@@ -57,7 +56,7 @@ namespace ProjectB.UI.Presenters.Screens
 
 		IEnumerator FadeOutRoutine()
 		{
-			yield return _transitionScreenView.PlayFadeOut(_fadeOutAsset);
+			yield return _playableView.Play(_fadeOutAsset);
 			_changeScreenTransitionEvents.FadeOutComplete?.Invoke();
 		}
 	}

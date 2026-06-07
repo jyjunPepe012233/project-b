@@ -122,15 +122,15 @@ MonoBehaviour:
   _isInitialized: 0
   _fadeInAsset: {fileID: 11400000, guid: 065d30ad83ec0476ca5d3e1085dd0c7a, type: 2}
   _fadeOutAsset: {fileID: 11400000, guid: 8edc940f74c5946d0a879c5e8934bb58, type: 2}
-  _transitionScreenView: {fileID: 3050267643326888647}
---- !u!114 &3050267643326888647 stripped
+  _playableView: {fileID: 2783454835950983103}
+--- !u!114 &2783454835950983103 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9164638089725019933, guid: 11cc708bdef734649adc7265afaee31f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8348335495960160869, guid: 11cc708bdef734649adc7265afaee31f, type: 3}
   m_PrefabInstance: {fileID: 6159780299922144730}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086768418658371855}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41adf71826d7492ca7c5ba7a89e6cb43, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e0fb03c69604b1999673dd6b6afcd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

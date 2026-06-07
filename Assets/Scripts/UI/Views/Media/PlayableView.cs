@@ -1,38 +1,37 @@
 using System.Collections;
 using AssetValidator;
 using InspectorGadgets.Attributes;
+using ProjectB.Core.Supports;
 using ProjectB.UI.Core;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace ProjectB.UI.Views.Screens
+namespace ProjectB.UI.Views.Media
 {
 
-	public class TransitionScreenView : UIView
+	public class PlayableView : UIView
 	{
 		[Required, SerializeField] private PlayableDirector _playableDirector;
 		
-		private bool isAnimating;
+		private bool _isAnimating;
 		
 		IEnumerator WaitUntilTimelineFinish(PlayableAsset asset)
 		{
-			if (isAnimating)
-				yield return new WaitUntil(() => !isAnimating);
+			if (_isAnimating)
+			{
+				Debug.Log("PlayableView: 진행 중이던 애니메이션을 중지하고 새로운 애니메이션을 재생함. " + TransformDebug.GetHierarchyPath(transform));
+				_playableDirector.Stop();
+			}
 		
-			isAnimating = true;
+			_isAnimating = true;
 		
 			_playableDirector.Play(asset);
 			yield return new WaitForSeconds((float)asset.duration);
 
-			isAnimating = false;
+			_isAnimating = false;
 		}
 		
-		public IEnumerator PlayFadeIn(PlayableAsset asset)
-		{
-			yield return WaitUntilTimelineFinish(asset);
-		}
-		
-		public IEnumerator PlayFadeOut(PlayableAsset asset)
+		public IEnumerator Play(PlayableAsset asset)
 		{
 			yield return WaitUntilTimelineFinish(asset);
 		}
