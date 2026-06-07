@@ -53,6 +53,13 @@ namespace ProjectB.Gameplay.Inbound.Implements
 		
 		public void Summon(SummonType type)
 		{
+			if (_isAnimationPlaying)
+			{
+				// 이미 애니메이션이 재생 중인 경우, 모집을 방지
+				Debug.LogWarning("SummonManager: 모집 연출이 재생 중이므로 모집이 거부됨");
+				return;
+			}
+			
 			if (type == SummonType.Summon1x)
 			{
 				Summon1x();
@@ -65,12 +72,6 @@ namespace ProjectB.Gameplay.Inbound.Implements
 		
 		void Summon1x()
 		{
-			if (_isAnimationPlaying)
-			{
-				// 이미 애니메이션이 재생 중인 경우, 모집을 방지
-				return;
-			}
-			
 			// 보석 소모
 			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price1x))
@@ -97,8 +98,6 @@ namespace ProjectB.Gameplay.Inbound.Implements
 
 		void Summon10x()
 		{
-			if (_isAnimationPlaying) return;
-			
 			// 보석 소모
 			var playerData = _holdPlayerSessionPort.GetPlayerSession().PlayerData;
 			if (!playerData.TryConsumeGems(_summonCostSetting.Price10x))
