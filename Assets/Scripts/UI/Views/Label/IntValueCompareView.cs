@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ProjectB.UI.Views.Label
 {
 
-	public class StatusCompareView : UIView
+	public class IntValueCompareView : UIView
 	{
 		[Required, SerializeField] private TextMeshProUGUI _currentValueText;
 		[Required, SerializeField] private TextMeshProUGUI _upgradedValueText;
