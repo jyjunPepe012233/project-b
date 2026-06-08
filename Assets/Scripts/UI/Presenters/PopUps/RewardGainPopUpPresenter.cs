@@ -78,7 +78,6 @@ namespace ProjectB.UI.Presenters.PopUps
 		
 		void OnBackgroundClickAreaClicked()
 		{
-			Debug.Log(81);
 			_topElementView.Hide();
 			if (_createItemCardLoopCoroutine != null)
 			{
