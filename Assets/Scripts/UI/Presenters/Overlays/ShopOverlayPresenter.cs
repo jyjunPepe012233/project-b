@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ProjectB.Data.Static.Shop;
 using ProjectB.Gameplay.Events.Overlay;
+using ProjectB.Gameplay.Inbound.Ports;
 using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
@@ -20,6 +21,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		private readonly IconTextButtonView _shopPageButtonPrefab;
 
 		private readonly IShopSetting _shopSetting;
+		private readonly IShopService _shopService;
 		
 		public ShopOverlayPresenter(TopElementView topElementView,
 			ButtonView closeButtonView,
@@ -30,7 +32,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			TextLabelView shopPageNameLabelView,
 			IconTextButtonListView shopPageButtonListView,
 			IconTextButtonView shopPageButtonPrefab,
-			IShopSetting shopSetting) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
+			IShopSetting shopSetting,
+			IShopService shopService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_shopItemCardListView = shopItemCardListView;
 			_shopItemCardPrefab = shopItemCardPrefab;
@@ -38,6 +41,7 @@ namespace ProjectB.UI.Presenters.Overlays
 			_shopPageButtonListView = shopPageButtonListView;
 			_shopPageButtonPrefab = shopPageButtonPrefab;
 			_shopSetting = shopSetting;
+			_shopService = shopService;
 		}
 
 		public override void Initialize()
@@ -95,7 +99,14 @@ namespace ProjectB.UI.Presenters.Overlays
 					shopItem.Price,
 					shopItem.ItemData.Icon128,
 					shopItem.ItemData.ItemTier.BackgroundPrefab128);
+				
+				shopItemCard.ButtonClicked += () => OnShopItemCardClicked(shopItem);
 			}
+		}
+		
+		void OnShopItemCardClicked(IShopItem shopItem)
+		{
+			_shopService.BuyItem(shopItem);
 		}
 	}
 

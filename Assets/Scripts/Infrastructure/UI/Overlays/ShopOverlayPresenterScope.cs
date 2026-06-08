@@ -1,5 +1,6 @@
 using ProjectB.Data.Static.Shop;
 using ProjectB.Gameplay.Events.Overlay;
+using ProjectB.Gameplay.Inbound.Ports;
 using ProjectB.UI.Presenters.Overlays;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Items;
@@ -20,6 +21,7 @@ namespace ProjectB.Infrastructure.UI.Overlays
 		[SerializeField] private IconTextButtonView _shopPageButtonPrefab;
 		
 		[Inject] private IShopSetting _shopSetting; 
+		[Inject] private IShopService _shopService;
 		
 		protected override ShopOverlayPresenter Compose()
 		{
@@ -32,7 +34,8 @@ namespace ProjectB.Infrastructure.UI.Overlays
 				_shopPageNameLabelView,
 				_shopPageButtonListView,
 				_shopPageButtonPrefab,
-				_shopSetting); 
+				_shopSetting,
+				_shopService); 
 		}
 	}
 
