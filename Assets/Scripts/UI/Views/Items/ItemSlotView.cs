@@ -14,7 +14,7 @@ namespace ProjectB.UI.Views.Items
 		[Header("Optional")]
 		[SerializeField] private TextMeshProUGUI _itemNameText;
 		[SerializeField] private TextMeshProUGUI _itemQuantityText;
-		[SerializeField] private Image _iconImage128;
+		[SerializeField] private Image _iconImage;
 		[SerializeField] private Transform _tierBackgroundParent;
 
 		private GameObject _tierBackgroundInstance;
@@ -28,7 +28,7 @@ namespace ProjectB.UI.Views.Items
 		{
 			SetItemName(itemName);
 			SetItemQuantity(quantity);
-			SetIcon128(iconSprite);
+			SetIcon(iconSprite);
 			SetTierBackground(tierBackgroundPrefab);
 		}
 		
@@ -48,11 +48,11 @@ namespace ProjectB.UI.Views.Items
 			}
 		}
 		
-		public void SetIcon128(Sprite iconSprite)
+		public void SetIcon(Sprite iconSprite)
 		{
-			if (_iconImage128 != null)
+			if (_iconImage != null)
 			{
-				_iconImage128.sprite = iconSprite;
+				_iconImage.sprite = iconSprite;
 			}
 		}
 
