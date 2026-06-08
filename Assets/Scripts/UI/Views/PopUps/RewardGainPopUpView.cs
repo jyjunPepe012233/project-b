@@ -58,12 +58,12 @@ namespace ProjectB.UI.Views.PopUps
 
 		public ItemSlotView CreateItemCard()
 		{
-			return _itemSlotListView.CreateSlot();
+			return _itemSlotListView.CreateItem();
 		}
 		
 		public void ClearItemCards()
 		{
-			_itemSlotListView.ClearSlots();
+			_itemSlotListView.ClearItems();
 		}
 
 		public override ValidationMethod GetValidationMethod()

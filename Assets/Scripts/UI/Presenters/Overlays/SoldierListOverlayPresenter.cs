@@ -33,11 +33,11 @@ namespace ProjectB.UI.Presenters.Overlays
 		// Soldier List 초기화 과정을 override하는 클래스가 생길 것을 고려하여 virtual로 선언함
 		protected virtual void InitializeSoldierList()
 		{
-			_soldierListView.ClearCards();
+			_soldierListView.ClearItems();
 			
 			foreach (var playerSoldier in _playerDataService.GetPlayerData().Soldiers)
 			{
-				var soldierCard = _soldierListView.CreateCard();
+				var soldierCard = _soldierListView.CreateItem();
 
 				var soldierData = playerSoldier.SoldierData; 
 				soldierCard.SetSoldierName(soldierData.SoldierName);

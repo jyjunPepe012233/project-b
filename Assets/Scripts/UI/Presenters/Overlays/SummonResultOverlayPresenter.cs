@@ -79,10 +79,10 @@ namespace ProjectB.UI.Presenters.Overlays
 		{
 			_latestSummonResult = summonResult;
 			
-			_soldierListView.ClearCards();
+			_soldierListView.ClearItems();
 			foreach (var soldier in summonResult.summonedSoldiers)
 			{
-				var card = _soldierListView.CreateCard();
+				var card = _soldierListView.CreateItem();
 				card.Initialize(soldier.SoldierName,
 					soldier.CardDisplaySetting.DisplayedSoldierPrefab,
 					soldier.Role.IconPrefab64,
