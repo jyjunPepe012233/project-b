@@ -1,3 +1,4 @@
+using ProjectB.Data.Types;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Label;
 using UnityEngine;
@@ -23,6 +24,16 @@ namespace ProjectB.UI.Views.Misc
 			SetMagicalAttack(magicalAttack);
 			SetPhysicalDefense(physicalDefense);
 			SetMagicalDefense(magicalDefense);
+		}
+
+		public void Initialize(SoldierStatus soldierStatus)
+		{
+			SetHp(soldierStatus.hp);
+			SetSp(soldierStatus.sp);
+			SetPhysicalAttack(soldierStatus.physicalAttack);
+			SetMagicalAttack(soldierStatus.magicalAttack);
+			SetPhysicalDefense(soldierStatus.physicalDefense);
+			SetMagicalDefense(soldierStatus.magicalDefense);
 		}
 		
 		public void SetHp(int hp)
