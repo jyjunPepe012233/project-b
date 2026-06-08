@@ -2,12 +2,14 @@ using ProjectB.Authoring.Invasion;
 using ProjectB.Authoring.Item;
 using ProjectB.Authoring.Morale;
 using ProjectB.Authoring.Player;
+using ProjectB.Authoring.Shop;
 using ProjectB.Authoring.Soldier;
 using ProjectB.Authoring.Summon;
 using ProjectB.Data.Static.Invasion;
 using ProjectB.Data.Static.Item;
 using ProjectB.Data.Static.Morale;
 using ProjectB.Data.Static.Player;
+using ProjectB.Data.Static.Shop;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Static.Summon;
 using UnityEngine;
@@ -18,6 +20,7 @@ namespace ProjectB.Dependency
 	public partial class GlobalLifetimeScope
 	{
 		[Header("Authoring Data")]
+		[SerializeField] private ShopSettingSO _shopSettingSO;
 		[SerializeField] private SoldierDatabaseSO _soldierDatabaseSO;
 		[SerializeField] private ItemDatabaseSO _itemDatabaseSO;
 		[SerializeField] private InvasionSettingSO _invasionSettingSO;
@@ -35,6 +38,7 @@ namespace ProjectB.Dependency
 			RegisterPortInstance<ISummonCostSetting, SummonCostSettingSO>(_summonCostSettingSo);
 			RegisterPortInstance<IMoraleSetting, MoraleSettingSO>(_moraleSettingSO);
 			RegisterPortInstance<ISweepSetting, SweepSettingSO>(_sweepSettingSO);
+			RegisterPortInstance<IShopSetting, ShopSettingSO>(_shopSettingSO);
 			RegisterPortInstance<IPlayerLevelUpSetting, PlayerLevelUpSettingSO>(_playerLevelUpSettingSO);
 			RegisterPortInstance<IGlobalSoldierLevelUpSetting, GlobalSoldierLevelUpSettingSO>(_globalSoldierLevelUpSettingSO);
 		}

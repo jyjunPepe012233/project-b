@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ProjectB.Data.Static.Shop;
 using ProjectB.Gameplay.Events.Overlay;
@@ -15,9 +14,10 @@ namespace ProjectB.UI.Presenters.Overlays
 	public class ShopOverlayPresenter : BaseOverlayPresenter<ShopOverlayEvents>
 	{
 		private readonly ShopItemCardListView _shopItemCardListView;
+		private readonly ShopItemCardView _shopItemCardPrefab;
 		private readonly TextLabelView _shopPageNameLabelView;
 		private readonly IconTextButtonListView _shopPageButtonListView;
-		private readonly ShopItemCardView _shopItemCardPrefab;
+		private readonly IconTextButtonView _shopPageButtonPrefab;
 
 		private readonly IShopSetting _shopSetting;
 		
@@ -26,15 +26,17 @@ namespace ProjectB.UI.Presenters.Overlays
 			ShopOverlayEvents overlayEvents,
 			IOverlayStackService overlayStackService,
 			ShopItemCardListView shopItemCardListView,
+			ShopItemCardView shopItemCardPrefab,
 			TextLabelView shopPageNameLabelView,
 			IconTextButtonListView shopPageButtonListView,
-			ShopItemCardView shopItemCardPrefab,
+			IconTextButtonView shopPageButtonPrefab,
 			IShopSetting shopSetting) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_shopItemCardListView = shopItemCardListView;
+			_shopItemCardPrefab = shopItemCardPrefab;
 			_shopPageNameLabelView = shopPageNameLabelView;
 			_shopPageButtonListView = shopPageButtonListView;
-			_shopItemCardPrefab = shopItemCardPrefab;
+			_shopPageButtonPrefab = shopPageButtonPrefab;
 			_shopSetting = shopSetting;
 		}
 
@@ -42,6 +44,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		{
 			base.Initialize();
 			_shopItemCardListView.Initialize(_shopItemCardPrefab);
+			_shopPageButtonListView.Initialize(_shopPageButtonPrefab);
 		}
 
 		protected override void OnOpenScreen()
