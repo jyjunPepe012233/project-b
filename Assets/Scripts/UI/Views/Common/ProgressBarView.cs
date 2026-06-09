@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectB.UI.Views.Misc
+namespace ProjectB.UI.Views.Common
 {
 
 	public class ProgressBarView : UIView
