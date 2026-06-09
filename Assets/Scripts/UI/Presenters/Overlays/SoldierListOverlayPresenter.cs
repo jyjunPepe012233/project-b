@@ -1,6 +1,8 @@
+using ProjectB.Data.Runtime.Player;
 using ProjectB.Gameplay.Events.Overlay;
 using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.Gameplay.Inbound.Ports.Player;
+using ProjectB.Gameplay.Inbound.Ports.Soldier;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 using ProjectB.UI.Views.Items;
@@ -15,6 +17,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		private readonly PlayerSoldierCardView _soldierCardView;
 		
 		private readonly IPlayerDataService _playerDataService;
+		private readonly ISoldierDetailService _soldierDetailService;
 
 		public SoldierListOverlayPresenter(TopElementView topElementView,
 			ButtonView closeButtonView,
@@ -22,11 +25,13 @@ namespace ProjectB.UI.Presenters.Overlays
 			IOverlayStackService overlayStackService,
 			PlayerSoldierCardListView soldierCardListView,
 			PlayerSoldierCardView soldierCardView,
-			IPlayerDataService playerDataService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
+			IPlayerDataService playerDataService,
+			ISoldierDetailService soldierDetailService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_soldierCardListView = soldierCardListView;
 			_soldierCardView = soldierCardView;
 			_playerDataService = playerDataService;
+			_soldierDetailService = soldierDetailService;
 		}
 
 		public override void Initialize()
@@ -55,7 +60,14 @@ namespace ProjectB.UI.Presenters.Overlays
 				soldierCard.SetSoldierDisplay(soldierData.CardDisplaySetting.DisplayedSoldierPrefab);
 				soldierCard.SetRoleIcon(soldierData.Role.IconPrefab64);
 				soldierCard.SetSpiritIcon(soldierData.Spirit.IconPrefab64);
+
+				soldierCard.ButtonClicked += () => OnSoldierCardButtonClicked(playerSoldier);
 			}
+		}
+
+		void OnSoldierCardButtonClicked(IReadOnlyPlayerSoldier playerSoldier)
+		{
+			_soldierDetailService.ShowSoldierDetail(playerSoldier.SoldierData);
 		}
 	}
 
