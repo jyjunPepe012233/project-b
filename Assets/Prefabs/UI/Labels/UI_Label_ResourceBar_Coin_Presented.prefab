@@ -120,7 +120,7 @@ MonoBehaviour:
   _reference:
     _typeName: ProjectB.Dependency.GlobalLifetimeScope
   _isInitialized: 0
-  _intValueLabelView: {fileID: 6885094091614862186}
+  intValueView: {fileID: 6885094091614862186}
 --- !u!114 &6885094091614862186 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5584577381913627057, guid: 3bc042e36b9884bc3b8a4b6fb7ed8303, type: 3}
