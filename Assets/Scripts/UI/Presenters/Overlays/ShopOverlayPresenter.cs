@@ -72,6 +72,7 @@ namespace ProjectB.UI.Presenters.Overlays
 			{
 				var shopPageButton = _shopPageButtonListView.CreateItem();
 				shopPageButton.SetText(shopPage.ShopPageName);
+				shopPageButton.SetIcon(shopPage.Icon128);
 				shopPageButton.ButtonClicked += () => OnShopPageButtonClicked(shopPage);
 			}
 		}

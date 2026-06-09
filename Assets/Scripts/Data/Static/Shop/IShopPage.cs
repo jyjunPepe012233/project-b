@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace ProjectB.Data.Static.Shop
 {
@@ -8,6 +9,8 @@ namespace ProjectB.Data.Static.Shop
 		string ShopPageId { get; }
 		
 		string ShopPageName { get; }
+		
+		Sprite Icon128 { get; }
 		
 		IEnumerable<IShopItem> ShopItems { get; }
 	}

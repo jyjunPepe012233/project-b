@@ -14,6 +14,9 @@ namespace ProjectB.Authoring.Shop
 		
 		[SerializeField] private string _shopPageName;
 		public string ShopPageName => _shopPageName;
+		
+		[SerializeField] private Sprite _icon128;
+		public Sprite Icon128 => _icon128;
 
 		[SerializeField] private InterfaceRefs<IShopItem> _shopItems;
 		public IEnumerable<IShopItem> ShopItems => _shopItems.Value;
