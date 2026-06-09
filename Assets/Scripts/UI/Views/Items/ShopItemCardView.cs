@@ -2,7 +2,6 @@ using AssetValidator;
 using ProjectB.Core.Supports;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Buttons;
-using ProjectB.UI.Views.Label;
 using TMPro;
 using UnityEngine;
 

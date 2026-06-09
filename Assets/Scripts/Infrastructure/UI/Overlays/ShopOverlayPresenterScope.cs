@@ -3,10 +3,11 @@ using ProjectB.Gameplay.Events.Overlay;
 using ProjectB.Gameplay.Inbound.Ports;
 using ProjectB.UI.Presenters.Overlays;
 using ProjectB.UI.Views.Buttons;
+using ProjectB.UI.Views.Common;
 using ProjectB.UI.Views.Items;
-using ProjectB.UI.Views.Label;
 using ProjectB.UI.Views.Lists;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 
 namespace ProjectB.Infrastructure.UI.Overlays
@@ -16,7 +17,7 @@ namespace ProjectB.Infrastructure.UI.Overlays
 	{
 		[SerializeField] private ShopItemCardListView _shopItemCardListView;
 		[SerializeField] private ShopItemCardView _shopItemCardPrefab;
-		[SerializeField] private TextLabelView _shopPageNameLabelView;
+		[SerializeField] private TextView shopPageNameView;
 		[SerializeField] private IconTextButtonListView _shopPageButtonListView;
 		[SerializeField] private IconTextButtonView _shopPageButtonPrefab;
 		
@@ -31,7 +32,7 @@ namespace ProjectB.Infrastructure.UI.Overlays
 				_overlayStackService,
 				_shopItemCardListView,
 				_shopItemCardPrefab,
-				_shopPageNameLabelView,
+				shopPageNameView,
 				_shopPageButtonListView,
 				_shopPageButtonPrefab,
 				_shopSetting,

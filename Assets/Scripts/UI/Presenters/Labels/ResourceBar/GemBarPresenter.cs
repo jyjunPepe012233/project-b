@@ -1,23 +1,23 @@
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Gameplay.Inbound.Ports.Player;
 using ProjectB.UI.Core;
-using ProjectB.UI.Views.Label;
+using ProjectB.UI.Views.Common;
 
 namespace ProjectB.UI.Presenters.Labels.ResourceBar
 {
 
 	public class GemBarPresenter : UIPresenter
 	{
-		private readonly IntValueLabelView _intValueLabelView;
+		private readonly IntValueView _intValueView;
 		
 		private readonly IPlayerDataService _playerDataService; // 생성자 밖에서 사용하지는 않지만 의존성 명시를 위해 참조를 유지하고 있겠음
 		
 		// 생성자에서 할당
 		private readonly IReadOnlyPlayerData _playerData;
 		
-		public GemBarPresenter(IntValueLabelView intValueLabelView, IPlayerDataService playerDataService)
+		public GemBarPresenter(IntValueView intValueView, IPlayerDataService playerDataService)
 		{
-			_intValueLabelView = intValueLabelView;
+			_intValueView = intValueView;
 			_playerDataService = playerDataService;
 			
 			_playerData = _playerDataService.GetPlayerData();
@@ -26,7 +26,7 @@ namespace ProjectB.UI.Presenters.Labels.ResourceBar
 		public override void Initialize()
 		{
 			base.Initialize();
-			_intValueLabelView.SetValue(_playerData.Gems);
+			_intValueView.SetValue(_playerData.Gems);
 		}
 
 		protected override void SetupModelSubscription()
@@ -43,7 +43,7 @@ namespace ProjectB.UI.Presenters.Labels.ResourceBar
 		
 		void OnGemsChanged()
 		{
-			_intValueLabelView.SetValue(_playerData.Gems);
+			_intValueView.SetValue(_playerData.Gems);
 		}
 	}
 

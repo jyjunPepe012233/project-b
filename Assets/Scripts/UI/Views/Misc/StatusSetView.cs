@@ -1,7 +1,8 @@
 using ProjectB.Data.Types;
 using ProjectB.UI.Core;
-using ProjectB.UI.Views.Label;
+using ProjectB.UI.Views.Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ProjectB.UI.Views.Misc
 {
@@ -9,12 +10,12 @@ namespace ProjectB.UI.Views.Misc
 	
 	public class StatusSetView : UIView
 	{
-		[SerializeField] private IntValueLabelView _hpLabel;
-		[SerializeField] private IntValueLabelView _spLabel;
-		[SerializeField] private IntValueLabelView _physicalAttackLabel;
-		[SerializeField] private IntValueLabelView _magicalAttackLabel;
-		[SerializeField] private IntValueLabelView _physicalDefenseLabel;
-		[SerializeField] private IntValueLabelView _magicalDefenseLabel;
+		[FormerlySerializedAs("_hpLabel")] [SerializeField] private IntValueView _hpView;
+		[FormerlySerializedAs("_spLabel")] [SerializeField] private IntValueView _spView;
+		[FormerlySerializedAs("_physicalAttackLabel")] [SerializeField] private IntValueView _physicalAttackView;
+		[FormerlySerializedAs("_magicalAttackLabel")] [SerializeField] private IntValueView _magicalAttackView;
+		[FormerlySerializedAs("_physicalDefenseLabel")] [SerializeField] private IntValueView _physicalDefenseView;
+		[FormerlySerializedAs("_magicalDefenseLabel")] [SerializeField] private IntValueView _magicalDefenseView;
 		
 		public void Initialize(int hp, int sp, int physicalAttack, int magicalAttack, int physicalDefense, int magicalDefense)
 		{
@@ -38,51 +39,55 @@ namespace ProjectB.UI.Views.Misc
 		
 		public void SetHp(int hp)
 		{
-			if (_hpLabel != null)
+			if (_hpView != null)
 			{
-				_hpLabel.SetValue(hp);
+				_hpView.SetValue(hp);
 			}
 		}
 		
 		public void SetSp(int sp)
 		{
-			if (_spLabel != null)
+			if (_spView != null)
 			{
-				_spLabel.SetValue(sp);
+				_spView.SetValue(sp);
 			}
 		}
 		
 		public void SetPhysicalAttack(int physicalAttack)
 		{
-			if (_physicalAttackLabel != null)
+			if (_physicalAttackView != null)
 			{
-				_physicalAttackLabel.SetValue(physicalAttack);
+				_physicalAttackView.SetValue(physicalAttack);
 			}
 		}
 		
 		public void SetMagicalAttack(int magicalAttack)
 		{
-			if (_magicalAttackLabel != null)
+			if (_magicalAttackView != null)
 			{
-				_magicalAttackLabel.SetValue(magicalAttack);
+				_magicalAttackView.SetValue(magicalAttack);
 			}
 		}
 		
 		public void SetPhysicalDefense(int physicalDefense)
 		{
-			if (_physicalDefenseLabel != null)
+			if (_physicalDefenseView != null)
 			{
-				_physicalDefenseLabel.SetValue(physicalDefense);
+				_physicalDefenseView.SetValue(physicalDefense);
 			}
 		}
 		
 		public void SetMagicalDefense(int magicalDefense)
 		{
-			if (_magicalDefenseLabel != null)
+			if (_magicalDefenseView != null)
 			{
-				_magicalDefenseLabel.SetValue(magicalDefense);
+				_magicalDefenseView.SetValue(magicalDefense);
 			}
 		}
 	}
 
 }
+
+// TODO 할 일 메모: 26.06.08.
+// - 프로젝트B 제외 포폴 쓰기
+// - SoldierDetailOverlay의 각 Page의 Presenter 만들기(스크립트 위치(분류)는 코덱스에게 물어보기?)

@@ -1,6 +1,6 @@
 using ProjectB.Data.Types;
 using ProjectB.UI.Core;
-using ProjectB.UI.Views.Label;
+using ProjectB.UI.Views.Common;
 using UnityEngine;
 
 namespace ProjectB.UI.Views.Misc

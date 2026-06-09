@@ -4,10 +4,10 @@ using ProjectB.UI.Core;
 using TMPro;
 using UnityEngine;
 
-namespace ProjectB.UI.Views.Label
+namespace ProjectB.UI.Views.Common
 {
 
-	public class TextLabelView : UIView
+	public class TextView : UIView
 	{
 		[SerializeField] private TextMeshProUGUI _text;
 		

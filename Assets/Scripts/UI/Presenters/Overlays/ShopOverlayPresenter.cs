@@ -6,7 +6,6 @@ using ProjectB.Gameplay.Inbound.Ports.Overlay;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 using ProjectB.UI.Views.Items;
-using ProjectB.UI.Views.Label;
 using ProjectB.UI.Views.Lists;
 
 namespace ProjectB.UI.Presenters.Overlays
@@ -16,7 +15,7 @@ namespace ProjectB.UI.Presenters.Overlays
 	{
 		private readonly ShopItemCardListView _shopItemCardListView;
 		private readonly ShopItemCardView _shopItemCardPrefab;
-		private readonly TextLabelView _shopPageNameLabelView;
+		private readonly TextView _shopPageNameView;
 		private readonly IconTextButtonListView _shopPageButtonListView;
 		private readonly IconTextButtonView _shopPageButtonPrefab;
 
@@ -29,7 +28,7 @@ namespace ProjectB.UI.Presenters.Overlays
 			IOverlayStackService overlayStackService,
 			ShopItemCardListView shopItemCardListView,
 			ShopItemCardView shopItemCardPrefab,
-			TextLabelView shopPageNameLabelView,
+			TextView shopPageNameView,
 			IconTextButtonListView shopPageButtonListView,
 			IconTextButtonView shopPageButtonPrefab,
 			IShopSetting shopSetting,
@@ -37,7 +36,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		{
 			_shopItemCardListView = shopItemCardListView;
 			_shopItemCardPrefab = shopItemCardPrefab;
-			_shopPageNameLabelView = shopPageNameLabelView;
+			_shopPageNameView = shopPageNameView;
 			_shopPageButtonListView = shopPageButtonListView;
 			_shopPageButtonPrefab = shopPageButtonPrefab;
 			_shopSetting = shopSetting;
@@ -85,7 +84,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		
 		protected virtual void SetShopPageName(string shopPageName)
 		{ 
-			_shopPageNameLabelView.SetText(shopPageName);
+			_shopPageNameView.SetText(shopPageName);
 		}
 		
 		protected virtual void InitializeShopItemCardList(IEnumerable<IShopItem> shopItems)

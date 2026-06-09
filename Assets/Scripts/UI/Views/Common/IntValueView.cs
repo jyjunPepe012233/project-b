@@ -4,10 +4,10 @@ using ProjectB.UI.Core;
 using TMPro;
 using UnityEngine;
 
-namespace ProjectB.UI.Views.Label
+namespace ProjectB.UI.Views.Common
 {
 
-	public class IntValueLabelView : UIView
+	public class IntValueView : UIView
 	{
 		[Required, SerializeField] private TextMeshProUGUI valueText;
 
