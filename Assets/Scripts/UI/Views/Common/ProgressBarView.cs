@@ -16,7 +16,8 @@ namespace ProjectB.UI.Views.Common
 		
 		public void SetProgress(int current, int target)
 		{
-			float progress = (float)current / target;
+			_progressBar.value = current;
+			_progressBar.maxValue = target;
 			_currenetValueText.text = current.ToString();
 			_targetValueText.text = target.ToString();
 		}
