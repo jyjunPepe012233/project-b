@@ -2,6 +2,7 @@ using System.Linq;
 using ProjectB.Data.Runtime.Player;
 using ProjectB.Data.Static.Soldier;
 using ProjectB.Data.Types;
+using ProjectB.Gameplay.Events;
 using ProjectB.Gameplay.Inbound.Ports.Soldier;
 using ProjectB.Gameplay.Internal.Ports.Computer;
 using ProjectB.Gameplay.Outbound.Ports.Player;
@@ -16,16 +17,19 @@ namespace ProjectB.Gameplay.Inbound.Implements.Soldier
 		private readonly IHoldPlayerSessionPort _holdPlayerSessionPort;
 		private readonly ISoldierStatusComputer _soldierStatusComputer;
 		private readonly ISoldierCombatPowerComputer _soldierCombatPowerComputer;
+		private readonly SoldierInfoEvents _soldierInfoEvents;
 
 		public SoldierLevelUpService(IGlobalSoldierLevelUpSetting globalSoldierLevelUpSetting,
 			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISoldierStatusComputer soldierStatusComputer, 
-			ISoldierCombatPowerComputer soldierCombatPowerComputer)
+			ISoldierCombatPowerComputer soldierCombatPowerComputer,
+			SoldierInfoEvents soldierInfoEvents)
 		{
 			_globalSoldierLevelUpSetting = globalSoldierLevelUpSetting;
 			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_soldierStatusComputer = soldierStatusComputer;
 			_soldierCombatPowerComputer = soldierCombatPowerComputer;
+			_soldierInfoEvents = soldierInfoEvents;
 		}
 
 
@@ -59,6 +63,8 @@ namespace ProjectB.Gameplay.Inbound.Implements.Soldier
 			{
 				return;
 			}
+
+			int previousLevel = playerSoldier.Level;
 
 			if (targetExp <= playerSoldier.Exp + consumeFood) // 경험치가 targetExp를 넘기거나 같아지면
 			{
@@ -98,6 +104,13 @@ namespace ProjectB.Gameplay.Inbound.Implements.Soldier
 			
 			var newCombatPower = _soldierCombatPowerComputer.ComputeCombatPower(soldier, newStatus);
 			playerSoldier.SetCombatPower(newCombatPower);
+
+			_soldierInfoEvents.ExpUpdated?.Invoke(playerSoldier);
+			if (previousLevel != playerSoldier.Level)
+			{
+				_soldierInfoEvents.LevelUpdated?.Invoke(playerSoldier);
+			}
+			_soldierInfoEvents.StatusUpdated?.Invoke(playerSoldier);
 		}
 
 		

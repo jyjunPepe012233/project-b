@@ -12,6 +12,7 @@ namespace ProjectB.Dependency
 			RegisterMonoSystem<ChangeScreenTransitionEvents>();
 			RegisterMonoSystem<InventoryEvents>();
 			RegisterMonoSystem<SoldierDetailEvents>();
+			RegisterMonoSystem<SoldierInfoEvents>();
 			RegisterMonoSystem<SummonAnimationEvents>();
 			RegisterMonoSystem<SummonResultEvents>();
 			
