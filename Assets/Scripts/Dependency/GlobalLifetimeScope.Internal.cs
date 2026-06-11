@@ -28,6 +28,7 @@ namespace ProjectB.Dependency
 			// Overlay
 			RegisterPortAdapter<IOverlayManager, OverlayManager>();
 			RegisterPortAdapter<IBackpackOverlayController, BackpackOverlayController>();
+			RegisterPortAdapter<IPlayerInfoOverlayController, PlayerInfoOverlayController>();
 			RegisterPortAdapter<IShopOverlayController, ShopOverlayController>();
 			RegisterPortAdapter<ISoldierDetailOverlayController, SoldierDetailOverlayController>();
 			RegisterPortAdapter<ISoldierListOverlayController, SoldierListOverlayController>();
