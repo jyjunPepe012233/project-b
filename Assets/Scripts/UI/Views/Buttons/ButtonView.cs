@@ -18,6 +18,7 @@ namespace ProjectB.UI.Views.Buttons
 		protected override void OnSetupUICallbacks()
 		{
 			base.OnSetupUICallbacks();
+			_button.onClick.RemoveListener(OnButtonClicked); // 중복 등록된 구독들을 모두 해제함
 			_button.onClick.AddListener(OnButtonClicked);
 		}
 
