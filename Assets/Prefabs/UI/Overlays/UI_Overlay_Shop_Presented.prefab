@@ -253,7 +253,7 @@ MonoBehaviour:
   _closeButtonView: {fileID: 5152375632675457711}
   _shopItemCardListView: {fileID: 8083469115525560067}
   _shopItemCardPrefab: {fileID: 7466930600487626778, guid: 4b4b473fe56eb4ffda6c5671acd8999e, type: 3}
-  _shopPageNameLabelView: {fileID: 7864636680686085790}
+  shopPageNameView: {fileID: 7864636680686085790}
   _shopPageButtonListView: {fileID: 6100823015942273534}
   _shopPageButtonPrefab: {fileID: 2146710869420165878, guid: b63c172371c554052bc79e88c0ebda0d, type: 3}
 --- !u!114 &7864636680686085790 stripped
