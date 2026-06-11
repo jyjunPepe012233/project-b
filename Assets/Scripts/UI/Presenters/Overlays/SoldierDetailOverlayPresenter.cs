@@ -159,6 +159,11 @@ namespace ProjectB.UI.Presenters.Overlays
 		{
 			base.OnOpenScreen();
 
+			if (_currentPageView != null)
+			{
+				_currentPageView.Hide();
+			}
+			
 			_currentPageView = _infoPageView;
 			InitializeCurrentPage();
 			ShowCurrentPage();
@@ -171,6 +176,10 @@ namespace ProjectB.UI.Presenters.Overlays
 			if (_currentPageView == null)
 			{
 				_currentPageView = _infoPageView;
+			}
+			else
+			{
+				_currentPageView.Hide();
 			}
 
 			InitializeCurrentPage();
