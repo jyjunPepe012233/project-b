@@ -2,6 +2,7 @@ using ProjectB.Gameplay.Events;
 using ProjectB.Gameplay.Events.Overlay;
 using ProjectB.Gameplay.Inbound.Ports.Soldier;
 using ProjectB.UI.Presenters.Overlays;
+using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Pages.SoldierDetail;
 using UnityEngine;
 using VContainer;
@@ -11,6 +12,9 @@ namespace ProjectB.Infrastructure.UI.Overlays
 
 	public class SoldierDetailOverlayPresenterScope : BaseOverlayPresenterScope<SoldierDetailOverlayPresenter, SoldierDetailOverlayEvents>
 	{
+		[SerializeField] private ButtonView _infoPageButtonView;
+		[SerializeField] private ButtonView _levelUpPageButtonView;
+		
 		[SerializeField] private SoldierDetailInfoPageView _infoPageView;
 		[SerializeField] private SoldierDetailLevelUpPageView _levelUpPageView;
 		
@@ -23,6 +27,8 @@ namespace ProjectB.Infrastructure.UI.Overlays
 				_closeButtonView,
 				_overlayEvents,
 				_overlayStackService,
+				_infoPageButtonView,
+				_levelUpPageButtonView,
 				_infoPageView,
 				_levelUpPageView,
 				_soldierDetailEvents,

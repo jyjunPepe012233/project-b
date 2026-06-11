@@ -13,6 +13,9 @@ namespace ProjectB.UI.Presenters.Overlays
 
 	public class SoldierDetailOverlayPresenter : BaseOverlayPresenter<SoldierDetailOverlayEvents>
 	{
+		private readonly ButtonView _infoPageButtonView;
+		private readonly ButtonView _levelUpPageButtonView;
+		
 		private readonly SoldierDetailInfoPageView _infoPageView;
 		private readonly SoldierDetailLevelUpPageView _levelUpPageView;
 
@@ -27,17 +30,60 @@ namespace ProjectB.UI.Presenters.Overlays
 			ButtonView closeButtonView,
 			SoldierDetailOverlayEvents overlayEvents,
 			IOverlayStackService overlayStackService,
+			ButtonView infoPageButtonView,
+			ButtonView levelUpPageButtonView,
 			SoldierDetailInfoPageView infoPageView,
 			SoldierDetailLevelUpPageView levelUpPageView, 
 			SoldierDetailEvents soldierDetailEvents,
 			ISoldierLevelUpService soldierLevelUpService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
+			_infoPageButtonView = infoPageButtonView;
+			_levelUpPageButtonView = levelUpPageButtonView;
 			_infoPageView = infoPageView;
 			_levelUpPageView = levelUpPageView;
 			_soldierDetailEvents = soldierDetailEvents;
 			_soldierLevelUpService = soldierLevelUpService;
 		}
 
+		protected override void SetupViewCallbacks()
+		{
+			base.SetupViewCallbacks();
+			_infoPageButtonView.ButtonClicked += OnInfoPageButtonClicked;
+			_levelUpPageButtonView.ButtonClicked += OnLevelUpPageButtonClicked;
+		}
+
+		protected override void DisposeViewCallbacks()
+		{
+			base.DisposeViewCallbacks();
+			_infoPageButtonView.ButtonClicked -= OnInfoPageButtonClicked;
+			_levelUpPageButtonView.ButtonClicked -= OnLevelUpPageButtonClicked;
+		}
+		
+		void OnInfoPageButtonClicked()
+		{
+			if (_currentPageView == _infoPageView)
+			{
+				return;
+			}
+
+			_currentPageView.Hide();
+			_currentPageView = _infoPageView;
+			InitializeCurrentPage();
+			ShowCurrentPage();
+		}
+		
+		void OnLevelUpPageButtonClicked()
+		{
+			if (_currentPageView == _levelUpPageView)
+			{
+				return;
+			}
+
+			_currentPageView.Hide();
+			_currentPageView = _levelUpPageView;
+			InitializeCurrentPage();
+			ShowCurrentPage();
+		}
 
 		protected override void SetupModelSubscription()
 		{
