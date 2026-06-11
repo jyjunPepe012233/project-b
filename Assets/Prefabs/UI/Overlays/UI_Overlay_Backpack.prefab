@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isShowing: 0
   defaultDisable: 0
-  _canvasGroup: {fileID: 0}
+  _canvasGroup: {fileID: 3008044327435940341}
 --- !u!1 &4035447427302764728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,6 +2600,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 491089887546051322, guid: b0200eeffc5d14b4da0ab696830b5527, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491089887546051322, guid: b0200eeffc5d14b4da0ab696830b5527, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491089887546051322, guid: b0200eeffc5d14b4da0ab696830b5527, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491089887546051322, guid: b0200eeffc5d14b4da0ab696830b5527, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1251859746577807556, guid: b0200eeffc5d14b4da0ab696830b5527, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

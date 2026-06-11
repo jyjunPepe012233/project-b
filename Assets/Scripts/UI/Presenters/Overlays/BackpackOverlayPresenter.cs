@@ -10,6 +10,7 @@ using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
 using ProjectB.UI.Views.Items;
 using ProjectB.UI.Views.Lists;
+using UnityEngine;
 
 namespace ProjectB.UI.Presenters.Overlays
 {
@@ -111,6 +112,12 @@ namespace ProjectB.UI.Presenters.Overlays
 
 		void OnConsumeButtonClicked()
 		{
+			if (_currentPlayerItem == null)
+			{
+				Debug.LogError("소비 버튼이 클릭되었지만 선택된 아이템이 없음");
+				return;
+			}
+
 			_consumeItemService.ConsumeItem(_currentPlayerItem.ItemData);
 		}
 
@@ -215,6 +222,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		void ClearItemInfo()
 		{
 			_currentPlayerItem = null;
+			_consumeButtonView.Hide();
 			_itemInfoEnabledView.Hide();
 			_itemInfoDisabledView.Show(includeDefaultDisable: true);
 		}
