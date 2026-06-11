@@ -11,6 +11,7 @@ namespace ProjectB.Dependency
 			// 분류 X
 			RegisterMonoSystem<ChangeScreenTransitionEvents>();
 			RegisterMonoSystem<InventoryEvents>();
+			RegisterMonoSystem<MenuEvents>();
 			RegisterMonoSystem<SoldierDetailEvents>();
 			RegisterMonoSystem<SoldierInfoEvents>();
 			RegisterMonoSystem<StageInfoEvents>();
