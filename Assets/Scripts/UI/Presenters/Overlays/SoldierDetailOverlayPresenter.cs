@@ -50,6 +50,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			base.SetupViewCallbacks();
 			_infoPageButtonView.ButtonClicked += OnInfoPageButtonClicked;
 			_levelUpPageButtonView.ButtonClicked += OnLevelUpPageButtonClicked;
+			
+			_levelUpPageView.ConsumeFoodButton.ButtonClicked += OnConsumeFoodButtonClicked;
 		}
 
 		protected override void DisposeViewCallbacks()
@@ -57,6 +59,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			base.DisposeViewCallbacks();
 			_infoPageButtonView.ButtonClicked -= OnInfoPageButtonClicked;
 			_levelUpPageButtonView.ButtonClicked -= OnLevelUpPageButtonClicked;
+			
+			_levelUpPageView.ConsumeFoodButton.ButtonClicked -= OnConsumeFoodButtonClicked;
 		}
 		
 		void OnInfoPageButtonClicked()
@@ -83,6 +87,11 @@ namespace ProjectB.UI.Presenters.Overlays
 			_currentPageView = _levelUpPageView;
 			InitializeCurrentPage();
 			ShowCurrentPage();
+		}
+		
+		void OnConsumeFoodButtonClicked()
+		{
+			_soldierLevelUpService.ConsumeFoods(_currentSoldier.SoldierData);
 		}
 
 		protected override void SetupModelSubscription()
@@ -165,8 +174,17 @@ namespace ProjectB.UI.Presenters.Overlays
 			_levelUpPageView.Initialize(_currentSoldier.Level, _currentSoldier.Level + 1,
 				_currentSoldier.Exp, _currentSoldier.SoldierData.LevelUpSetting.GetLevelUpExpOfLevel(_currentSoldier.Level),
 				_currentSoldier.CombatPower, _soldierLevelUpService.GetNextLevelCombatPower(_currentSoldier.SoldierData),
-				_currentSoldier.Status, _soldierLevelUpService.GetNextLevelStatus(_currentSoldier.SoldierData));
+				_currentSoldier.Status, _soldierLevelUpService.GetNextLevelStatus(_currentSoldier.SoldierData),
+				_soldierLevelUpService.GetConsumeFoodAmount(_currentSoldier.SoldierData));
 		}
 	}
 
 }
+
+
+// TODO 할 일 메모 26.06.09.: 
+// - SoldierDetailOverlay의 BasicInfoBar 만들기(SoldierBasicInfoBarView?)
+// - ShopPageButton 목록 만들기
+// - SoldierDetail 화면 왼쪽 위 텍스트에 병사 이름 나오게 하기
+// - SoldierDetail 화면 끝내기
+// - 월드맵 만들기(챕터 최소 2개 만들고, 챕터 별 화면은 프리팹으로 만들어서 SO에서 GameObject로 받아오기. 스테이지 버튼은 누르면 StageInfoButtonPresenter 만들어서 Inspector에서 스테이지 데이터 So 주입할 수 있게 하면 될 듯. 나 천재인가?)
