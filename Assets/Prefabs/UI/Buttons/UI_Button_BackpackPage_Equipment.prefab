@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3054579841933032956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422036246135020323, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_Name
+      value: UI_Button_BackpackPage_Equipment
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 136
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011436851478629986, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032111175093681407, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_text
+      value: "\uC7A5\uBE44"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032111175093681407, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977555875544965764, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 886254cfe813341dbb9910c7474ed69f, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59e69859c14d742d68ec1c6fddc71b85, type: 3}

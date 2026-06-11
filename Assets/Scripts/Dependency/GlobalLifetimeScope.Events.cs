@@ -18,6 +18,7 @@ namespace ProjectB.Dependency
 			RegisterMonoSystem<SummonResultEvents>();
 			
 			// Overlay
+			RegisterMonoSystem<BackpackOverlayEvents>();
 			RegisterMonoSystem<ShopOverlayEvents>();
 			RegisterMonoSystem<SoldierDetailOverlayEvents>();
 			RegisterMonoSystem<SoldierListOverlayEvents>();
