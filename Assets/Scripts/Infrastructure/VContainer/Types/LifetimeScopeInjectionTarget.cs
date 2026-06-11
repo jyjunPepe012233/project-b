@@ -43,7 +43,7 @@ namespace ProjectB.Infrastructure.VContainer.Types
 				
 			} catch (Exception e)
 			{
-				Debug.LogError("Injection 실패: " + e);
+				Debug.LogError($"{name}에서 Injection 실패: {e}");
 			}
 		}
 
