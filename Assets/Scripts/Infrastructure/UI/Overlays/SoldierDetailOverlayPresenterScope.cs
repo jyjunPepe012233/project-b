@@ -19,6 +19,7 @@ namespace ProjectB.Infrastructure.UI.Overlays
 		[SerializeField] private SoldierDetailLevelUpPageView _levelUpPageView;
 		
 		[Inject] private SoldierDetailEvents _soldierDetailEvents;
+		[Inject] private SoldierInfoEvents _soldierInfoEvents;
 		[Inject] private ISoldierLevelUpService _soldierLevelUpService;
 		
 		protected override SoldierDetailOverlayPresenter Compose()
@@ -32,6 +33,7 @@ namespace ProjectB.Infrastructure.UI.Overlays
 				_infoPageView,
 				_levelUpPageView,
 				_soldierDetailEvents,
+				_soldierInfoEvents,
 				_soldierLevelUpService);
 		}
 	}

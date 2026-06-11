@@ -20,6 +20,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		private readonly SoldierDetailLevelUpPageView _levelUpPageView;
 
 		private readonly SoldierDetailEvents _soldierDetailEvents;
+		private readonly SoldierInfoEvents _soldierInfoEvents;
 		private readonly ISoldierLevelUpService _soldierLevelUpService;
 
 		
@@ -35,6 +36,7 @@ namespace ProjectB.UI.Presenters.Overlays
 			SoldierDetailInfoPageView infoPageView,
 			SoldierDetailLevelUpPageView levelUpPageView, 
 			SoldierDetailEvents soldierDetailEvents,
+			SoldierInfoEvents soldierInfoEvents,
 			ISoldierLevelUpService soldierLevelUpService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
 			_infoPageButtonView = infoPageButtonView;
@@ -42,6 +44,7 @@ namespace ProjectB.UI.Presenters.Overlays
 			_infoPageView = infoPageView;
 			_levelUpPageView = levelUpPageView;
 			_soldierDetailEvents = soldierDetailEvents;
+			_soldierInfoEvents = soldierInfoEvents;
 			_soldierLevelUpService = soldierLevelUpService;
 		}
 
@@ -98,18 +101,56 @@ namespace ProjectB.UI.Presenters.Overlays
 		{
 			base.SetupModelSubscription();
 			_soldierDetailEvents.SelectSoldier += OnSelectSoldier;
+			_soldierInfoEvents.ExpUpdated += OnSoldierExpUpdated;
+			_soldierInfoEvents.LevelUpdated += OnSoldierLevelUpdated;
+			_soldierInfoEvents.StatusUpdated += OnSoldierStatusUpdated;
 		}
 
 		protected override void DisposeModelSubscription()
 		{
 			base.DisposeModelSubscription();
 			_soldierDetailEvents.SelectSoldier -= OnSelectSoldier;
+			_soldierInfoEvents.ExpUpdated -= OnSoldierExpUpdated;
+			_soldierInfoEvents.LevelUpdated -= OnSoldierLevelUpdated;
+			_soldierInfoEvents.StatusUpdated -= OnSoldierStatusUpdated;
 		}
 
 		void OnSelectSoldier(IReadOnlyPlayerSoldier soldier)
 		{
 			_currentSoldier = soldier;
 			InitializeCurrentPage();
+		}
+
+		void OnSoldierExpUpdated(IPlayerSoldier soldier)
+		{
+			if (_currentSoldier != soldier)
+			{
+				return;
+			}
+
+			_levelUpPageView.SetExperienceProgress(soldier.Exp, soldier.SoldierData.LevelUpSetting.GetLevelUpExpOfLevel(soldier.Level));
+			_levelUpPageView.SetConsumeFoodAmount(_soldierLevelUpService.GetConsumeFoodAmount(soldier.SoldierData));
+		}
+
+		void OnSoldierLevelUpdated(IPlayerSoldier soldier)
+		{
+			if (_currentSoldier != soldier)
+			{
+				return;
+			}
+
+			_levelUpPageView.SetLevelCompare(soldier.Level, soldier.Level + 1);
+		}
+
+		void OnSoldierStatusUpdated(IPlayerSoldier soldier)
+		{
+			if (_currentSoldier != soldier)
+			{
+				return;
+			}
+
+			_levelUpPageView.SetCombatPowerCompare(soldier.CombatPower, _soldierLevelUpService.GetNextLevelCombatPower(soldier.SoldierData));
+			_levelUpPageView.SetStatusCompareSet(soldier.Status, _soldierLevelUpService.GetNextLevelStatus(soldier.SoldierData));
 		}
 
 
