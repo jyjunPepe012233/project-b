@@ -13,6 +13,7 @@ namespace ProjectB.Dependency
 			RegisterMonoSystem<InventoryEvents>();
 			RegisterMonoSystem<SoldierDetailEvents>();
 			RegisterMonoSystem<SoldierInfoEvents>();
+			RegisterMonoSystem<StageInfoEvents>();
 			RegisterMonoSystem<SummonAnimationEvents>();
 			RegisterMonoSystem<SummonResultEvents>();
 			
