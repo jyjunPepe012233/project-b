@@ -61,7 +61,8 @@ namespace ProjectB.UI.Presenters.Overlays
 				soldierCard.SetRoleIcon(soldierData.Role.IconPrefab64);
 				soldierCard.SetSpiritIcon(soldierData.Spirit.IconPrefab64);
 
-				soldierCard.ButtonClicked += () => OnSoldierCardButtonClicked(playerSoldier);
+				soldierCard.ClearAllRegisteredActions();
+				soldierCard.RegisterAction(() => OnSoldierCardButtonClicked(playerSoldier));
 			}
 		}
 

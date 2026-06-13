@@ -187,7 +187,9 @@ namespace ProjectB.UI.Presenters.Overlays
 					playerItem.ItemData.Icon128,
 					playerItem.ItemData.ItemTier.BackgroundPrefab128);
 
-				itemSlot.ButtonClicked += () => OnItemSlotClicked(playerItem);
+				// 액션을 초기화하여 중복 방지 후 다시 콜백을 등록 
+				itemSlot.ClearAllRegisteredActions();
+				itemSlot.RegisterAction(() => OnItemSlotClicked(playerItem));
 			}
 		}
 

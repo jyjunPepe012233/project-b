@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ProjectB.Data.Static.Shop;
 using ProjectB.Gameplay.Events.Overlay;
@@ -72,7 +73,9 @@ namespace ProjectB.UI.Presenters.Overlays
 				var shopPageButton = _shopPageButtonListView.CreateItem();
 				shopPageButton.SetText(shopPage.ShopPageName);
 				shopPageButton.SetIcon(shopPage.Icon128);
-				shopPageButton.ButtonClicked += () => OnShopPageButtonClicked(shopPage);
+				
+				shopPageButton.ClearAllRegisteredActions(); // 기존에 등록된 액션들을 모두 해제하여 중복 실행 방지(button이 재활용된 오브젝트일 수 있음)
+				shopPageButton.RegisterAction(() => OnShopPageButtonClicked(shopPage));
 			}
 		}
 		
@@ -100,7 +103,8 @@ namespace ProjectB.UI.Presenters.Overlays
 					shopItem.ItemData.Icon128,
 					shopItem.ItemData.ItemTier.BackgroundPrefab128);
 				
-				shopItemCard.ButtonClicked += () => OnShopItemCardClicked(shopItem);
+				shopItemCard.ClearAllRegisteredActions(); // 기존에 등록된 액션들을 모두 해제하여 중복 실행 방지(card가 재활용된 오브젝트일 수 있음)
+				shopItemCard.RegisterAction(() => OnShopItemCardClicked(shopItem));
 			}
 		}
 		

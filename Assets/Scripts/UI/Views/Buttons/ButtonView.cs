@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AssetValidator;
 using InspectorGadgets.Attributes;
 using ProjectB.UI.Core;
@@ -14,6 +15,8 @@ namespace ProjectB.UI.Views.Buttons
 		[Required, SerializeField] private Button _button;
 	
 		public event Action ButtonClicked;
+		
+		private readonly List<Action> _registeredActions = new();
 
 		protected override void OnSetupUICallbacks()
 		{
@@ -31,6 +34,35 @@ namespace ProjectB.UI.Views.Buttons
 		private void OnButtonClicked()
 		{
 			ButtonClicked?.Invoke();
+		}
+
+		public void RegisterAction(Action action)
+		{
+			ButtonClicked += action;
+			_registeredActions.Add(action);
+		}
+		
+		public void RemoveRegisteredAction(Action action)
+		{
+			// 없는 액션을 제거하는 경우에 발생하는 예외도 처리함
+			try
+			{
+				ButtonClicked -= action;
+				_registeredActions.Remove(action);
+			}
+			catch (Exception e)
+			{
+				Debug.LogWarning($"액션 제거 중 예외 발생: {e.Message}");
+			}
+		}
+		
+		public void ClearAllRegisteredActions()
+		{
+			foreach (var action in _registeredActions)
+			{
+				ButtonClicked -= action;
+			}
+			_registeredActions.Clear();
 		}
 
 
