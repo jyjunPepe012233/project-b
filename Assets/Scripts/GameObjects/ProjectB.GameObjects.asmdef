@@ -1,0 +1,17 @@
+{
+    "name": "ProjectB.GameObjects",
+    "rootNamespace": "ProjectB",
+    "references": [
+        "GUID:6867947f8ba984907a391d665a3c7e06",
+        "GUID:4516fe32c11b32b4c8eb0d5ed6f6d7bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
