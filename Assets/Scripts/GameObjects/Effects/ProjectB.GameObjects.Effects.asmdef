@@ -1,9 +1,10 @@
 {
-    "name": "ProjectB.GameObjects",
+    "name": "ProjectB.GameObjects.Effects",
     "rootNamespace": "ProjectB",
     "references": [
         "GUID:6867947f8ba984907a391d665a3c7e06",
-        "GUID:4516fe32c11b32b4c8eb0d5ed6f6d7bc"
+        "GUID:4516fe32c11b32b4c8eb0d5ed6f6d7bc",
+        "GUID:7793e5cd8d2e94e21b56de41db6606bb"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
