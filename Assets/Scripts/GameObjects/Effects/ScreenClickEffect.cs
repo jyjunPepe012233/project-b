@@ -1,4 +1,5 @@
 using AssetValidator;
+using Coffee.UIExtensions;
 using InspectorGadgets.Attributes;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace ProjectB.GameObjects.Effects
 		[SerializeField] private bool _disableAutoFindCamera = false;
 		
 		[SerializeField] private Camera _camera;
-		[Required, SerializeField] private ParticleSystem _clickEffect;
+		[Required, SerializeField] private UIParticle _clickEffect;
 
 		public void Awake()
 		{
@@ -71,9 +72,7 @@ namespace ProjectB.GameObjects.Effects
 		// 상속 가능하도록 선언
 		protected virtual void PlayClickEffect(Vector2 touchPos)
 		{
-			Vector3 worldPos = _camera.ScreenToWorldPoint(touchPos);
-			Debug.Log(worldPos);
-			_clickEffect.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
+			_clickEffect.transform.position = touchPos;
 			_clickEffect.Play();
 		}
 		
