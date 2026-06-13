@@ -6,6 +6,7 @@ using ProjectB.Gameplay.Inbound.Ports.Soldier;
 using ProjectB.UI.Core;
 using ProjectB.UI.Views.Buttons;
 using ProjectB.UI.Views.Common;
+using ProjectB.UI.Views.Misc;
 using ProjectB.UI.Views.Pages.SoldierDetail;
 
 namespace ProjectB.UI.Presenters.Overlays
@@ -13,6 +14,9 @@ namespace ProjectB.UI.Presenters.Overlays
 
 	public class SoldierDetailOverlayPresenter : BaseOverlayPresenter<SoldierDetailOverlayEvents>
 	{
+		private readonly TextView _soldierNameView;
+		private readonly SoldierBasicInfoBarView _basicInfoBarView;
+
 		private readonly ButtonView _infoPageButtonView;
 		private readonly ButtonView _levelUpPageButtonView;
 		
@@ -31,6 +35,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			ButtonView closeButtonView,
 			SoldierDetailOverlayEvents overlayEvents,
 			IOverlayStackService overlayStackService,
+			TextView soldierNameView,
+			SoldierBasicInfoBarView basicInfoBarView,
 			ButtonView infoPageButtonView,
 			ButtonView levelUpPageButtonView,
 			SoldierDetailInfoPageView infoPageView,
@@ -39,6 +45,8 @@ namespace ProjectB.UI.Presenters.Overlays
 			SoldierInfoEvents soldierInfoEvents,
 			ISoldierLevelUpService soldierLevelUpService) : base(topElementView, closeButtonView, overlayEvents, overlayStackService)
 		{
+			_soldierNameView = soldierNameView;
+			_basicInfoBarView = basicInfoBarView;
 			_infoPageButtonView = infoPageButtonView;
 			_levelUpPageButtonView = levelUpPageButtonView;
 			_infoPageView = infoPageView;
@@ -118,6 +126,7 @@ namespace ProjectB.UI.Presenters.Overlays
 		void OnSelectSoldier(IReadOnlyPlayerSoldier soldier)
 		{
 			_currentSoldier = soldier;
+			InitializeSoldierInfo();
 			InitializeCurrentPage();
 		}
 
@@ -226,6 +235,18 @@ namespace ProjectB.UI.Presenters.Overlays
 				_currentSoldier.CombatPower, _soldierLevelUpService.GetNextLevelCombatPower(_currentSoldier.SoldierData),
 				_currentSoldier.Status, _soldierLevelUpService.GetNextLevelStatus(_currentSoldier.SoldierData),
 				_soldierLevelUpService.GetConsumeFoodAmount(_currentSoldier.SoldierData));
+		}
+
+		void InitializeSoldierInfo()
+		{
+			var soldierData = _currentSoldier.SoldierData;
+
+			_soldierNameView.SetText(soldierData.SoldierName);
+			_basicInfoBarView.Initialize(soldierData.SoldierName,
+				soldierData.Spirit.IconPrefab64,
+				soldierData.AttackType.IconPrefab64,
+				soldierData.Position.IconPrefab64,
+				soldierData.Role.IconPrefab64);
 		}
 	}
 
