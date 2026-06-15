@@ -9,6 +9,7 @@ namespace ProjectB.Dependency
 		void RegisterEvents()
 		{
 			// 분류 X
+			RegisterMonoSystem<AlertEvents>();
 			RegisterMonoSystem<ChangeScreenTransitionEvents>();
 			RegisterMonoSystem<InventoryEvents>();
 			RegisterMonoSystem<MenuEvents>();

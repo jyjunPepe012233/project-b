@@ -18,18 +18,21 @@ namespace ProjectB.Gameplay.Inbound.Implements.Soldier
 		private readonly ISoldierStatusComputer _soldierStatusComputer;
 		private readonly ISoldierCombatPowerComputer _soldierCombatPowerComputer;
 		private readonly SoldierInfoEvents _soldierInfoEvents;
+		private readonly AlertEvents _alertEvents;
 
 		public SoldierLevelUpService(IGlobalSoldierLevelUpSetting globalSoldierLevelUpSetting,
 			IHoldPlayerSessionPort holdPlayerSessionPort,
 			ISoldierStatusComputer soldierStatusComputer, 
 			ISoldierCombatPowerComputer soldierCombatPowerComputer,
-			SoldierInfoEvents soldierInfoEvents)
+			SoldierInfoEvents soldierInfoEvents,
+			AlertEvents alertEvents)
 		{
 			_globalSoldierLevelUpSetting = globalSoldierLevelUpSetting;
 			_holdPlayerSessionPort = holdPlayerSessionPort;
 			_soldierStatusComputer = soldierStatusComputer;
 			_soldierCombatPowerComputer = soldierCombatPowerComputer;
 			_soldierInfoEvents = soldierInfoEvents;
+			_alertEvents = alertEvents;
 		}
 
 
@@ -50,6 +53,7 @@ namespace ProjectB.Gameplay.Inbound.Implements.Soldier
 			if (playerSoldier.Level >= playerData.Level)
 			{
 				Debug.LogWarning("병사의 레벨이 플레이어 레벨보다 높게 올라가지 못함. SoldierId: " + soldier.SoldierId);
+				_alertEvents.Alert?.Invoke("하극상 금지! 병사 레벨은 플레이어 레벨보다 높을 수 없어요." + soldier.SoldierId);
 				return;
 			}
 			
