@@ -71,3 +71,6 @@
     └── Dependency
         └── ProjectB.Dependency ────────────────────────── # 전체 의존성을 연결하는 루트 Assembly
 ```
+
+
+<img width="842" height="615" alt="스크린샷 2026-06-15 오후 12 22 45" src="https://github.com/user-attachments/assets/ed197073-4099-46dc-aaa3-c007f63ed133" />
