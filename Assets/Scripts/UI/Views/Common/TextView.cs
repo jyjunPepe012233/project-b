@@ -3,6 +3,7 @@ using ProjectB.Core.Supports;
 using ProjectB.UI.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ProjectB.UI.Views.Common
 {
@@ -11,11 +12,14 @@ namespace ProjectB.UI.Views.Common
 	{
 		[SerializeField] private TextMeshProUGUI _text;
 		
-		public void SetText(string text)
+		public void SetText(string text, bool forceRebuildLayout = false)
 		{
 			if (_text != null)
 			{
 				_text.text = text;
+				_text.ForceMeshUpdate();
+				
+				LayoutRebuilder.ForceRebuildLayoutImmediate(_text.rectTransform.parent as RectTransform);
 			}
 			else
 			{
