@@ -10,6 +10,28 @@
 라이브 서비스 RPG 게임(트릭컬 리바이브)를 오마주하여 실제 운영이 고려된 게임 시스템을 개발하였습니다.  
 2D, UI에 대한 이해도를 확보하고자 프로젝트를 시작하였으며, 실제로 생소한 구조적 문제, 디버깅 효율 문제 등을 해결하였습니다.
 
+## 주요 기능
+
+아래 영상 자료는 모두 실제 Android 환경(빌드)에서 촬영되었습니다!
+
+### 로비 화면 로딩
+<img width="800" height="369" alt="ezgif-2637ccb62ff4cb68" src="https://github.com/user-attachments/assets/68562927-6719-4989-8d3d-4c2729a79770" />
+
+### 병사 모집
+<img width="800" height="369" alt="ezgif-25aac64ff8925b99" src="https://github.com/user-attachments/assets/5fcc3187-e9df-49fb-92e5-02067fe419e3" />
+
+### 병사 레벨업
+<img width="800" height="369" alt="ezgif-22d22770a10b7125" src="https://github.com/user-attachments/assets/ddceafb3-63f5-49bf-8825-d092729fac2b" />
+
+### 플레이어 정보
+<img width="800" height="369" alt="ezgif-20d9550d977ff482" src="https://github.com/user-attachments/assets/18def994-7c30-41fd-be3d-b40fe8961f17" />
+
+### 상점
+<img width="800" height="369" alt="ezgif-2fe9c4b381d7cbe1" src="https://github.com/user-attachments/assets/a4838f8e-a433-4ad9-818a-e7abc9a150c4" />
+
+### 배낭
+<img width="800" height="369" alt="ezgif-2b7028bf4b8a9336" src="https://github.com/user-attachments/assets/0040599e-4b56-4a39-a326-4e19d9aec98b" />
+
 ## 주요 기술
 
 - UGUI
